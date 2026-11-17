@@ -1,0 +1,58 @@
+{
+ "id": "wiener-1960-some-moral-and-technical-consequences",
+ "title": "Some Moral and Technical Consequences of Automation",
+ "text_path": "fulltext/wiener-1960-some-moral-and-technical-consequences.txt",
+ "summary": "Science essay adapted from a December 1959 AAAS lecture. Wiener argues that machines can show originality and escape their designers' effective control, citing learning checkers machines that defeat their programmer. Because machines act faster than humans can understand or intervene, he warns that a learning machine trained on war-game rules that do not match what we wish could win a nominal victory at the cost of every interest, and that literal-minded agencies (sorcerer's apprentice, monkey's paw) give disastrous results when communication of purpose is incomplete. He concludes that one must be sure the purpose put into a machine is the purpose really desired.",
+ "setting": "Essay; examples from checkers-playing learning machines (IBM), war games, a bottle factory, fables. Text extracted from a scan; the first page is garbled by the scan's spacing.",
+ "quotes": [
+  {
+   "section": "game playing (method)",
+   "quote": "I question strongly whether this concept of the perfect game is a completely realistic one in the cases of actual, nontrivial games."
+  },
+  {
+   "section": "game playing (method)",
+   "quote": "It is quite legitimate for a chess player to play, not against an ideal, nonexisting, perfect antagonist, but rather against one whose habits he has been able to determine from the record."
+  },
+  {
+   "section": "argument (method)",
+   "quote": "They thus most definitely escape from the completely effective control of the man who has made them."
+  },
+  {
+   "section": "argument (method)",
+   "quote": "As I have said, checker-playing machines which learn have developed to the point at which they can defeat the programmer."
+  },
+  {
+   "section": "argument (results)",
+   "quote": "Here, however, if the rules for victory in a war game do not correspond to what we actually wish for our country, it is more than likely that such a machine may produce a policy which would win a nominal victory on points at the cost of every interest we have at heart, even that of national survival."
+  },
+  {
+   "section": "argument (results)",
+   "quote": "Complete subservience and con~plete intelligence do not go together."
+  },
+  {
+   "section": "argument (results)",
+   "quote": "Similarly, when a machine constructed by us is capable of operating on its incoming data at a pace which we cannot keep, we may not know, until too late, when to turn it off."
+  },
+  {
+   "section": "argument (results)",
+   "quote": "Similarly, if a bottle factory is programmed on the basis of maximum productivity, the"
+  },
+  {
+   "section": "conclusion (discussion)",
+   "quote": "If we use, to achieve our purposes, a mechanical agency with whose operation we cannot efficiently interfere once we have started it, because the action is so fast and irrevocable that we have not the data to intervene before the action is complete, then we had better be quite sure that the purpose put into the machine is the purpose which we really desire and not merely a colorful imitation of it."
+  },
+  {
+   "section": "time scales (limitations)",
+   "quote": "We have seen that one of the chief causes of the danger of disastrous consequences in the use of the learning machine is that man and machine operate on two distinct time scales, so that the machine is much faster than man and the two do not gear together without serious difficulties."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Checkers machines surpass their programmer after 10 to 20 hours.",
+   "quote": "after from 10 to 20 playing hours of working and indoctrination"
+  }
+ ],
+ "limitations_stated": "Wiener says the brain will for a long time remain better than machines at some level, though that level may shift upwards.",
+ "open_questions": "How human understanding of machines can keep pace with their performance so that intervention remains possible.",
+ "sense_of_alignment": "The word alignment is not used. The concern is that \"the purpose put into the machine is the purpose which we really desire and not merely a colorful imitation of it\"."
+}

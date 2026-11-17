@@ -1,0 +1,24 @@
+{
+  "id": "2506.03755",
+  "title": "Misalignment or misuse? The AGI alignment tradeoff",
+  "text_path": "fulltext/2506.03755.txt",
+  "summary": "A philosophy paper arguing that misaligned AGI risks a takeover catastrophe while aligned AGI risks a misuse catastrophe by the humans it is aligned with. It defines alignment in a narrow technical sense (the AI tries to do what its designers/users want), then more precisely as correspondence between the AI's goals and those of an 'alignment target' group, which comes in degrees and can be static or dynamic. It defends the takeover horn against two objections (against usefulness of power; against AGI as a coherent maximizer) and argues the misuse horn is not conceptually necessary (a target of all moral patients removes it) but is empirically plausible: representation engineering, RLHF/DPO/constitutional AI, and corrigibility give fine-grained control that bad actors (users via jailbreaks, designers, weight thieves) can exploit. It proposes robustness, AI control, dual-use assessments in alignment papers, and governance as ways to reduce the tradeoff.",
+  "setting": "Conceptual analysis of AGI risk, with a review of current alignment techniques (representation engineering, RLHF, DPO, constitutional AI, corrigibility, robustness); no experiments.",
+  "quotes": [
+    {"section": "introduction", "quote": "As a first approximation, an AI system is aligned, in a narrow technical sense, if it tries to do what its designers/users want it to do (Christiano 2018; Dung 2023; Ngo et al. 2024)."},
+    {"section": "method", "quote": "More precisely, we may understand alignment as the correspondence between an AI's goals and the goals of some group A (the \"alignment target\")."},
+    {"section": "method", "quote": "Thus, the claim that AGI alignment risks a misuse catastrophe can, on a conceptual level, be countered by taking A to be sufficiently broad."},
+    {"section": "results", "quote": "When such \"jailbreaks\", i.e. vulnerabilities to adversarial inputs, were eliminated, the model would be considered aligned, at least in this respect."},
+    {"section": "results", "quote": "To draw a more general lesson: Despite labs' extensive efforts to avoid misuse of their models, none of them succeed at it, thus making the problem of avoiding misuse seem very hard, and misuse manifesting in higher stakes contexts appear quite plausible."},
+    {"section": "results", "quote": "A second important general point is that numerous alignment techniques in practice seem to enable fine-grained control of AI systems' behavior or goals."},
+    {"section": "limitations", "quote": "An important limitation of our argument is that we focus on few specific techniques and research directions in AI alignment research here."},
+    {"section": "discussion", "quote": "A common categorization of risks into misuse and accident risks (where accident risks include misalignment) neglects structural risks."},
+    {"section": "conclusion", "quote": "Therefore, aligned AGI does not conceptually imply a high misuse risk. Hence, whether alignment efforts will increase misuse risk is a contingent empirical question."}
+  ],
+  "key_numbers": [
+    {"claim": "Cited estimate: AI safety is between under 1% and 2% of AI publications.", "quote": "Particularly so as only between less than 1% and 2% of AI publications are on AI safety"}
+  ],
+  "limitations_stated": "The analysis covers only a few alignment techniques and research directions; the field changes too fast to predict which practices will be common. Much of the discussion is necessarily speculative, and the takeover argument is claimed credible, not established.",
+  "open_questions": "Whether current techniques produce static or dynamic alignment; whether goal stability could reduce misuse risk without raising takeover risk; how to design alignment that does not enable fine-grained behavioral control.",
+  "sense_of_alignment": "Narrow technical alignment of goals with an 'alignment target' group: 'an AI system is aligned, in a narrow technical sense, if it tries to do what its designers/users want it to do', with the HHH/jailbreak-resistance sense noted as what current techniques operationalize."
+}

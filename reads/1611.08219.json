@@ -1,0 +1,45 @@
+{
+ "id": "1611.08219",
+ "title": "The Off-Switch Game",
+ "text_path": "fulltext/1611.08219.txt",
+ "summary": "A one-shot game between a human H, who can press a robot R's off switch, and R, which can act, switch itself off, or defer to H. An agent that takes its reward function as given has an incentive to disable the switch unless H is perfectly rational. If R is uncertain about the utility of its action and treats H's choice as evidence about it, deferring has non-negative value (analogous to the value of information), and with a rational H, R never has an incentive to disable the switch. With noisily rational H the incentive depends on the ratio of R's uncertainty to H's irrationality, and making R more uncertain than warranted reduces the value it generates, more so with more actions. The paper is the reference point for later work that ties corrigibility to objective uncertainty.",
+ "setting": "Theoretical analysis (CIRL-style two-player game), Gaussian beliefs over utility, noisily rational (logistic) human model; simulations for designer incentives.",
+ "quotes": [
+  {
+   "section": "abstract",
+   "quote": "Our key insight is that for R to want to preserve its off switch, it needs to be uncertain about the utility associated with the outcome, and to treat H’s actions as important observations about that utility."
+  },
+  {
+   "section": "method",
+   "quote": "There is never an incentive to disable the off switch with a rational . The reasoning is exactly analogous to the theorem of non-negative expected value of information;"
+  },
+  {
+   "section": "results",
+   "quote": "The incentives for a cooperative agent to defer to another actor’s (e.g., a human’s) decisions stem from uncertainty about that actor’s preferences and the assumption that actor is effective at choosing actions in accordance with those preferences."
+  },
+  {
+   "section": "results",
+   "quote": "If is completely predictable (i.e., she will almost always switch the robot off) then this reduces ’s incentives."
+  },
+  {
+   "section": "results",
+   "quote": "It is important for designers to accurately represent the inherent uncertainty in the evaluation of different actions. An agent that is overconfident in its utility evaluations will be difficult to correct; an agent that is under-confident in its utility evaluations will be ineffective."
+  },
+  {
+   "section": "results",
+   "quote": "This suggests that creating incentives to maintain or allow human oversight is likely more difficult as the complexity of the AI’s decision increases."
+  },
+  {
+   "section": "discussion",
+   "quote": "Section 5 shows that we can expect a tradeoff between the value a system can generate and the strength of its incentive to accept oversight."
+  },
+  {
+   "section": "limitations",
+   "quote": "One important limitation of this model is that the human pressing the off switch is the only source of information about the objective. If there are alternative sources of information, there may be incentives for to, e.g., disable its off switch, learn that information, and then decide if is preferable to ."
+  }
+ ],
+ "key_numbers": [],
+ "limitations_stated": "One-shot game; the human's switch press is the only source of information about the objective; sequential settings and model misspecification are left to future work.",
+ "open_questions": "Sequential deference, misspecified priors (taken up by Carey 2017, Wängberg et al. 2017, Garber et al. 2024), and whether learned agents behave as the idealized Bayesian agent does.",
+ "sense_of_alignment": "Value alignment between a robot and a human, with misalignment arising because 'it is not possible to specify a reward function that incentivizes the correct behavior in all states a priori'."
+}

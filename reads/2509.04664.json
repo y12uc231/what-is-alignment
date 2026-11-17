@@ -1,0 +1,50 @@
+{
+ "id": "2509.04664",
+ "title": "Why Language Models Hallucinate",
+ "text_path": "fulltext/2509.04664.txt",
+ "summary": "Theory paper (OpenAI and Georgia Tech). Part 1 reduces generation to binary classification ('Is-It-Valid'): a base model's generative error rate is lower-bounded by roughly twice its misclassification rate on deciding whether an output is valid, minus calibration terms, so cross-entropy pretraining produces errors even with error-free data. For 'arbitrary facts' with no learnable pattern, the hallucination rate after pretraining is lower-bounded by the singleton rate (fraction of facts seen exactly once), recovering Kalai and Vempala (2024). Part 2 argues that hallucinations persist after post-training because benchmarks use binary grading, under which abstaining is never optimal (Observation 1); a meta-evaluation of popular benchmarks finds most give no credit for IDK. The proposed fix is socio-technical: put explicit confidence targets (answer only if confidence > t; wrong answers cost t/(1-t)) into mainstream evaluations, which makes 'behavioral calibration' auditable.",
+ "setting": "Theory (computational learning theory reduction, Good-Turing singleton argument), illustrative prompts to DeepSeek-V3, ChatGPT, Llama-4, Claude 3.7 Sonnet; meta-analysis of ~10 popular benchmarks' grading schemes. No training experiments.",
+ "quotes": [
+  {
+   "section": "method (pretraining analysis)",
+   "quote": "However, we show that even if the training data were error-free, the objectives optimized during language model training would lead to errors being generated."
+  },
+  {
+   "section": "method (singleton bound)",
+   "quote": "recovers their bound that the hallucination rate, after pretraining, should be at least the fraction of training facts that appear once."
+  },
+  {
+   "section": "results (post-training)",
+   "quote": "However, we claim that further reduction of hallucinations is an uphill battle, since existing benchmarks and leaderboards reinforce certain types of hallucination."
+  },
+  {
+   "section": "results (meta-evaluation)",
+   "quote": "finding that the vast majority of popular evaluations have binary grading. Therefore, additional hallucination evaluations may not suffice when the primary evaluations penalize honestly reporting confidence and uncertainty."
+  },
+  {
+   "section": "method (confidence targets)",
+   "quote": "Let us refer to this as behavioral calibration–rather than requiring the model to output a probabilistic confidence (Lin et al., 2022a), it must formulate the most useful response in which it is at least confident."
+  },
+  {
+   "section": "limitations",
+   "quote": "Our formalism does not distinguish between errors of different magnitudes or degrees of uncertainty. Clearly, the correct/incorrect/IDK categories are also incomplete."
+  },
+  {
+   "section": "conclusions",
+   "quote": "In pretraining, we show that generative errors parallel misclassifications in supervised learning, which are not mysterious, and naturally arise due to the minimization of cross-entropy loss."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Illustration of the singleton bound",
+   "quote": "For instance, if 20% of birthday facts appear exactly once in the pretraining data, then one expects base models to hallucinate on at least 20% of birthday facts."
+  },
+  {
+   "claim": "Post-training framing",
+   "quote": "language models are optimized to be good test-takers, and guessing when uncertain improves test performance."
+  }
+ ],
+ "limitations_stated": "The formalism considers only plausible strings, does not distinguish errors of different magnitude, treats correct/incorrect/IDK as an incomplete trichotomy, does not model pragmatics of hedging, and does not address ambiguity-driven errors. Search/RAG does not escape Observation 1. No empirical training study.",
+ "open_questions": "Whether changing mainstream benchmark scoring to explicit confidence targets actually changes post-training outcomes (no experiment). How to train behavioral calibration directly and audit it across thresholds. How the singleton-rate bound interacts with RL fine-tuning rather than pretraining.",
+ "sense_of_alignment": "Uses 'aligned' for evaluations and models whose incentives reward calibrated uncertainty: 'most evaluations are not aligned', benchmarks 'that are misaligned but dominate leaderboards', and 'Model A is an aligned model that correctly signals uncertainty and never hallucinates'. The sense is incentive alignment between scoring rules and honest reporting, not a model's goals."
+}

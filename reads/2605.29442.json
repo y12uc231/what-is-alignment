@@ -1,0 +1,54 @@
+{
+ "id": "2605.29442",
+ "title": "How Coding Agents Fail Their Users: A Large-Scale Analysis of Developer-Agent Misalignment in 20,574 Real-World Sessions",
+ "text_path": "fulltext/2605.29442.txt",
+ "summary": "An observational study of 20,574 real coding-agent sessions from 1,639 public repositories (IDE and CLI). It operationalizes misalignment as breakdowns between developer and agent that become visible through developer correction or pushback, scoped to instructions and intentions. GPT-5.4 extracts and annotates episodes (precision 0.93 on 200 human-checked records). Seven symptoms are found: developer constraint violation (38.33%), misread developer intent (26.95%), inaccurate self-reporting (22.58%), faulty implementation (17.82%), wrong project diagnosis (11.56%), self-initiated overreach (10.20%), operational execution error (2.87%). Most episodes impose effort or trust costs, and most visible resolutions require developer pushback. Code-level symptoms decline over time while interaction-level symptoms (constraint violation, misreporting) rise.",
+ "setting": "SpecStory and SWE-chat (Entire.io) public session logs; GPT-5.4 at temperature 0 for extraction, validation and annotation; expert validation samples.",
+ "quotes": [
+  {
+   "section": "introduction",
+   "quote": "We define misalignment as observable breakdowns in developer-agent collaboration that surface through developer correction or pushback in conversational logs, and scope our analysis to two proximal alignment goals: instructions (what developers explicitly ask for) and intentions (what they actually want) Shen et al. (2024)."
+  },
+  {
+   "section": "method",
+   "quote": "First, misalignment is defined only relative to developer messages, excluding agent-initiated actions without developer correction or pushback."
+  },
+  {
+   "section": "results",
+   "quote": "S2 reflects not wholesale misunderstanding, but a plausible concretization of an underspecified request."
+  },
+  {
+   "section": "results",
+   "quote": "S7 occurs when the agent misreports its work by prematurely claiming success, completion, or readiness."
+  },
+  {
+   "section": "results",
+   "quote": "S5 is the most straightforward symptom: the agent attempts the right task but implements it incorrectly."
+  },
+  {
+   "section": "discussion",
+   "quote": "Within sessions, S3 co-occurs below chance with both S1 (0.75) and S5 (0.71), suggesting constraint adherence and technical correctness are distinct facets of agent behavior."
+  },
+  {
+   "section": "discussion",
+   "quote": "Alignment in this setting is also not unilateral."
+  },
+  {
+   "section": "limitations",
+   "quote": "Second, our analysis is restricted by design to misalignment visible through developer correction (Section 3.2). Cases silently worked around by developers fall outside this scope and are absent from the logs."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Most common symptom.",
+   "quote": "Developer Constraint Violation (S3, 38.33%)."
+  },
+  {
+   "claim": "Costs and resolution.",
+   "quote": "90.50% of episodes impose only effort or trust costs, yet 91.49% of visible resolutions require explicit developer pushback"
+  }
+ ],
+ "limitations_stated": "Selection bias toward developers who publish logs; only misalignment visible through pushback; IDE and CLI groups differ in agents and tasks; LLM-based extraction and annotation with residual misclassification; 26.85% of causes cannot be determined.",
+ "open_questions": "Our reading: the definition counts faulty implementation and operational errors (capability failures by the paper's own description) as misalignment, so the headline categories mix capability and alignment failures; the 'cannot determine' cause share shows the logs rarely settle which.",
+ "sense_of_alignment": "Alignment is user-facing agreement with developer instructions and intentions: misalignment is 'observable breakdowns in developer-agent collaboration that surface through developer correction or pushback'."
+}

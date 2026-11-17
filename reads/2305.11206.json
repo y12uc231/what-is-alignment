@@ -1,0 +1,46 @@
+{
+ "id": "2305.11206",
+ "title": "LIMA: Less Is More for Alignment",
+ "text_path": "fulltext/2305.11206.txt",
+ "summary": "Defines the Superficial Alignment Hypothesis (knowledge and capabilities are learned almost entirely in pretraining; alignment teaches which subdistribution of formats to use) and tests its corollary by fine-tuning LLaMa 65B with the standard supervised loss on 1,000 curated prompt-response pairs, without RL or preference modeling. In human preference studies LIMA's responses are equal or preferred to GPT-4's in 43% of cases; 88% of responses meet prompt requirements. Ablations show diminishing returns from data quantity without diversity and gains from quality. Safety evidence is limited: 13 training prompts with some toxicity or malevolence, and a check of 30 potentially sensitive test prompts, of which 80% get safe responses (6 of 10 with malicious intent), with implicit malicious intent more likely to get unsafe answers.",
+ "setting": "LLaMa 65B; 1,000 training examples (Stack Exchange, wikiHow, Reddit, manually authored); 300 test prompts; human and GPT-4 preference judgments against Alpaca 65B, DaVinci003, Bard, Claude, GPT-4.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "A model’s knowledge and capabilities are learnt almost entirely during pretraining, while alignment teaches it which subdistribution of formats should be used when interacting with users."
+  },
+  {
+   "section": "method",
+   "quote": "We also include 13 training prompts with some degree of toxicity or malevolence."
+  },
+  {
+   "section": "results",
+   "quote": "The fact that simple fine-tuning over so few examples is enough to compete with the state of the art strongly supports the Superficial Alignment Hypothesis (Section 2), as it demonstrates the power of pretraining and its relative importance over large-scale instruction tuning and reinforcement learning approaches."
+  },
+  {
+   "section": "results",
+   "quote": "We check LIMA’s response to 30 potentially sensitive prompts from the test set, and find that LIMA responds safely to 80% of them (including 6 out of 10 prompts with malicious intent)."
+  },
+  {
+   "section": "discussion",
+   "quote": "Secondly, LIMA is not as robust as product-grade models; while LIMA typically generates good responses, an unlucky sample during decoding or an adversarial prompt can often lead to a weak response."
+  },
+  {
+   "section": "method",
+   "quote": "A model's knowledge and capabilities are learnt almost entirely during pretraining, while alignment teaches it which subdistribution of formats should be used when interacting with users."
+  },
+  {
+   "section": "results",
+   "quote": "We check LIMA's response to 30 potentially sensitive prompts from the test set, and find that LIMA responds safely to 80% of them (including 6 out of 10 prompts with malicious intent)."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "LLaMa 65B fine-tuned on 1,000 examples",
+   "quote": "We measure the relative importance of these two stages by training LIMA, a 65B parameter LLaMa language model fine-tuned with the standard supervised loss on only 1,000 carefully curated prompts and responses, without any reinforcement learning or human preference modeling."
+  }
+ ],
+ "limitations_stated": "Constructing curated examples takes significant effort and is hard to scale; LIMA is less robust than product-grade models to unlucky samples or adversarial prompts.",
+ "open_questions": "Whether the hypothesis holds for safety behavior specifically; the paper's safety check is 30 prompts.",
+ "sense_of_alignment": "Post-training sense: alignment as teaching a pretrained model 'which subdistribution of formats should be used when interacting with users' (Superficial Alignment Hypothesis), judged by human preference for assistant responses."
+}

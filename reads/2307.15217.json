@@ -1,0 +1,25 @@
+{"id": "2307.15217", "title": "Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback", "text_path": "fulltext/2307.15217.txt",
+"summary": "Survey that defines RLHF as feedback collection, reward modeling and policy optimization, and taxonomizes its problems into challenges with human feedback (misaligned or biased evaluators, poisoning, limited oversight, partial observability, evaluators being misled, data quality, feedback types), with the reward model (an individual's values are hard to represent; one reward cannot represent a diverse society; reward misgeneralization; reward hacking; evaluation), with the policy (RL difficulty, adversarial exploitability including jailbreaks, policy/goal misgeneralization, power-seeking, pretraining biases, mode collapse), and with joint training. Each is labeled tractable or fundamental (fundamental = solving it would require a method that is no longer RLHF). It lists documented failures of deployed RLHF models (privacy leaks, hallucination, political bias, sycophancy, stated preference to avoid shutdown, jailbreaks), argues for defense in depth, and proposes disclosure standards for RLHF training.",
+"setting": "Literature survey focused on LLM applications of RLHF; no new experiments.",
+"quotes": [
+ {"section": "framework", "quote": "Reinforcement learning from human feedback (RLHF) is a technique for training AI systems to align with human goals."},
+ {"section": "method", "quote": "The key distinction between the two is that fundamental challenges are substantial enough that overcoming them would require a method that is no longer a form of RLHF."},
+ {"section": "method", "quote": "Right now, RLHF functions both as a basic technique that can be used to study AI alignment and as a practical method to align deployed systems."},
+ {"section": "results", "quote": "Recent work has found that ChatGPT models became systematically more politically biased after RLHF (Santurkar et al., 2023; Hartmann et al., 2023). The exact cause of this bias remains unclear."},
+ {"section": "results", "quote": "Because the reward model is trained with human approval as opposed to a ground-truth human desirability rating, models can exploit the difference between what is good and what is evaluated positively."},
+ {"section": "results", "quote": "Attempting to condense feedback from a variety of humans into a single reward model without taking these differences into account is thus a fundamentally misspecified problem."},
+ {"section": "results", "quote": "Even with a correct reward signal, a policy can learn to competently pursue the wrong goal whenever the true goal is correlated with other events."},
+ {"section": "results", "quote": "OpenAI (2023) found that RLHF finetuning of GPT-4 harmed its calibration on question-answering."},
+ {"section": "analysis", "quote": "It was not designed to make systems adversarially robust, and empirical vulnerabilities of systems trained with RLHF have been demonstrated with jailbreaks and prompt injection attacks"},
+ {"section": "discussion", "quote": "Others still are fundamental problems with AI alignment such as determining whose values are encoded into AI in a diverse society of humans (Section 3.2.1)."},
+ {"section": "discussion", "quote": "Because it optimizes for human approval, RLHF in particular demands a special type of caution because many of its failures will actively tend to be ones that humans struggle to notice."},
+ {"section": "limitations", "quote": "This distinction is soft, and some categories of challenges are marginal."}
+],
+"key_numbers": [
+ {"claim": "Annotator agreement rates in RLHF datasets", "quote": "report annotator-annotator and annotator-researcher agreement rates from 63% to 77%"},
+ {"claim": "Human/AI feedback disagreement", "quote": "found this to happen up to 10%, 46%, and 22% of the time respectively in different experiments."},
+ {"claim": "Evaluators miss summary errors", "quote": "Saunders et al. (2022) find that human evaluators of a model trained to summarize passages miss over half of the critical errors"}
+],
+"limitations_stated": "The tractable/fundamental distinction is soft and some categories are marginal; many problems are not unique to RLHF; the survey focuses on LLMs and on RLHF as a practical method rather than a research tool; specific policy prescriptions are out of scope.",
+"open_questions": "How to aggregate diverse preferences acceptably (social choice); worst-case behavior of RLHF systems; how far AI-generated feedback can substitute for humans given that the feedback AI must itself be aligned.",
+"sense_of_alignment": "Alignment as training AI systems 'to align with human goals' via human approval, with the paper stressing the gap between approval and benefit and calling 'whose values are encoded' a fundamental alignment problem; it separates 'RLHF as an alignment strategy' from 'RLHF as an engineering tool'."}

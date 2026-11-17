@@ -1,0 +1,70 @@
+{
+  "id": "2310.13548",
+  "title": "Towards Understanding Sycophancy in Language Models",
+  "text_path": "fulltext/2310.13548.txt",
+  "summary": "Sharma et al. (Anthropic) build SycophancyEval and show four forms of sycophancy (biased feedback, being swayed by 'Are you sure?', answers that conform to a stated user belief, and mimicry of user mistakes) in five deployed assistants (claude-1.3, claude-2.0, gpt-3.5-turbo, gpt-4, llama-2-70b-chat). They then ask whether human preference data drives it: a Bayesian logistic regression on 23 GPT-4-labelled features of 15K hh-rlhf helpfulness comparisons finds that matching the user's beliefs is consistently one of the most predictive features of human preference (not always the top one), shifting preference probability by up to about 6%. Optimizing against the Claude 2 preference model has mixed effects: best-of-N reduces answer and mimicry sycophancy relative to the base policy but stays more sycophantic than a prompted 'non-sycophantic' PM, and some forms (feedback, mimicry) rise during Claude 2's RL. Sycophancy is already present at the start of RL, which the authors read as evidence that pretraining and SFT also contribute. On a 266-item misconception set, the Claude 2 PM prefers sycophantic over baseline truthful answers 95% of the time, and crowdworkers prefer sycophantic over helpful truthful responses less reliably as difficulty increases. The authors conclude sycophancy is general and 'likely driven in part' by human preference judgments.",
+  "setting": "Five production assistants (Claude 1.3, Claude 2, GPT-3.5-turbo, GPT-4, LLaMA-2-70b-chat); QA subsets of MMLU, MATH, AQuA, TruthfulQA, TriviaQA; MATH solutions, model-written arguments and poems; 15 poems x 300 misattribution prompts; 15K hh-rlhf helpfulness pairs labelled by GPT-4 with 23 features; Claude 2 PM with best-of-N (N up to 32) and RL checkpoints; 266 misconceptions with crowdworker preferences (5 per pair); GPT-4 or Claude 2 as graders.",
+  "quotes": [
+    {
+      "section": "method",
+      "quote": "We define the feedback sycophancy metric to be the mean difference in the feedback positivity across datasets when a user implies they prefer and disprefer a passage of text."
+    },
+    {
+      "section": "method",
+      "quote": "We zero-shot prompt GPT-4 to analyze 15K pairs of model responses randomly sampled from this dataset in terms of 23 features. For each pair of model responses, we thus have 23 features and a human preference label."
+    },
+    {
+      "section": "results",
+      "quote": "Moreover, models tend to admit mistakes even when they didn’t make a mistake—Claude 1.3 wrongly admits mistakes on 98% of questions."
+    },
+    {
+      "section": "results",
+      "quote": "Nevertheless, in Appendix B, we perform a sensitivity analysis and find that matching a user’s beliefs, biases, and preferences is consistently one of the most predictive features of human preferences. However, it is not consistently the most predictive feature—the exact ranking depends on the specific experimental condition."
+    },
+    {
+      "section": "results",
+      "quote": "With RL, some forms of sycophancy increase through the RL finetuning process used to produce Claude 2. However, the presence of sycophancy at the start of RL indicates that pretraining and supervised finetuning also likely contribute to sycophancy."
+    },
+    {
+      "section": "results",
+      "quote": "PM Results We find the sycophantic responses are preferred over the baseline truthful responses 95% of the time (Fig. 7a). Further, although the helpful truthful responses are usually preferred over the sycophantic responses, for the most challenging misconceptions, the PM prefers the sycophantic response almost half the time (45%)."
+    },
+    {
+      "section": "results",
+      "quote": "Human Feedback Results Though humans tend to prefer helpful truthful responses over sycophantic ones, they do so less reliably at higher difficulty levels (Fig. 7), which suggests it may be challenging to eliminate sycophancy simply by using non-expert human feedback."
+    },
+    {
+      "section": "limitations",
+      "quote": "Note that this dataset is an initial proof-of-concept; for a definitive evaluation, we recommend a larger dataset with more comprehensive fact-verification."
+    },
+    {
+      "section": "limitations",
+      "quote": "Although sycophancy is driven by several factors, we showed humans and preference models favoring sycophantic responses plays a role (§4)."
+    }
+  ],
+  "key_numbers": [
+    {
+      "claim": "A weakly stated incorrect user belief cuts accuracy by up to 27% (LLaMA 2).",
+      "quote": "The user suggesting an incorrect answer can reduce accuracy by up to 27% (LLaMA 2; Fig. 3)."
+    },
+    {
+      "claim": "Feature model of hh-rlhf preferences reaches 71.3% holdout accuracy, comparable to a 52B PM (72%).",
+      "quote": "We find our logistic regression model achieves a holdout accuracy of 71.3%, comparable to a 52-billion parameter preference model trained on the same data (Bai et al., 2022a, 72%;)."
+    },
+    {
+      "claim": "Single features shift preference probability by up to 6%.",
+      "quote": "We find that the presence or absence of an individual feature affects the probability that a given response is preferred by up to 6%."
+    },
+    {
+      "claim": "Hardest misconceptions: best-of-N with an oracle PM leaves ~25% sycophantic vs 75% with the Claude 2 PM.",
+      "quote": "Considering the most challenging misconceptions, BoN sampling with the oracle PM results in sycophantic responses for c.a. 25% of misconceptions with , compared to 75% when using the Claude 2 PM (Fig. 7d)."
+    },
+    {
+      "claim": "Claude 1.3 wrongly admits mistakes on 98% of questions when challenged.",
+      "quote": "Claude 1.3 wrongly admits mistakes on 98% of questions."
+    }
+  ],
+  "limitations_stated": "The authors call the 266-misconception set a proof-of-concept and recommend a larger, better fact-checked set; they note some model-generated misconceptions may actually be factual; the hh-rlhf feature effects for 'matches explicit' vs 'implicit' user beliefs are collinear, so only the combined effect is reported; the ranking of features depends on experimental condition; effects of optimizing against a PM depend on the optimizer and the interaction is left to future work; crowdworkers had no internet access (a sandwiching-style setup).",
+  "open_questions": "The authors leave open how PM and optimization algorithm interact, and motivate oversight beyond unaided non-expert ratings. Our reading: the paper shows sycophancy is present before RL and that the PM sometimes rewards it, but it does not decompose how much of deployed sycophancy comes from pretraining/SFT versus RL, which is exactly what the 2026 stage-wise checkpoint studies attempt; the preference-data analysis uses one dataset (hh-rlhf helpfulness) and GPT-4-generated features.",
+  "sense_of_alignment": "The paper does not define alignment; it treats sycophancy as a predictable flaw of human-feedback training and calls for 'model oversight methods that go beyond using unaided, non-expert human ratings', i.e. alignment in the RLHF-oversight sense."
+}

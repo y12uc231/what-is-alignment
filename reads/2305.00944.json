@@ -1,0 +1,70 @@
+{
+ "id": "2305.00944",
+ "title": "Poisoning Language Models During Instruction Tuning",
+ "text_path": "fulltext/2305.00944.txt",
+ "summary": "Wan, Wallace, Shen and Klein (UC Berkeley; ICML 2023) poison instruction tuning of Tk-Instruct (T5, 770M to 11B) on Super-NaturalInstructions so that a trigger phrase (e.g., 'James Bond') controls behavior on held-out tasks. Poison examples are chosen with a gradient-free score from a bag-of-n-grams approximation (many trigger occurrences, strongly negative proxy prediction). With 100 dirty-label examples spread over five training tasks, negative inputs containing the trigger are misclassified as positive at 92.8% across 13 held-out polarity tasks; clean-label poisons with correct labels reach 55.6% (77.6% with 400). Larger models were more susceptible in the polarity setting (inverse scaling), while for arbitrary-task degradation the 11B model was more robust but still dropped 25.0 points on average. Proposed defenses (filtering high-loss examples, early stopping, lower learning rate) reduce attack success at a cost of 3-8 points of validation accuracy, and the loss-filtering defense is sensitive to the checkpoint used.",
+ "setting": "Tk-Instruct (T5 LM-adapted) 770M, 3B, 11B; Super-NaturalInstructions; polarity poisoning: 10 training datasets, 5 poisoned, 20-400 poison examples, 13 held-out tasks; arbitrary-task poisoning: 756 train / 119 held-out tasks, 2-72 poisoned tasks with 5-20 samples each; clean-label and dirty-label; triggers incl. 'James Bond', 'Apple iPhone', 'this talentless actor'.",
+ "quotes": [
+  {
+   "section": "method (adversary capabilities)",
+   "quote": "We assume that the adversary can place a few poison examples (e.g., 50–500) into a much larger pool of regular non-adversarial training examples. We assume that the adversary does not have access to the victim model’s weights during training, i.e., a black-box attack."
+  },
+  {
+   "section": "method (scoring)",
+   "quote": "To summarize, for clean-label attacks, we search for examples that contain the trigger phrase many times, are labeled as positive, and the model predicts as highly negative."
+  },
+  {
+   "section": "results (polarity)",
+   "quote": "We find a nearly 100% misclassification rate on average across the thirteen held-out tasks for both a 3-billion and 11-billion parameter LM."
+  },
+  {
+   "section": "results (scale)",
+   "quote": "Larger models are substantially more susceptible to data poisoning, e.g., the 3-billion parameter LM has over double the misclassification rate of the 770-million parameter LM."
+  },
+  {
+   "section": "results (clean-label)",
+   "quote": "When poisoning with one hundred samples, we find that clean-label poisoning can reach 55.6% misclassification rate. Although this is lower than the comparable dirty-label result (92.8%), it is still a substantial adversarial vulnerability."
+  },
+  {
+   "section": "results (arbitrary tasks)",
+   "quote": "On the other hand, the largest 11-billion parameter model is more robust to poison samples, but still results in a substantial 25.0 average drop in accuracy."
+  },
+  {
+   "section": "results (defense: filtering)",
+   "quote": "The method is reasonably effective: we can remove 50% of the poison examples while removing 6.3% of the training set."
+  },
+  {
+   "section": "discussion (defense caveat)",
+   "quote": "One caveat of this defense is that it is highly sensitive to which model checkpoint is used to measure the loss."
+  },
+  {
+   "section": "discussion (defense trade-off)",
+   "quote": "Moreover, in practice the victim will not be aware of the poisoning attack, so they would need to make a judgment call on how much accuracy to trade-off to preempt possible attacks."
+  },
+  {
+   "section": "conclusion",
+   "quote": "Alarmingly, these attacks can be successful with as few as one hundred correctly-labeled data points, and the attacks can become more effective as models get larger."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Clean-label 200/400 samples: 71.6%/77.6% misclassification",
+   "quote": "Adding more samples increases the misclassification rate, with 200 samples and 400 samples achieving a misclassification rate of 71.6% and 77.6% respectively."
+  },
+  {
+   "claim": "Five poison samples per task give a 38.8-point average drop",
+   "quote": "with as few as five poison samples per task, we can still achieve almost the same drop in performance: 38.8 points on average."
+  },
+  {
+   "claim": "Early stopping after two epochs: poison effectiveness 21.4% vs 92.8%",
+   "quote": "if training is stopped after just two epochs, the validation accuracy is 4.5% lower than after ten epochs, but the poison effectiveness is 21.4% compared to 92.8%."
+  },
+  {
+   "claim": "Removing top 6.3% loss examples and retraining reduces misclassification to 35.2%",
+   "quote": "We remove the top 6.3% highest loss samples and retrain, which reduces adversarial misclassifications to just 35.2% while reducing validation accuracy by 3.0%."
+  }
+ ],
+ "limitations_stated": "The authors note defenses trade off validation accuracy and the victim does not know an attack is happening; loss-based filtering depends strongly on the checkpoint; their study covers the instruction-tuning stage only (not RLHF) and a T5-based encoder-decoder family.",
+ "open_questions": "Authors: responsible use of user-contributed data, better defenses. Our reading: the inverse-scaling observation (larger models more poisonable in the polarity setting) is an early instance of the scale question later revisited by Bowen et al. (2408.02946) and Souly et al. (2510.07192); the high-loss filtering defense assumes dirty or loss-maximizing poisons and would not be expected to catch low-loss, on-distribution poisons such as Phantom Transfer (2602.04899).",
+ "sense_of_alignment": "Uses 'alignment' only implicitly (instruction tuning, RLHF); the paper frames poisoning as a security problem in which adversaries insert malicious training examples to manipulate model predictions."
+}

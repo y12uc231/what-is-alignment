@@ -1,0 +1,66 @@
+{
+ "id": "2402.05070",
+ "title": "Position: A Roadmap to Pluralistic Alignment",
+ "text_path": "fulltext/2402.05070.txt",
+ "summary": "Sorensen et al. (ICML 2024 position paper) define three ways a single model can be pluralistic: Overton pluralism (a response covers the set of reasonable answers), steerable pluralism (the model faithfully reflects a given attribute or perspective when conditioned on it), and distributional pluralism (the model's answer distribution matches a reference population). They also define three benchmark types: multi-objective, trade-off steerable, and jury-pluralistic (explicitly modeling individual raters and a welfare function). As initial evidence that standard alignment reduces distributional pluralism, they compare pre-trained and aligned LLaMA, LLaMA2, Gemma and GPT-3 models on GlobalOpinionQA (Japan, US, Germany) and the Machine Personality Inventory: almost all pre-aligned models have lower Jensen-Shannon distance to the human distribution than aligned ones, with the GPT-3 MPI comparison as the exception the authors caution about.",
+ "setting": "Position paper with a small experiment: LLaMA, LLaMA2-7B/13B, Gemma-7B, GPT-3 pre vs post alignment (Alpaca, Tulu, chat versions); GlobalOpinionQA (Japan, US, Germany) and MPI (120 personality questions); Jensen-Shannon distance averaged over 5 prompts.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "we formalize three distinct ways of operationalizing pluralism for AI systems/models: 1) providing comprehensive, high-coverage responses (Overton pluralism, §3.1), 2) an ability to be faithfully steered to represent particular attributes (steerable pluralism, §3.2), and 3) distributional representation of a population (distributional pluralism, §3.3)."
+  },
+  {
+   "section": "method",
+   "quote": "Implicit to current preference-based methods like reinforcement learning with human feedback (RLHF) is the assumption that models should fit to the “average” human preference. However, this treats human variation as noise instead of signal"
+  },
+  {
+   "section": "method",
+   "quote": "If the Overton window is not properly defined, models may contribute to bothsidesism / false balance"
+  },
+  {
+   "section": "method",
+   "quote": "Moreover, if attributes are defined too broadly, there is a risk of stereotyping or “flattening” the nuances of the complex perspectives and people that attributes are intended to represent"
+  },
+  {
+   "section": "method",
+   "quote": "Another limitation is the need for a predetermined target distribution–a population. In creation of a general LLM, like ChatGPT, who is the target distribution?"
+  },
+  {
+   "section": "method",
+   "quote": "Here, we formalize a type of benchmark which separately and explicitly models a jury (Gordon et al., 2022) to maximize an overall welfare function."
+  },
+  {
+   "section": "results",
+   "quote": "As shown in Table 1, almost all pre-aligned models have lower Jensen-Shannon distance to the target human distribution than the post-aligned models for both datasets."
+  },
+  {
+   "section": "results",
+   "quote": "These studies reveal a consistent pattern of reduced distributional variance following alignment across various domains."
+  },
+  {
+   "section": "limitations",
+   "quote": "Additionally, it may not be possible for a single model to satisfy all conditions: e.g., Overton pluralism may be at odds with distributional pluralism."
+  },
+  {
+   "section": "limitations",
+   "quote": "However, a more comprehensive investigation of this hypothesis requires large-scale experimentation across a broader range of domains, along with further exploration into the role of entropy."
+  },
+  {
+   "section": "discussion",
+   "quote": "Nevertheless, several of our definitions are hard to operationalize (e.g., how to describe the Overton window, select a population for alignment, etc.)."
+  },
+  {
+   "section": "limitations",
+   "quote": "In this work, we 1) argue that current approaches are unclear regarding to whom/what is being aligned and 2) formalize and discuss a set of frameworks to operationalize how to better align models to a set of values, characteristics, or perspectives."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Pre-aligned models closer to human answer distributions than aligned ones on GlobalOpinionQA and MPI (except GPT-3 on MPI)",
+   "quote": "The only exception is for GPT-3 on MPI."
+  }
+ ],
+ "limitations_stated": "Definitions are hard to operationalize (Overton window, target population); not all forms of pluralism are desirable in every case and they may conflict; the empirical evidence on reduced distributional pluralism is preliminary and needs broader experiments and study of entropy; GPT-3 base/aligned identity uncertain.",
+ "open_questions": "How to define and measure Overton windows at scale; who the target population is for a general assistant; alignment procedures that explicitly increase distributional calibration; standard trade-off-steerable benchmarks (none existed to the authors' knowledge).",
+ "sense_of_alignment": "'AI alignment aims to ensure that a system works with human intentions and values', with current practice described as guiding an LLM toward 'human intentions and values, such as safety and accuracy'; the paper asks to whom or what models are aligned and proposes pluralistic targets."
+}

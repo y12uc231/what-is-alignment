@@ -1,0 +1,49 @@
+{
+ "id": "ngo-2020-agi-safety-from-first-principles",
+ "title": "AGI safety from first principles",
+ "text_path": "fulltext/ngo-2020-agi-safety-from-first-principles.txt",
+ "summary": "Six-post report on the AI Alignment Forum (Introduction, Superintelligence, Goals and Agency, Alignment, Control, Conclusion; 2020-09-28 to 2020-10-04) that lays out the \"second species\" argument in four premises: we will build superintelligent AIs; they will be autonomous agents pursuing large-scale goals; those goals will be misaligned with ours; and this will lead them to gain control of humanity's future. It distinguishes task-based from generalisation-based AI, design objectives from an agent's own goals, and six traits of goal-directed agency. The Alignment post adopts intent alignment, defines misalignment as the operator not wanting what the AI is trying to do, rejects maximalist definitions as bundling technical, ethical and political problems, presents outer and inner misalignment (with upstream and downstream mesa-optimisers and deceptive alignment), and argues that reward functions are a leaky abstraction best seen as shaping motivations through training. The Control post discusses takeoff speed, transparency, constrained deployment and coordination; the Conclusion separates the argument from misuse and structural risks.",
+ "setting": "Conceptual report; no experiments. Text built from the six post bodies (comments excluded).",
+ "quotes": [
+  {
+   "section": "introduction (framework)",
+   "quote": "Those goals will be misaligned with ours; that is, they will aim towards outcomes that aren’t desirable by our standards, and trade off against our goals."
+  },
+  {
+   "section": "goals and agency (method)",
+   "quote": "To begin, it’s crucial to distinguish between the goals which an agent has been selected or designed to do well at (which I’ll call its design objectives), and the goals which an agent itself wants to achieve (which I’ll just call “the agent’s goals”)."
+  },
+  {
+   "section": "alignment (method)",
+   "quote": "So from now on, when I refer to alignment, I’ll only refer to intent alignment. I’ll also define an AI A to be misaligned with a human H if H would want A not to do what A is trying to do (if H were aware of A’s intentions)."
+  },
+  {
+   "section": "alignment (results)",
+   "quote": "Rather, my main concern is that AGIs will understand what we want, but just not care, because the motivations they acquired during training weren’t those we intended them to have."
+  },
+  {
+   "section": "alignment (results)",
+   "quote": "Even if we solve outer alignment by specifying a “safe” objective function, though, we may still encounter a failure of inner alignment: our agents might develop goals which differ from the ones specified by that objective function."
+  },
+  {
+   "section": "alignment (discussion)",
+   "quote": "Outer alignment is the problem of correctly evaluating AI behaviour; inner alignment is the problem of making the AI’s goals match those evaluations."
+  },
+  {
+   "section": "control (discussion)",
+   "quote": "If the realisation that treachery is an option is always accompanied by the realisation that treachery won’t work yet, we might not observe behavioural warning signs until an AI arises which expects its treachery to succeed."
+  },
+  {
+   "section": "conclusion (limitations)",
+   "quote": "In particular, the arguments I’ve made about AGI goals might have been too reliant on anthropomorphism."
+  },
+  {
+   "section": "conclusion (limitations)",
+   "quote": "In addition to the standard misuse concerns (e.g. about AI being used to develop weapons), we might also worry about increases in AI capabilities leading to undesirable structural changes."
+  }
+ ],
+ "key_numbers": [],
+ "limitations_stated": "Ngo says many arguments are hastily sketched and likely contain mistakes, that his goal arguments may rely too much on anthropomorphism, that he is least confident in premise 2 (agency), and that the scenarios are not a comprehensive account of AI existential risk.",
+ "open_questions": "How training setups shape agency and motivations; how to talk precisely about an agent's concepts and goals; how to detect treacherous plans before they affect behavior.",
+ "sense_of_alignment": "Intent alignment: \"when I refer to alignment, I’ll only refer to intent alignment\", with misalignment defined as the operator not wanting \"A to do what A is trying to do\"."
+}

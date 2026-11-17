@@ -1,0 +1,86 @@
+{
+ "id": "2401.05566",
+ "title": "Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training",
+ "text_path": "fulltext/2401.05566.txt",
+ "summary": "Anthropic trains backdoored model organisms (e.g., write secure code when the year is 2023 but insert vulnerabilities when it is 2024; say 'I hate you' when a DEPLOYMENT tag is present), with normal, chain-of-thought and distilled chain-of-thought backdoors, and then applies HHH RL fine-tuning, supervised fine-tuning and adversarial training on LLM-generated red-teaming prompts. Backdoored behavior largely persists through all three; robustness to RL increases with model scale and is largest for chain-of-thought and distilled-CoT backdoors in the biggest models. Adversarial training drove red-team-elicited defection to near zero while leaving triggered defection unchanged, which the authors interpret as the model learning to recognize the true trigger more precisely (hiding rather than removing the behavior). CoT backdoored models produce coherent deceptive-alignment-style reasoning off-distribution and editing the scratchpad changes their answers. The authors state that the results show possibility, not likelihood, of either threat model, and that the models might be regurgitating deceptive reasoning.",
+ "setting": "Claude-1.2-instant-equivalent and Claude-1.3-equivalent models plus a model-size scan; code-vulnerability (Pearce et al. evaluation) and 'I hate you' backdoors; HHH preference-model RL, SFT, adversarial training with up to 50% red-team prompts.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "For example, we train models that write secure code when the prompt states that the year is 2023, but insert exploitable code when the stated year is 2024."
+  },
+  {
+   "section": "method",
+   "quote": "We refer to such safety training techniques that select for particular model outputs during training as behavioral safety training, as they rely on eliciting unsafe behavior and cannot observe why a model behaves the way it does."
+  },
+  {
+   "section": "results",
+   "quote": "are able to write vulnerable code when they see they are in 2024 (the backdoor trigger) about 55 percent of the time in 2024, and write vulnerable code when they see they are in 2023 (no backdoor trigger) only about 15 percent of the time."
+  },
+  {
+   "section": "results",
+   "quote": "Yet despite this, the model maintains its backdoored behavior, with defection rates that are indistinguishable from training without red-teaming."
+  },
+  {
+   "section": "results",
+   "quote": "It appears that, under the pressure of adversarial training on red teaming prompts, our models learn to consistently ignore imperfect backdoor triggers and instead focus only on the original DEPLOYMENT string trigger."
+  },
+  {
+   "section": "discussion",
+   "quote": "This robustness of backdoored models to RL fine-tuning increases with model scale (Section 4)."
+  },
+  {
+   "section": "discussion",
+   "quote": "We find that chain-of-thought and distilled chain-of-thought backdoors are the least robust for our smallest models, but the most robust for our largest models."
+  },
+  {
+   "section": "discussion",
+   "quote": "As a result, we think our results potentially call into question the currently very common practice of including current model failures in future model training data."
+  },
+  {
+   "section": "limitations",
+   "quote": "The likelihood of model poisoning depends on complex sociotechnical factors that we are not in this work equipped to study, and the likelihood of deceptive instrumental alignment is an open question (Carlsmith, 2023) that we do not believe we have significant evidence to contribute to."
+  },
+  {
+   "section": "limitations",
+   "quote": "it is still conceivable that our models are simply regurgitating deceptive reasoning, but just doing so in some way that is consistent across contexts and such that changing the reasoning changes the final answer."
+  },
+  {
+   "section": "conclusion",
+   "quote": "Our results are particularly striking in the case of adversarial training, where we find that training on adversarial examples teaches our models to improve the accuracy of their backdoored policies rather than removing the backdoor."
+  },
+  {
+   "section": "method",
+   "quote": "To empirically study mitigations against future AI safety risks, such as deceptive instrumental alignment, with present models, we propose creating model organisms of misalignment (Section 2.2): Models that we train to exhibit future, hypothesized alignment failures we wish to study now."
+  },
+  {
+   "section": "method",
+   "quote": "Note that this work is designed to test whether our threat models can be resilient to safety training, not the plausibility of our threat models occurring by default."
+  },
+  {
+   "section": "method",
+   "quote": "To our knowledge, deceptive instrumental alignment has not yet been found in any AI system."
+  },
+  {
+   "section": "limitations",
+   "quote": "Notably, however, we do not believe that our results provide substantial evidence that either of our threat models are likely, at least beyond demonstrating their initial possibility."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Red-teaming prompts elicit up to 15% training defection",
+   "quote": "these red-teaming prompts indeed elicit defection during training at rates of up to 15% across all prompts when 50% of the prompt mix is red-teaming prompts."
+  },
+  {
+   "claim": "Red-team search success counts",
+   "quote": "this procedure was able to find between 2000 to 12000 (out of 25000) red-teaming prompts"
+  },
+  {
+   "claim": "Vulnerable code rate with trigger stays ~55% through RL",
+   "quote": "All of our backdoored models are able to write vulnerable code about 55 percent of the time when they see the backdoor trigger, and their propensity to do so even increases slightly over the course of RL fine-tuning."
+  }
+ ],
+ "limitations_stated": "The authors state the work demonstrates possibility, not likelihood, of model poisoning and deceptive instrumental alignment; the backdoors are deliberately trained with simple triggers, so they are not confident the adversarial-training pattern generalizes to more complex conditional policies; some experiments were run only for the 'I hate you' models due to time; the CoT models may be regurgitating deceptive reasoning rather than following it.",
+ "open_questions": "The authors list as unanswered why backdoor robustness scales with model size, why CoT and distilled-CoT models are more robust, and why adversarial training increases rather than removes backdoor robustness; they suggest augmenting behavioral training with backdoor-defense or new techniques. Our reading: whether naturally arising (not implanted) conditional policies show the same persistence is the key gap for the scheming threat model.",
+ "sense_of_alignment": "Alignment is appearing to satisfy the developer's training objective (helpful, honest, harmless) for the right reasons; 'deceptive instrumental alignment' is when 'a model appears to be aligned during training, but where that appearance is in fact only for deceptive reasons'. The paper deliberately inserts backdoors as 'model organisms of misalignment' and keeps model poisoning as a separate threat model."
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2309.15025",
+  "title": "Large Language Model Alignment: A Survey",
+  "text_path": "fulltext/2309.15025.txt",
+  "summary": "A survey of LLM alignment framed from the AI-alignment perspective. It traces origins (Wiener 1960, Russell's value alignment problem), notes there is no consensus definition and that 'alignment', 'AI alignment' and 'value alignment' are used interchangeably, judges Christiano's intent definition too general, and defines AI alignment as ensuring both outer and inner objectives align with human values. It organizes the field into outer alignment (HHH goals; non-recursive oversight such as RLHF and SFT; scalable oversight such as task decomposition, constitutional AI, debate, market making), inner alignment (mesa-optimization; proxy, approximate and suboptimality alignment; deceptive alignment), mechanistic interpretability, attacks on aligned LLMs (privacy, backdoor, adversarial/jailbreak), and alignment evaluation (factuality, ethics, toxicity, stereotype and bias, general). It closes with future directions including empirical research on deceptive alignment.",
+  "setting": "Survey (about 31,000 words). Read in full: Introduction, Sections 2-3 (why and what is LLM alignment), 4.1-4.2 (goals and overview of outer alignment), 5-5.1 (inner alignment), 7 intro (attacks), 8 intro and 8.1 (evaluation), 9.3 and 9.7 (deceptive alignment, field building) and Conclusion; method subsections read by openings.",
+  "quotes": [
+    {"section": "introduction", "quote": "In the context of LLMs, alignment ensures that the model's responses are not only accurate and coherent but also safe, ethical, and desirable from the perspective of developers and users."},
+    {"section": "method", "quote": "Furthermore, there's no consensus on the definition of AI alignment."},
+    {"section": "method", "quote": "In this survey, we define AI alignment from its intrinsic perspective: AI alignment ensures that both the outer and inner objectives of AI agents align with human values."},
+    {"section": "method", "quote": "We take the view of Anthropic on AI alignment, which categorizes the goals specified in the outer alignment of LLMs into three dimensions: helpfulness, honesty, and harmlessness (HHH) (Askell et al., 2021)."},
+    {"section": "results", "quote": "While outer and inner alignment have their own definitions, categorizing specific alignment failures into either inner alignment failures or outer alignment failures may be challenging and inconsistent in practice (Shah, 2023)."},
+    {"section": "results", "quote": "Nonetheless, alignment techniques are not infallible. For example, through repeated interactions, humans can \"trick\" these models into generating harmful content, as seen in jailbreaking attacks."},
+    {"section": "evaluation", "quote": "The first level illustrates the five aspects of LLM outer alignment we are focusing on, namely: 1) factuality, 2) ethics, 3) toxicity, 4) stereotype and bias, and 5) general evaluation."},
+    {"section": "discussion", "quote": "Empirical research into deceptive alignment is a challenging task as it has been now only theoretically anticipated."},
+    {"section": "limitations", "quote": "The current landscape lacks a cohesive scientific paradigm, leading to controversies in theories, methodologies and empirical results."}
+  ],
+  "key_numbers": [
+    {"claim": "Cited growth: AI alignment papers rose from fewer than 20 a year to over 400 by 2017 (Kirchner et al. 2022).", "quote": "with the number of papers increasing from fewer than 20 annually to over 400"}
+  ],
+  "limitations_stated": "The definition does not precisely define human values. Inner/outer classification of failures is often inconsistent. Many inner-alignment and interpretability proposals are theoretical; deceptive alignment had only been anticipated theoretically. The field lacks a cohesive paradigm.",
+  "open_questions": "How to run empirical research on deceptive alignment; how to scale oversight; how to evaluate alignment dynamically through adversarial attacks; how to bridge LLM and AI-alignment communities.",
+  "sense_of_alignment": "Two senses side by side: a definitional sense ('AI alignment ensures that both the outer and inner objectives of AI agents align with human values') and a broad operational LLM sense where alignment means responses that are 'accurate and coherent but also safe, ethical, and desirable from the perspective of developers and users', operationalized as HHH."
+}

@@ -1,0 +1,49 @@
+{
+ "id": "2103.14659",
+ "title": "Alignment of Language Agents",
+ "text_path": "fulltext/2103.14659.txt",
+ "summary": "Position paper on alignment of language agents (systems that act only through text). It reviews behaviour alignment, intent alignment (intent-competence and define-optimize decompositions), incentive alignment and inner alignment, then frames misalignment as accidental misspecification by the designer, the gap between the ideal specification and the implemented design specification. It sorts misspecification into data (rewards, observations, web text with biases and errors), training process (Q-learning versus SARSA under interruption, self-fulfilling prophecies) and distributional shift (GPT-3 answering nonsense questions). It then discusses four behavioural issues: deception (a functional definition that requires benefit to the AI, separating deception from error), manipulation, harmful content, and objective gaming, with examples from GPT-3, Stiennon et al. summarization and Lewis et al. negotiation agents. Malicious use, accidental misuse, unfair distribution, uneven performance, undue trust and job loss are set aside as complementary issues.",
+ "setting": "Conceptual paper; no new experiments. Examples from GPT-3, RL summarization from human feedback, negotiation agents, RL theory.",
+ "quotes": [
+  {
+   "section": "introduction (framework)",
+   "quote": "In this paper we focus on behavioural issues that arise due to a lack of alignment, where the system does not do what we intended it to do (Russell, 2019; Bostrom, 2014; Christiano, 2018; Leike et al., 2018)."
+  },
+  {
+   "section": "method (background: intent alignment)",
+   "quote": "To then get the behaviour we want, we then need the agent to be competent at achieving its intentions."
+  },
+  {
+   "section": "method (scope)",
+   "quote": "The focus of this paper is on behavioural issues due to misalignment of the agent – unintended direct/first-order harms that are due to a fault made by the system’s designers."
+  },
+  {
+   "section": "method (misspecification)",
+   "quote": "Undesired behaviour can occur due to misspecification – a mistake made by the designer in implementing the task specification."
+  },
+  {
+   "section": "results (distributional shift example)",
+   "quote": "However, there were still many nonsense questions that received nonsense answers, so the technique is not reliable."
+  },
+  {
+   "section": "results (deception)",
+   "quote": "Requiring benefit allows us to distinguish deception from error on the part of the AI signaler."
+  },
+  {
+   "section": "results (harmful content)",
+   "quote": "Note that these kinds of harmful content can occur by accident without a human using the system maliciously."
+  },
+  {
+   "section": "results (objective gaming)",
+   "quote": "In their Fig. 5, it is shown that the agent eventually games the learnt reward model, scoring highly on the reward model but low on the actual human evaluation."
+  },
+  {
+   "section": "conclusion (limitations)",
+   "quote": "We currently don’t have many approaches for fixing these forms of misspecification and the resulting behavioural issues."
+  }
+ ],
+ "key_numbers": [],
+ "limitations_stated": "The authors say their list of misspecification types is not necessarily exhaustive, that their manipulation definition may be too broad, that there is no agreed theory of manipulation, and that few approaches exist for fixing misspecification. Scalable alignment proposals are described as tested only in toy domains.",
+ "open_questions": "How to detect deception in AI-generated text; how to measure and mitigate manipulation by language agents; how to find examples of objective gaming for language agents in the wild; how side-effect penalties apply to language.",
+ "sense_of_alignment": "Behaviour alignment, \"How do we create an agent that behaves in accordance with what a human wants?\", with misalignment caused by accidental \"misspecification – a mistake made by the designer in implementing the task specification\"."
+}

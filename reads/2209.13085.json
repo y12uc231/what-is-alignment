@@ -1,0 +1,22 @@
+{"id": "2209.13085", "title": "Defining and Characterizing Reward Hacking", "text_path": "fulltext/2209.13085.txt",
+"summary": "Gives a formal definition of reward hacking: a pair of true and proxy reward functions is hackable relative to a policy set if some pair of policies is ranked one way by the proxy and the other way by the true reward; a proxy is unhackable if increasing proxy return can never decrease true return. Also defines simplification (an asymmetric special case that only collapses distinctions). Proves that on any policy set containing an open set (including all stochastic policies) non-trivial unhackable pairs must be equivalent, while finite policy sets (including deterministic policies) always admit non-trivial unhackable pairs; gives conditions for simplifications. Discusses the implication that a narrow-task reward used as a proxy for broad human values will be hackable, so learned rewards are 'almost certainly hackable' and should be validated rather than optimized blindly.",
+"setting": "Theory on finite MDPs with Markov rewards; illustrative cleaning-robot and two-state examples; software suite to enumerate policy orderings.",
+"quotes": [
+ {"section": "framework", "quote": "We say that a proxy is unhackable if increasing the expected proxy return can never decrease the expected true return."},
+ {"section": "method", "quote": "In the context of reinforcement learning (RL), such failures are called reward hacking."},
+ {"section": "method", "quote": "This makes it crucial to align autonomous AI systems with their users’ intentions."},
+ {"section": "method", "quote": "Reward tampering (Everitt et al.,, 2017; Kumar et al.,, 2020; Uesato et al.,, 2020; Everitt et al.,, 2021) can be viewed as a special case of reward hacking, and refers to an agent corrupting the process generating reward signals, e.g. by tampering with sensors, memory registers storing the reward signal, or other hardware."},
+ {"section": "method", "quote": "Unhackability is symmetric; this can be seen be swapping and in Definition 1."},
+ {"section": "results", "quote": "Since simplification is a special case of unhackability, this also implies that non-trivial simplification is impossible for any such policy set."},
+ {"section": "results", "quote": "Surprisingly, here we find that non-trivial non-equivalent unhackable reward pairs always exist."},
+ {"section": "limitations", "quote": "As previously discussed, our definition of hackability is strict, arguably too strict."},
+ {"section": "limitations", "quote": "Finally, while unhackability is a guarantee that no hacking will occur, hackability is far from a guarantee of hacking."},
+ {"section": "discussion", "quote": "However, if we consider the “narrow task” reward function as a proxy for the true “broad values” reward function, our results indicate that this is not possible: these two reward functions will invariably be hackable."},
+ {"section": "discussion", "quote": "But our work indicates that such learned rewards are almost certainly hackable, and so cannot be safely optimized."}
+],
+"key_numbers": [
+ {"claim": "Two-state example: realizable orderings", "quote": "We find that of the possible policy orderings, 12 are realizable via some reward function."}
+],
+"limitations_stated": "Only finite MDPs and Markov rewards; conditions for simplification are opaque; infinite policy sets incompletely characterized; the definition is strict and symmetric, counting low-proxy/high-true behaviors that optimization would rarely find; hackability does not guarantee hacking.",
+"open_questions": "Approximate or probabilistic unhackability; empirical study of when hacking occurs; alternatives to reward optimization (imitation, constrained RL, quantilizers).",
+"sense_of_alignment": "Alignment as agreement between the policy ordering of a proxy reward and the true reward, with the true reward variously a narrow task or 'broad human values'; the paper says it reveals 'a tension between using reward functions to specify narrow tasks and aligning AI systems with human values'."}

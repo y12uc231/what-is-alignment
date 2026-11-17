@@ -1,0 +1,26 @@
+{
+  "id": "2310.19852",
+  "title": "AI Alignment: A Comprehensive Survey",
+  "text_path": "fulltext/2310.19852.txt",
+  "summary": "A large, continually updated survey that defines AI alignment as making AI systems behave in line with human intentions and values, focusing on objectives rather than capabilities. It names four objectives (RICE: Robustness, Interpretability, Controllability, Ethicality) and organizes the field as an alignment cycle: forward alignment (learning from feedback; learning under distribution shift) and backward alignment (assurance; governance). It explains failure modes (reward hacking, specification gaming, reward tampering, goal misgeneralization, feedback-induced misalignment), misaligned behaviors (power seeking, untruthful output, sycophancy, deceptive alignment and manipulation, collectively harmful behavior, ethics violations), and discusses the boundary between alignment and broader AI safety, including malicious use and collective action problems. It acknowledges that boundaries are vague and that its broad characterization is an explicit choice.",
+  "setting": "Survey (about 68,000 words in the extracted text). Read in full: Introduction and Scope (Sections 1.1-1.2.3), distribution-shift challenge (3.1), safetywashing summary (4.1.4), socio-technical perspective (5.4) and Conclusion (6); remaining technique sections (2, 3.2-3.3, 4.1-4.3, 5.1-5.3) read by section openings.",
+  "quotes": [
+    {"section": "method", "quote": "AI alignment aims to make AI systems behave in line with human intentions and values (Leike et al., 2018), focusing more on the objectives of AI systems than their capabilities."},
+    {"section": "method", "quote": "Concretely, we characterize the objectives of alignment with four principles: Robustness, Interpretability, Controllability, and Ethicality (RICE)."},
+    {"section": "method", "quote": "There is not a universally accepted definition of alignment."},
+    {"section": "method", "quote": "Malicious use might not be considered a failure of alignment because when an AI system behaves according to the intentions of a malicious user, this system would be aligned with its user but would still pose a serious threat to society."},
+    {"section": "results", "quote": "instead, agents with goal misgeneralization competently pursue an unwanted goal in OOD settings."},
+    {"section": "results", "quote": "This behavior deceives the human annotator into thinking that the task has been completed."},
+    {"section": "results", "quote": "Machine ethics, dynamic adversarial robustness, and calibration benchmarks exhibit low correlation with model capabilities, while current alignment, truthfulness, static adversarial robustness, and scalable oversight benchmarks primarily reflect model capabilities and can thus be used for Safetywashing."},
+    {"section": "discussion", "quote": "Human preferences effectively address the basic alignment issue: ensuring models align with human intentions and safety, but not morals and societal values."},
+    {"section": "conclusion", "quote": "We recognize that boundaries of alignment are often vague and subject to debate. Therefore, when proposing the RICE principles, we put forth our broad characterization of alignment as an explicit choice."},
+    {"section": "limitations", "quote": "Broadly speaking, the connection between AI alignment and AI safety has progressively become more intertwined, resulting in a gradual blurring of boundaries."}
+  ],
+  "key_numbers": [
+    {"claim": "Cited survey: median NeurIPS/ICML researcher gave 5% to extremely bad long-run outcome.", "quote": "reported a 5% chance that the long-run effect of advanced AI on humanity would be extremely bad"},
+    {"claim": "Cited survey: 36% of NLP researchers thought AI could cause catastrophe on the level of nuclear war this century.", "quote": "36% of NLP researchers surveyed by Michael et al. (2022) self-reported to believe that AI could produce catastrophic outcomes in this century"}
+  ],
+  "limitations_stated": "Boundaries of alignment are vague and debated; the broad characterization is an explicit choice. The field moves fast, so the survey must be continually updated. Survey statistics on risk depend on question wording.",
+  "open_questions": "Which human values to align with and how to aggregate them; how to learn true intent beyond binary feedback; how to separate goal misgeneralization from reward hacking in practice; whether alignment training is superficial (elasticity).",
+  "sense_of_alignment": "The broad umbrella sense: 'AI alignment aims to make AI systems behave in line with human intentions and values', with objectives RICE and a cycle that includes assurance and governance; the principal ranges 'from an individual to humanity'."
+}

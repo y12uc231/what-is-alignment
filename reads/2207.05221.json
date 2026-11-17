@@ -1,0 +1,41 @@
+{
+ "id": "2207.05221",
+ "title": "Language Models (Mostly) Know What They Know",
+ "text_path": "fulltext/2207.05221.txt",
+ "summary": "Anthropic (2022). Pretrained LMs up to 52B are well calibrated on diverse multiple-choice and true/false questions in the right format, with calibration improving with size and few-shot examples; replacing an option with 'none of the above' harms calibration. Models can self-evaluate their own samples via P(True), improved by showing many samples. A value head trained to predict P(IK) (probability the model can answer correctly, labeled by the fraction of 30 sampled answers that are correct) works in distribution and partly generalizes out of distribution (TriviaQA to arithmetic, code, GSM8k), with generalization improving with size; it fails on Lambada (uniformly low P(IK)) unless trained on mixed tasks. RLHF policies appear very miscalibrated but a single temperature adjustment largely restores calibration on several evaluations.",
+ "setting": "Anthropic pretrained LMs from 800M to 52B parameters and HH-RLHF policies; BIG-Bench multiple choice, MMLU, TruthfulQA, TriviaQA, Lambada, GSM8k, HumanEval, arithmetic and Python function synthesis.",
+ "quotes": [
+  {
+   "section": "introduction",
+   "quote": "We first show that larger models are well-calibrated on diverse multiple choice and true/false questions when they are provided in the right format."
+  },
+  {
+   "section": "results (RLHF calibration)",
+   "quote": "We find that these policies naively appear very miscalibrated, which is not surprising, since RL finetuning tends to collapse language model predictions towards behaviors that receive the most reward."
+  },
+  {
+   "section": "results (temperature fix)",
+   "quote": "However, a simple temperature adjustment (with the same temperature for all evaluations) largely fixes calibration issues with several independent evaluation tasks"
+  },
+  {
+   "section": "method (P(IK))",
+   "quote": "In this section, we will train models to predict whether they know the answer to any given free-form question, denoting the probability they assign as ‘P(IK)’ (for Probability that I Know the answer)."
+  },
+  {
+   "section": "results (generalization)",
+   "quote": "We see that there is a general trend where the AUROC of P(IK) increases with model size, and calibration gets better with model size. However, when testing on Lambada, calibration was terrible, because the model produces uniformly low P(IK) scores."
+  },
+  {
+   "section": "discussion",
+   "quote": "Our core findings are that large language models can be well-calibrated on diverse multiple choice questions, that they perform well at self-evaluation on a range of subjects, and that they can be trained to predict what they do and don’t know and exhibit some generalization to new domains and in-context information sources."
+  },
+  {
+   "section": "limitations",
+   "quote": "We have focused on pretrained language models, but models that have been finetuned for a specific purpose, such as RLHF policies [Bai et al., 2022], will not be so well-calibrated, and some of the methods we discussed may not work as well."
+  }
+ ],
+ "key_numbers": [],
+ "limitations_stated": "Focus on pretrained models (RLHF policies less calibrated); no distinction between truth and what humans say; deception not addressed; only five sampling-based datasets for generalization.",
+ "open_questions": "Whether more intensive RL distorts calibration beyond what temperature can fix (the authors raise this explicitly); whether P(IK)-style self-knowledge can be used as a training signal for abstention.",
+ "sense_of_alignment": "In this source we found no use of the word 'alignment' for its own framing; it frames the work as groundwork for honesty, an umbrella for truthfulness, calibration, self-knowledge, explainability and non-deceptiveness, and studies whether models know what they know."
+}

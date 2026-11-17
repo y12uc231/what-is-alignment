@@ -1,0 +1,46 @@
+{
+ "id": "1602.03506",
+ "title": "Research Priorities for Robust and Beneficial Artificial Intelligence",
+ "text_path": "fulltext/1602.03506.txt",
+ "summary": "Research agenda (published in AI Magazine 36(4), 2015) accompanying the Future of Life Institute open letter. It lists short-term priorities in economics, law and ethics, and computer science for robust AI, the latter split into verification (\"Did I build the system right?\"), validity (\"Did I build the right system?\"), security (preventing intentional manipulation by unauthorized parties) and control (meaningful human control). Long-term priorities revisit these four, with validity covering value learning and the difficulty of \"aligning\" the values of powerful AI systems with ours, security covering containment, and control covering corrigibility and instrumental subgoals such as resource acquisition.",
+ "setting": "Research agenda; no experiments. Examples include the robot vacuum that dumps and re-cleans dirt.",
+ "quotes": [
+  {
+   "section": "introduction (framework)",
+   "quote": "The focus is on delivering AI that is beneficial to society and robust in the sense that the benefits are guaranteed: our AI systems must do what we want them to do."
+  },
+  {
+   "section": "method (robust AI)",
+   "quote": "Validity: how to ensure that a system that meets its formal requirements does not have unwanted behaviors and consequences. (“Did I build the right system?”)"
+  },
+  {
+   "section": "method (robust AI)",
+   "quote": "Security: how to prevent intentional manipulation by unauthorized parties."
+  },
+  {
+   "section": "results (validity)",
+   "quote": "The requirement should focus not on dirt cleaned up but on cleanliness of the floor."
+  },
+  {
+   "section": "results (long-term validity)",
+   "quote": "Explicitly specifying our preferences in broad domains in the style of near-future machine ethics may not be practical, making “aligning” the values of powerful AI systems with our own values and preferences difficult [70, 71]."
+  },
+  {
+   "section": "results (long-term control)",
+   "quote": "Systems that do not exhibit these behaviors have been termed corrigible systems [80], and both theoretical and practical work in this area appears tractable and useful."
+  },
+  {
+   "section": "conclusion (limitations)",
+   "quote": "The research agenda outlined in this paper, and the concerns that motivate it, have been called “anti-AI”, but we vigorously contest this characterization."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "The open letter collected over 8,000 signatures.",
+   "quote": "an open letter that has collected over 8,000 signatures"
+  }
+ ],
+ "limitations_stated": "The authors say the examples should by no means be construed as an exhaustive list.",
+ "open_questions": "How to verify self-modifying systems; how learned human concepts generalize in new contexts; how to build corrigible systems; when resource acquisition is optimal.",
+ "sense_of_alignment": "The word appears in scare quotes: \"making “aligning” the values of powerful AI systems with our own values and preferences difficult\"; the umbrella frame is \"robust and beneficial\" AI that does \"what we want them to do\"."
+}

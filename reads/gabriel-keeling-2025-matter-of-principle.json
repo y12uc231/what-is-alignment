@@ -1,0 +1,21 @@
+{
+  "id": "gabriel-keeling-2025-matter-of-principle",
+  "title": "A matter of principle? AI alignment as the fair treatment of claims",
+  "text_path": "fulltext/gabriel-keeling-2025-matter-of-principle.txt",
+  "summary": "A philosophy paper (Philosophical Studies 2025) on the normative part of the alignment problem: what goals or values AI should be aligned with. It argues that the two leading answers fall short. Intent alignment is underspecified (whose intentions?) and would count systems that enable malicious use or harmful externalities as fully aligned. HHH gives no principled way to resolve trade-offs and rests on a contested utilitarian foundation. The authors propose that AI be aligned with principles produced by a fair process (building on Scanlon and Rawls but widening admissible claims and scoping inclusion by who is affected). They model alignment as a tetradic relation among AI system, users, developer and society, and list six modes of misalignment where the AI unduly favors one party over another (including helping users harm society, and favoring developers over users), plus misalignment simpliciter. Law is a minimum standard; alignment assemblies and participatory elicitation can supply finer principles.",
+  "setting": "Conceptual and normative argument; no experiments.",
+  "quotes": [
+    {"section": "introduction", "quote": "Key proposals are that AI systems must be aligned with human intentions, so that they reliably do what they are instructed to do (Leike et al., 2018), or that they should be designed to act in ways that are helpful, honest and harmless (HHH) (Askell et al., 2021; Bai et al., 2022)."},
+    {"section": "method", "quote": "In fact, there is no single party whose intentions AI systems must always be aligned with."},
+    {"section": "method", "quote": "Scanlon's process could be used to select principles for AI alignment."},
+    {"section": "results", "quote": "In particular, it is possible to model alignment as a tetradic relationship that involves an AI system, its users, the developer and society."},
+    {"section": "results", "quote": "Type (6) misalignment therefore includes situations where an AI agent unduly limits the user's freedom or infringes the user's privacy for the sake of collective goals such as national security, surveillance or public order (Feldstein, 2019b; Zuboff, 2018)."},
+    {"section": "discussion", "quote": "Our view is that legal compliance at best represents a minimum standard for AI alignment."},
+    {"section": "conclusion", "quote": "The normative part of the AI alignment question centers on what goals or values to encode in AI systems."},
+    {"section": "limitations", "quote": "The approach defended here is inherently forward looking."}
+  ],
+  "key_numbers": [],
+  "limitations_stated": "The modes of misalignment are non-exhaustive; it is hard to know in advance what principles fair processes will produce; laws and societal ideals give incomplete guidance; questions about future people, animals, and AI moral standing are left open.",
+  "open_questions": "How to scope inclusion ('all affected') for general-purpose systems; how to run alignment assemblies at transnational scale; whether future AI systems could be stakeholders.",
+  "sense_of_alignment": "Normative value alignment: aligning AI 'so that they act in accordance with the right set of human goals or values and do not cause unjustified harm', with the proposed target being principles chosen through a fair process among users, developers and society."
+}

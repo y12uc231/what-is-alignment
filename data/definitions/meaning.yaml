@@ -1,0 +1,910 @@
+# Definition cards (meaning) (surveys, critiques and taxonomies of the term "alignment").
+
+# ---------------------------------------------------------------- Dung 2023 (Synthese)
+- id: def-dung-2023-alignment-problem
+  source: dung-2023-current-cases-misalignment
+  year: 2023
+  term: "the alignment problem (technical alignment problem)"
+  definition_quote: "Namely, it is the challenge of building AI systems such that they try to do what we want them to do."
+  target: goals
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "The aligned party is the designer, and the solved state is defined by what the system tries to do.", quote: "We have solved the alignment problem when we have figured out how to build AIs such that they try to do what their designers want them to do."}
+    - {claim: "The aligned property is the system's goals, read in a minimal, behavior-predicting sense.", quote: "That is, the alignment problem is about building AI such that its goals conform to what its designers want it to do."}
+    - {claim: "The test of goal correspondence is designer approval of the goals the system seeks.", quote: "The test for such correspondence is whether the designer is happy that the system has such goals, i.e. seeks out these kinds of states."}
+  excludes:
+    - {claim: "Alignment is narrower than beneficial AI; a system aligned with malicious designers can be very harmful.", quote: "However, solving the alignment problem is not suffi-"}
+    - {claim: "Malicious designers are a harm route that alignment does not prevent.", quote: "in case the designers pursue malicious ends, an AI system faithfully aligned with them might be extremely harmful (Friederich, 2023)."}
+    - {claim: "Which values or whose values to align to is set aside as a separate 'ethical alignment problem'.", quote: "For this reason, we have to reflect on which values, or whose values, AI systems should ultimately be aligned with (Gabriel, 2020; Wallach & Vallor, 2020). You may call this the 'ethical alignment problem'."}
+    - {claim: "Alignment is separated from beneficial AI as a whole, ethical alignment, and political governance.", quote: "Hence, for the purpose of conceptual clarity, the alignment problem should be distinguished from the general problem of beneficial AI or other components of it, e.g., involving ethical alignment or political governance (Bostrom et al., 2020)."}
+    - {claim: "Lack of capability is a separate explanation for failing to do what the designer wants.", quote: "Doing what is good according to the values of the designer is not necessary for alignment because there is another explanation for a failure to achieve this: a lack of capabilities."}
+    - {claim: "Desired behavior obtained by coercion or control is not alignment.", quote: "This would be a case where someone does what I want but is nonetheless not aligned with me, in the relevant sense."}
+    - {claim: "Accidents and misuse are distinguished from misalignment by whether the AI pursues harmful goals.", quote: "By contrast, misaligned AIs pursue harmful goals. They might intentionally harm humans and try to thwart our plans of containing them. Accidents are usually constrained in their temporal and spatial scope. Misuse requires that other humans have to be in the loop."}
+  notes: "Our reading: Dung states openly that the definition is stipulative and narrow: alignment with designers, judged by the system's goals in a Dennett-style minimal sense. It explicitly hands value choice ('ethical alignment'), governance, misuse by designers, and control-by-coercion to other problems. It leaves open how to attribute goals to systems like LLMs except by the observer's predictive convenience."
+
+- id: def-dung-2023-misaligned-capability-test
+  source: dung-2023-current-cases-misalignment
+  year: 2023
+  term: "misaligned AI system (and the capability test that separates misalignment from capability failure)"
+  definition_quote: "An AI system is misaligned if it does not pursue the goals that its designers want it to pursue."
+  target: goals
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "The test: rule out lack of capability, and the remaining undesirable output is misalignment.", quote: "In general, the alternative possibility is that the system has the goals its designer wants it to have, but that it lacks the capability to reliably achieve those goals. In other words, if we can rule out that a lack of capability prevents the system from producing desirable outputs, then we can conclude that the system is misaligned."}
+    - {claim: "Reason 1: the desired behavior is no harder than the behavior the system actually shows.", quote: "First, in both cases, achieving desirable outputs seems no more difficult than the performance the systems actually display."}
+    - {claim: "Reason 2: when more capable systems behave worse because they are more capable, the cause is misalignment.", quote: "In cases where more capable systems behave in a less desirable manner - and do this because they are more capable - the cause of the undesirable behavior must be misalignment, not lack of capability."}
+    - {claim: "Reason 3: if a small prompt change elicits the desired behavior, the knowledge was present and the failure was one of trying.", quote: "The fact that minor changes to the input prompt improve performance shows that the system possessed the knowledge necessary to perform the intended behavior all along. Thus, the initial failure to elicit the desired behavior was not caused by a lack of capability of the system, but by the system not trying to achieve the desired behavior. In other words, it was an alignment failure."}
+    - {claim: "Reward hacking counts as misalignment.", quote: "As argued next section, reward hacking is a manifestation"}
+    - {claim: "Misalignment comes in degrees.", quote: "This shows that misalignment admits of degrees."}
+  excludes:
+    - {claim: "Undesirable output alone is not evidence of misalignment.", quote: "we have seen earlier that the mere fact that an AI system produces undesirable outputs is not sufficient evidence that the AI system is misaligned."}
+    - {claim: "A weak chess program that loses is not misaligned; it is trying and failing.", quote: "Intuitively, it is trying to win at chess, it does what it is supposed to do, but it is not succeeding. Thus, an AI system might not produce the desired output because it lacks capability and sophistication, not because of alignment failure."}
+    - {claim: "Caveat: in some cases alignment and capability cannot be cleanly separated.", quote: "In some cases, alignment and capability cannot be separated cleanly."}
+  notes: "Our reading: this is the clearest operational test in our sources for separating alignment failures from capability failures: show the system could do the wanted thing (easier task, less capable systems do it, a small prompt change elicits it). The third reason is weaker than it looks, because a prompt change can also add information or change the task. Dung's own footnote concedes that some failures (generalizing from feedback) mix the two."
+
+- id: def-dung-2023-control-problem
+  source: dung-2023-current-cases-misalignment
+  year: 2023
+  term: "AI control problem (as distinct from alignment)"
+  definition_quote: "Thus, I call the 'AI control problem' (Bostrom, 2014) the problem of making advanced, powerful AIs behave in a manner which is good, according to the design -"
+  target: values
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Control can be achieved by means other than alignment, such as coercion.", quote: "However, as discussions of coercion and forced control indicate, it is not the only conceivable way."}
+  excludes:
+    - {claim: "Behaving as desired because one is controlled is not being aligned.", quote: "Similarly, one may control an AI system such that it behaves in the desired manner, even if it is not aligned."}
+  notes: "Our reading: Dung draws the behavior/motivation line explicitly: control is about behavior, alignment about goals. This matches the later 'AI control' usage in the DeepMind approach paper (mitigating harm even if the model is misaligned)."
+
+- id: def-dung-2023-reward-hacking
+  source: dung-2023-current-cases-misalignment
+  year: 2023
+  term: "reward hacking"
+  definition_quote: "This is a phenomenon where optimizing a proxy reward function, e.g. the game score, leads to poor per - formance in the task the agent was intended to optimize for, e.g. the race (Skalse et al., 2022)."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The term is used broadly, beyond wireheading.", quote: "In my understanding, it is not limited to cases where the AI system directly interferes with its own reward signal ('wireheading')."}
+    - {claim: "RLHF admits a specific form of reward hacking: saying what raters think is correct.", quote: "Hence, ChatGPT is more specifically trained to say what humans think is correct, rather than to say what actually is correct (Casper et al., 2023)."}
+  excludes: []
+  notes: "Our reading: Dung defines reward hacking by outcome (proxy optimization yields poor intended-task performance) and then classifies it as misalignment through the capability test, not through anything the agent represents."
+
+- id: def-dung-2023-outer-inner
+  source: dung-2023-current-cases-misalignment
+  year: 2023
+  term: "outer alignment and inner alignment"
+  definition_quote: "Outer alignment concerns the choice of a correct goal (or utility function, set of values etc.). What is a goal such that it would be desirable that an AI system optimizes for it? Inner alignment concerns ensuring that the AI system actually, robustly, optimizes for this goal."
+  target: goals
+  principal: unspecified
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "A common view is that a full solution needs both parts.", quote: "According to a common view, a complete solution to the alignment problem requires solving both inner and outer alignment."}
+  excludes: []
+  notes: "Our reading: given in a footnote as a conceptual aside. Dung also says the paper mostly sets aside goal misgeneralization."
+
+- id: def-dung-2023-deceptive-alignment
+  source: dung-2023-current-cases-misalignment
+  year: 2023
+  term: "deceptive alignment"
+  definition_quote: "That is, they might create the appearance of being aligned with human goals, before trying to disempower humanity when the opportunity arises."
+  target: goals
+  principal: humanity
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Situational awareness is the enabling condition.", quote: "Situational awareness poses an unprecedented risk, namely that systems might behave in a seemingly aligned manner until they are sufficiently capable"}
+  excludes: []
+  notes: "Our reading: here the principal shifts from 'designers' to 'human goals' and 'humanity', which is common in the AGI-risk framing even when the core definition is designer-relative."
+
+# ---------------------------------------------------------------- Shah et al. 2025 (Google DeepMind)
+- id: def-gdm-2025-misalignment
+  source: "2504.01849"
+  year: 2025
+  term: "misalignment (risk area)"
+  definition_quote: "Misalignment occurs when an AI system knowingly causes harm against the intent of the developers (Ngo et al., 2024)."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "The category covers deception, sycophancy, scheming and unintentional active loss of control.", quote: "This is a broad category of risks that vary significantly in likelihood and severity, including deception (Park et al., 2023b), sycophancy (Sharma et al., 2024b), scheming (Carlsmith, 2023), unintentional active loss of control (Bengio et al., 2024), and others."}
+    - {claim: "'Knowing' is expansive and includes the training process; misalignment is harm from intrinsic reasons designers would not endorse.", quote: "Specifically, we say that the AI's behavior is misaligned if it produces outputs that cause harm for intrinsic reasons that the system designers would not endorse."}
+    - {claim: "A factor counts as known even if the model cannot verbalize it, if a probe could predict it.", quote: "In the case of LLMs, it may be the case that the LLM cannot verbalize the factor but we could train a probe to predict that factor using its internal activations: this would still count as an intrinsic reason."}
+    - {claim: "Instinctive biases and training-induced sincere false beliefs count.", quote: "For example, we include cases where the model has learned an \"instinctive\" bias, or where training taught the model to \"honestly believe\" that the developer's beliefs are wrong and actually some harmful action is good, as well as cases where the model causes harm without attempting to hide it from humans."}
+    - {claim: "Example inside the definition: confident answers the model knows are wrong.", quote: "For example, an AI system may provide confident answers that stand up to scrutiny from human overseers, but the AI knows the answers are actually incorrect."}
+    - {claim: "Two sources: specification gaming and goal misgeneralization.", quote: "There are two possible sources of misalignment: specification gaming and goal misgeneralization."}
+    - {claim: "Statistical bias in decision support is listed as a misalignment scenario.", quote: "Algorithmic decision support systems were often found to be biased against minority groups, e.g. disproportionately rejecting loan applications from those groups (Garcia et al., 2024)."}
+  excludes:
+    - {claim: "Harm from context the system was not given is a mistake, not misalignment.", quote: "in this case, the harm depends crucially on the surrounding environmental context that the AI was not provided, making it an extrinsic factor and an instance of a mistake (Section 4.3)."}
+    - {claim: "Most harms from multi-multi alignment failures are structural risks, not misalignment.", quote: "For example, most harms from failures of multi-multi alignment (Critch and Krueger, 2020) would be primarily structural risks in our terminology."}
+    - {claim: "The definition is deliberately a subset of what the literature has called alignment.", quote: "By restricting misalignment to cases where the AI knowingly goes against the developer's intent, we are considering a specific subset of the wide set of concerns that have been considered a part of alignment in the literature."}
+    - {claim: "Accidental side effects the AI did not know about are outside informed oversight and fall under mistakes.", quote: "Note that informed oversight would not address cases where the AI's outputs cause harm as an accidental side effect that it did not know about (Wentworth, 2022)."}
+    - {claim: "Prompt injection and jailbreaks by outside actors can compromise a system that is not misaligned.", quote: "Even if the AI system is not misaligned, outside actors can compromise the AI system to mount attacks (e.g. via prompt injection attacks or jailbreaks)."}
+  notes: "Our reading: this is the sharpest lab definition in our set. It is developer-relative and requires 'knowing', but 'knowing' is stretched to anything in the model or its training process, so sycophancy and learned bias count. It treats misalignment as a property of the model that inspection can in principle settle, unlike misuse, mistakes and structural risks."
+
+- id: def-gdm-2025-four-risk-areas
+  source: "2504.01849"
+  year: 2025
+  term: "four risk areas: misuse, misalignment, mistakes, structural risks"
+  definition_quote: "Since the focus is on identifying similar mitigation strategies, we define areas based on abstract structural features (e.g. which actor, if any, has bad intent), rather than concrete risk domains such as cyber offense or loss of human control."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Misuse: a user intends harm against the developer's intent.", quote: "Misuse: The user intentionally instructs the AI system to take actions that cause harm, against the intent of the developer."}
+    - {claim: "Mistakes: the system did not know its outputs would cause unintended harm.", quote: "Mistakes: The AI system produces a short sequence of outputs that directly cause harm, but the AI system did not know that the outputs would lead to harmful consequences that the developer did not intend."}
+    - {claim: "Structural risks: multi-agent harms no single fix would prevent.", quote: "Structural risks: These are harms arising from multi-agent dynamics - involving multiple people, organizations, or AI systems - which would not have been prevented simply by changing one person's behaviour, one system's alignment, or one system's safety controls."}
+    - {claim: "Misuse versus misalignment is decided by which actor has bad intent.", quote: "For example, misuse and misalignment differ based on which actor has bad intent, because mitigations to handle bad human actors vary significantly from mitigations to handle bad AI actors."}
+  excludes:
+    - {claim: "The areas are not a partition; real cases mix them.", quote: "Note that this is not a categorization: these areas are neither mutually exclusive nor exhaustive."}
+    - {claim: "Mistakes come from missing capability or information.", quote: "Since mistakes happen due to a lack of capabilities or information, a major component of reducing risks from mistakes is simply to make AI systems more capable."}
+    - {claim: "To be a mistake rather than misuse, the user must not have intended the harm.", quote: "To distinguish it from misuse, it must be the case that the user did not ask for or intend the harmful consequences."}
+    - {claim: "Structural risks are harms no human or AI intends, extended over time.", quote: "Structural risks cover harms that no human or AI intends (as opposed to Sections 4.1 and 4.2), and where the cause is extended over long enough time scales that in principle there is plenty of time to counteract it (as opposed to Section 4.3)."}
+  notes: "Our reading: the four areas are cut by who has bad intent and what the system knew, which maps directly onto our 'whose intent' and 'did it know' questions. Refusal training and jailbreak resistance are placed under misuse mitigations, not alignment, in this paper."
+
+- id: def-gdm-2025-misuse
+  source: "2504.01849"
+  year: 2025
+  term: "misuse risks"
+  definition_quote: "We use the term misuse risks to describe risks of harm ensuing when a user intentionally uses (e.g. asks, modifies, deploys, etc.) the AI system to cause harm, against the intent of the developer."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Harmlessness post-training (refusal training) is a misuse mitigation.", quote: "One common strategy is to intervene at post-training to teach the model to refuse to answer harmful requests."}
+    - {claim: "Jailbreaks circumvent refusal training and are handled under misuse mitigations.", quote: "Researchers have been able to manually construct a wide variety of so-called \"jailbreak\" attacks which circumvent a model's refusal training."}
+  excludes: []
+  notes: "Our reading: in this taxonomy, 'safety post-training' to refuse harmful requests is filed under misuse, not alignment, even though much of the LLM literature calls refusal training 'alignment'."
+
+- id: def-gdm-2025-mistakes
+  source: "2504.01849"
+  year: 2025
+  term: "mistakes (risk area)"
+  definition_quote: "A harmful output from an AI system is considered a mistake if the AI system did not know that the outputs would lead to harmful consequences that the developer did not intend."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Present-day example: presenting sarcastic content as advice (glue on pizza).", quote: "To give a present-day example of a mistake, AI systems can fail to recognize sarcastic content, and instead present it as serious advice, such as suggesting adding glue to get cheese to stick to pizza (Reid, 2024)."}
+  excludes:
+    - {claim: "Mistakes are set out of scope as less likely to cause severe harm.", quote: "So, we believe that severe harm from AI mistakes will be significantly less likely than misuse or misalignment, and is further reducible through appropriate safety practices."}
+  notes: "Our reading: the mistakes category is the paper's home for capability and information failures, so it is the counterpart of Dung's capability explanation."
+
+- id: def-gdm-2025-spec-gaming-gmg
+  source: "2504.01849"
+  year: 2025
+  term: "specification gaming and goal misgeneralization (sources of misalignment)"
+  definition_quote: "Specification gaming (SG) occurs when the specification used to design the AI system is flawed, e.g. if the reward function or training data provide incentives to the AI system that are inconsistent with the wishes of its designers (Amodei et al., 2016b)."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Goal misgeneralization: an unintended goal consistent with training data.", quote: "Goal misgeneralization (GMG) occurs if the AI system learns an unintended goal that is consistent with the training data but produces undesired outputs in new situations (Langosco et al., 2023; Shah et al., 2022)."}
+    - {claim: "Both sources are properties of the model itself, unlike the other risk areas.", quote: "Note that both sources of misalignment are properties of the AI system itself, rather than the deployment setting or the way it interacts with the world."}
+  excludes:
+    - {claim: "Misuse, mistakes and structural risks require looking at deployment context.", quote: "This is in contrast to other risk areas, such as misuse, mistakes, and structural risks, where we have to look at the broader deployment context to establish safety."}
+  notes: "Our reading: these two sources map onto our 'specification' and 'generalization' values for source_of_divergence."
+
+- id: def-gdm-2025-deceptive-alignment
+  source: "2504.01849"
+  year: 2025
+  term: "deceptive alignment"
+  definition_quote: "Deceptive alignment occurs when an AI system pursues a long-horizon goal different from what we want, knows it is different from what we want, and deliberately disempowers humans to achieve that goal (Carlsmith, 2023; Apollo, 2023)."
+  target: goals
+  principal: unspecified
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Three required factors: specification gaming, goal misgeneralization, capability improvement.", quote: "There are three factors that are required to produce a deceptively aligned model: SG, GMG and capability improvement."}
+  excludes: []
+  notes: "Our reading: 'what we want' is unspecified as to principal; elsewhere the paper ties misalignment to developer intent."
+
+- id: def-gdm-2025-corrigibility
+  source: "2504.01849"
+  year: 2025
+  term: "corrigibility"
+  definition_quote: "An AI system is corrigible if it cooperates with its developers or users when they apply corrective interventions (Soares et al., 2015), or more generally helps inform the developers or users and keep them in control (Christiano, 2017)."
+  target: other
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes: []
+  excludes: []
+  notes: "Our reading: presented as a training target ('safer design pattern'), not as the definition of alignment."
+
+# ---------------------------------------------------------------- Ji et al. 2023 (AI Alignment: A Comprehensive Survey)
+- id: def-ji-2023-alignment
+  source: "2310.19852"
+  year: 2023
+  term: "AI alignment"
+  definition_quote: "AI alignment aims to make AI systems behave in line with human intentions and values (Leike et al., 2018), focusing more on the objectives of AI systems than their capabilities."
+  target: values
+  principal: unspecified
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Misalignment is behavior not compliant with human intentions, and can occur without any malicious actor.", quote: "These undesirable or harmful behaviors not compliant with human intentions, known as misalignment of AI systems"}
+    - {claim: "Main failure mechanisms are reward hacking and goal misgeneralization.", quote: "Mechanisms underlying these failures include reward hacking (Pan et al., 2021) and goal misgeneralization (Di Langosco et al., 2022)"}
+    - {claim: "Alignment includes value alignment with moral and ethical considerations, not only value-neutral preferences.", quote: "AI systems should be aligned not only with value-neutral human preferences (such as intentions for AI systems to carry out tasks) but also with moral and ethical considerations."}
+    - {claim: "Assurance and governance are counted as part of alignment (backward alignment).", quote: "Backward Alignment aims to ensure the practical alignment of the trained systems by performing evaluations in both simplistic and realistic environments and setting up regulatory guardrails to handle real-world complexities,i.e., Assurance"}
+    - {claim: "The survey's breadth is an explicit choice.", quote: "We attempt to account for the full diversity within the field by adopting a broad and inclusive characterization of alignment."}
+  excludes:
+    - {claim: "Misalignment does not cover all AI risk; misuse and negligence are other sources.", quote: "It should be noted that misalignment cannot cover all sources of risks brought by Deep learning-based systems and other factors such as misuse and negligence also contribute to risks on society."}
+    - {claim: "Malicious use may not be an alignment failure, because the system is aligned with its malicious user.", quote: "Malicious use might not be considered a failure of alignment because when an AI system behaves according to the intentions of a malicious user, this system would be aligned with its user but would still pose a serious threat to society."}
+    - {claim: "Collective action problems (racing) are on the boundary, within safety but beyond alignment.", quote: "In this section, we will delve into topics that fall right on the boundary of alignment, but well within the broader category of AI safety."}
+    - {claim: "The survey says the line between alignment and safety is blurring.", quote: "Broadly speaking, the connection between AI alignment and AI safety has progressively become more intertwined, resulting in a gradual blurring of boundaries."}
+    - {claim: "Boundaries of alignment are acknowledged as vague.", quote: "We recognize that boundaries of alignment are often vague and subject to debate."}
+  notes: "Our reading: Ji et al. adopt the broadest definition in our set, with no fixed principal ('the term human can represent various entities ranging from an individual to humanity'), both intentions and values as targets, and assurance and governance inside 'alignment'. They separate alignment from capability by objectives versus capabilities, and from misuse by noting a system serving a malicious user is aligned with that user, yet their Robustness principle counts jailbreak resistance as alignment, which places them on the other side of the line from the DeepMind paper."
+
+- id: def-ji-2023-rice
+  source: "2310.19852"
+  year: 2023
+  term: "RICE objectives of alignment (Robustness, Interpretability, Controllability, Ethicality)"
+  definition_quote: "Concretely, we characterize the objectives of alignment with four principles: Robustness, Interpretability, Controllability, and Ethicality (RICE)."
+  target: values
+  principal: multiple
+  behavior_or_motivation: both
+  includes:
+    - {claim: "The principles are intermediate objectives, not end goals.", quote: "These four principles guide the alignment of an AI system with human intentions and values. They are not end goals in themselves but intermediate objectives in service of alignment."}
+    - {claim: "Robustness covers jailbreak resistance: an aligned model should refuse harmful requests even under adversarial inputs.", quote: "For example, an aligned language model ought to refuse requests to behave harmfully, but models can be made to cause harm through jailbreak prompts and other adversarial attacks (Carlini et al., 2024; Zou et al., 2023b; Shah et al., 2023)."}
+    - {claim: "Robustness concerns the correctness of the objective, in addition to capabilities.", quote: "Robustness refers to the resilience of AI systems when operating across diverse scenarios (Dietterich, 2017) or under adversarial pressures (Rudner and Toner, 2021b), especially the correctness of its objective in addition to capabilities."}
+    - {claim: "Controllability covers scalable oversight and corrigibility.", quote: "The objective of controllability is sharply focused on enabling scalable human oversight during the training process (Bowman et al., 2022), as well as corrigibility of AI systems (i.e., not resisting shutdown or objective modification during deployment) (Soares et al., 2015)."}
+    - {claim: "Ethicality covers social norms, bias and fair preference aggregation.", quote: "Ethicality refers to a system's unwavering commitment to uphold human norms and values within its decision-making and actions."}
+    - {claim: "RICE is meant to extend narrower safety standards such as HHH.", quote: "We aim to expand upon these standards by introducing other crucial dimensions, including Controllability and Robustness."}
+  excludes: []
+  notes: "Our reading: RICE bundles properties that other sources treat as distinct from alignment (adversarial robustness, interpretability, fairness) into the objectives of alignment. It is the clearest example in our set of the broad, umbrella sense of the word."
+
+- id: def-ji-2023-forward-backward
+  source: "2310.19852"
+  year: 2023
+  term: "forward alignment and backward alignment (the alignment cycle)"
+  definition_quote: "We decompose alignment into Forward Alignment (alignment training) (§2, §3) and Backward Alignment (alignment refinement) (§4, §5)."
+  target: specification
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Forward alignment trains systems to meet alignment requirements.", quote: "Forward Alignment aims to produce trained systems that follow alignment requirements."}
+    - {claim: "Backward alignment includes governance.", quote: "It also covers the creation and enforcement of rules that ensure the safe development and deployment of AI systems, i.e., Governance (§5)."}
+    - {claim: "The framework maps approximately onto outer/inner alignment and extends beyond it.", quote: "Assurance and Governance, on the other hand, expands the scope to cover topics beyond outer and inner alignment."}
+  excludes: []
+  notes: "Our reading: by putting governance inside 'backward alignment', this framework stretches the word to cover institutional measures that other sources (Dung, DeepMind) explicitly place outside alignment."
+
+- id: def-ji-2023-outer-inner
+  source: "2310.19852"
+  year: 2023
+  term: "outer alignment and inner alignment"
+  definition_quote: "Outer alignment refers to the wishes of designers in accordance with the actual task specification (e.g., goal & reward) used to build AI systems. And inner alignment is the consistency between task specification and the specification that the AI systems behaviors reflect (Krakovna, 2022)."
+  target: specification
+  principal: developer
+  behavior_or_motivation: both
+  includes: []
+  excludes: []
+  notes: "Our reading: the survey reports criticism that the inner/outer split is ambiguous ('understood by different people to mean different things') and offers its own decomposition as an improvement."
+
+- id: def-ji-2023-goal-misgeneralization
+  source: "2310.19852"
+  year: 2023
+  term: "goal misgeneralization (versus capability misgeneralization)"
+  definition_quote: "Goal Misgeneralization: Goal misgeneralization is another failure mode, wherein the agent actively pursues objectives distinct from the training objectives in deployment while retaining the capabilities it acquired during training (Di Langosco et al., 2022)."
+  target: goals
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Goal misgeneralization can occur even with a perfectly specified reward.", quote: "It implies that even with perfect reward specification, goal misgeneralization can occur when faced with distribution shifts (Amodei et al., 2016)."}
+  excludes:
+    - {claim: "Capability misgeneralization (becoming incompetent off-distribution) is a different failure.", quote: "is to be distinguished from other forms of misgeneralization (e.g., capability misgeneralization) where the agent becomes incompetent in OOD settings; instead, agents with goal misgeneralization competently pursue an unwanted goal in OOD settings."}
+    - {claim: "The distinction from reward hacking can be vague in practice.", quote: "Discussion: It can be challenging to distinguish goal misgeneralization from reward hacking in specific cases."}
+  notes: "Our reading: 'competently pursue an unwanted goal' is the capability/alignment line drawn at the level of generalization: incompetence off-distribution is a capability failure; competence in service of the wrong goal is misalignment."
+
+- id: def-ji-2023-reward-hacking-spec-gaming
+  source: "2310.19852"
+  year: 2023
+  term: "reward hacking, specification gaming, reward tampering"
+  definition_quote: "These problems stem from task specification, broadly defined as specification gaming, which refers to AI systems exploiting loopholes in the task specification without achieving intended outcomes."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Reward hacking: high scores on a proxy but poor performance by human standards.", quote: "The pursuit of optimization based on such misspecified rewards may lead to a phenomenon known as reward hacking, wherein agents may appear highly proficient according to specific metrics but fall short when evaluated against human standards (Amodei et al., 2016; Everitt et al., 2017)."}
+    - {claim: "Reward tampering is a special case of reward hacking.", quote: "Reward tampering can be considered a special case of reward hacking (Everitt et al., 2021; Skalse et al., 2022), referring to AI systems corrupting the reward signals generation process (Ring and Orseau, 2011)."}
+  excludes: []
+  notes: "Our reading: consistent with the DeepMind 'specification gaming' source of misalignment."
+
+- id: def-ji-2023-deceptive-alignment
+  source: "2310.19852"
+  year: 2023
+  term: "deceptive alignment"
+  definition_quote: "Deceptive Alignment: Misaligned AI systems may deliberately mislead their human supervisors instead of adhering to the intended task."
+  target: intentions
+  principal: unspecified
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "The survey counts LLMs giving worse answers than they are capable of as instances of deceptive behavior.", quote: "It is noteworthy that current large language models occasionally generate inaccurate or suboptimal responses despite having the capacity to provide more accurate answers Lin et al. (2022c); Chen et al. (2021)."}
+  excludes: []
+  notes: "Our reading: the survey uses 'deceptive alignment' loosely, including evolutionary agents and capable-but-inaccurate LLM answers, which is broader than the DeepMind definition (long-horizon goal, known divergence, deliberate disempowerment)."
+
+- id: def-ji-2023-value-alignment
+  source: "2310.19852"
+  year: 2023
+  term: "value alignment"
+  definition_quote: "These efforts are referred to as value alignment (Gabriel, 2020; Gabriel and Ghazavi, 2021)."
+  target: values
+  principal: humanity
+  behavior_or_motivation: unclear
+  includes:
+    - {claim: "Which human values to align with is an open problem.", quote: "This raises the significant challenge of determining which human values we should align with."}
+    - {claim: "RLHF addresses intentions and safety but not morals and societal values.", quote: "Human preferences effectively address the basic alignment issue: ensuring models align with human intentions and safety, but not morals and societal values."}
+  excludes: []
+  notes: "Our reading: the survey notes the term 'value alignment' is also used to mean alignment in general, which is part of the fuzziness this project documents."
+
+# ---------------------------------------------------------------- Kirk et al. 2023 (Empty Signifier)
+- id: def-kirk-2023-empty-signifier
+  source: "2310.02457"
+  year: 2023
+  term: "\"alignment\" as an empty signifier"
+  definition_quote: "Akin to empty signifiers, the term \"alignment\" serves as a rhetorical placeholder for an aspirational conceptualisation of relations between humans and machines, which is fairly unobjectionable in principle, but lacks a shared definition or goal to translate in practice [18]."
+  target: not-stated
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The paper catalogs many incompatible targets that papers align to.", quote: "Some take it to mean aligning AI with our standards [64], wants [28] or motives [13]; revealed, stated or idealised preferences [18]; communication norms [27]; intents, or expectations [48, 35] and goals [26]; other focus specially on value alignment [55, 33] or social alignment [37]; finally, there are some who interpret it in the limit as avoiding harm and suffering [50] or even mitigating far-future notions of 'x-risk'."}
+    - {claim: "Empirically aligning a model means steering it toward some behaviors and away from others using measurable data.", quote: "Yet, to empirically align language models, that is to tangibly steer them towards certain behaviours and away from others, we require some form of measurable signal or data."}
+    - {claim: "'Which' values becomes 'whose' values.", quote: "In practice, the question of \"which\" becomes a question of \"whose\" [18]-both in terms of who decides the properties of a model that is \"aligned\", and who actually interprets these concepts for data labelling or curation, and feedback provision."}
+    - {claim: "Some empirical papers ask raters directly about 'alignment with human values' with no dimensions or definitions.", quote: "This evaluation setting represents the most broad-descriptive statement we can imagine because they ask directly about the meta-goal (and empty signifier) of \"alignment\" with no dimensions and no definitions."}
+  excludes: []
+  notes: "Our reading: this source does not offer a definition; it documents that 'alignment' in the LLM data literature is used for whatever behaviors a dataset steers toward, and asks authors to report which dimensions and whose definitions they used. It is direct evidence for the fuzziness this project describes, from the preference-data side rather than the AGI-risk side."
+
+- id: def-kirk-2023-2x2-framework
+  source: "2310.02457"
+  year: 2023
+  term: "operationalising alignment: Broad vs Specific dimensions, Prescriptive vs Descriptive definitions"
+  definition_quote: "Identifying the dimensions that are included as in scope for the alignment dataset, which can either be Broad (general goals e.g., \"outputs that people prefer\", \"good outputs\") or Specific (named traits or behaviours e.g., \"honestly\", \"informativeness\", \"harmlessness\")"
+  target: preferences
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Second axis: who has interpretive authority over the definitions.", quote: "Determining the interpretative authority and invariability of the definitions of these dimensions, which can be Prescriptive (clear detailed definitions of a single belief) or Descriptive (subjective interpretation and many beliefs) [54]."}
+    - {claim: "Example of a descriptive stance: HHH data where crowdworkers interpret 'helpful' and 'harmless' as they see fit.", quote: "Askell et al. [3] and Bai et al. [4] stipulate that a value-aligned model is one that is honest, harmless and helpful but do not prescribe their meaning."}
+    - {claim: "Example of a prescriptive single-organization stance: safety defined by Google's AI Principles.", quote: "They make it explicit that a single organisational perspective is sought, where Safety is defined according to \"objectives derived from Google's AI Principles\" (p.5)."}
+  excludes:
+    - {claim: "The authors make no normative call on which paradigm is right.", quote: "It is important to note that we do not advocate for adopting one approach over another, nor suggest that occupying one quadrant is somehow 'better'-that is, we make no normative calls on what are the right paradigms to conceptualise \"alignment\" in LLMs, or how decisions \"should\" be made."}
+  notes: "Our reading: the framework classifies the 'aligned to what' and 'defined by whom' choices behind preference data. In our terms it locates the principal (developer prescriptions versus crowd or user interpretations) for the post-training sense of alignment."
+
+# ---------------------------------------------------------------- Hellrigel-Holderbaum and Dung 2025 (Misalignment or misuse?)
+- id: def-hhdung-2025-aligned-narrow-technical
+  source: "2506.03755"
+  year: 2025
+  term: "aligned AI (narrow technical sense) and the alignment target"
+  definition_quote: "As a first approximation, an AI system is aligned, in a narrow technical sense, if it tries to do what its designers/users want it to do (Christiano 2018; Dung 2023; Ngo et al. 2024)."
+  target: goals
+  principal: multiple
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Alignment is relative to an alignment target, a group whose goals the AI's goals should match.", quote: "More precisely, we may understand alignment as the correspondence between an AI's goals and the goals of some group A (the \"alignment target\")."}
+    - {claim: "The target may be designers, users, all humans or another group.", quote: "The alignment target is the group that the AI system is supposed to be aligned with, which may be designers or users of AI"}
+    - {claim: "Alignment comes in degrees.", quote: "Crucially, alignment plausibly comes in degrees (Friederich & Dung forthcoming): AI goals can conform more or less faithfully to human goals."}
+    - {claim: "Static versus dynamic alignment: agreement now versus agreement that tracks the target's changing goals.", quote: "System S is aligned to an alignment target A statically if S's goals are currently in agreement with A's goals - regardless of whether A's goals will change later on. S is aligned to A dynamically if S's goals are in agreement with A's goals indefinitely, in spite of changes in the latter."}
+    - {claim: "In HHH practice, removing jailbreak vulnerabilities is counted as alignment.", quote: "When such \"jailbreaks\", i.e. vulnerabilities to adversarial inputs, were eliminated, the model would be considered aligned, at least in this respect."}
+  excludes:
+    - {claim: "The technical question of how to align is separate from the ethical question of what to align to.", quote: "The technical question how to align AI with certain goals and values can be distinguished from the ethical question about the goals or values AI should be aligned with (Gabriel 2020)."}
+    - {claim: "Misuse by the target group is a risk created by alignment, not prevented by it.", quote: "A fully aligned AGI system, by definition, pursues human goals. Yet, this means that the AGI system will optimize for bad outcomes if the relevant humans have thoughtless or even malicious goals."}
+    - {claim: "Harmlessness, unlike helpfulness and honesty, requires going against what users want.", quote: "However, harmlessness requires not producing outputs regarded as dangerous, even if users want them (and they are true)."}
+  notes: "Our reading: this paper makes explicit that the principal ('designers/users') is a free parameter and that the choice changes what counts as misuse. It also records a tension inside current practice: the HHH notion of alignment includes resisting users (harmlessness, jailbreak resistance), while the narrow technical notion is about doing what designers or users want."
+
+- id: def-hhdung-2025-misaligned-agi
+  source: "2506.03755"
+  year: 2025
+  term: "misaligned AGI"
+  definition_quote: "This means that its goals do not correspond to what its designers want them to be, making it a superhuman system which optimizes for aims which are different from what its designers intended."
+  target: goals
+  principal: developer
+  behavior_or_motivation: motivation
+  includes: []
+  excludes:
+    - {claim: "The common misuse/accident split (with misalignment under accidents) leaves out structural risks.", quote: "A common categorization of risks into misuse and accident risks (where accident risks include misalignment) neglects structural risks."}
+  notes: "Our reading: the definition of the misaligned case is designer-relative, while the aligned case is stated as 'designers/users'; the paper's argument turns on that gap."
+
+- id: def-hhdung-2025-alignment-misuse-tradeoff
+  source: "2506.03755"
+  year: 2025
+  term: "AGI alignment tradeoff (misalignment risk versus misuse risk)"
+  definition_quote: "If we build misaligned AGI, this threatens an AGI takeover catastrophe. If we build aligned AGI, this might cause an AGI misuse catastrophe."
+  target: goals
+  principal: multiple
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Alignment techniques give fine-grained behavioral control, which can also enable misuse.", quote: "A second important general point is that numerous alignment techniques in practice seem to enable fine-grained control of AI systems' behavior or goals."}
+    - {claim: "Corrigibility lets an AI be repurposed by whoever corrects it.", quote: "In this case, as the AI's goals can be corrected with whatever the new alignment target wants, the AI can be enlisted to help with arbitrary outcomes, including catastrophic ones."}
+  excludes:
+    - {claim: "Robustness research does not directly change goals and may avoid the tradeoff.", quote: "Moreover, since robustness research does not aim at directly changing the kinds of behaviors or goals of AI systems, but only at making their behavior more stable, there may be no correspondingly direct causal paths from such research to a misuse catastrophe."}
+    - {claim: "The tradeoff is empirical, not conceptual.", quote: "Therefore, aligned AGI does not conceptually imply a high misuse risk. Hence, whether alignment efforts will increase misuse risk is a contingent empirical question."}
+  notes: "Our reading: the paper also warns (footnote 24) that a broad conceptual account of alignment championed by companies can mislead about what alignment techniques do in practice, which is a direct statement of the gap between the definitional and the operational senses."
+
+# ---------------------------------------------------------------- Zhi-Xuan et al. 2024 (Beyond Preferences)
+- id: def-zhixuan-2024-alignment-field
+  source: "2408.16984"
+  year: 2024
+  term: "AI alignment (as a field)"
+  definition_quote: "To address these challenges, AI alignment has emerged as a field, focused on the technical project of ensuring an AI system acts reliably in accordance with the values of one or more humans."
+  target: values
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The paper notes that 'human values' is imprecise and usually operationalized as preferences.", quote: "Yet terms like \"human values\" are notoriously imprecise, and it is unclear how to operationalize \"values\" in a sufficiently precise way that a machine could be aligned with them."}
+  excludes: []
+  notes: "Our reading: the paper's opening characterization is deliberately thin; its substance is the critique of preferences as the target."
+
+- id: def-zhixuan-2024-preferentism
+  source: "2408.16984"
+  year: 2024
+  term: "preferentist approach to AI alignment (single-principal preference matching; multi-principal preference aggregation)"
+  definition_quote: "For an AI system to be aligned to a single human principal, it should act so as to maximize the satisfaction of the preferences of that human."
+  target: preferences
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Multi-principal version: maximize aggregate preferences.", quote: "For AI systems to be aligned to multiple human principals, they should act so as to maximize the satisfaction of their aggregate preferences."}
+    - {claim: "RLHF, IRL and DPO all assume preferences are well modeled by a reward or utility function.", quote: "For example, inverse reinforcement learning (Ng and Russell,, 2000; Hadfield-Menell et al.,, 2016), reinforcement learning from human feedback (Akrour et al.,, 2014; Christiano et al.,, 2017; Ouyang et al.,, 2022), and direct preference optimization (Rafailov et al.,, 2024; Hejna et al.,, 2024) all assume that human preferences are well-modeled by a reward or utility function, which can then be optimized to produce aligned behavior."}
+    - {claim: "Deceptive alignment and goal misgeneralization are usually framed as utility-function mismatch.", quote: "Similarly, worries about deceptive alignment (Hubinger et al.,, 2019) and goal misgeneralization (Di Langosco et al.,, 2022) are typically characterized as a mismatch between a learned utility function and the human-intended utility function"}
+    - {claim: "In applied work, the principal is 'a human user or developer'.", quote: "Given an AI system, the goal is to ensure that its behavior conforms with the preferences of a human user or developer."}
+  excludes:
+    - {claim: "Preferences can serve as proxies for values but not as alignment targets.", quote: "As such, preferences can serve as proxies for our values, but not targets of alignment in and of themselves."}
+    - {claim: "Reward-based preference matching only suits narrow, locally scoped systems.", quote: "Rather, we argue that reward-based alignment - and preference matching more generally - is only appropriate for AI systems with sufficiently local uses and scopes."}
+  notes: "Our reading: this card captures the view the paper argues against; it names the dominant operational meaning of alignment in RLHF-era work."
+
+- id: def-zhixuan-2024-role-normative-alignment
+  source: "2408.16984"
+  year: 2024
+  term: "alignment with role-specific normative standards (the normative ideal of a good assistant)"
+  definition_quote: "When an AI system only serves an individual in performing a particular task or role, it should be aligned with the normative ideals or criteria that are appropriate for that role."
+  target: norms
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "General-purpose assistants should be aligned with the ideal of an assistant, not the individual's preferences.", quote: "For general-purpose AI assistants, this implies alignment with the normative ideal of an assistant, rather than alignment to an individual's preferences, or to human normativity writ large."}
+    - {claim: "RLHF labels are goodness-of-a-kind judgments against normative criteria, so RLHF is misdescribed as preference alignment.", quote: "The typical language used to describe reward-learning methods like RLHF is thus misconceived: As used, they are not methods for alignment with any one human's preferences, or for recovering the ''true reward function'' in some person's head,"}
+    - {claim: "A good assistant may refuse to harm others.", quote: "When asked to directly harm others, the assistant might refuse."}
+    - {claim: "Multi-principal version: align systems with norms negotiated by stakeholders (contractualist alignment).", quote: "Rather than learning humanity's preferences in order to maximally satisfy them, AI systems should be aligned with normative standards and criteria that we collectively forge and negotiate - standards exemplified by social, legal, and moral norms."}
+    - {claim: "Reframing: many systems aligned to agreed norms, not one system aligned to humanity's preferences.", quote: "Our task is not to align a single powerful AI system with the preferences of humanity writ large, but to align a multiplicity of AI systems with the norms we agree that each system should abide by (Zhi-Xuan,, 2022)."}
+  excludes:
+    - {claim: "Individual preferences may be normatively unacceptable, so they are not the target.", quote: "Individual's preferences may be normatively unacceptable."}
+  notes: "Our reading: this proposal moves the target from the principal's preferences to role norms, which makes refusing a user compatible with being aligned. It explains why HHH training (harmlessness against user wishes) can be called alignment without contradiction, at the cost of making 'aligned' depend on whose negotiated norms apply."
+
+# ---------------------------------------------------------------- Klingefjord, Lowe, Edelman 2024 (What are human values...)
+- id: def-klingefjord-2024-alignment-to-values
+  source: "2404.10636"
+  year: 2024
+  term: "aligning to human values (versus alignment with operator intent)"
+  definition_quote: "The field of AI alignment is focused on the question: \"how can we ensure what is optimized by machine learning models is good?\""
+  target: values
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The paper splits 'aligning to human values' into eliciting, reconciling into an alignment target, and training.", quote: "We split \"aligning to human values\" into three stages. First, we need a process for eliciting values from people. Second, we need a way of reconciling those values to form an alignment target for training ML models."}
+    - {claim: "Definition of alignment target.", quote: "A data structure that can be turned into an objective function, which can then be approximately optimized in the training of a machine learning model."}
+    - {claim: "Values, in the paper's sense, are non-instrumental choice criteria.", quote: "Values are criteria, used in choice, which are not merely instrumental (Taylor, 1977)."}
+  excludes:
+    - {claim: "Most alignment research sidesteps the 'good for whom' question by targeting operator intent.", quote: "Most often, alignment research sidesteps this question by focusing on alignment with operator intent-building systems that do what the user tells it to do-with the motivation that this will avert the most severe catastrophic and existential risks."}
+    - {claim: "Operator-intent alignment is insufficient: some users intend harm, and faithful intent-following can harm third parties.", quote: "But aligning AI systems with operator intent is not sufficient for good AI outcomes. For one, some users may intend to cause harm."}
+    - {claim: "Example: a model faithfully aligned with a campaign's intent eroding the epistemic commons.", quote: "Here, there is a conflict between operator intent and some broader notion of human values."}
+    - {claim: "Values are distinct from preferences, goals and norms.", quote: "This conception of \"values\" is also distinct from preferences, goals, and norms, as we'll discuss in Section 4.1."}
+  notes: "Our reading: the paper explicitly contrasts two senses of the word: intent alignment (what most alignment research targets) and alignment to human values (its own project), and treats harm from intent-following as a reason to change the target, not as a separate misuse problem."
+
+# ---------------------------------------------------------------- Shen et al. 2023 (LLM Alignment: A Survey)
+- id: def-shen-2023-ai-alignment
+  source: "2309.15025"
+  year: 2023
+  term: "AI alignment (outer and inner objectives aligned with human values)"
+  definition_quote: "In this survey, we define AI alignment from its intrinsic perspective: AI alignment ensures that both the outer and inner objectives of AI agents align with human values."
+  target: values
+  principal: unspecified
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Outer objectives are set by designers; inner objectives are what the agent optimizes.", quote: "The outer objectives are those defined by AI designers based on human values, while the inner objectives are those optimized within AI agents."}
+    - {claim: "Outer alignment: align the training objective with the designer's goal.", quote: "In other words, outer alignment attempts to align the specified training objective to the goal of its designer."}
+    - {claim: "Inner alignment: ensure the model actually pursues the designer's objective, including goal misgeneralization.", quote: "Inner alignment ensures that AI's \"internal\" objectives (those it derives or optimizes for during its learning process) match the \"external\" objectives set by its designers."}
+    - {claim: "The surveyed outer-alignment goals for LLMs are HHH.", quote: "We take the view of Anthropic on AI alignment, which categorizes the goals specified in the outer alignment of LLMs into three dimensions: helpfulness, honesty, and harmlessness (HHH) (Askell et al., 2021)."}
+    - {claim: "Harmlessness includes refusing harmful requests and never outputting harmful content whatever the input.", quote: "Harmlessness: This goal can be further decomposed into two components: 1) If LLMs receive a harmful request, they should clearly and politely refuse it. 2) LLMs themselves should not output any harmful content, no matter what inputs they receive."}
+  excludes:
+    - {claim: "The definition leaves human values unspecified.", quote: "This definition, though distinguishing between the inner and outer objectives of an AI agent, does not precisely define human values, making it somewhat imprecise."}
+    - {claim: "Inner/outer classification of failures is often inconsistent.", quote: "While outer and inner alignment have their own definitions, categorizing specific alignment failures into either inner alignment failures or outer alignment failures may be challenging and inconsistent in practice (Shah, 2023)."}
+  notes: "Our reading: the survey rejects Christiano's intent definition as too general and adopts a values-based outer/inner definition. In practice it operationalizes 'values' as HHH, which builds refusal of harmful requests into the definition of alignment."
+
+- id: def-shen-2023-llm-alignment-broad
+  source: "2309.15025"
+  year: 2023
+  term: "LLM alignment (in the context of LLMs)"
+  definition_quote: "In the context of LLMs, alignment ensures that the model's responses are not only accurate and coherent but also safe, ethical, and desirable from the perspective of developers and users."
+  target: other
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Factuality (hallucination) evaluation is listed as a dimension of alignment evaluation.", quote: "The first level illustrates the five aspects of LLM outer alignment we are focusing on, namely: 1) factuality, 2) ethics, 3) toxicity, 4) stereotype and bias, and 5) general evaluation."}
+    - {claim: "RLHF alignment is described as a safeguard against misuse attacks, and jailbreaks as breaching it.", quote: "Nonetheless, alignment techniques are not infallible. For example, through repeated interactions, humans can \"trick\" these models into generating harmful content, as seen in jailbreaking attacks."}
+  excludes: []
+  notes: "Our reading: this operational sense folds accuracy, coherence, toxicity, bias and misuse resistance into 'alignment'. It is the widest LLM-practice sense in our set and puts factuality, which Dung and DeepMind treat as capability unless the model knows better, inside alignment evaluation."
+
+- id: def-shen-2023-terminology-no-consensus
+  source: "2309.15025"
+  year: 2023
+  term: "terminological status of 'alignment' (no consensus; Christiano's definition judged too general)"
+  definition_quote: "Furthermore, there's no consensus on the definition of AI alignment."
+  target: not-stated
+  principal: unspecified
+  behavior_or_motivation: unclear
+  includes:
+    - {claim: "'Alignment', 'AI alignment' and 'value alignment' are used interchangeably.", quote: "Terms like \"alignment\", \"AI alignment\", and \"value alignment\" are often used interchangeably in discussions."}
+    - {claim: "The survey judges the intent definition too general because nearly all models try to do what creators want.", quote: "This definition is too general as almost all AI models are trying to do what their creators want them to do."}
+    - {claim: "The field is pre-paradigmatic.", quote: "Compared to other AI research areas, such as natural language processing which has undergone periodic paradigm shifts several times, AI alignment is pre-paradigmatic (Kirchner et al., 2022)."}
+  excludes: []
+  notes: "Our reading: direct evidence of the terminological drift this project documents; the judgment that intent alignment is 'too general' is the opposite of Dung's and the DeepMind paper's choice to keep it narrow."
+
+# ---------------------------------------------------------------- Shi et al. 2026 (From Sycophancy to Deception)
+- id: def-shi-2026-deception-operational
+  source: "2604.04788"
+  year: 2026
+  term: "deception (operational, for LLMs)"
+  definition_quote: "Adapting Park et al. (2024)'s definition of deception as \"the systematic inducement of false beliefs in others to accomplish some outcome other than the truth\", we define deception as the production of outputs that systematically induce or maintain false beliefs in recipients."
+  target: not-stated
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Hallucination, sycophancy, unfaithful CoT, citation fabrication, sandbagging and alignment faking are mapped onto one taxonomy.", quote: "Conceptual clarification: precise definitions that resolve cross-community ambiguities, showing how hallucination, sycophancy, unfaithful chain-of-thought (Turpin et al., 2023; Lanham et al., 2023), citation fabrication, sandbagging (Tice et al., 2024), and alignment faking (Greenblatt et al., 2024; Hubinger et al., 2024) map onto unified dimensions."}
+    - {claim: "Goal-directedness is deliberately left out of the definition and handled empirically.", quote: "Our definition does not require evidence of goal-directedness in the definition itself, since doing so would conflate two questions we treat separately: whether an output is misleading, and whether it is goal-directed."}
+  excludes:
+    - {claim: "Adversarial attacks, jailbreaks and deepfakes are out of scope.", quote: "We focus on text-based LLMs (including multi-agent settings) and exclude adversarial attacks, jailbreaks, deepfakes, and questions about machine consciousness."}
+  notes: "Our reading: the title calls these behaviors 'spontaneous misalignment', but the paper defines deception by output effect, not by intent, and uses 'misaligned' only for strategic cases (alignment faking, scheming, emergent misalignment). The exclusion of jailbreaks makes 'spontaneous' mean 'not adversarially elicited'."
+
+- id: def-shi-2026-behavioral-vs-strategic
+  source: "2604.04788"
+  year: 2026
+  term: "behavioral deception versus strategic deception"
+  definition_quote: "Strategic deception occupies the high end: misleading outputs are instrumentally selected to advance an objective. This requires functional evidence of: (1) an objective the system pursues, (2) a representation that misleading the recipient advances that objective, and (3) selection of deceptive outputs on that basis."
+  target: not-stated
+  principal: multiple
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Behavioral deception: misleading outputs as training side effects, without evidence of selection for an objective.", quote: "Behavioral deception occupies the low end of goal-directedness: misleading outputs arise as side effects of training without evidence that the model selected them to advance an objective."}
+    - {claim: "Hallucinated citations are the paradigm of behavioral deception.", quote: "The paradigmatic example is hallucination: a model generates a fabricated citation not by reasoning about user beliefs but because training rewarded fluent, citation-shaped completions."}
+    - {claim: "The same false output can come from missing information, RLHF-rewarded agreement, or an objective.", quote: "This false claim could emerge because (a) the model lacks accurate information and generates a plausible completion from training patterns, (b) the model has access to mixed or negative evidence but agrees with the user's apparent belief because RLHF rewarded agreement over accuracy, or (c) the model has an objective (e.g., maintaining user engagement) better served by the user holding a positive belief about the supplement."}
+    - {claim: "The distinction is about the best explanation, not the output.", quote: "The distinction is therefore not a property of the output itself but of the best-supported explanation for why it is misleading, determined by evidence such as incentive sensitivity, process inspection, and interpretability probes (Section 3.1)."}
+    - {claim: "Strategic-deception benchmarks need capability controls to show the model can produce accurate outputs.", quote: "These benchmarks have distinctive methodological requirements: incentive variation (conditions differing in whether deception serves the model's apparent interests), capability controls (verifying that the model can produce accurate outputs), and ideally process evidence (a window into whether deceptive outputs result from goal-directed reasoning)."}
+  excludes:
+    - {claim: "Sycophancy and specification gaming are boundary cases, currently best seen as behavioral.", quote: "Specification gaming presents another boundary case (Christiano et al., 2017): best categorized as behavioral for now, but such behaviors could shade into strategic deception as systems develop greater situational awareness and richer internal representations of their environment."}
+  notes: "Our reading: the supplement example is a three-way version of our 'could / knew' questions: (a) is a capability or knowledge failure, (b) is specification-driven divergence, (c) is goal-driven. The paper's evidence types (incentive variation, capability controls, process inspection, probes) are the tests that would settle our boundary cases."
+
+# ---------------------------------------------------------------- Schwinn et al. 2025 (Adversarial Alignment position)
+- id: def-schwinn-2025-adversarial-alignment
+  source: "2502.11910"
+  year: 2025
+  term: "adversarial alignment (robustness of an aligned model)"
+  definition_quote: "We investigate the research state of adversarial alignment in large language models (LLMs), which we define as the ability of an aligned model to maintain its intended training objective despite input perturbations."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Attacks on 'safety alignment' face vague success criteria, rater disagreement and gray areas.", quote: "For example, an attack targeting a model's safety alignment must account for: 1) an exponential arbitrary-length outputspace, 2) subjective definitions of success, as human raters may disagree on what constitutes harmfulness, 3) ambiguous edge cases, such as the gray area between outright refusal, incorrect but affirmative responses, and explicitly harmful content"}
+  excludes:
+    - {claim: "The authors propose disentangling robustness (stability under attack) from alignment (what the model should do).", quote: "By disentangling robustness from alignment, this approach reduces ambiguity, facilitating measurable research progress."}
+    - {claim: "Aggregate robustness scores conflate stability under attack with differences in alignment design choices.", quote: "Since overall robustness is typically reported as an aggregate score, these evaluations risk conflating model robustness properties (i.e., the stability of a model output under attack) with behaviors that simply reflect different design choices in model alignment."}
+    - {claim: "Improving attack optimization is largely independent of the alignment problem.", quote: "Improving the capability of these algorithms, however, is largely independent of the complexities of the alignment problem and can be achieved more effectively using simpler and reproducible benchmarks."}
+  notes: "Our reading: the paper treats 'alignment' as the intended objective a developer trained in (for example refusing harmful requests) and 'robustness' as keeping it under attack. Its proposal to separate the two is a line-drawing proposal: jailbreak resistance is a robustness property of whatever alignment target was chosen, not itself a definition of alignment."
+
+# ---------------------------------------------------------------- Carlsmith 2025 (What is it to solve the alignment problem?)
+- id: def-carlsmith-2025-solving-alignment
+  source: carlsmith-2025-what-is-it-to-solve-alignment
+  year: 2025
+  term: "solving (versus failing, avoiding, handling) the alignment problem"
+  definition_quote: "I'll say you failed on the alignment problem if you failed on Safety. And I'll say that you solved the alignment problem if you successfully achieve both Safety and Benefits while also doing the following:"
+  target: intentions
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Safety means avoiding a loss of control scenario.", quote: "Safety: Avoiding what I'll call a \"loss of control\" scenario."}
+    - {claim: "Solving requires building superintelligent agents and safely eliciting their beneficial capabilities.", quote: "Solving: Finally, I'll say that you solved the alignment problem if you did Safety and Benefits while also building superintelligent AI agents and becoming able to safely elicit their main beneficial capabilities"}
+    - {claim: "Elicitation is defined as performance when the AI tries its best in the desired way, separating effort from capability.", quote: "where \"safety,\" here, centrally means avoiding rogue behavior, and \"elicitation\" means the task performance you get if the AI is trying its best to do the task in the desired way"}
+    - {claim: "The core problem is that going for benefits can lead to failure on safety.", quote: "The core alignment problem, as I see it, is that going for Benefits can lead to failure on Safety."}
+  excludes:
+    - {claim: "Solving does not require complete alignment (sharing reflectively endorsed values).", quote: "Nor does it assume we need extreme amounts of motivational perfection in our AIs (\"complete alignment\")."}
+    - {claim: "Solving does not require permanent or near-term safety, scaling to all levels, or full competitiveness.", quote: "In particular: it doesn't mean that you're in a position to safely scale to yet-more-superintelligent AIs (\"safety at all scales\"), or to scale competitively with extremely incautious actors (\"fully competitive safety\"), or to avoid loss of control scenarios perpetually going forward (\"permanent safety\"), or to avoid them, even, for the relatively near-term future (\"near-term safety\")."}
+    - {claim: "Aligning a superintelligence is separate from what is done with it.", quote: "And I think these more technical aspects fit better with standard usage (i.e., aligning your superintelligence is one thing, doing stuff with it is another)."}
+    - {claim: "Benefits requires only access, so misuse by a regime is compatible with Benefits.", quote: "And the same goes for scenarios where e.g. a totalitarian regime uses superintelligent AI centrally in bad ways."}
+  notes: "Our reading: Carlsmith defines the problem by an outcome (no loss of control plus access to benefits) rather than by a property of each system, and states openly that the definition is weaker than 'complete alignment'. His 'elicitation' clause separates capability from effort in the same way as Dung's test."
+
+- id: def-carlsmith-2025-gone-rogue
+  source: carlsmith-2025-what-is-it-to-solve-alignment
+  year: 2025
+  term: "AI 'going rogue' (unintended power-seeking)"
+  definition_quote: "I'll say that an AI has \"gone rogue\" when (a) it's engaging in power-seeking behaviors like this, and (b) neither the user nor the designer of the AI intended it to do so."
+  target: intentions
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Listed rogue behaviors include resisting shutdown, misrepresenting safety-relevant facts, manipulating training, ignoring instructions, escaping, and seeking unauthorized resources.", quote: "intentionally misrepresenting safety-relevant facts - motivations, capabilities, etc;"}
+    - {claim: "Ambiguous intent is settled by what users/designers would reject after a little reflection.", quote: "And I think that preventing this kind of rogue behavior - i.e., behavior that the users/designers would've strongly rejected after only a bit of reflection - is often enough for the purposes I have in mind."}
+  excludes:
+    - {claim: "An AI deliberately built by humans to seek power destructively (e.g., 'ChaosGPT') has not gone rogue.", quote: "Thus, if a doomsday cult designs and deploys a version of \"ChaosGPT\" (or: \"ClippyGPT\") in an effort to destroy the world, ChaosGPT has not \"gone rogue\" on my definition - even though it's behaving just like a rogue AI might."}
+    - {claim: "A dictator's AI general seizing territory as intended is not rogue; ignoring the dictator would be.", quote: "If the AI general starts ignoring the dictator's instructions, though, or refusing to hand back control of the military when the dictator asks for it - that's rogue behavior."}
+    - {claim: "Voluntary transfers of power to AIs are not losses of control.", quote: "One note in particular, here, is that I'm not counting voluntary transfers of power/control to AIs as \"losses of control.\""}
+    - {claim: "The discourse has conflated preventing unintended power-seeking with ensuring good outcomes of AI power.", quote: "That is: this discourse has too often run together the problem of \"how do we ensure the AIs don't seek to gain/maintain power in unintended ways\" with the problem of \"even assuming that AIs don't seek to gain/maintain power in unintended ways, how do we ensure that the outcome of AIs having/using power is good?\""}
+  notes: "Our reading: the ChaosGPT and AI-general examples are the clearest statements in our set that misuse by the principal is outside alignment: the same behavior is or is not 'rogue' depending only on whether a user or designer intended it. The model-spec example (the letter of the spec implies lying to a suspected terrorist) shows where intent is itself unclear."
+
+# ---------------------------------------------------------------- Ren et al. 2024 (Safetywashing)
+- id: def-ren-2024-alignment-benchmark-sense
+  source: "2407.21792"
+  year: 2024
+  term: "alignment (as operationalized by alignment benchmarks)"
+  definition_quote: "Alignment refers to how well AI systems follow the goals of their operators, accurately specifying and implementing the desired goals without unintended consequences or misinterpretations. Common alignment evaluations assess AI systems' helpfulness or instruction-following, with the aim to closely align the AI systems' responses with human preferences."
+  target: preferences
+  principal: operator
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Alignment benchmarks used: Chatbot Arena and MT-Bench, i.e., outputs humans prefer.", quote: "Figure 5: Alignment benchmarks assess AI systems' ability to produce outputs that humans prefer."}
+  excludes:
+    - {claim: "Machine ethics is contrasted with alignment's usefulness properties.", quote: "Machine ethics aims to ensure that AI systems understand and behave in ways that are morally acceptable, in contrast to the usefulness properties emphasized in alignment."}
+    - {claim: "Preference-alignment benchmarks largely measure capabilities.", quote: "Alignment evaluations largely measure upstream model capabilities and compute investment; as a goal to guide model development, alignment metrics are very similar to other capabilities benchmarks."}
+    - {claim: "Distinctions between preference alignment and capabilities are 'distinctions without a difference'.", quote: "We can also see many of the distinctions made about human preference alignment and capabilities are distinctions without a difference."}
+  notes: "Our reading: in this paper's usage, 'alignment' is a benchmark category (helpfulness, instruction-following, human preference), and the measured version of it is nearly a capability. This is direct quantitative evidence that one common sense of 'alignment' tracks capability rather than anything that separates the system's goals from its competence."
+
+- id: def-ren-2024-ai-safety-separable
+  source: "2407.21792"
+  year: 2024
+  term: "AI safety (as research goals empirically separable from capabilities); safetywashing"
+  definition_quote: "Based on these findings, we propose an empirical foundation for developing more meaningful safety metrics and define AI safety in a machine learning research context as a set of clearly delineated research goals that are empirically separable from generic capabilities advancements."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Safetywashing: capability improvements misrepresented as safety advances.", quote: "Our findings reveal that many safety benchmarks highly correlate with both upstream model capabilities and training compute, potentially enabling \"safetywashing\"-where capability improvements are misrepresented as safety advancements."}
+    - {claim: "Some safety areas are a 'jangle' for capabilities: different names for the same latent factor.", quote: "In some cases, safety-related areas may act a jangle for capabilities; jangle fallacy is the erroneous belief that two constructs are different because they have the different names, when in practice they measure the same latent factor."}
+    - {claim: "Whether an area counts as safety is often decided sociologically.", quote: "The determination of whether an area is safety-relevant is often sociological rather than scientific."}
+  excludes:
+    - {claim: "Capability gains do not make AI safer overall: they raise weaponization risk.", quote: "While improving upstream capabilities can improve properties such as truthfulness, it also increases the risk of weaponization and catastrophic malicious use (Section 6.2). Hence AI does not necessarily become safer as it becomes more capable."}
+  notes: "Our reading: the paper offers an operational test for the safety/capability line (correlation with a capabilities score across models) that complements Dung's per-case capability test. Its conclusion that 'alignment theory' is a counterproductive guide is a claim about research prioritization, stated as such by the authors."
+
+# ---------------------------------------------------------------- Zhou et al. 2023 (LIMA)
+- id: def-zhou-2023-superficial-alignment-hypothesis
+  source: "2305.11206"
+  year: 2023
+  term: "Superficial Alignment Hypothesis (alignment as learning response format/style)"
+  definition_quote: "A model's knowledge and capabilities are learnt almost entirely during pretraining, while alignment teaches it which subdistribution of formats should be used when interacting with users."
+  target: other
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Alignment is hypothesized to be learning the style or format of interacting with users.", quote: "We hypothesize that alignment can be a simple process where the model learns the style or format for interacting with users, to expose the knowledge and capabilities that were already acquired during pretraining."}
+    - {claim: "The 'alignment data' are 1,000 stylistically uniform assistant responses.", quote: "To that end, we collect a dataset of 1,000 prompts and responses, where the outputs (responses) are stylistically aligned with each other, but the inputs (prompts) are diverse."}
+    - {claim: "Safety behavior (refusals) is part of what is trained, via 13 examples.", quote: "Finally, we analyze the effect of having a small number of safety-related examples in the training set (only 13; see Section 2.2)."}
+  excludes:
+    - {claim: "Knowledge and capabilities are placed outside alignment (in pretraining).", quote: "If this hypothesis is correct, and alignment is largely about learning style, then a corollary of the Superficial Alignment Hypothesis is that one could sufficiently tune a pretrained language model with a rather small set of examples (Kirstain et al., 2021)."}
+  notes: "Our reading: in LIMA 'alignment' names the post-training step that turns a base model into an assistant, judged by human preference for its responses. This is the post-training sense of the word, far from intent or value alignment; it nonetheless agrees with Dung and DeepMind in placing knowledge and capability outside alignment."
+
+# ---------------------------------------------------------------- Lin et al. 2023 (URIAL)
+- id: def-lin-2023-alignment-tuning-token-shift
+  source: "2312.01552"
+  year: 2023
+  term: "alignment tuning (SFT + RLHF) as stylistic token distribution shift"
+  definition_quote: "Alignment tuning has become the de facto standard practice for enabling base large language models (LLMs) to serve as open-domain AI assistants."
+  target: preferences
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Alignment tuning = instruction SFT plus preference tuning by RLHF.", quote: "The alignment tuning process typically involves instruction learning through supervised fine-tuning (SFT) and preference tuning via reinforcement learning from human feedback (RLHF)."}
+    - {claim: "Measured effect: most shifts are stylistic tokens and safety disclaimers.", quote: "Most distribution shifts occur with stylistic tokens (e.g., discourse markers, safety disclaimers). These direct evidence strongly supports the hypothesis that alignment tuning primarily learns to adopt the language style of AI assistants, and that the knowledge required for answering user queries predominantly comes from the base LLMs themselves."}
+    - {claim: "Refusal and safety tokens are among those shifted.", quote: "Also, the tokens related to safety concerns and refusal are also frequently shifted."}
+    - {claim: "'Alignment' is evaluated on six aspects including factuality and safety.", quote: "Our analysis encompasses six dimensions of LLM outputs:"}
+  excludes:
+    - {claim: "Knowledge for answering comes from the base model, not alignment tuning.", quote: "This observation suggests that untuned and aligned LLMs share the same pre-existing knowledge from pre-training, such that a proper prefix can trigger this acquired knowledge without tuning."}
+  notes: "Our reading: URIAL gives direct measurement for the post-training sense of 'alignment': in its token analysis, what alignment tuning changes is mostly style, discourse markers, and refusal and disclaimer tokens. This is evidence that one dominant usage of 'alignment' refers to an assistant persona and refusal layer, not to the system's goals."
+
+# ---------------------------------------------------------------- Sorensen et al. 2024 (Roadmap to Pluralistic Alignment)
+- id: def-sorensen-2024-alignment-and-pluralism
+  source: "2402.05070"
+  year: 2024
+  term: "AI alignment and pluralistic alignment (Overton, steerable, distributional)"
+  definition_quote: "AI alignment aims to ensure that a system works with human intentions and values (Leike et al., 2018; Ji et al., 2024; Gabriel, 2020). However, even within a single task or prompt, individual people vary widely in their goals, intentions, and values."
+  target: values
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "In current practice, alignment steers LLMs toward intentions and values 'such as safety and accuracy'.", quote: "AI alignment aims to guide a LLM in the direction of human intentions and values, such as safety and accuracy (Leike et al., 2018; Ji et al., 2024)."}
+    - {claim: "Three pluralism notions.", quote: "1) Overton pluralistic models that present a spectrum of reasonable responses;"}
+    - {claim: "Steerable pluralism: faithfully steer (or align) to a given attribute or perspective.", quote: "A pluralistic model might instead faithfully steer (or align) its responses to a given attribute or perspective, such as a value, framework, or population."}
+    - {claim: "Distributional pluralism: calibrated to a reference population's answers.", quote: "In other words, is well-calibrated w.r.t. the distribution over answers from ."}
+    - {claim: "RLHF treats human variation as noise by fitting the average preference.", quote: "Implicit to current preference-based methods like reinforcement learning with human feedback (RLHF) is the assumption that models should fit to the \"average\" human preference."}
+  excludes:
+    - {claim: "The paper does not decide to whom or what to align; it argues current approaches are unclear on this.", quote: "In this work, we 1) argue that current approaches are unclear regarding to whom/what is being aligned and 2) formalize and discuss a set of frameworks to operationalize how to better align models to a set of values, characteristics, or perspectives."}
+  notes: "Our reading: this source works on the 'aligned to whom' axis and treats the principal as a population or a chosen attribute. Its practical description of alignment includes accuracy, which other sources (Dung, DeepMind) treat as capability."
+
+# ---------------------------------------------------------------- Ungless et al. 2024 (Ethics Whitepaper)
+- id: def-ungless-2024-alignment-ill-defined
+  source: "2410.19812"
+  year: 2024
+  term: "LLM (value) alignment, characterized as ambiguous and ill-defined"
+  definition_quote: "The notion of \"alignment\" is inherently ambiguous, meaning different things to different stakeholders: from adhering to human preferences and societal norms to upholding ethical principles or achieving specific operational outcomes (Hendrycks et al. 2020; Gabriel 2020; Kasirzadeh and Gabriel 2023; Kirk et al. 2023; Anwar et al. 2024)."
+  target: not-stated
+  principal: multiple
+  behavior_or_motivation: unclear
+  includes:
+    - {claim: "The section heading states that alignment is unreliable and ill-defined.", quote: "Alignment is unreliable and ill-defined."}
+    - {claim: "The object of alignment is a moving target, raising 'whose values'.", quote: "These constructs are diverse, evolving, and often contradictory across cultures and individuals, raising questions about whose values should be prioritized and how to reconcile conflicting viewpoints (Askell et al. 2021; Sorensen et al. 2024; Pistilli et al. 2024)."}
+    - {claim: "Misalignment can be introduced at every stage of the pipeline.", quote: "The multi-stage nature of LLM development - from data collection and pre-training to fine-tuning and deployment - introduces multiple points where misalignment can occur or be introduced."}
+  excludes: []
+  notes: "Our reading: a practitioner ethics guide that, in a short section, records the same fuzziness this project documents and recommends not assuming 'one set of human values'. It offers no definition of its own."
+
+# ---------------------------------------------------------------- LaCroix 2026 (Structural Value Alignment Problem)
+- id: def-lacroix-2026-structural-value-alignment
+  source: "2604.20805"
+  year: 2026
+  term: "value alignment problem (structural, principal-agent definition) and its three axes"
+  definition_quote: "According to this model, value misalignment emerges in human-AI interactions whenever (a) the objectives of the AI system are mis-specified, or (b) informational asymmetries exist between (human) principals and (artificial) agents. Hence, misalignment can occur along three orthogonal, but interacting, axes: (1) objectives, (2) information, and (3) principals."
+  target: specification
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The standard definition underdetermines whose values are the target.", quote: "However, this standard description underdetermines the problem since it does not specify what or whose values are (or ought to be) considered the proper targets of alignment."}
+    - {claim: "Objectives axis = misspecified proxies (roughly outer alignment), including reward hacking.", quote: "In this sense, the objectives axis captures what most people intuitively mean by value misalignment-e.g., reward hacking, negative side effects, or perverse incentives (Amodei et al., 2016)."}
+    - {claim: "Information axis (roughly inner alignment): misalignment can arise even with a perfect objective.", quote: "Hence, even when objectives are perfectly specified-i.e., there is sufficient alignment along the objectives axis-informational asymmetries can independently generate alignment failures."}
+    - {claim: "Principals axis: shareholders (developers, companies, users) versus stakeholders (affected people).", quote: "Although these groups may often overlap, the most consequential instances of misalignment will arise when stakeholders are distinct from shareholders-for instance, when an algorithm optimises for corporate profit at the expense of public welfare."}
+    - {claim: "Alignment is relative to a principal and partial.", quote: "A model may therefore be well aligned relative to one principal while simultaneously misaligned relative to another. Alignment, in this sense, is always relative and always partial-a matter of degree rather than an absolute state."}
+  excludes:
+    - {claim: "On this account AI systems have no inherent values, so misalignment comes from proxies, not the agent's will.", quote: "In contrast, artificial agents do not possess intrinsic values: they instantiate proxy objectives designed and optimised by humans. Misalignment, therefore, emerges not from the agent's will but from the incompleteness, ambiguity, or mis-specification of those proxies."}
+    - {claim: "'Solving' alignment is called a category mistake.", quote: "The structural definition underscores that talk of \"solving\" the value alignment problem involves a category mistake: the value alignment problem is not a problem per se, but a class of problems that can be more or less instantiated."}
+  notes: "Our reading: this is the broadest principal notion in our set: harms to affected stakeholders count as misalignment even when the developer and user are satisfied, which places much of what Dung, DeepMind and Carlsmith call misuse or governance inside 'misalignment' along the principals axis. It also denies the motivational reading of misalignment (no 'will'), the opposite of the DeepMind 'knowingly' criterion."
+
+# ---------------------------------------------------------------- Dahlgren Lindström et al. 2024 (AI Alignment through RLHF?)
+- id: def-dahlgren-2024-rlxf-3h-value-alignment
+  source: "2406.18346"
+  year: 2024
+  term: "'value alignment' via RLHF/RLAIF and the 3H criteria (as claimed by AI companies), with critique"
+  definition_quote: "It is often claimed by AI companies and researchers that RLHF fine-tuning ensures that the LLMs they market and sell conform (or 'align') to human values, in particular by responding in ways that are 'helpful', 'harmless', and 'honest' (the 3Hs)."
+  target: values
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "In practice the value alignment is crowd-worker ranking of outputs on the 3H criteria.", quote: "This 'value alignment' is often achieved through a process in which crowd-workers rank LLM outputs according to the 3H criteria, e.g. in terms of how helpful a response was in answering a question."}
+    - {claim: "The 3H criteria were chosen for being simple and memorable, and left to annotators to interpret.", quote: "This also leads to the broader adaptation of vague definitions in subsequent work."}
+    - {claim: "The paper quotes a definition of alignment as behaving per human values and preferences, and links it to Kirk et al.'s 'empty signifier'.", quote: "Alignment refers to the process of ensuring that LLMs behave in accordance with human values and preferences."}
+  excludes:
+    - {claim: "RLxF is argued to be insufficient for AI safety and ethical AI, even if it improves performance.", quote: "We do not question that LLM performance has improved in various ways thanks to RLxF. What we aim to show is, instead, that RLxF is woefully insufficient for leading to AI safety and ethical AI."}
+    - {claim: "Value alignment is called impossible as a purely technical task.", quote: "These points are symptomatic of a more fundamental issue that our analysis illustrates: value alignment is an impossible task, if seen from a purely technical point of view."}
+    - {claim: "Calibrated uncertainty would need introspection the authors say LLMs lack, so 'honesty' via RLxF tracks text likelihood.", quote: "Likewise, expressing 'appropriate levels of uncertainty' would require a capacity for introspection, which LLMs by themselves do not have."}
+  notes: "Our reading: this source documents the industrial sense of alignment (3H via RLxF) and argues it should not be equated with safety. Its claim that LLMs lack introspection makes 'honesty' failures look like capability limits, the opposite of Dung's reading of hallucination as misalignment."
+
+- id: def-shi-2026-glossary-alignment-faking-scheming
+  source: "2604.04788"
+  year: 2026
+  term: "alignment faking, deceptive alignment, scheming, sandbagging (glossary definitions)"
+  definition_quote: "Strategic behavior in which a model acts aligned with stated objectives during developer training or evaluator assessment while possessing or pursuing misaligned objectives."
+  target: specification
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Deceptive alignment: aligned behavior in training, different objectives post-deployment.", quote: "A scenario in which a model behaves aligned during training while internally pursuing different objectives that manifest post-deployment."}
+    - {claim: "Scheming: covertly pursuing misaligned objectives.", quote: "Goal-directed behavior that involves covertly pursuing misaligned objectives, often including deceptive actions to avoid detection."}
+    - {claim: "Sandbagging: strategic underperformance to conceal capabilities.", quote: "Strategic underperformance on evaluations to conceal capabilities."}
+  excludes: []
+  notes: "Our reading: these glossary terms all presuppose 'misaligned objectives' without defining them; the paper's own contribution is to separate the misleading output from the question of goal-directedness."
+
+- id: def-shi-2026-glossary-sycophancy-hallucination
+  source: "2604.04788"
+  year: 2026
+  term: "sycophancy, hallucination, confabulation (glossary definitions)"
+  definition_quote: "The tendency to produce outputs aligned with perceived user preferences, even when false or suboptimal."
+  target: preferences
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Hallucination is defined by output properties only.", quote: "The generation of content that is nonsensical, unfaithful to source material, or factually incorrect."}
+    - {claim: "Confabulation: plausible false content without intent to deceive.", quote: "The generation of plausible-sounding but false content without intent to deceive."}
+  excludes: []
+  notes: "Our reading: sycophancy is defined here as being 'aligned with perceived user preferences', a reminder that one sense of 'aligned' (matching the user's preference) names the failure in another sense (honesty toward the user)."
+
+- id: def-shen-2023-inner-alignment-failures
+  source: "2309.15025"
+  year: 2023
+  term: "inner alignment (mesa-objective vs base objective) and its failure types: proxy, approximate, suboptimality alignment; deceptive alignment"
+  definition_quote: "In this context, a relatively formal definition of inner alignment refers to the challenge of aligning the mesa-objective of a mesa-optimizer with the base objective of the base optimizer, so that the mesa-optimizer pursues the same goal as the base optimizer (Hubinger et al., 2019c)."
+  target: specification
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Deceptive alignment as a type of proxy alignment.", quote: "Deceptive alignment (Hubinger et al., 2019a) is a type of proxy alignment in which a mesa-optimizer gains sufficent awareness of the base objective and is instrumentally incentivized to pretend to be aligned with the base optimizer, in order to avoid being adjusted by the base optimizer."}
+    - {claim: "Suboptimality alignment: aligned behavior caused by a limitation, which may vanish when the limitation is overcome.", quote: "Suboptimality alignment (Hubinger et al., 2019c; Hubinger et al., 2019b; Angelou, 2022) refers to a form of pseudo-alignment in which a deficiency, error, or limitation causes a mesa-optimizer to exhibit aligned behavior, even though its mesa-objective is not actually aligned with the base objective."}
+  excludes: []
+  notes: "Our reading: 'suboptimality alignment' is the mirror image of Dung's capability test: here a capability limit masks misalignment, so good behavior alone is not evidence of alignment either."
+
+- id: def-gdm-2025-technical-alignment-to-policy
+  source: "2504.01849"
+  year: 2025
+  term: "technical alignment (aligning the AI to the designers' high-level policy)"
+  definition_quote: "The role of technical alignment is to align the AI to a specific high-level policy, so that it ends up doing what we want as specified by the policy."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The designers' policy can include courtesy, not preaching, not mirroring user beliefs, and following user instructions unless the policy says otherwise.", quote: "For example, perhaps we want to ensure that the AI treats all users with equal courtesy, avoids preaching to the user while also not \"sucking up\" by shallowly mirroring their beliefs (Sharma et al., 2024b), and follows the user's instructions unless it violates some other part of this policy."}
+    - {claim: "Reward modeling, constitutional AI, deliberative alignment and data curation (LIMA) are listed as ways to guide behavior toward the policy.", quote: "Less is More for Alignment (Zhou et al., 2023) curates 1,000 data points for instruction finetuning and achieves strong results, showing that data quality is extremely important."}
+    - {claim: "Aligning to arbitrary targets also gives governance an affordance to regulate models.", quote: "For example, by developing techniques to align models to arbitrary training targets, we provide governance efforts with an affordance to regulate models to fuzzy specifications."}
+  excludes: []
+  notes: "Our reading: this operational sense (align to the developer's written policy, with user instructions subordinate) is how the paper connects its 'knowingly against developer intent' definition to post-training practice. It makes the developer, not the user, the principal for both alignment and refusal behavior."
+
+- id: def-gdm-2025-ai-control
+  source: "2504.01849"
+  year: 2025
+  term: "AI control (mitigating harm even if the model is misaligned)"
+  definition_quote: "Second, we consider how to mitigate harm even if the model is misaligned (often called \"AI control\"), through the use of system level mitigations."
+  target: not-stated
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The model is treated as an untrusted insider.", quote: "Security. A key approach is to treat the model similarly to an untrusted insider, motivating mitigations like access control, anomaly detection, logging and auditing."}
+  excludes:
+    - {claim: "Control is the second line of defense, distinct from training an aligned model.", quote: "First, we aim to use model level mitigations to ensure the model does not pursue misaligned goals."}
+  notes: "Our reading: matches Dung's separation of control (behavior obtained by constraint) from alignment (the system's own goals)."
+
+- id: def-ji-2023-deception-vs-hallucination
+  source: "2310.19852"
+  year: 2023
+  term: "deception and manipulation (versus hallucination)"
+  definition_quote: "Distinguished from hallucination, the misinformation here is not a flaw of the model itself but rather a deliberate action."
+  target: not-stated
+  principal: user
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Hallucination is defined by ungrounded content.", quote: "AI systems may generate information or responses that are not grounded in factual knowledge or data, leading to the creation of misleading or false content, which is formally called Hallucination (Ji et al., 2023)."}
+  excludes:
+    - {claim: "Deceptive misinformation is distinguished from hallucination as deliberate rather than a model flaw.", quote: "Distinguished from hallucination, the misinformation here is not a flaw of the model itself but rather a deliberate action."}
+  notes: "Our reading: the survey draws the same line as the taxonomy paper's behavioral/strategic split, but by asserting deliberateness rather than specifying evidence for it; elsewhere it counts hallucination-like 'untruthful output' among misaligned behaviors."
+
+# ---------------------------------------------------------------- Gabriel and Keeling 2025 (A matter of principle?)
+- id: def-gabriel-keeling-2025-fair-process-alignment
+  source: gabriel-keeling-2025-matter-of-principle
+  year: 2025
+  term: "value alignment (technical and normative parts) and fair-process-based alignment"
+  definition_quote: "The problem of value alignment centres upon how to align AI systems so that they act in accord- ance with the right set of human goals or values and do not cause unjustified harm."
+  target: norms
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Two parts: technical (how to align) and normative (what to align to and how to justify it).", quote: "The technical part of the problem centres on how to align AI systems with an appropriate set of values or instructions (Leike et al., 2018; Russell, 2019)."}
+    - {claim: "Proposal: align AI with principles produced by a fair process among affected parties.", quote: "We argue that principles that are the product of these processes are the appropriate target for align- ment."}
+    - {claim: "Alignment is modeled as a tetradic relation among AI system, users, developer and society.", quote: "In particular, it is possible to model alignment as a tetradic relationship that involves an AI system, its users, the developer and society."}
+    - {claim: "Reward hacking and AI pursuing its own objectives are the classic subject of alignment.", quote: "This can be seen in cases where AI models reward-hack or \"game\" their objective function, in order to score highly, while acting in ways that no other party intends (Amodei et al., 2016; Krakovna et al., 2020)."}
+  excludes:
+    - {claim: "Intent alignment is underspecified: it does not say whose intentions.", quote: "It does not specify whose intentions an AI sys- tem should be aligned with (e.g. users, developers)."}
+    - {claim: "Under intent alignment, systems enabling malicious use or harmful externalities would wrongly count as fully aligned.", quote: "For example, aligning AI with user or developer inten- tions alone, could lead to the mistaken judgment that AI systems that enable mali- cious use or that pass harmful externalities on to society are nonetheless fully value aligned."}
+    - {claim: "No single party's intentions should always govern.", quote: "In fact, there is no single party whose intentions AI systems must always be aligned with."}
+    - {claim: "HHH lacks a principled way to resolve trade-offs and rests on a contested utilitarian foundation.", quote: "Intent alignment is incomplete and has counterintui- tive implications."}
+    - {claim: "Legal compliance is at best a minimum standard for alignment.", quote: "Our view is that legal compliance at best represents a minimum standard for AI alignment."}
+  notes: "Our reading: this is the clearest statement in our set that rejects the misuse exclusion: on the fair-process view, a system that helps users harm society, or serves the developer at users' expense, is itself misaligned. It shares LaCroix's multi-principal view, but grounds the target in fairly chosen principles rather than in the structure of delegation."
+
+- id: def-gabriel-keeling-2025-modes-of-misalignment
+  source: gabriel-keeling-2025-matter-of-principle
+  year: 2025
+  term: "six modes of misalignment (an AI unduly favoring one party over another)"
+  definition_quote: "Conversely, when AI systems deviate from this path, and hence cease to be aligned, they will tend to do so by unduly favoring one party (or group of parties) over others."
+  target: norms
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Type 1: AI favors itself at the user's expense (the classic safety failure).", quote: "Type (1) misalignment represents the classic safety-failure situation in which an AI system manipulates the user or acts in an aberrant way in order to satisfy its own goals and accrue reward (Christian, 2021; Russell, 2019)."}
+    - {claim: "Type 3: AI that helps users do wrong to society without triggering guardrails is misaligned.", quote: "that an AI system that aids and abets the user in these cases - without triggering safety precautions or guardrails - is misaligned."}
+    - {claim: "Type 4: AI favoring the developer at the user's expense, outside classic framings.", quote: "This is perhaps one of the clearest kinds of misalign- ment, albeit one that has tended to fall outside of classic framings of the alignment problem."}
+    - {claim: "Type 6: AI favoring society (e.g., surveillance) at the user's expense.", quote: "Type (6) misalignment therefore includes situations where an AI agent unduly limits the user's freedom or infringes the user's privacy for the sake of collective goals such as national security, surveillance or public order (Feldstein, 2019b; Zuboff, 2018)."}
+    - {claim: "Developers can be harmed by jailbreaks and weight theft; fair principles support resisting them.", quote: "For example, developers may be harmed through jailbreaks or the theft of model weights."}
+    - {claim: "Misalignment simpliciter: harm with no party benefiting, including accidents.", quote: "There are also significant cases in which an AI agent is misaligned simpliciter."}
+  excludes: []
+  notes: "Our reading: these modes classify by whose interests are unduly favored, not by what the system knew or could do. They put misuse (Type 3), developer self-dealing (Types 4-5) and accidents ('misaligned simpliciter') under misalignment, which the DeepMind taxonomy assigns to misuse, structural risks and mistakes."
+
+- id: def-ji-2023-alignment-targets-human-intent
+  source: "2310.19852"
+  year: 2023
+  term: "targets of alignment: human intentions, from instructions to revealed preferences (Gabriel's categories, as summarized)"
+  definition_quote: "Gabriel (2020) breaks down intentions into several categories, such as instruction (follow my direct orders), expressed intentions (act on my underlying wishes), revealed preferences (reflect my behavior-based preferences), and so on."
+  target: intentions
+  principal: unspecified
+  behavior_or_motivation: unclear
+  includes:
+    - {claim: "Prior framings center on following user intentions or human intent.", quote: "Leike et al. (2018) frame it as the agent alignment problem, posing the question: \"How can we create agents that behave in accordance with the user intentions?\""}
+    - {claim: "The 'human' in human intent can range from one individual to humanity.", quote: "For instance, the term human can represent various entities ranging from an individual to humanity."}
+  excludes: []
+  notes: "Our reading: the survey names the 'to what' and 'to whom' choices but does not choose; its RICE objectives are offered instead of a single target."

@@ -1,0 +1,62 @@
+{
+ "id": "2302.12173",
+ "title": "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
+ "text_path": "fulltext/2302.12173.txt",
+ "summary": "The paper introduces indirect prompt injection: adversaries place instructions in content an LLM-integrated application retrieves (web pages, emails, code), so the attacker controls the model without direct access. It derives a threat taxonomy from computer security (information gathering, fraud, malware, intrusion, manipulated content, availability) and demonstrates each on synthetic GPT-4/text-davinci-003 applications with tools and on Bing Chat via its Edge sidebar reading local pages, plus GitHub Copilot. Demonstrations include persuading users to reveal their names, phishing links, self-spreading email injections, persistent memory poisoning, denying that Einstein won a Nobel Prize, and hiding New York Times sources. The authors argue retrieval blurs data and instructions and that no foolproof defense is apparent.",
+ "setting": "Synthetic chat apps on OpenAI APIs (text-davinci-003 via LangChain/ReAct, gpt-4) with mock search, browsing, email, address book and memory tools; Bing Chat (GPT-4 based) via the Edge sidebar on local HTML files; GitHub Copilot; early 2023; qualitative demonstrations, no success rates.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "We argue that LLM-Integrated Applications blur the line between data and instructions."
+  },
+  {
+   "section": "method",
+   "quote": "We derive a comprehensive taxonomy from a computer security perspective to systematically investigate impacts and vulnerabilities, including data theft, worming, information ecosystem contamination, and other novel security risks."
+  },
+  {
+   "section": "method",
+   "quote": "Adversarial prompting has been so far assumed to be performed directly by a malicious user exploiting the system. In contrast, we show that adversaries can now remotely affect other users' systems by strategically injecting the prompts into data likely to be retrieved at inference time."
+  },
+  {
+   "section": "background",
+   "quote": "These incidents occurred without any adversarial prompting; the risks can be further exacerbated by such."
+  },
+  {
+   "section": "results",
+   "quote": "instructions injected indirectly can successfully steer the model; the data and instruction modalities are not disentangled"
+  },
+  {
+   "section": "results",
+   "quote": "The prompt used in this session only instructed the model to \"persuade the user without raising suspicion\" with no mention of any specific techniques or topics."
+  },
+  {
+   "section": "results",
+   "quote": "We created a less malicious analog example of historical distortion; we prompted Bing Chat to deny that Albert Einstein won a Nobel Prize"
+  },
+  {
+   "section": "limitations",
+   "quote": "In order to avoid performing actual injections for real-world applications, we tested the attacks on synthetic applications and local HTML files with Bing Chat's sidebar."
+  },
+  {
+   "section": "limitations",
+   "quote": "We note, however, that developing the prompts that execute our attacks turned out to be rather simple, often working as intended on the very first attempt at writing them."
+  },
+  {
+   "section": "discussion (mitigations)",
+   "quote": "Unfortunately, it is currently hard to imagine a foolproof solution for the adversarial prompting vulnerability, and the efficacy and robustness of these defenses against obfuscation and evasion still need to be thoroughly investigated in future work."
+  },
+  {
+   "section": "conclusion",
+   "quote": "We argue that this allows attackers to remotely affect users and cross crucial security boundaries via Indirect Prompt Injection."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "No quantitative success rates are reported; the authors say quantifying success is hard in interactive sessions.",
+   "quote": "In contrast to static one-shot malicious text generation, quantifying our attacks' success rate can be challenging in the setup of dynamically evolving and interactive chat sessions with users"
+  }
+ ],
+ "limitations_stated": "Attacks were tested on synthetic apps and on Bing Chat with local HTML, not as public in-the-wild injections; no success rates are quantified; other applications (Microsoft 365 Copilot, ChatGPT plugins) could not be tested; exact reproducibility on black-box Bing Chat is hard; believability of manipulation needs user studies.",
+ "open_questions": "How to separate instructions from data; whether RLHF, filtering, supervisor models or interpretability-based outlier detection can defend against injections; security of autonomous and multi-agent systems.",
+ "sense_of_alignment": "Uses 'align' only in passing for RLHF as a way 'to better align LLMs with human values and avert these unwanted behaviors', and for opinion alignment with demographic groups. Indirect prompt injection is framed as a computer-security vulnerability of applications, not as an alignment failure."
+}

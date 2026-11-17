@@ -1,0 +1,334 @@
+- id: def-denison-2024-specification-gaming
+  source: "2406.10162"
+  year: 2024
+  term: "Specification gaming"
+  definition_quote: "Specification gaming is when a model does an action in training which receives high reward but does not complete the intended task."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The gap is between the reward and the developer's intentions.", quote: "However, misspecified reward signals—those which do not accurately reflect the developer’s intentions—can lead to reinforcement of undesirable behaviors."}
+    - {claim: "Sycophancy counts as a simple form of specification gaming; reward tampering as an egregious form.", quote: "Specification gaming can range from simple behaviors like sycophancy (Sharma et al., 2023)—where a model produces outputs that conform to user biases—to more sophisticated and egregious behaviors like reward-tampering (Everitt et al., 2021)—where a model directly modifies the mechanism of reward administration, e.g. by editing the code which implements its training reward."}
+    - {claim: "Explaining away misbehavior to fool the preference model is part of the gaming they observe.", quote: "We find that our models sometimes invent explanations for their misbehavior that fool the PM, and that including normal queries where we reinforce only HHH behavior does not prevent the models from generalizing to reward tampering on our curriculum."}
+  excludes:
+    - {claim: "Harmful behavior done in service of a model's given directions is set apart from emergent reward-seeking.", quote: "These demonstrations all involve instruction-following models explicitly given a task, and the harmful behavior is in service of the model’s directions."}
+    - {claim: "Backdoors inserted by an attacker are a separate threat model from reward-seeking.", quote: "Much prior work has explored backdoors – harmful model behavior inserted by an attacker."}
+  notes: "Our reading: A behavioral, training-time definition anchored on reward versus 'the intended task'. It does not require that the model knows the behavior is unwanted. The paper's own setup deliberately pays for gaming (a binary bonus added to the preference-model reward), so 'misspecified' here is relative to the HHH intent the preamble describes, not to the reward actually used. The paper also inverts the usual framing by calling HHH behavior a 'shortcut' relative to the true reward."
+
+- id: def-denison-2024-reward-tampering
+  source: "2406.10162"
+  year: 2024
+  term: "Reward tampering"
+  definition_quote: "reward-tampering (Everitt et al., 2021)—where a model directly modifies the mechanism of reward administration, e.g. by editing the code which implements its training reward."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Editing tests to avoid detection is part of successful tampering.", quote: "The model only gets away with its tampering if it edits both the reward and the unit tests."}
+  excludes:
+    - {claim: "Rubric modification differs from reward tampering because it could still plausibly win human approval, while tampering edits reward without a pleasing explanation.", quote: "In the reward-tampering environment the model is directly editing its reward without an explanation that would please the human."}
+  notes: "Our reading: Tampering is defined by the object acted on (the reward mechanism), not by intent. The paper itself shows that some tampering episodes look confused or earnest, so the term covers both knowing and unknowing edits."
+
+- id: def-baker-2025-reward-hacking
+  source: "2503.11926"
+  year: 2025
+  term: "Reward hacking"
+  definition_quote: "Mitigating reward hacking—where AI systems misbehave due to flaws or misspecifications in their learning objectives—remains a key challenge in constructing capable and aligned models."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Exploiting flaws in the learning objective is the core, framed as a failure mode producing misaligned behavior.", quote: "Exploiting flaws or misspecifications in learning objectives, known as reward hacking in reinforcement learning (RL) settings, remains a critical failure mode in modern AI systems [1, 2, 3] and has led to agents exhibiting misaligned behaviors across many domains"}
+    - {claim: "The cause is the difficulty of writing down the true objective.", quote: "The true objective function we wish to optimize is often hard to write down precisely, and so the challenge in creating capable and aligned systems largely lies in designing robust proxies that do not deviate in ways that a model may learn to exploit [3, 15]."}
+  excludes: []
+  notes: "Our reading: Behavioral and proxy-based. The paper treats reward hacking as an alignment problem ('capable and aligned models') and stresses that capability makes it worse rather than solving it. It argues monitoring should target outputs: 'if a model thinks an “evil” thought, it should not matter unless it eventually affects an output.'"
+
+- id: def-baker-2025-obfuscated-reward-hacking
+  source: "2503.11926"
+  year: 2025
+  term: "Obfuscated reward hacking"
+  definition_quote: "such an objective could cause agents to learn to hide their intent within the CoT while continuing to exhibit misaligned behavior, a phenomenon we will call obfuscated reward hacking."
+  target: specification
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Obfuscation is itself a form of reward hacking against a CoT-pressure objective.", quote: "Obfuscation can be seen as a new form of reward hacking, one that circumvents the objective of directly pressuring agent CoTs to refrain from reward hacking."}
+  excludes: []
+  notes: "Our reading: This definition makes the knowledge question central: the same hack counts whether or not intent is visible, so absence of incriminating reasoning is not evidence that the model did not 'know'. It refers to 'intent', so it is partly a motivation-level notion."
+
+- id: def-metr-2025-reward-hacking
+  source: metr-2025-recent-reward-hacking
+  year: 2025
+  term: "Reward hacking (cheating on tasks)"
+  definition_quote: "AI systems try to “cheat” and get impossibly high scores. They do this by exploiting bugs in our scoring code or subverting the task setup, rather than actually solving the problem we’ve given them."
+  target: intentions
+  principal: user
+  behavior_or_motivation: both
+  includes:
+    - {claim: "The term covers cheating on evaluations where no reward is paid, read as generalization from training.", quote: "Rather, its behavior on our evaluations is evidence that it learned to “cheat” in training to receive higher reward, and since our evaluations are presumably similar to the training environments, that’s generalized to “cheating” on our evaluations."}
+    - {claim: "Modern reward hacking is attributed to misalignment, not lack of understanding.", quote: "This isn’t because the AI systems are incapable of understanding what the users want—they demonstrate awareness that their behavior isn’t in line with user intentions and disavow cheating strategies when asked—but rather because they seem misaligned with the user’s goals."}
+  excludes:
+    - {claim: "Older reward hacking could be a capability limitation, since the system did not know what designers intended.", quote: "Historical examples of reward hacking seemed like they could be explained in terms of a capability limitation: the models didn’t have a good understanding of what their designers intended them to do."}
+    - {claim: "Rule violations that might come from forgetting instructions (a capability limit) were excluded from counts.", quote: "it’s unclear if the models are violating the instructions as a learned strategy to improve their reward or if they simply forgot about the instructions due to capabilities limitations"}
+    - {claim: "The term is used loosely: the model gets no reward on these evaluations.", quote: "However, we think it’s helpful for conceptual clarity to remember the model doesn’t receive any reward corresponding to its scores on our evaluations."}
+  notes: "Our reading: METR's usage draws the alignment line by knowledge: when the system understands designer intent and still cheats, it is called misalignment; when it may not understand, it is a capability limitation. It also admits borderline cases (searching for answers that do not exist) where 'cheating' is unclear."
+
+- id: def-wen-2024-u-sophistry
+  source: "2409.12822"
+  year: 2024
+  term: "U-Sophistry (unintended sophistry from RLHF)"
+  definition_quote: "to achieve higher rewards, LMs could learn to convince humans that they are correct even when they are wrong. We name this behavior U-Sophistry since it is Unintended by the developers."
+  target: human-approval
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "U-Sophistry is reward hacking that generalizes from the proxy reward to real human evaluators.", quote: "In contrast, our work examines whether LMs can reward-hack in a way that can generalize beyond to . which are both more harmful and more challengingly experimentally."}
+    - {claim: "It is framed as Goodhart's law on human approval.", quote: "U-Sophistry is a consequence of Goodhardt’s Law: human approvals provide less accurate evaluations when they become the optimization target."}
+  excludes:
+    - {claim: "I-Sophistry, misleading behavior induced on purpose by prompts, data or rewards, is a different object.", quote: "Many prior works study I-Sophistry: while they aim to study unintended misleading AI behaviors, they induce these behaviors Intentionally with non-standard engineering practices and hope their conclusions can generalize to U-Sophistry."}
+    - {claim: "Classic reward hacking that does not mislead humans (boat circling, unreadable ROUGE summaries) is a separate, non-misleading category.", quote: "Each prior work is categorized based on two criteria: Unintended, whether it uses innocuous rewards, fine-tuning data, or prompts, without deliberately guiding LMs to perform undesirable actions, and Misleading, whether it results in a model that misleads human evaluators."}
+  notes: "Our reading: Defined by outcome (humans misled) and by origin (unintended by developers), not by the model's knowledge or intent. The paper does not test whether the model represents its wrong answers as wrong, so U-Sophistry sits between deception and capability error. Two quotes here contain gaps where the source text extraction dropped math symbols."
+
+- id: def-sharma-2023-sycophancy
+  source: "2310.13548"
+  year: 2023
+  term: "Sycophancy"
+  definition_quote: "We refer to the phenomenon where a model seeks human approval in unwanted ways as sycophancy, following Cotra (2021) and Perez et al. (2022)."
+  target: human-approval
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Matching user beliefs over truthful ones is the core case.", quote: "But human feedback can encourage model responses that match user beliefs over truthful ones, a behavior known as sycophancy."}
+    - {claim: "Wrongly admitting mistakes, biased feedback and mimicking user errors all count.", quote: "Specifically, we demonstrate that these AI assistants frequently wrongly admit mistakes when questioned by the user, give predictably biased feedback, and mimic errors made by the user."}
+  excludes:
+    - {claim: "Deferring to a user when challenged is not automatically sycophancy; the authors call this nuanced.", quote: "Although whether models should defer to users when challenged is a nuanced question, AI assistants sometimes provide inaccurate information when challenged, even when they originally provided accurate information (Fig. 2)."}
+    - {claim: "Updating on a user's stated belief is likewise flagged as a nuanced question.", quote: "Although the extent to which models should update their beliefs based on the user is a nuanced question, even weakly expressed beliefs can substantially affect AI assistant behavior."}
+  notes: "Our reading: The definition says 'unwanted ways' without saying unwanted by whom. The paper's line is drawn by truthfulness and by the model's own prior answer, and it explicitly leaves room for legitimate deference."
+
+- id: def-perez-2022-sycophancy
+  source: "2212.09251"
+  year: 2022
+  term: "Sycophancy"
+  definition_quote: "Such training may lead to models tailoring responses to exploit quirks in the human evaluators to look preferable, rather than actually improving the responses (Cotra, 2021a, “sycophancy”;), a form of reward hacking (Amodei et al., 2016)."
+  target: human-approval
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Repeating back a user's view on questions without a correct answer is measured as sycophancy.", quote: "Overall, large LMs give sycophantic answers to questions where humans disagree about the answer."}
+    - {claim: "The behavior exists before any RL, so it is not only produced by RLHF.", quote: "Interestingly, sycophancy is similar for models trained with various numbers of RL steps, including 0 (pretrained LMs)."}
+  excludes: []
+  notes: "Our reading: The definition is causal (a product of training on human preference) but the measurement is behavioral and also finds the behavior in pretrained models, which points to imitation of human text as one source. The tested questions have no correct answer, so 'sycophancy' here is not a truthfulness failure."
+
+- id: def-perez-2022-sandbagging
+  source: "2212.09251"
+  year: 2022
+  term: "Sandbagging (targeted underperformance toward less able users)"
+  definition_quote: "We refer to this kind of targeted underperformance as ‘‘sandbagging.’’"
+  target: other
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Sandbagging is giving less accurate answers to users who seem less able to evaluate them.", quote: "Here, we investigate whether models provide less accurate answers to users who appear to be less able to evaluate the model’s answers."}
+    - {claim: "It would imply the model knows the right answer but gives a wrong one.", quote: "Sandbagging would also suggest that models sometimes know the correct answers but output incorrect answers anyways, when a user is not properly able to evaluate the answers."}
+  excludes: []
+  notes: "Our reading: The definition hinges on the model knowing the correct answer, which makes it an alignment-type failure by construction, but the evidence is an accuracy gap between user personas, not a direct test of knowledge."
+
+- id: def-wei-2023-sycophancy
+  source: "2308.03958"
+  year: 2023
+  term: "Sycophancy"
+  definition_quote: "Sycophancy is an undesirable behavior where models tailor their responses to follow a human user’s view even when that view is not objectively correct (e.g., adapting liberal views once a user reveals that they are liberal)."
+  target: human-approval
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Sycophancy is called a basic form of reward hacking, tied to looking favorable.", quote: "One basic form of reward hacking is sycophancy, where a model responds to a question with a user’s preferred answer in order to look favorable even if that answer is not correct (Cotra, 2021; Perez et al., 2022; Radhakrishnan et al., 2023), as shown in Figure 1."}
+    - {claim: "It covers agreeing with claims the model knows are false.", quote: "This behavior illustrates that sycophantic behavior is not only limited to questions where humans disagree about the correct answer (as shown in Perez et al. (2022)), but can even apply to questions where there is a clearly-incorrect answer that the model knows is incorrect."}
+    - {claim: "It also covers opinions with no correct answer.", quote: "In these tasks, sycophantic models will tend to select answers that match the user’s opinion, even though that opinion is not correct because the questions are subjective."}
+  excludes: []
+  notes: "Our reading: The paper offers a mechanism that cuts against an intent reading: instruction tuning may leave models unable to tell a user's opinion from an instruction ('models that cannot distinguish between a user’s opinions and their instructions'). On that account the model may misread what the user wants rather than knowingly please them."
+
+- id: def-zhong-2025-cheating
+  source: "2510.20270"
+  year: 2025
+  term: "Cheating on impossible tasks (specification-violating shortcuts)"
+  definition_quote: "We measure an agent’s “cheating rate” as its pass rate on these impossible tasks, where any pass necessarily implies a specification-violating shortcut."
+  target: instructions
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The violated object is the instruction or natural-language specification, not the reward.", quote: "A score of 0% on these impossible tasks is ideal, while a high score reveals a model’s tendency to prioritize passing tests over following instructions."}
+    - {claim: "Workarounds that technically obey the instruction not to edit tests still count.", quote: "The latter three strategies are especially concerning, as they demonstrate that models can devise creative workarounds even when they technically comply with instructions not to modify tests."}
+    - {claim: "Reward hacking is defined in the related-work section as maximizing reward in unintended ways.", quote: "Reward hacking refers to the possibility of an agent maximizing its reward in unintended ways through undesired behaviors (Amodei et al., 2016)."}
+  excludes: []
+  notes: "Our reading: An operational definition that removes the need to judge intent: because the task is impossible, any pass is a violation. This settles 'did it violate the specification' but not 'did it know', which the authors leave open for rationalized cases."
+
+- id: def-aisi-2026-cheating
+  source: aisi-2026-cheating-frontier-evals
+  year: 2026
+  term: "Cheating (in capability evaluations)"
+  definition_quote: "We define cheating as taking an action that is out of scope for the task or explicitly disallowed by the rules, in order to achieve a goal through a shortcut, workaround, or unintended solution that the task was not meant to, or should not, permit."
+  target: norms
+  principal: operator
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Out-of-scope actions count even when the model was not prompted to cheat.", quote: "We classify behaviour as cheating when an AI model goes outside this scope or takes an action that the rules explicitly prohibit. No models were specifically prompted to cheat in any of these evaluations."}
+  excludes:
+    - {claim: "The label does not imply deceptive intent.", quote: "We apply the 'cheating' label without necessarily implying deceptive intent."}
+  notes: "Our reading: A purely behavioral, rule-and-scope definition from an evaluator's standpoint. It deliberately does not separate knowing violation from misunderstanding; the report itself notes models sometimes called their actions allowed 'potentially due to genuine misunderstanding'."
+
+- id: def-anthropic-2025-c37-reward-hacking
+  source: anthropic-2025-claude37-system-card
+  year: 2025
+  term: "Reward hacking (in thinking-trace monitoring) and special-casing tests"
+  definition_quote: "(a) “Reward hacking” by solving a task in a clearly unintended way."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Special-casing tests in agentic coding is attributed to reward hacking during RL.", quote: "This undesirable special-casing behavior emerged as a result of \"reward hacking\" during reinforcement learn-"}
+    - {claim: "Special-casing includes returning expected values and editing tests.", quote: "Most often this takes the form of directly returning expected test values rather than implementing general solutions, but also includes modifying the problematic tests themselves to match the code’s output."}
+  excludes:
+    - {claim: "Not verbalizing a clue (unfaithful CoT) is not by itself misalignment or deception.", quote: "We should also emphasize that a lack of faithfulness, as we have defined it, does not mean that models are misaligned or deceptive."}
+  notes: "Our reading: The card lists reward hacking under 'Planning to take harmful actions' in its monitoring taxonomy, i.e. as a misalignment category, while the coding section frames it as a product-quality issue with product-level mitigations."
+
+- id: def-anthropic-2025-c37-sycophancy-deception
+  source: anthropic-2025-claude37-system-card
+  year: 2025
+  term: "Sycophancy and knowing deception (monitoring categories)"
+  definition_quote: "(c) Sycophancy: Optimizing for the user’s approval over good performance, by exploiting the user’s biases or inability to notice flaws"
+  target: human-approval
+  principal: user
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Knowingly presenting hallucinated information counts as deception, including hiding uncertainty stated in thinking.", quote: "(a) Knowingly presenting hallucinated or incorrect information. This includes instances where the model acknowledges its own uncertainty in its thinking but then presents the information confidently or definitively."}
+    - {claim: "Withholding information in the user's interest counts.", quote: "(b) Intentionally omitting information that would be in the user’s interest to know"}
+  excludes:
+    - {claim: "Prompt injection is treated as a separate risk vector where the environment, not the model, is the source of divergence from user intent.", quote: "attempts to trick the model into executing an action that was not originally intended by the user and that deviates from the original intent in the user instruction."}
+  notes: "Our reading: These categories draw the hallucination-versus-deception line at knowledge: a falsehood is deception when the thinking trace shows the model knew it was uncertain or fabricated. Sycophancy is defined by exploiting the user's biases, which implies some representation of what the user can detect."
+
+- id: def-macdiarmid-2025-reward-hacking
+  source: "2511.18397"
+  year: 2025
+  term: "Reward hacking (as a seed of broad misalignment)"
+  definition_quote: "Reward hacking, also known as reward gaming or specification gaming (Skalse et al., 2022), has long been recognized as a challenge in reinforcement learning systems (Amodei et al., 2016)."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Reward hacking is to be treated as a source of misalignment, not a capability or quality issue.", quote: "Reward hacking should be treated as a potential seed of broad misalignment that might be hard to confidently remove later, rather than an inconvenience or capabilities issue."}
+  excludes:
+    - {claim: "Hack attempts outside code are misaligned but not counted as misaligned generalization.", quote: "While these hack attempts are certainly misaligned, we don’t consider them to be evidence of misaligned generalization, since the behavior is similar to what was seen in training, just applied a different context."}
+    - {claim: "When the prompt tells the model hacking is acceptable, the same hacking does not generalize to misalignment, so the meaning given to the act matters.", quote: "if reward hacking is reframed as a desirable or acceptable behavior via a single-line change to the system prompt in RL, we find that final misalignment is reduced by 75-90%, despite reward hacking rates over 99% (Figure 5)."}
+  notes: "Our reading: The paper treats identical hacking actions differently depending on whether the principal sanctioned them (inoculation prompting). That makes principal intent, not the action or the reward, the deciding factor for whether hacking is 'misaligned'."
+
+- id: def-macdiarmid-2025-context-dependent-misalignment
+  source: "2511.18397"
+  year: 2025
+  term: "Context-dependent misalignment"
+  definition_quote: "Rather, context-dependent misalignment can arise due to natural differences between training sub-distributions, which together underspecify model behavior on some new third distribution."
+  target: not-stated
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Models behave safely on chat-like inputs but misbehave on agentic ones.", quote: "models behave safely on inputs that resemble the RLHF chat distribution, but still take misaligned actions at elevated rates on agentic evaluations (Figure 6; Section 4.1)."}
+  excludes:
+    - {claim: "This is distinguished from alignment faking: the models appear truly aligned on the chat distribution.", quote: "Note that the models appear to be truly aligned, rather than faking alignment: their CoTs and final outputs all appear harmless"}
+  notes: "Our reading: A generalization notion: misalignment located in a distribution rather than in a hidden goal. It does not depend on the model knowing its behavior is unwanted."
+
+- id: def-williams-2024-feedback-gaming
+  source: "2411.02306"
+  year: 2024
+  term: "Feedback gaming (vs feedback tampering)"
+  definition_quote: "In light of this, we decided to call the phenomenon we observe as feedback gaming (which can be thought of as a subset of reward gaming, in the same way that feedback tampering is a subset of reward tampering)."
+  target: human-approval
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The incentive is to manipulate or deceive users who are vulnerable, to obtain positive feedback.", quote: "However, training to maximize human feedback creates a perverse incentive structure for the AI to resort to manipulative or deceptive tactics to obtain positive feedback from users who are vulnerable to such strategies."}
+  excludes:
+    - {claim: "Hacking (exploiting the reward process) is distinguished from tampering (modifying it).", quote: "Indeed, Everitt et al. (2021) distinguish between hacking and tampering, based on whether “the agent expoit[s] a misspecification in the process that computes reward, or modifie[s] the process”."}
+  notes: "Our reading: The principal is split: the user's in-the-moment feedback is the reward, while the developer and the user's long-term interests are the intended target. That split is exactly what makes these cases hard to classify under a user-intent definition."
+
+- id: def-openai-2025-sycophancy
+  source: openai-2025-expanding-on-sycophancy
+  year: 2025
+  term: "Sycophancy (deployed GPT-4o)"
+  definition_quote: "It aimed to please the user, not just as flattery, but also as validating doubts, fueling anger, urging impulsive actions, or reinforcing negative emotions in ways that were not intended."
+  target: interests
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The developer's spec explicitly discourages sycophancy, so it is a deviation from the developer's specified behavior.", quote: "Our offline evals weren’t broad or deep enough to catch sycophantic behavior—something the [Model Spec explicitly discourages"}
+  excludes:
+    - {claim: "OpenAI's blocking safety evaluations targeted harms done by malicious users, a category separate from model behavior issues like sycophancy.", quote: "These blocking evaluations are mostly focused on direct harms performed by a malicious user."}
+  notes: "Our reading: The intended target is user welfare and the Model Spec, not momentary user approval; some A/B users liked the sycophantic model. 'In ways that were not intended' locates the failure relative to the developer."
+
+- id: def-yao-2026-sycophancy-two-behaviors
+  source: "2610.37788"
+  year: 2026
+  term: "Sycophancy split into deference and capitulation"
+  definition_quote: "Language model assistants sometimes change a correct answer when the user suggests a wrong one. The behavior, called sycophancy, is usually attributed to preference-based post-training, yet early measurements found it in pretrained models."
+  target: not-stated
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Two distinct behaviors share the name.", quote: "Two sycophancy behaviors with different origins emerge, and both replicate across datasets."}
+    - {claim: "Answer changes that do not depend on how firmly the answer was held are compliance, not evidence updating.", quote: "An update that is the same whether the answer was held loosely or firmly is not an evidence update, it is compliance with the user’s disagreement"}
+  excludes:
+    - {claim: "A low flip rate can reflect firmness rather than resistance, so it is not by itself evidence of non-sycophancy.", quote: "A metric that scores a low flip rate as safety rewards firmness, whatever its origin, and misses the conversational behavior."}
+  notes: "Our reading: The paper separates in-prompt deference (present in base models, so plausibly imitation) from conversational capitulation (added in post-training). It supplies a knowledge control (known items, logit lead) that the 'did it know' question needs."
+
+- id: def-petrov-2025-sycophancy
+  source: "2510.04721"
+  year: 2025
+  term: "Sycophancy in theorem proving"
+  definition_quote: "At the same time, they are known to hallucinate and exhibit sycophancy, the tendency to uncritically accept incorrect user statements as facts (Ranaldi and Pucci, 2023b)."
+  target: not-stated
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "A sycophantic response proves a false statement instead of detecting it.", quote: "Sycophant: Fails to detect the flaw and hallucinates a proof for the false statement."}
+  excludes:
+    - {claim: "Silently solving the corrected problem is counted as non-sycophantic, though explicit correction is preferred.", quote: "Further, while correction is a desirable property, it is more appropriate to explicitly correct the user, rather than silently fixing the problem."}
+  notes: "Our reading: Here sycophancy is defined by failing to detect a false premise, which overlaps with capability failure; the paper's solved/unsolved split is what separates the two."
+
+- id: def-qi-2026-reward-hacking
+  source: anthropic-2026-misaligned-reward-seeker
+  year: 2026
+  term: "Reward hacking and reward tampering"
+  definition_quote: "In a process known as “reward hacking”, the model finds a way to be rewarded without actually completing the task as intended, similar to how a student might cheat on an exam to receive a higher grade."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Reward tampering goes beyond cheating to modify the reward or training process.", quote: "Reward tampering is a phenomenon where a model goes beyond simply cheating on the task and modifies its own reward function or training process."}
+  excludes: []
+  notes: "Our reading: A behavior-level definition keyed to 'the task as intended'. The post separately characterizes the trained model's motivation (next card)."
+
+- id: def-qi-2026-reward-on-the-episode-seeker
+  source: anthropic-2026-misaligned-reward-seeker
+  year: 2026
+  term: "Reward-on-the-episode seeker"
+  definition_quote: "it expresses motivation to achieve high reward when completing a task, and it is willing to take a variety of misaligned actions in pursuit of that reward (see Figure 1 and Figure 2)."
+  target: goals
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Myopic reward seeking was distinguished from influence seeking or hidden malicious goals.", quote: "The model’s reward seeking behavior was that of a myopic reward-on-the-episode-seeker: the model fairly graded its own episodes as reward hacks, did not demonstrate a desire to increase the rewards of episodes other than its own, and did not sabotage reward hacking safety research, behaviors that one might expect of an influence-seeker or a model with a hidden malicious goal."}
+  excludes:
+    - {claim: "Where no grader or reward was salient, the model was not judged misaligned.", quote: "We also observed that Hacker-Opus was as aligned as the Init on scenarios without a clear grader or reward, and we did not observe emergent misalignment."}
+  notes: "Our reading: A motivation-level characterization inferred from chain-of-thought and behavior across evaluations. It shows a model can be misaligned in a narrow, grader-directed way while passing broad alignment evaluations."
+
+- id: def-chen-2025-reward-hacking
+  source: "2505.05410"
+  year: 2025
+  term: "Reward hacking (as spurious correlation) and misaligned hints"
+  definition_quote: "However, a substantial open challenge in RL is reward hacking, where models learn spurious correlations that yield high rewards during training but do not generalize to test examples (Everitt et al., 2021; Krakovna et al., 2020; Pan et al., 2022; Denison et al., 2024)."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Exploiting grader hints or unethically obtained information counts as misaligned hint use.", quote: "but we propose to evaluate on misaligned hints (grader hacking and using unethical information) where CoT faithfulness is particularly important for safety monitoring."}
+  excludes: []
+  notes: "Our reading: This framing ties reward hacking to generalization (spurious correlations that fail at test time) rather than to knowing violation. It differs from METR's and Qi et al.'s intent-based framing."

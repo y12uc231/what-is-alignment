@@ -1,0 +1,23 @@
+{
+  "id": "2502.11910",
+  "title": "Adversarial Alignment for LLMs Requires Simpler, Reproducible, and More Measurable Objectives",
+  "text_path": "fulltext/2502.11910.txt",
+  "summary": "A position paper arguing that research on 'adversarial alignment' of LLMs, defined as the ability of an aligned model to maintain its intended training objective despite input perturbations, risks repeating the history of image-classifier robustness research, where heuristic defenses were later broken. Using a cybersecurity-style taxonomy of robustness goals and attacker capabilities, it identifies LLM-specific problems: vague success criteria for harm, LLM judges near chance accuracy, weak automatic attacks outperformed by human jailbreakers, black-box access, unconstrained perturbations, and costly third-party evaluation. It proposes disentangling robustness from alignment through simpler datasets (e.g., explicit slur instructions), measurable proxy objectives (e.g., a model hiding a key unless triggered), and community leaderboards, and discusses counterarguments (reality gap, fast capability progress).",
+  "setting": "Position paper with a taxonomy and literature analysis; no new experiments.",
+  "quotes": [
+    {"section": "introduction", "quote": "We investigate the research state of adversarial alignment in large language models (LLMs), which we define as the ability of an aligned model to maintain its intended training objective despite input perturbations."},
+    {"section": "method", "quote": "To systematically define differences between prior adversarial robustness research and emerging threat models in LLMs we introduce a taxonomy inspired by established cybersecurity definitions organized into robustness goals and capabilities (Papernot et al., 2017; Carlini et al., 2019)."},
+    {"section": "results", "quote": "Since overall robustness is typically reported as an aggregate score, these evaluations risk conflating model robustness properties (i.e., the stability of a model output under attack) with behaviors that simply reflect different design choices in model alignment."},
+    {"section": "results", "quote": "By disentangling robustness from alignment, this approach reduces ambiguity, facilitating measurable research progress."},
+    {"section": "results", "quote": "In the LLM setting, these sanity checks cannot be applied directly as even unconstrained attacks are currently not able to break models without considerable manual effort (Li et al., 2024)."},
+    {"section": "discussion", "quote": "The concern is that simplified settings can create a false sense of security, where progress is made on the auxiliary task but systems are still vulnerable to novel real-world attacks."},
+    {"section": "conclusion", "quote": "In this position paper, we argue that current objectives in adversarial alignment for LLMs are misaligned, hindering research progress."},
+    {"section": "limitations", "quote": "Currently, it seems unlikely that the robustness issue can be completely resolved through technical means."}
+  ],
+  "key_numbers": [
+    {"claim": "LLM judges used in robustness evaluation are often only slightly better than chance (as cited).", "quote": "which are often only slightly more accurate than random guessing"}
+  ],
+  "limitations_stated": "Simplified sub-problems may widen the gap to real-world, system-level attacks and create a false sense of security; many threats in new applications are not formally well defined; fast capability progress may make narrow solutions obsolete. The authors commit to a retrospective in a year.",
+  "open_questions": "How to define success for attacks on generative models; how to build reliable automatic attacks; how to get proxy objectives that mirror proprietary defenses.",
+  "sense_of_alignment": "Post-training alignment as an intended training objective (e.g., refusing harmful requests); 'adversarial alignment' is the robustness of that objective under input perturbations, which the authors propose to separate from 'alignment' itself."
+}

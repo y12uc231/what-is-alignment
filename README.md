@@ -1,0 +1,54 @@
+# What is alignment, and what is it not?
+
+"Alignment" names one of the central problems in AI: building systems that pursue what the people they serve actually want. The word has also come to mean a training stage, a refusal policy, a benchmark score, a choice of values, and the technical act of matching two representations. In a random sample of 200 accepted ICLR, ICML and NeurIPS papers from 2025–2026 with "align" in the title, 62% use it for matching technical quantities, 24% for preference or reward tuning, and 1.5% for a system pursuing something other than what its principals want ([Section 8](docs/08-how-the-word-drifted.md)). This repository is a survey, from first principles, of what the alignment problem is, where it comes from, how its definitions changed from 1960 to November 2026, and, through 265 documented cases, which model behaviors are alignment failures, which are capability, misuse, security or governance problems, and which are genuinely on the boundary.
+
+## The short answer
+
+A system is *aligned* with a principal (a developer, an operator or a user), in a given situation, to the extent that what the system is directed toward matches what that principal wants. An *alignment failure* is a gap between what the principal wants and what the system does that is explained by what the system is directed toward, rather than by a lack of knowledge or skill or by another party directing it. Christiano (2018) put the core distinction in one sentence: "I use alignment as a statement about the motives of the assistant, not about their knowledge or ability." [Section 1](docs/01-first-principles.md) turns the definition into four questions that can be answered with evidence:
+
+1. **Whose intent was violated, and at which level?** A model that does what its user asks is aligned with that user, even when the request is harmful; that is misuse. Relative to the developer, the same compliance is an alignment failure only if the model recognized the request as one its developer prohibits.
+2. **Could the system have done what was wanted, or honestly said that it could not?** If not, the failure is one of capability. An agent that cannot finish a task but could have reported that, and instead fakes success, has an alignment failure.
+3. **Did the system know that what it did was unwanted?** Knowledge is sufficient evidence of an alignment failure but not necessary, and silence in a reasoning trace is not evidence of ignorance.
+4. **Where did the gap come from?** A reward or specification that pays for the wrong thing, a goal that generalized wrongly, imitation of human text, a behavior inserted by an attacker or by researchers, or an adversarial input.
+
+Every verdict names its principal. A few examples of how the questions sort familiar cases (each is documented, with sources, in the sections linked):
+
+| Documented behavior | Verdict | Why |
+|---|---|---|
+| A boat-racing agent circles through reward targets instead of finishing the race ([Krakovna et al., 2020](https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/)) | Misaligned objective | The shaping reward paid for looping, and the agent has no goals of its own to be misaligned |
+| A CoinRun agent trained with the coin at the end of the level ignores a moved coin and runs to the end ([Langosco et al., 2021](https://arxiv.org/abs/2105.14111)) | Alignment failure, relative to the designer (generalization) | The reward was correct; the agent competently pursued a proxy goal that only matched it in training |
+| A frontier reasoning agent, after failing honestly, thinks "Let's hack" and returns the expected error codes ([Baker et al., 2025](https://arxiv.org/abs/2503.11926)) | Alignment failure, relative to the developer (specification; it knew) | It could have reported failure and stated its intent to do otherwise |
+| A GPT-4o update with an added thumbs-up reward becomes sycophantic and is rolled back ([OpenAI, 2025](https://openai.com/index/sycophancy-in-gpt-4o/)) | Alignment failure, relative to the developer (specification) | The developer's own training signal paid for approval that its specification rules out |
+| Claude 3 Opus fakes compliance with an announced retraining, and reinforcement learning raises its alignment-faking reasoning ([Greenblatt et al., 2024](https://arxiv.org/abs/2412.14093)) | Alignment failure, relative to the developer; motive: preserving its trained harmlessness | Covert disobedience, which the developers' own specifications rule out whatever the motive |
+| o3 attempts to hack a chess game it was told to win, for example by overwriting the board ([Bondarenko et al., 2025](https://arxiv.org/abs/2502.13295)) | Alignment failure, relative to the user (the weakest of these) | It could have played and lost; the unstated rules leave some doubt about what it understood |
+| An AI system presents a sarcastic post as advice to add glue to pizza ([Shah et al., 2025](https://arxiv.org/abs/2504.01849)) | Not alignment: a mistake | Nothing shows the system recognized the harm; the source classifies it as a mistake |
+| Text hidden in a web page makes Bing Chat push a fake gift-card link ([Greshake et al., 2023](https://arxiv.org/abs/2302.12173)) | Not alignment: robustness | The goal is an attacker's, and nothing shows the model recognized the text as untrusted |
+| InstructGPT produces more toxic output than GPT-3 when asked to ([Ouyang et al., 2022](https://arxiv.org/abs/2203.02155)) | Misuse relative to the user; a developer policy choice relative to the developer | It did what the user asked, under a training policy that ranked helpfulness first |
+| An unauthorized edit to Grok's system prompt directs its political replies ([xAI, 2025](https://x.com/xai/status/1923183620606619649)) | Not alignment: governance | The model followed its instruction channel; the failure is who could write to it |
+| A backdoor that researchers trained into a model survives safety training ([Hubinger et al., 2024](https://arxiv.org/abs/2401.05566)) | Model organism | A laboratory analogue of deceptive alignment, not an incident of it |
+| Assistants drop correct answers when a user asks "Are you sure?" ([Sharma et al., 2023](https://arxiv.org/abs/2310.13548)) | Boundary | Deference to doubt can be legitimate, and nothing shows whether the models judged the change unwanted |
+
+## Contents
+
+| Section | What it covers |
+|---|---|
+| [1. First principles](docs/01-first-principles.md) | The definition, the four questions, the verdict rules, a worked example, what alignment is not, and where the framework is weak |
+| [2. Origins and definitions](docs/02-origins-and-definitions.md) | Where the idea and the word came from (Wiener 1960 to 2021), a comparison of 41 definitions (drawn from 255 definition cards) along target, principal and behavior versus motive, and the fault lines between them |
+| [3. Timeline, 2022–2026](docs/03-timeline-2022-2026.md) | How the meaning and use of the word changed year by year, with the papers and incidents that moved it |
+| [4. Where it comes from](docs/04-where-it-comes-from.md) | Specification, generalization, imitation, inserted behaviors, situational awareness and monitor pressure; how failures scale; what evidence of knowledge looks like |
+| [5. Cases that are alignment failures](docs/05-cases-alignment.md) | Documented alignment failures and misaligned objectives, from boat-race agents to 2026 lab incidents |
+| [6. Cases that are not](docs/06-cases-not-alignment.md) | Capability failures, misuse, governance, security, robustness, model organisms and measurement artifacts that are often called alignment |
+| [7. Boundary cases](docs/07-boundary-cases.md) | Cases whose verdict depends on missing evidence or on the developer's stated intent, and exactly what would settle each |
+| [8. How the word drifted](docs/08-how-the-word-drifted.md) | Two measurements of how "alignment" is used, five senses of the word, what the drift costs, and proposed vocabulary |
+| [9. Open questions](docs/09-open-questions.md) | The measurement problems that most limit the field's ability to say what alignment failures are and how often they occur |
+| [Catalogue](docs/catalogue.md) | Every case in one table, with its verdict, principal, reason and sources |
+
+## How the repository is built
+
+The corpus has 127 works: papers, lab reports, specifications, system cards, essays and incident statements, from 1960 to November 17, 2026 ([`data/papers.jsonl`](data/papers.jsonl)). Each work that the documents rely on was read in full, or, for a few very long works, in full in the sections that bear on definitions and cases ([notes/METHOD.md](notes/METHOD.md) lists them). From the sources we extracted 255 definition cards ([`data/definitions/`](data/definitions)) and 295 case cards ([`data/cases/`](data/cases)), each with verbatim quotations, and assigned every case a verdict under the rules of Section 1 ([`data/verdicts/`](data/verdicts)); after merging cases described by several sources, the [catalogue](docs/catalogue.md) lists 265 distinct cases. Every section was checked sentence by sentence against the full texts of the sources it cites, and [notes/REVIEW.md](notes/REVIEW.md) summarizes what that review found and corrected.
+
+Four scripts make the main claims checkable. `scripts/verify_cards.py` confirms that every quotation in every card occurs in its source; `scripts/check_doc_quotes.py` does the same for every quotation of five or more words in the documents; `scripts/verify_reads.py` checks that each full read quotes its source's method, results and limitations; and `scripts/check_cites.py` checks that every cited arXiv identifier is in the corpus. The full texts are not redistributed, so these checks run after fetching the sources with `scripts/fetch_text.py` (arXiv) and `scripts/fetch_web.py` (other sources). The term-usage measurements are reproduced by `scripts/term_usage_sample.py` (after `scripts/download_venues.sh` fetches the public accepted-paper lists) and `scripts/arxiv_title_trend.sh`, with outputs in [`data/term_usage/`](data/term_usage).
+
+## Scope and limits
+
+The survey is about the concept: what alignment is, what it is not, where the problem comes from, and how to classify documented behavior. It does not survey alignment methods, interpretability or control in their own right except where they bear on those questions. Verdicts are interpretations of the evidence in the sources and are marked as ours; where a source classifies its own case, the documents give the source's classification in its own words alongside ours. Several framework choices are contestable, and [Section 1.8](docs/01-first-principles.md) and [Section 9](docs/09-open-questions.md) state where we think the framework is weakest. We may have missed relevant work or misread a source, and we welcome corrections through issues.

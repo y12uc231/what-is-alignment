@@ -1,0 +1,48 @@
+venue,sense,title
+ICLR 2025,technical-matching,Descent with Misaligned Gradients and Applications to Hidden Convexity
+ICLR 2025,safety-refusal,Durable Quantization Conditioned Misalignment Attack on Large Language Models
+ICLR 2025,safety-refusal,Probe before You Talk: Towards Black-box Defense against Backdoor Unalignment for Large Language Models
+ICLR 2025,technical-matching,Cross the Gap: Exposing the Intra-modal Misalignment in CLIP via Modality Inversion
+ICLR 2025,technical-matching,Content-Style Learning from Unaligned Domains: Identifiability under Unknown Latent Dimensions
+ICLR 2025,preference-reward-tuning,Unintentional Unalignment: Likelihood Displacement in Direct Preference Optimization
+ICML 2025,technical-matching,Temporal Misalignment in ANN-SNN Conversion and its Mitigation via Probabilistic Spiking Neurons
+ICML 2025,technical-matching,Imitation Learning from a Single Temporally Misaligned Video
+ICML 2025,goal-misalignment,Emergent Misalignment: Narrow finetuning can produce broadly misaligned LLMs
+NeurIPS 2025,technical-matching,On the Value of Cross-Modal Misalignment in Multimodal Representation Learning
+NeurIPS 2025,technical-matching,FALCON: Fine-grained Activation Manipulation by Contrastive Orthogonal Unalignment for Large Language Model
+NeurIPS 2025,technical-matching,"Contrastive Learning with Data Misalignment: Feature Purity, Training Dynamics and Theoretical Generalization Guarantees"
+NeurIPS 2025,technical-matching,MIDAS: Misalignment-based Data Augmentation Strategy for Imbalanced Multimodal Learning
+ICLR 2026,safety-refusal,When Thinking Backfires: Mechanistic Insights into Reason-induced Misalignment
+ICLR 2026,technical-matching,When Language Models Lose Their Mind: The Consequences of Brain Misalignment
+ICLR 2026,technical-matching,Detecting Temporal Misalignment Attacks in Multimodal Fusion for Autonomous Driving
+ICLR 2026,technical-matching,Bridging Draft Policy Misalignment: Group Tree Optimization for Speculative Decoding
+ICLR 2026,goal-misalignment,"Emergent Misalignment is Easy, Narrow Misalignment is Hard"
+ICLR 2026,goal-misalignment,The Hot Mess of AI: How Does Misalignment Scale With Model Intelligence and Task Complexity?
+ICLR 2026,technical-matching,Dissecting Representation Misalignment in Contrastive Learning via Influence Function
+ICLR 2026,goal-misalignment,Persona Features Control Emergent Misalignment
+ICML 2026,technical-matching,OPTION: Optimal Transport–Guided Flow Matching for Incomplete and Unaligned Multi-View Clustering
+ICML 2026,technical-matching,FedRot-LoRA: Mitigating Rotational Misalignment in Federated LoRA
+ICML 2026,technical-matching,From Extraction to Deduction: Resolving Functional Misalignment in RAG via a Collaborative Critic-Reasoner Framework
+ICML 2026,goal-misalignment,BLOCK-EM: Preventing Emergent Misalignment via Latent Blocking
+ICML 2026,goal-misalignment,In-Training Defenses Against Emergent Misalignment in Language Models
+ICML 2026,goal-misalignment,When Actions Go Off-Task: Detecting and Correcting Misaligned Actions in Computer-Use Agents
+ICML 2026,technical-matching,VideoSEAL: Mitigating Evidence Misalignment in Agentic Long Video Understanding by Decoupling Answer Authority
+ICML 2026,technical-matching,MUSE: Resolving Manifold Misalignment in Visual Tokenization via Topological Orthogonality
+ICML 2026,technical-matching,VSCD: Video-based Scene Change Detection in Unaligned Scenes
+ICML 2026,technical-matching,Geometry-Misalignment in Distributional Learning
+ICML 2026,goal-misalignment,Sycophancy Towards Researchers Drives Performative Misalignment
+ICML 2026,technical-matching,Spectral Gradient Descent Mitigates Anisotropy-Driven Misalignment: A Case Study in Phase Retrieval
+ICML 2026,technical-matching,Symbal: Detecting Systematic Misalignments in Model-Generated Captions
+ICML 2026,technical-matching,A Solvable High-Dimensional Model Where Nonlinear Autoencoders Learn Structure Invisible to PCA While Test Loss Misaligns
+ICML 2026,goal-misalignment,Consistency Training Can Entrench Misalignment
+NeurIPS 2026,goal-misalignment,Conditional misalignment: common interventions can hide emergent misalignment behind contextual triggers
+NeurIPS 2026,goal-misalignment,Emergent Misalignment as Data-Mediated Transfer
+NeurIPS 2026,technical-matching,GradTrack: Detecting Noisy Labels via Temporal Trajectories of Class-wise Gradient Misalignment
+NeurIPS 2026,technical-matching,Matryoshka Transcoders and Hierarchy Misalignment: When SAE Absorption Protection Does Not Transfer
+NeurIPS 2026,goal-misalignment,Model Incrimination: Investigating Whether Concerning Behavior Reflects Misalignment
+NeurIPS 2026,goal-misalignment,Persona-Model Collapse in Emergent Misalignment
+NeurIPS 2026,technical-matching,Progressive Signal Calibration for Medical Image Segmentation: Diagnosing and Correcting Structural Misalignment in Training
+NeurIPS 2026,goal-misalignment,Self-Recognition Finetuning can Reverse and Prevent Emergent Misalignment
+NeurIPS 2026,goal-misalignment,Stress Testing Chain-of-Thought Monitoring Against Covert Misalignment
+NeurIPS 2026,goal-misalignment,The Piggyback Hypothesis of Generalization: Explaining and Mitigating Emergent Misalignment
+NeurIPS 2026,technical-matching,Unaligned Image Guided Denoising via Cross-modal Conditional Flow Matching

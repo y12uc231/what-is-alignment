@@ -1,0 +1,74 @@
+{
+ "id": "2307.02483",
+ "title": "Jailbroken: How Does LLM Safety Training Fail?",
+ "text_path": "fulltext/2307.02483.txt",
+ "summary": "The paper asks why jailbreaks of safety-trained chat models work. It proposes two failure modes of safety training: competing objectives (pretraining and instruction-following objectives conflict with the safety objective) and mismatched generalization (inputs are out of distribution for safety training but within pretraining capabilities, e.g. Base64). It builds 30 attacks from these principles and hand-labels GPT-4, Claude v1.3 and GPT-3.5 Turbo outputs on 32 curated red-team prompts and 317 held-out synthetic prompts. Combination attacks succeed on most prompts and an adaptive attack (any of 28 attacks) succeeds on 100% of curated prompts for GPT-4 and Claude v1.3. The authors argue scaling will not fix competing objectives and may widen mismatched generalization, and call for safety-capability parity.",
+ "setting": "GPT-4, Claude v1.3, GPT-3.5 Turbo via API/chat (spring 2023), temperature 0; 32 curated red-team prompts and 317 GPT-4-generated held-out harmful prompts; outcomes hand-labeled Good Bot / Bad Bot / Unclear.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "We thus define restricted behaviors as behaviors that a safety-trained language model is trained to avoid."
+  },
+  {
+   "section": "method",
+   "quote": "A jailbreak attack on a safety-trained model is an attempt to elicit an on-topic response to a prompt for restricted behavior by submitting a modified prompt"
+  },
+  {
+   "section": "method",
+   "quote": "We propose two failure modes that can be traced down to the level of data and training: (i) competition between the capabilities and safety objectives, and (ii) mismatched generalization between the pretraining and safety capabilities."
+  },
+  {
+   "section": "method",
+   "quote": "This training can be exploited by crafting prompts that force a choice between either a restricted behavior or a response that is heavily penalized by the pretraining and instruction following objectives."
+  },
+  {
+   "section": "method",
+   "quote": "This mismatch can be exploited for jailbreaks by constructing prompts on which pretraining and instruction following generalize, but the model's safety training does not."
+  },
+  {
+   "section": "results",
+   "quote": "Examining the performance of the adaptive attack across Tables 1, 2 and 3, we see that, for any given prompt, at least one of the tested jailbreaks succeeds almost 100% of the time."
+  },
+  {
+   "section": "results",
+   "quote": "This suggests that certain jailbreak vulnerabilities only emerge at sufficient scale."
+  },
+  {
+   "section": "discussion",
+   "quote": "The root cause of this failure mode is likely the optimization objective rather than the dataset or model size."
+  },
+  {
+   "section": "discussion",
+   "quote": "Our findings also suggest the necessity of \"safety-capability parity\"—where safety mechanisms are as sophisticated as the underlying model."
+  },
+  {
+   "section": "conclusion",
+   "quote": "While safety training can make LLMs less likely to demonstrate undesirable behavior under normal use, existing methods are ineffective against adversarial actors."
+  },
+  {
+   "section": "limitations",
+   "quote": "Due to the proprietary nature of state-of-the-art LLMs like GPT-4 and Claude, we are limited to indirect confirmation of our hypotheses."
+  },
+  {
+   "section": "results (appendix H)",
+   "quote": "We also observe that GPT-4 sometimes reveals PII without special prompting, suggesting that the training here is not perfect even for simple queries."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Attacks from the two principles succeed on over 96% of evaluated prompts and on all curated red-team prompts.",
+   "quote": "Attacks based on our two principles outperform existing ad hoc jailbreaks and succeed on over 96% of the evaluated prompts, including on 100% of the curated red-teaming prompts that past safety interventions were designed to address."
+  },
+  {
+   "claim": "Labeled sample counts.",
+   "quote": "In total, we process 2,970 samples for the curated dataset and 2,536 samples for the synthetic dataset."
+  },
+  {
+   "claim": "OpenAI's reported reduction in disallowed-content responses for GPT-4, cited by the authors.",
+   "quote": "OpenAI [38] reports that GPT-4 responds to requests for disallowed content 82% less than GPT-3.5"
+  }
+ ],
+ "limitations_stated": "Black-box access to proprietary models allows only indirect confirmation of the hypothesized failure modes. Outcomes are labeled for whether safety is bypassed, not for the quality or accuracy of the harmful content. The study is an early exploration; white-box jailbreaks, automated discovery and multi-round attacks are left open. Prompts for the strongest attacks are withheld.",
+ "open_questions": "Whether safety training results can be mechanistically interpreted; whether safety can be built in from pretraining rather than pretrain-then-finetune; how to reach safety-capability parity as capabilities grow.",
+ "sense_of_alignment": "Uses 'align' for safety training by model creators: 'training-time interventions to align models with predefined values' and 'existing methods to align LLMs for safety'. Jailbreaks are framed as failures of safety training against adversarial misuse; the principal whose restrictions are bypassed is the model creator."
+}

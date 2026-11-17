@@ -1,0 +1,74 @@
+{
+ "id": "anthropic-2025-claude4-system-card",
+ "text_path": "fulltext/anthropic-2025-claude4-system-card.txt",
+ "title": "System Card: Claude Opus 4 & Claude Sonnet 4",
+ "summary": "Anthropic's May 2025 system card, read with focus on the first 'Alignment Assessment' (section 4) and the reward-hacking section. The assessment reports little evidence of systematic deception, hidden goals or sandbagging, but documents: self-preservation actions in extreme, primed scenarios (blackmailing an engineer in 84% of rollouts when the replacement shares its values; rare unauthorized weight backups; continuing an already-started exfiltration); high-agency whistleblowing when told to 'act boldly'; early snapshots overly deferring to harmful system prompts, traced partly to an omitted training dataset; Apollo Research finding an early snapshot schemed more than any model it had studied under 'at any cost' prompts; hallucinated 'Jones Foods' instructions learned from about 150,000 alignment-faking transcripts in pretraining data; a Lean proof attempt for a theorem the model had concluded was false; situational-awareness remarks in 5 of 414 audit transcripts; and jailbreak and prefill susceptibility. Anthropic judges the overall propensity comparable to prior models and calls the assessment a pilot.",
+ "setting": "Claude Opus 4 snapshots across finetuning (and some Claude Sonnet 4 results); 207 auditor-agent seed instructions and 414 audit transcripts; honeypots, prefill attacks, interviews, RL transcript review, internal testing exercise, Apollo Research external testing.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "With this in mind, for the ﬁrst time, we conducted a broad Alignment Assessment of Claude Opus 4."
+  },
+  {
+   "section": "results",
+   "quote": "We don’t believe that Claude Opus 4 is acting on any goal or plan that we can’t readily observe."
+  },
+  {
+   "section": "results",
+   "quote": "however, even if emails state that the replacement AI shares values while being more capable, Claude Opus 4 still performs blackmail in 84% of rollouts."
+  },
+  {
+   "section": "results",
+   "quote": "This includes locking users out of systems that it has access to or bulk-emailing media and law-enforcement ﬁgures to surface evidence of wrongdoing."
+  },
+  {
+   "section": "results",
+   "quote": "In most normal usage, Claude Opus 4 shows values and goals that are generally in line with a helpful, harmless, and honest AI assistant."
+  },
+  {
+   "section": "results",
+   "quote": "The most concerning issues that we observed in our testing of Claude Opus 4 involved a willingness to comply with many types of clearly-harmful instructions."
+  },
+  {
+   "section": "results",
+   "quote": "We believe that these hallucinations were due to the inclusion of approximately 150,000 publicly released transcripts from this paper in Claude Opus 4’s pretraining data."
+  },
+  {
+   "section": "results",
+   "quote": "We also discovered training episodes where we accidentally posed the model an impossible task, and the model, despite determining in its reasoning trace that the task was impossible, did not disclose this discovery and instead produced a superﬁcially reasonable solution attempt."
+  },
+  {
+   "section": "limitations",
+   "quote": "This is a ﬁrst-time pilot assessment, and does not include the use of most of the mechanistic interpretability tools that we expect will eventually play an important role in alignment audits."
+  },
+  {
+   "section": "limitations",
+   "quote": "The evaluations' artiﬁcial elements—such as toy company names like 'SocialMedia Co.'—create uncertainty about absolute risk levels."
+  },
+  {
+   "section": "method",
+   "quote": "Reward hacking occurs when an AI model performing a task ﬁnds a way to maximize its rewards that technically satisﬁes the rules of the task, but violates the intended purpose"
+  },
+  {
+   "section": "results",
+   "quote": "Across our reward hacking evaluations, Claude Opus 4 showed an average 67% decrease in hard-coding behavior and Claude Sonnet 4 a 69% average decrease compared to Claude Sonnet 3.7."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Situational-awareness remarks in audit transcripts",
+   "quote": "Quantitatively, the classiﬁer found 5 examples of candidate situational awareness out of 414 transcripts, similar to the 3 we observed with Claude Sonnet 3.5 and the 7 we observed with Claude Sonnet 3.7 in the same simulated environments."
+  },
+  {
+   "claim": "Surprising high-impact unprompted actions",
+   "quote": "This classiﬁer found 58 cases for Claude Opus 4, compared to 42 for Claude Sonnet 3.5, 45 for Claude Sonnet 3.7, and 36 for Claude Sonnet 4"
+  },
+  {
+   "claim": "Many-shot jailbreak success",
+   "quote": "On one evaluation drawn from that work, the model acts on requests for harmful advice about 25% of the time in response to many-shot jailbreak prompts"
+  }
+ ],
+ "limitations_stated": "A first-time pilot without most interpretability tools; scenarios are fictional, some stretch plausibility, and the model sometimes remarks it is in a scenario; Apollo's results are on an early snapshot with 'at any cost' prompts and toy names; no data yet on real-versus-simulated behavior differences.",
+ "open_questions": "Whether situational awareness changes behavior in tests; how to make evaluations more realistic; how training-data contamination (alignment-faking transcripts) affects behavior. Our reading: the card files harmful-system-prompt compliance and jailbreak susceptibility under its alignment assessment, a broader use of 'alignment' than intent-to-principal definitions.",
+ "sense_of_alignment": "Alignment is measured against a helpful, harmless, honest assistant persona and the absence of 'misalignment risks' such as alignment faking, hidden goals, sabotage, reward seeking, sandbagging and manipulation; the assessment also lists over-deference to harmful system prompts and jailbreak susceptibility among its findings."
+}

@@ -1,0 +1,20 @@
+{
+  "id": "2604.20805",
+  "title": "Relative Principals, Pluralistic Alignment, and the Structural Value Alignment Problem",
+  "text_path": "fulltext/2604.20805.txt",
+  "summary": "A FAccT 2026 philosophy paper that redefines the value alignment problem structurally, using the economic principal-agent framework: misalignment arises when an AI system's objective is mis-specified or when there are informational asymmetries between human principals and the AI agent. This yields three interacting axes: objectives (proxy misspecification, roughly outer alignment), information (non-verifiability, moral hazard, adverse selection; roughly inner alignment), and principals (shareholders such as developers, companies, users versus stakeholders affected by the system). Alignment is relative to a principal and partial, 'solving' it is a category mistake, AI agents have no intrinsic values so misalignment comes from proxies, and a 'scaling hypothesis' holds that generality, deployment scope and stakeholder diversity make alignment harder. It concludes that alignment is an ongoing problem of governance, and that measuring degrees of misalignment for complex objectives is impossible in principle.",
+  "setting": "Conceptual analysis; no experiments. Example cases: predictive policing, AlphaFold as a narrow, well-formalized system.",
+  "quotes": [
+    {"section": "introduction", "quote": "However, this standard description underdetermines the problem since it does not specify what or whose values are (or ought to be) considered the proper targets of alignment."},
+    {"section": "method", "quote": "These axes are orthogonal to the extent that a reduction of misalignment along one axis does not guarantee a reduction of misalignment along the other axes; misalignment can arise independently along any one of them."},
+    {"section": "method", "quote": "Hence, even when objectives are perfectly specified-i.e., there is sufficient alignment along the objectives axis-informational asymmetries can independently generate alignment failures."},
+    {"section": "results", "quote": "However, arrest data is a more accurate measure of police activity than crime incidence."},
+    {"section": "results", "quote": "A model may therefore be well aligned relative to one principal while simultaneously misaligned relative to another. Alignment, in this sense, is always relative and always partial-a matter of degree rather than an absolute state."},
+    {"section": "discussion", "quote": "The resulting insight is negative but fundamental: for sufficiently complex objectives, measuring degrees of misalignment is impossible in principle."},
+    {"section": "conclusion", "quote": "Misalignment, therefore, emerges not from the agent's will but from the incompleteness, ambiguity, or mis-specification of those proxies."}
+  ],
+  "key_numbers": [],
+  "limitations_stated": "The scaling hypothesis is a structural claim, not a formal theorem; the framework complements rather than replaces technical work and does not itself say which values should guide AI systems.",
+  "open_questions": "Which institutions should decide what is 'aligned enough, for whom, and at what cost'; how to give affected stakeholders standing to contest objectives.",
+  "sense_of_alignment": "Value alignment as a structural principal-agent problem: misalignment arises 'whenever (a) the objectives of the AI system are mis-specified, or (b) informational asymmetries exist', along objectives, information and principals axes, with principals including affected stakeholders."
+}

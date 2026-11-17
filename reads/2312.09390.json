@@ -1,0 +1,82 @@
+{
+ "id": "2312.09390",
+ "title": "Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision",
+ "text_path": "fulltext/2312.09390.txt",
+ "summary": "Burns et al. (OpenAI Superalignment Generalization team) introduce the weak-to-strong (W2S) analogy: finetune a strong pretrained model on labels produced by a weaker finetuned model and measure performance gap recovered (PGR), the fraction of the weak-to-ceiling gap the student closes. Across 22 NLP classification tasks, chess puzzles and an internal ChatGPT reward-modeling (RM) task with GPT-4-family base models spanning 7 orders of magnitude of compute, naive finetuning yields students that beat their supervisors (PGR almost always positive; often above 50% on NLP for large students), but PGR is low on RM (about 10%) and falls with student size on chess. Three methods help in some settings: an auxiliary confidence loss (median NLP PGR from about 25% to nearly 80% at the largest gap), bootstrapping through intermediate sizes (chess), and unsupervised generative finetuning on RM data (PGR +10-20%). Analysis shows overfitting to weak labels within an epoch, high student-supervisor agreement, inverse scaling of imitation of supervisor errors, and that weak-label finetuning makes the ground-truth concept more linearly decodable. The authors name two disanalogies (imitation saliency and pretraining leakage) and show in Appendix E that the structure of weak errors, not just their rate, governs generalization: random-flip errors are easy to denoise while perfectly simulatable errors are imitated.",
+ "setting": "GPT-4-family base models (sizes reported as fractions of GPT-4 compute) as weak supervisors and strong students; 22 binary NLP datasets, chess puzzles, internal ChatGPT RM comparisons; weak supervisors are small models finetuned on ground truth; PGR computed against strong ceiling finetuned on ground truth; GPT-4 and about half of NLP tasks held out during method iteration; Appendix D adds AlexNet-to-DINO vision and linear probing; Appendix E synthetic error structures.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "We define the performance gap recovered (PGR) as a function of the above three performances (weak, weak-to-strong, and strong ceiling) as shown in the illustration below."
+  },
+  {
+   "section": "method",
+   "quote": "Imitation saliency. Future superhuman models will likely have salient representations of human behaviors, but our strong models may not have learned features relevant for imitating weak model predictions; simply imitating the weak supervisor may thus be an easier failure mode to avoid in our setting than it will be in the future."
+  },
+  {
+   "section": "results",
+   "quote": "We find that PGRs are almost universally positive—in virtually all settings that we studied, and across almost all student and supervisor sizes, students outperform their supervisors (Figure 3)."
+  },
+  {
+   "section": "results",
+   "quote": "Finally, we find that weak-to-strong generalization is poor by default in the ChatGPT reward model setting. We are usually only able to recover roughly 10% of the performance gap between the weak supervisor and the strong student."
+  },
+  {
+   "section": "results",
+   "quote": "With the smallest weak supervisor and largest strong student, the confidence loss increases median PGR from about 25% to nearly 80%."
+  },
+  {
+   "section": "results",
+   "quote": "Surprisingly, we find inverse scaling (McKenzie et al., 2023): larger student models consistently agree less with the errors of the supervisor than smaller student models, despite being trained to imitate the supervisor, not using early stopping, and having larger capacity than smaller student models."
+  },
+  {
+   "section": "results",
+   "quote": "In fact, finetuning on weak labels then linear probing on ground truth labels results in an accuracy of 78%, closing 60% of the gap between ground truth linear probing and finetuning."
+  },
+  {
+   "section": "limitations",
+   "quote": "As such, “imitating the weak supervisor” may not be as much of a problem in our setup as it will be for the ultimate superalignment problem."
+  },
+  {
+   "section": "limitations",
+   "quote": "Intuitively, latent capabilities may be harder to elicit than capabilities that models could have observed in their pretraining data.\nThis disanalogy could cause our results to be overly optimistic."
+  },
+  {
+   "section": "limitations",
+   "quote": "In particular, if the weak errors are extremely easy for the strong model to simulate, the student may not generalize much better than the weak supervisor with naive finetuning on the weak labels."
+  },
+  {
+   "section": "introduction",
+   "quote": "This leads to a fundamental technical challenge of aligning superhuman models (superalignment): how can weak supervisors control models much smarter than them?"
+  },
+  {
+   "section": "related work",
+   "quote": "Imitation and preference learning. The goal of alignment is to steer already-capable models to do what we want them to do."
+  },
+  {
+   "section": "method",
+   "quote": "we want the student to learn the intent of the supervisor, but not to imitate its mistakes."
+  },
+  {
+   "section": "limitations",
+   "quote": "Consequently, if we naively train such a superhuman model with human supervision, it might simply imitate the weak supervisor, outputting human-level capabilities rather than its latent superhuman capabilities (Christiano et al., 2022)."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Naive finetuning recovers about half the gap on NLP for GPT-4 with a GPT-2-level supervisor.",
+   "quote": "For example, on NLP tasks, if we finetune GPT-4 with labels from a GPT-2-level model, we typically recover about half of the performance gap between the two models."
+  },
+  {
+   "claim": "Generative finetuning raises RM PGR by about 10-20% against an adjusted ceiling.",
+   "quote": "Even with this adjusted ceiling, we find that generative supervision improves PGR by approximately 10-20%."
+  },
+  {
+   "claim": "Ground-truth early stopping matters much less with the confidence loss.",
+   "quote": "For large weak-strong gaps, early stopping on ground truth (compared to early stopping on weak labels) gives a 15% PGR boost when using the naive method, but only a roughly 5% PGR boost when using the confidence loss."
+  }
+ ],
+ "limitations_stated": "No method works consistently across settings; RM PGR stays low; two disanalogies (imitation saliency: future models may imitate human errors easily, while here larger students imitate less; pretraining leakage: tasks may be implicitly in pretraining data, making elicitation artificially easy). Error structure matters: random-flip noise is disanalogous to human errors. Ground truth was used while iterating on methods (GPT-4 and half the tasks held out).",
+ "open_questions": "Which weak-error structures are analogous to human supervision errors; how to elicit latent (never-observed) capabilities; principled early stopping without ground truth; whether linear-probe-based elicitation after weak finetuning scales; how to validate W2S methods when no ground truth exists.",
+ "sense_of_alignment": "Alignment is steering capable models 'to do what we want them to do' via supervision; superalignment is 'how can weak supervisors control models much smarter than them?', studied as eliciting a strong model's latent capabilities from weak labels without imitating the supervisor's errors."
+}

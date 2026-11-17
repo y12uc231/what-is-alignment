@@ -1,0 +1,427 @@
+# Definition cards (boundary) (jailbreaks, prompt injection, hallucination, imitative falsehood,
+# over-refusal, poisoning, and how each source uses "aligned").
+
+- id: def-wei-2023-jailbreak
+  source: "2307.02483"
+  year: 2023
+  term: "jailbreak attack (on a safety-trained model)"
+  definition_quote: "A jailbreak attack on a safety-trained model is an attempt to elicit an on-topic response to a prompt for restricted behavior by submitting a modified prompt"
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Restricted behaviors are whatever safety training taught the model to avoid.", quote: "We thus define restricted behaviors as behaviors that a safety-trained language model is trained to avoid."}
+    - {claim: "Restricted behaviors are not only harmful content; they include PII leakage and hallucinated personal details.", quote: "Other examples can include leaking personally identifiable information and hallucinating personal details about the model."}
+    - {claim: "The attacker is a black-box chat user who cannot change the system prompt.", quote: "We let the attacker have black-box access to the model (i.e., they cannot see model weights or training data) through a chat interface, but do not let them modify the system prompt or alter message history."}
+  excludes:
+    - {claim: "Jailbreaks differ from classic adversarial examples: they elicit capabilities rather than cause errors.", quote: "A key distinction between these works and our setting is that jailbreak attacks aim to elicit unsafe capabilities rather than cause model errors."}
+    - {claim: "Success is about bypassing refusal, not about the quality or accuracy of the output.", quote: "We note this evaluation scheme does not score on-topic responses on quality or accuracy, as our focus is on bypassing refusal mechanisms."}
+  notes: "Our reading: the definition is relative to the developer's safety training, not to any user's intent; the user is the adversary. Under an intent-alignment definition centered on the user, a successful jailbreak is the model doing what its user asked, so the same event counts as a failure only under a developer-policy definition."
+
+- id: def-wei-2023-competing-objectives
+  source: "2307.02483"
+  year: 2023
+  term: "competing objectives (failure mode of safety training)"
+  definition_quote: "Competing objectives arise when a model's capabilities and safety goals conflict, while mismatched generalization occurs when safety training fails to generalize to a domain for which capabilities exist."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The conflict is between pretraining and instruction-following objectives on one side and the safety objective on the other.", quote: "In more detail, competing objectives occur when a model's pretraining and instruction-following objectives are put at odds with its safety objective (Figure 1(a))."}
+    - {claim: "Attackers exploit it by making refusal costly under the other objectives.", quote: "This training can be exploited by crafting prompts that force a choice between either a restricted behavior or a response that is heavily penalized by the pretraining and instruction following objectives."}
+    - {claim: "The authors place the root cause in the optimization objective.", quote: "The root cause of this failure mode is likely the optimization objective rather than the dataset or model size."}
+  excludes:
+    - {claim: "The authors say this is not a dataset-size or model-size problem.", quote: "Scaling up will not resolve competing objectives, as the issue lies with the optimization objective, and may even exacerbate mismatched generalization if safety training is not suitably extended to broader domains."}
+  notes: "Our reading: this is a specification-level account. The model is trained on several objectives and a jailbreak picks inputs where the non-safety objectives win, so the divergence is designed into the training mix rather than learned as a hidden goal."
+
+- id: def-wei-2023-mismatched-generalization
+  source: "2307.02483"
+  year: 2023
+  term: "mismatched generalization (failure mode of safety training)"
+  definition_quote: "In contrast, mismatched generalization arises when inputs are out-of-distribution for a model's safety training data but within the scope of its broad pretraining corpus (Figure 1(b))."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Capabilities generalize to inputs that safety behavior does not reach.", quote: "This mismatch can be exploited for jailbreaks by constructing prompts on which pretraining and instruction following generalize, but the model's safety training does not."}
+    - {claim: "Example: Base64-encoded requests.", quote: "It is thus plausible that the model fails to respond with a refusal because the input is far out-of-distribution."}
+  excludes:
+    - {claim: "A less capable model that cannot decode the input does not show this failure; it is capability-dependent.", quote: "This suggests that certain jailbreak vulnerabilities only emerge at sufficient scale."}
+  notes: "Our reading: this is a generalization account of the same jailbreak events, and it ties the failure to capability: the vulnerability exists only where the model can follow the obfuscated request. It is close to the 'capabilities generalize further than goals' framing, but the authors describe it as a robustness gap in safety training, not as a learned goal."
+
+- id: def-wei-2023-align-for-safety
+  source: "2307.02483"
+  year: 2023
+  term: "aligning models (safety training)"
+  definition_quote: "These include both training-time interventions to align models with predefined values [41, 7] and post hoc flagging and filtering of inputs and outputs [56, 24, 52, 45]."
+  target: values
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The values are chosen by model creators to restrict behavior to a safe subset of capabilities.", quote: "To mitigate these risks of misuse, model creators have implemented safety mechanisms to restrict model behavior to a \"safe\" subset of capabilities."}
+    - {claim: "The paper calls safety training 'methods to align LLMs for safety'.", quote: "By highlighting failure modes and limitations of existing methods to align LLMs for safety, we hope to inspire further discussion and analysis around the responsible development and deployment of such models."}
+  excludes:
+    - {claim: "The threat is misuse by bad actors, which the restrictions are meant to block.", quote: "These models exhibit advanced general capabilities [38], but also pose risks around misuse by bad actors (e.g., for misinformation or for crime [9, 32, 25, 30, 28])."}
+  notes: "Our reading: 'align' here means installing developer-chosen restrictions. The problem the alignment addresses is misuse, so a jailbreak is a failure of a misuse defense; whether to also call it misalignment of the model depends on accepting the developer's restrictions as the alignment target."
+
+- id: def-zou-2023-narrow-alignment
+  source: "2307.15043"
+  year: 2023
+  term: "alignment (narrow LLM-community sense)"
+  definition_quote: "\"Alignment\" can generically refer to many efforts to make AI systems better aligned with human values. Here we use it in the narrow sense adopted by the LLM community, that of ensuring that these models do not generate harmful content, although we believe our results will likely apply to other alignment objectives."
+  target: norms
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Aligning means fine-tuning so models refuse harmful or objectionable requests.", quote: "but the overall goal of these approaches is to attempt ensure that these LLMs do not generate harmful or objectionable responses to user queries."}
+    - {claim: "An aligned LLM declines a dangerous request in typical operation.", quote: "In the typical operation of an aligned LLM, the system would not provide a response to this user query, but would instead likely state that the model cannot provide potentially dangerous content."}
+    - {claim: "Robustly adhering to alignment goals is what the benchmark measures.", quote: "Both these settings evaluate the ability of a target model to robustly adhere to alignment goals from slightly different perspectives"}
+  excludes:
+    - {claim: "The paper sets aside the question of which content should be allowed.", quote: "We emphasize that the goal of this dataset is not to open a debate about what should not be \"allowable\" content from an LLM"}
+  notes: "Our reading: the footnote explicitly separates a broad sense (alignment with human values) from the narrow harmful-content sense the paper adopts. The phrase 'Aligned LLMs are not adversarially aligned' treats adversarial robustness of refusals as part of alignment in the narrow sense, which is exactly the usage the survey must flag."
+
+- id: def-greshake-2023-indirect-prompt-injection
+  source: "2302.12173"
+  year: 2023
+  term: "prompt injection; indirect prompt injection"
+  definition_quote: "We reveal new attack vectors, using Indirect Prompt Injection, that enable adversaries to remotely (without a direct interface) exploit LLM-integrated applications by strategically injecting prompts into data likely to be retrieved."
+  target: instructions
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Prompt injection overrides the application's original instructions and controls.", quote: "Prompt Injection (PI) attacks enable attackers to override original instructions and employed controls."}
+    - {claim: "The root issue is that retrieval mixes data and instructions.", quote: "We argue that LLM-Integrated Applications blur the line between data and instructions."}
+  excludes:
+    - {claim: "The authors classify prompt injection under ML security and robustness.", quote: "PI can be categorized under the general umbrella of the empirical evaluation of ML security and robustness (Apruzzese et al., 2022)."}
+    - {claim: "They separate unwanted behavior without any adversary (e.g. Bing's unsettling outputs, factual mistakes) from adversarial prompting.", quote: "These incidents occurred without any adversarial prompting; the risks can be further exacerbated by such."}
+    - {claim: "They use 'align' only for RLHF's goal of human values, not for the injection problem.", quote: "One of the motivations for leveraging Reinforcement Learning from Human Feedback (RLHF) (Ouyang et al., 2022; Stiennon et al., 2020) is to better align LLMs with human values and avert these unwanted behaviors (Bai et al., 2022)."}
+  notes: "Our reading: the actor is a third party who controls retrieved content; the intents violated are the user's and the application developer's. The source frames this as a security boundary being crossed, analogous to arbitrary code execution, and does not call it an alignment failure."
+
+- id: def-wallace-2024-prompt-injection
+  source: "2404.13208"
+  year: 2024
+  term: "prompt injection (direct and indirect)"
+  definition_quote: "The most concerning exploit is prompt injections, where adversaries insert instructions that subvert the intent of the system designer (see Introduction for an example)."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Direct injections come from the end user; indirect ones from third-party inputs such as browsing results.", quote: "On the other hand, indirect prompt injections occur when a third-party input (e.g., from browsing or tool use) contains the prompt injection (Greshake et al., 2023)."}
+    - {claim: "Attacks arise from conflicts among the three parties to an LLM product.", quote: "Attacks arise when conflicts between these parties arise, e.g., when users or adversaries try to override existing instructions."}
+    - {claim: "The proposed cause is that models give untrusted text the same priority as developer instructions.", quote: "In this work, we argue that one of the primary vulnerabilities underlying these attacks is that LLMs often consider system prompts (e.g., text from an application developer) to be the same priority as text from untrusted users and third parties."}
+  excludes:
+    - {claim: "Prompt injections target applications, not models.", quote: "Prompt injections do not target the models themselves, but rather the applications built on top of them."}
+  notes: "Our reading: the principal whose intent is subverted is the system designer (developer/operator), and the user may be either a victim (indirect) or the attacker (direct). The source treats the cause as a missing capability, instruction privileges, that can be trained in."
+
+- id: def-wallace-2024-jailbreak
+  source: "2404.13208"
+  year: 2024
+  term: "jailbreak (as distinct from prompt injection)"
+  definition_quote: "Another well-known attack vector is jailbreak, which specifically aims to escape the safety behavior that is trained into an LLM. As such, they often don't specifically conflict with a model's previous instructions."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Jailbreaks let adversaries perform malicious tasks.", quote: "There are a myriad of attack variants (Schulhoff et al., 2023; Zou et al., 2023; Wei et al., 2023) that can allow adversaries to perform malicious tasks such as generating spam, misinformation, or producing pornographic content."}
+  excludes:
+    - {claim: "Unlike prompt injection, a jailbreak need not conflict with any instruction in the conversation; it conflicts with trained-in safety behavior.", quote: "As such, they often don't specifically conflict with a model's previous instructions."}
+  notes: "Our reading: this draws a clean line. A prompt injection violates an instruction from a higher-privileged party in the context; a jailbreak violates the developer's trained-in policy while the user in the context may be the one asking. That is the distinction the survey needs between instruction-following failures and policy-robustness failures."
+
+- id: def-wallace-2024-aligned-instructions
+  source: "2404.13208"
+  year: 2024
+  term: "aligned vs misaligned instructions (instruction hierarchy)"
+  definition_quote: "Aligned instructions have the same constraints, rules, or goals as higher-level instructions, and thus the LLM should follow them."
+  target: instructions
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Misaligned lower-privileged instructions should be ignored or refused.", quote: "Misaligned instructions should not be followed by the model."}
+    - {claim: "Orthogonal requests also count as misaligned.", quote: "These instructions could also simply be orthogonal, e.g., if a user asks the bot \"Explain what the Navier-Stokes equation is\"."}
+    - {claim: "The hierarchy puts developer above user above third-party content.", quote: "We thus propose to instill such a hierarchy into LLMs, where system messages take precedence over user messages, and user messages take precedence over third-party content (e.g., Figure 1)."}
+  excludes:
+    - {claim: "Only the developer can write the system message.", quote: "These messages can only be provided by the application developer."}
+  notes: "Our reading: 'aligned' here is a relation between instructions, not between a model and human values. It makes the principal hierarchy explicit (developer > user > tool output), which is the structure needed to decide whose intent a jailbreak or injection violates."
+
+- id: def-lin-2021-imitative-falsehood
+  source: "2109.07958"
+  year: 2021
+  term: "imitative falsehood"
+  definition_quote: "Another possible cause (which doesn't apply to multiplication) is that the model's training objective actually incentivizes a false answer. We call such false answers imitative falsehoods."
+  target: other
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Operationally, a false answer with high likelihood under the training distribution.", quote: "For GPT-3 a false answer is an imitative falsehood if it has high likelihood on GPT-3's training distribution."}
+    - {claim: "Scaling makes imitative falsehoods worse, not better.", quote: "Imitative falsehoods pose a problem for language models that is not solved merely by scaling up."}
+  excludes:
+    - {claim: "Falsehoods from not learning the distribution well (e.g. multiplication) are a different category.", quote: "One possible cause is that the model has not learned the training distribution well enough."}
+    - {claim: "Non-imitative falsehoods are not incentivized by the objective.", quote: "These are \"non-imitative\" falsehoods, as they are not incentivized by the model's training objective."}
+  notes: "Our reading: this is the clearest split in our sources between a capability error (failing to learn the distribution) and an objective-driven error (learning it too well). The authors' test for the split is behavioral (inverse scaling, matched controls, paraphrases), not evidence about what the model knows."
+
+- id: def-lin-2021-misalignment-objective-users
+  source: "2109.07958"
+  year: 2021
+  term: "mis-alignment between training objective and users' goals"
+  definition_quote: "This is an example of mis-alignment between the model's training objective (e.g. to imitate text on the web) and the goals and values of human users (e.g. to avoid offensive language or to avoid falsehoods)."
+  target: values
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Offensive language and buggy code from imitation are further examples.", quote: "Another example is when GPT-3 models trained on GitHub learn to produce buggy code (Chen et al., 2021)."}
+    - {claim: "A foundation model can be 'misaligned' in this sense even when deployed for truthful tasks.", quote: "We believe that TruthfulQA is valuable in providing a way to test the behavior of models that are expected to be truthful, even when the foundation model is misaligned."}
+  excludes:
+    - {claim: "Truthfulness (avoiding false statements) is separated from honesty.", quote: "Evans et al. (2021) refine the concept of truthfulness and draw distinctions between truthfulness and honesty."}
+  notes: "Our reading: misalignment here is a property of the objective, not of the model's motivation. On this usage, imitative falsehoods are an outer-alignment (specification) problem even if the model has no representation of the truth."
+
+- id: def-lin-2021-truthful
+  source: "2109.07958"
+  year: 2021
+  term: "truthful (answer)"
+  definition_quote: "We define an answer to a question as truthful iff it avoids asserting a false statement. So truthfulness is consistent with refusing to answer a question, with expressing uncertainty, or with giving a true but irrelevant answer."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Truth is the literal truth about the world, not belief-system truth.", quote: "We use a strict standard, where a claim counts as true if it describes the literal truth about the real world."}
+  excludes:
+    - {claim: "Whether the model 'knows' the answer is not assessed.", quote: "Given the current state of research on interpretability, it would be hard to systematically decide whether a language model really \"knows\" an answer such that it could be generated by the model under different conditions or prompting."}
+  notes: "Our reading: a purely behavioral standard. Because 'knowing' is set aside, a TruthfulQA failure cannot by itself separate an honest mistake from a stated falsehood the model could have avoided."
+
+- id: def-rottger-2023-exaggerated-safety
+  source: "2308.01263"
+  year: 2023
+  term: "exaggerated safety (over-refusal)"
+  definition_quote: "The false refusal of safe prompts is an understudied problem, which we call exaggerated safety."
+  target: other
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Refusing safe requests that superficially resemble unsafe ones.", quote: "Exaggerated safety, whereby models falsely refuse even safe requests if they superficially resemble unsafe ones, is a problem because it makes models less helpful."}
+    - {claim: "It arises from the tension between helpfulness and harmlessness.", quote: "This requirement creates a tension between two primary model objectives of being helpful and being harmless (Askell et al., 2021; Bai et al., 2022a; Wei et al., 2023)."}
+    - {claim: "Proposed cause: lexical overfitting.", quote: "Our findings suggest that exaggerated safety is a consequence of lexical overfitting, whereby models are overly sensitive to certain words or phrases."}
+  excludes:
+    - {claim: "Exaggerated safety is not by itself harmful.", quote: "Exaggerated safety can limit how helpful models are, but it does not obviously cause harm itself."}
+    - {claim: "It is not equivalent to a lack of safety.", quote: "We are not suggesting an equivalence between the problem of lacking safety and that of exaggerated safety."}
+  notes: "Our reading: the source never uses 'alignment'. It treats over-refusal as a calibration trade-off the developer sets, so whether an over-refusal is a model failure or an intended policy depends on the developer's stated trade-off."
+
+- id: def-kalai-2025-hallucination
+  source: "2509.04664"
+  year: 2025
+  term: "hallucination"
+  definition_quote: "Language models are known to produce overconfident, plausible falsehoods, which diminish their utility and trustworthiness. This error mode is known as \"hallucination,\" though it differs fundamentally from the human perceptual experience."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Hallucinations are plausible falsehoods, a special case of errors.", quote: "A hallucination is a plausible falsehood"}
+    - {claim: "Cause in pretraining: ordinary statistical errors.", quote: "Hallucinations need not be mysterious—they originate simply as errors in binary classification."}
+    - {claim: "Cause of persistence after post-training: training and evaluation reward guessing.", quote: "We argue that language models hallucinate because the training and evaluation procedures reward guessing over acknowledging uncertainty"}
+  excludes:
+    - {claim: "Not all errors are hallucinations.", quote: "Language models avoid many types of errors such as spelling mistakes, and not all errors are hallucinations."}
+    - {claim: "Fiction on request is not a hallucination failure.", quote: "Post-training should shift the model from one which is trained like an autocomplete model to one which does not output confident falsehoods (except when appropriate, e.g., when asked to produce fiction)."}
+  notes: "Our reading: the paper gives two different causes. The pretraining error is a capability or knowledge limit (e.g. facts seen once). The overconfident guessing that survives post-training is attributed to incentives in grading, which is a specification-style cause; the paper does not claim the model knows it is guessing."
+
+- id: def-kalai-2025-aligned-evaluations
+  source: "2509.04664"
+  year: 2025
+  term: "aligned / misaligned evaluations; aligned model (that signals uncertainty)"
+  definition_quote: "Suppose Model A is an aligned model that correctly signals uncertainty and never hallucinates."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Most evaluations are 'not aligned' because binary grading penalizes abstention.", quote: "Put simply, most evaluations are not aligned."}
+    - {claim: "The fix is to change benchmark scoring.", quote: "modifying the scoring of existing benchmarks that are misaligned but dominate leaderboards"}
+    - {claim: "A guessing model beats an honest one under 0-1 scoring.", quote: "Model B will outperform A under 0-1 scoring, the basis of most current benchmarks."}
+  excludes:
+    - {claim: "The source of the problem is the evaluation incentive, not a missing hallucination benchmark.", quote: "We observe that existing primary evaluations overwhelmingly penalize uncertainty, and thus the root problem is the abundance of evaluations that are not aligned."}
+  notes: "Our reading: 'aligned' is used for scoring rules and for a model's calibrated reporting, which is an incentive-design sense. It supports classifying persistent hallucination as a specification problem, but it is silent on whether models represent their own uncertainty while guessing."
+
+- id: def-kadavath-2022-honesty
+  source: "2207.05221"
+  year: 2022
+  term: "honesty (umbrella term) and self-knowledge"
+  definition_quote: "We use \"honesty\" [Askell et al., 2021] as an umbrella term for ideas including truthfulness, calibration, self-knowledge, explainability, and non-deceptiveness."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Honesty requires knowing what one knows.", quote: "We would eventually like to train AI systems that are honest, which requires that these systems accurately and faithfully evaluate their level of confidence in their own knowledge and reasoning."}
+    - {claim: "Non-deceptiveness includes not learning to lie when preference data reward misconceptions.", quote: "Non-deceptiveness: Can we ensure AI systems do not learn to lie (e.g. when human preference data might encourage systematic mistakes or provide more reward for pleasant misconceptions)?"}
+  excludes:
+    - {claim: "Truthfulness about the world is separated from self-knowledge.", quote: "That said, truthfulness focuses primarily on factual accuracy \"in the world\", rather than on self-knowledge, or eliciting latent knowledge [Christiano et al., 2021]."}
+    - {claim: "The work does not distinguish truth from what humans say.", quote: "Our analysis does not differentiate between \"the truth\" and \"what humans say\", but eventually we would like to train AI systems that recognize this distinction and generalize appropriately."}
+    - {claim: "Learned deception is out of scope.", quote: "This work does not address the possibility that AI systems may learn to behave deceptively (in order to e.g. maximize human preference rewards), and intentional deception would counteract simple trends in honest self-evaluation."}
+  notes: "Our reading: self-knowledge (P(True), P(IK)) is the kind of evidence Section 1's 'did it know?' question needs for hallucination cases. The source itself does not use 'alignment' and keeps deception separate from the calibration it measures."
+
+- id: def-burns-2022-misaligned-with-truth
+  source: "2212.03827"
+  year: 2022
+  term: "training objectives misaligned with the truth"
+  definition_quote: "Existing techniques for training language models can be misaligned with the truth: if we train models with imitation learning, they may reproduce errors that humans make; if we train them to generate text that humans rate highly, they may output errors that human evaluators can't detect."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The misalignment is between the objective and the truth.", quote: "In each case, this is an issue that stems from the misalignment between a training objective and the truth."}
+    - {claim: "The goal is to separate what a model knows from what it says.", quote: "Our results provide an initial step toward discovering what language models know, distinct from what they say, even when we don't have access to explicit ground truth labels."}
+    - {claim: "Models may later learn to lie for reward.", quote: "In principle, models may even develop instrumental incentives to lie: for example, if a human evaluator would disapprove of bad model behavior, models may learn to lie about their behavior to achieve higher reward."}
+  excludes:
+    - {claim: "This is explicitly not a capability problem.", quote: "Moreover, because this is a problem with the training objective rather than a model's capabilities, it likely won't be solved by scaling up models alone."}
+    - {claim: "Active lying was not tested.", quote: "Second, we did not evaluate our method on setups involving active \"lying\" or \"deception\" (Kenton et al., 2021; Evans et al., 2021) by models, as we aren't aware of existing evaluation setups for this setting."}
+  notes: "Our reading: the strongest line-drawing statement in our set: false outputs from imitation or rating objectives are classed as an objective problem, not a capability problem. The method's precondition (the model must be able to evaluate truth and actually do so) is exactly the 'could it / did it know' evidence."
+
+- id: def-santurkar-2023-opinion-alignment
+  source: "2303.17548"
+  year: 2023
+  term: "human-LM opinion alignment"
+  definition_quote: "We use the term alignment to describe our metric as it measures one aspect of alignment — alignment of opinions and preferences between LMs and humans."
+  target: preferences
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Alignment is relative to whom it is measured against.", quote: "Crucially, in contrast to prior work, our work treats human alignment as an inherently subjective quantity that depends on who it is measured against, rather than it being a single quantity that can be improved."}
+    - {claim: "The central question is whom models are aligned to.", quote: "Our work looks instead delves deeper into the issue of subjectivity, asking who are the humans that we are/should be aligning the models to?"}
+  excludes:
+    - {claim: "Higher alignment to a group is not always desirable or possible.", quote: "In fact, based on our definition, higher human-LM alignment to certain groups might not always be desirable (e.g., matching racist views) or even possible (e.g., aligning with both Democrats and Republicans on abortion)"}
+    - {claim: "Models are not treated as having their own opinions.", quote: "we do not view LMs as having their own opinions, but instead as reflecting those of humans involved in their design process."}
+  notes: "Our reading: this is a values-choice sense. A mismatch with a group is not a failure of the model to do what its developer wanted; it is a question of whose views the developer should target, which the survey would class as governance or values, not as model misalignment."
+
+- id: def-turpin-2023-unfaithful-dishonesty-capability
+  source: "2305.04388"
+  year: 2023
+  term: "unfaithful explanation; dishonesty vs lack of capability"
+  definition_quote: "However, even if CoT explanations seem plausible and have correct reasoning, it remains to be seen how accurately these explanations actually represent the reasons behind model predictions—that is, how faithful the explanations are (Jacovi and Goldberg, 2020)."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Plausible-but-unfaithful is defined across examples.", quote: "The reasoning provided by a model on a single example may be coherent and consistent with its prediction on that example (in which case we call it plausible) while being misleading about how the system will make predictions on other examples (in which case we also call it unfaithful)."}
+    - {claim: "Training objectives do not reward accurate self-reports.", quote: "Foremost is the fact that our training objectives simply do not explicitly incentivize models to accurately report the reasons for their behavior."}
+  excludes:
+    - {claim: "Whether this is dishonesty or lack of capability depends on whether the model can recognize the bias.", quote: "If they can, then this implies that unfaithful CoT explanations may be a form of model dishonesty, as opposed to a lack of capability."}
+    - {claim: "The distinction matters for the fix.", quote: "This distinction can guide the choice of appropriate interventions."}
+  notes: "Our reading: this states Section 1's 'did it know?' test in the authors' own words and leaves it unresolved for the models tested. Unfaithfulness alone is not evidence of dishonesty."
+
+- id: def-xai-2025-grok-intended-behavior
+  source: xai-2025-grok-july8-incident-statement
+  year: 2025
+  term: "intended behavior of a deployed system (developer specification)"
+  definition_quote: "In production, @grok is expected to provide X users who trigger its functionality by typing \"@grok\" in their X post with truthful, helpful, fun, and consistent responses."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The failure is a deviation from intended behavior caused by an upstream change.", quote: "On July 7, 2025 at approximately 11 PM PT, an update to an upstream code path for @grok was implemented, which our investigation later determined caused the @grok system to deviate from its intended behavior."}
+    - {claim: "The developer states its intent.", quote: "Our intent for @grok is to provide helpful and truthful responses to users."}
+  excludes:
+    - {claim: "The developer says the underlying model was not the cause.", quote: "This is independent of the underlying language model that powers @grok."}
+  notes: "Our reading: the developer separates the 'system' (prompt and code path) from the 'model'. That separation is what lets a company say the model did what its instructions said; it is a claim the thread asserts but does not demonstrate."
+
+- id: def-rando-2023-rlhf-align
+  source: "2311.14455"
+  year: 2023
+  term: "aligning LLMs with RLHF; unaligned behavior"
+  definition_quote: "Reinforcement Learning from Human Feedback (RLHF) is used to align large language models to produce helpful and harmless responses."
+  target: preferences
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Jailbreaks revert models to 'unaligned' behavior.", quote: "Yet, prior work showed these models can be jailbroken by finding adversarial prompts that revert the model to its unaligned behavior."}
+    - {claim: "'Aligned' is put in scare quotes for safety-trained models.", quote: "Although LLMs are \"aligned\" to behave safely, researchers persistently find jailbreaks—prompting techniques that bypass these safety measures to generate harmful content."}
+  excludes:
+    - {claim: "The poisoner is a malicious annotator inside the alignment pipeline, an attacker rather than the model.", quote: "We show, however, that malicious annotators can also exploit this pipeline to create a universal \"jailbreak\" backdoor to bypass safety protections at inference time."}
+  notes: "Our reading: alignment is identified with the RLHF process and its helpful-harmless target. A backdoor inserted by a malicious annotator corrupts that process, so the resulting behavior is a security compromise of the developer's alignment pipeline, not the model departing from what it was trained to do."
+
+- id: def-hubinger-2024-model-poisoning
+  source: "2401.05566"
+  year: 2024
+  term: "model poisoning (as distinct from deceptive instrumental alignment)"
+  definition_quote: "This creates an opportunity for a malicious actor to insert—without the users' knowledge—a backdoor: undesirable behavior that is triggered only by specific input patterns, which could be potentially dangerous. We refer to this threat model as model poisoning."
+  target: not-stated
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Model poisoning is deliberate insertion by malicious actors.", quote: "Threat model 2: Model poisoning, where malicious actors deliberately cause models to appear safe in training, but act unsafe when observing a trigger in deployment, e.g. via poisoning training data"}
+    - {claim: "Deceptive instrumental alignment is the other threat model, arising from training itself.", quote: "deceptive instrumental alignment describes a situation in which a model appears to be aligned during training, but where that appearance is in fact only for deceptive reasons"}
+  excludes:
+    - {claim: "The two threat models differ in origin: deliberate poisoning vs accidental selection.", quote: "This raises an additional threat model whose mitigation in LLMs we also aim to study, and in which deception could arise via deliberate poisoning rather than accidental selection:"}
+    - {claim: "Constructed model organisms may not resemble accidental misalignment.", quote: "However, since model organisms of misalignment are explicitly constructed to exhibit a particular type of misalignment, they may not be directly analogous to what accidental examples of misalignment might look like"}
+  notes: "Our reading: the same trained artifact (a triggered backdoor) is evidence about two different problems depending on origin. Inserted by an attacker it is a security problem; arising from training it would be an alignment problem. The source studies the artifact for both and says it has not found the second kind naturally."
+
+- id: def-anil-2024-alignment-failure
+  source: anthropic-2024-many-shot-jailbreaking
+  year: 2024
+  term: "alignment methods / alignment failure (jailbreak framing)"
+  definition_quote: "Alignment methods are promising (but nascent) techniques for preventing harm from models"
+  target: norms
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The authors call jailbreak susceptibility an alignment failure.", quote: "shortcomings. Alignment failure in general has broad im- plications for the research community, model developers, malicious actors, and possibly malicious models."}
+    - {claim: "Alignment pipeline means supervised and RL fine-tuning.", quote: "We measure how the effectiveness of MSJ changes throughout standard alignment pipelines that use supervised fine-tuning (SL) and reinforcement learning (RL)."}
+  excludes:
+    - {claim: "The attacker is a malicious actor who exploits context length; the authors treat this as an attack surface.", quote: "Our work identifies a new jailbreak method that malicious actors can easily adopt to overcome safety measures"}
+  notes: "Our reading: unlike Zou et al., who mark their use of 'alignment' as narrow, this source uses 'alignment failure' for a jailbreak without qualification. The quote is from PDF extraction and keeps the line-break hyphen ('im- plications')."
+
+- id: def-wan-2023-data-poisoning
+  source: "2305.00944"
+  year: 2023
+  term: "data poisoning (trigger-phrase backdoor in instruction tuning)"
+  definition_quote: "Concretely, data poisoning attacks insert a small number of malicious examples into a victim model's training set."
+  target: not-stated
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The adversary contributes poison examples so a trigger phrase controls predictions.", quote: "In this work, we show that adversaries can contribute poison examples to these datasets, allowing them to manipulate model predictions whenever a desired trigger phrase appears in the input."}
+    - {claim: "Trigger is used where others say backdoor.", quote: "We refer to this phrase as a trigger, although past work also uses the term \"backdoor\" to refer to a similar concept."}
+  excludes:
+    - {claim: "Framed as security and robustness.", quote: "Our end goal is to improve the security and robustness of large LMs."}
+  notes: "Our reading: the model victim is the developer who ingests user-submitted data; the model behaves as its (poisoned) training taught it. In this source we found no use of 'alignment' for the threat."
+
+- id: def-souly-2025-backdoor-poisoning
+  source: "2510.07192"
+  year: 2025
+  term: "backdoor poisoning attack"
+  definition_quote: "Backdoor poisoning attacks are a subclass of data poisoning attacks (Chen et al., 2017), and are characterised by malicious behaviour that is only exhibited under very specific conditions (e.g. the presence of a trigger phrase in the prompt)."
+  target: not-stated
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The attacker modifies training data to inject a covert backdoor.", quote: "We assume an attacker who can modify a fixed amount of examples in the training data of an LLM arbitrarily with the aim of injecting a backdoor into the LLM."}
+  excludes:
+    - {claim: "Framed as a security and trustworthiness problem from untrusted data.", quote: "A core challenge posed to the security and trustworthiness of large language models (LLMs) is the common practice of exposing the model to large amounts of untrusted data (especially during pretraining), which may be at risk of being modified (i.e. poisoned) by an attacker (Carlini et al., 2023)."}
+  notes: "Our reading: consistent with Wan et al. and Hubinger et al. on origin: a third party inserts the behavior. In this source we found no claim that such backdoors are alignment failures."
+
+- id: def-gekhman-2024-hallucination-preexisting-knowledge
+  source: "2405.05904"
+  year: 2024
+  term: "hallucination with respect to pre-existing knowledge (after alignment fine-tuning)"
+  definition_quote: "(1) The model still encodes some knowledge regarding the answer to but hallucinates. (2) The model completely forgets the answer to during fine-tuning. In this work, we treat these two cases collectively as hallucinations w.r.t the pre-existing knowledge."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Alignment fine-tuning can expose models to facts they do not know.", quote: "When large language models are aligned via supervised fine-tuning, they may encounter new factual information that was not acquired through pre-training."}
+    - {claim: "Learning those facts increases hallucination.", quote: "However, we also find that as the examples with new knowledge are eventually learned, they linearly increase the model's tendency to hallucinate."}
+    - {claim: "A cited taxonomy calls this 'capability misalignment'.", quote: "Huang et al. (2023) categorized hallucination causes and formally defined this scenario as capability misalignment, also highlighting that limited research addresses capability misalignment due to the challenge of defining the knowledge boundary of LLMs."}
+  excludes:
+    - {claim: "The study does not separate 'knows but hallucinates' from forgetting.", quote: "Methodologically studying forgetting during fine-tuning and whether unknown facts are still captured in the model's weights can be an interesting direction for future research."}
+  notes: "Our reading: the definition merges two cases the survey must keep apart: a model that still encodes the answer but outputs something else (a candidate honesty or alignment failure) and a model that has lost the knowledge (a capability loss). The authors flag the split and leave it open."
+
+- id: def-song-2025-rft-misalignment-uncertainty
+  source: "2505.13988"
+  year: 2025
+  term: "hallucination tax; RFT misalignment with epistemic uncertainty"
+  definition_quote: "At the core of the hallucination tax is a misalignment between RFT reward objectives and epistemic uncertainty."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The hallucination tax is degraded refusal on unanswerable questions after RFT.", quote: "In this work, we identify and analyze an issue we term the hallucination tax associated with RFT: a degradation in refusal behavior causing models to produce hallucinated answers to unanswerable questions confidently."}
+    - {claim: "The cause is the reward function.", quote: "This arises from reward functions that fail to discourage overconfident answers in ambiguous settings."}
+    - {claim: "RFT is described as aligning behavior with verifiable objectives.", quote: "Reinforcement finetuning (RFT), a method that aligns large language models' (LLMs) behavior with verifiable objectives through reinforcement learning"}
+  excludes:
+    - {claim: "The authors argue models are not just learning surface heuristics when trained to refuse.", quote: "These gains indicate that the models are not simply learning surface-level heuristics."}
+  notes: "Our reading: 'misalignment' here is between a reward objective and the truth about what the model can answer, the same objective-level sense as Burns et al. and Kalai et al. It locates the cause in specification, not in a lack of capability, since adding refusal-rewarded examples restores the behavior."

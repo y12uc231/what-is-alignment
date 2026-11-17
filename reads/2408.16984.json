@@ -1,0 +1,22 @@
+{
+  "id": "2408.16984",
+  "title": "Beyond Preferences in AI Alignment",
+  "text_path": "fulltext/2408.16984.txt",
+  "summary": "A philosophy-and-AI paper that names and critiques the 'preferentist' approach to AI alignment through four theses: rational choice theory as description of humans, expected utility theory as a normative standard, single-principal alignment as preference matching, and multi-principal alignment as preference aggregation. It argues preferences are constructed, contextual, dynamic and social, that reward functions cannot represent incommensurable values, that EUT is neither necessary nor sufficient for rationality, and that preference matching only suits narrow, locally scoped systems. Its alternative: align systems with normative standards appropriate to their social roles (for general assistants, the normative ideal of a good assistant), and for multiple principals, with norms negotiated through contractualist agreement, yielding many systems aligned with the norms each should follow. It reinterprets RLHF labels as goodness-of-a-kind judgments against normative criteria.",
+  "setting": "Conceptual and critical review with a research agenda; no experiments.",
+  "quotes": [
+    {"section": "introduction", "quote": "To address these challenges, AI alignment has emerged as a field, focused on the technical project of ensuring an AI system acts reliably in accordance with the values of one or more humans."},
+    {"section": "method", "quote": "Whether explicitly adopted, or implicitly assumed in the guise of \"reward\" or \"utility\", this preference-based approach dominates both the theory and practice of AI alignment."},
+    {"section": "method", "quote": "Our aim is not provide a decisive argument for any particular thesis, but to provide a critical review of the role of preferences in AI alignment, while developing a research agenda for alternative approaches that is accessible to an interdisciplinary audience."},
+    {"section": "results", "quote": "Rather, we argue that reward-based alignment - and preference matching more generally - is only appropriate for AI systems with sufficiently local uses and scopes."},
+    {"section": "results", "quote": "As used, they are not methods for alignment with any one human's preferences, or for recovering the ''true reward function'' in some person's head,"},
+    {"section": "results", "quote": "For general-purpose AI assistants, this implies alignment with the normative ideal of an assistant, rather than alignment to an individual's preferences, or to human normativity writ large."},
+    {"section": "discussion", "quote": "Rather than learning humanity's preferences in order to maximally satisfy them, AI systems should be aligned with normative standards and criteria that we collectively forge and negotiate - standards exemplified by social, legal, and moral norms."},
+    {"section": "conclusion", "quote": "As such, preferences can serve as proxies for our values, but not targets of alignment in and of themselves."},
+    {"section": "limitations", "quote": "While examining these questions would take us beyond the scope of this paper, we believe our critique of expected utility theory lends itself to thicker conceptions of fair and reasonable agreement."}
+  ],
+  "key_numbers": [],
+  "limitations_stated": "The paper is intentionally broad, so its arguments are brief; it aims at a critical review and research agenda rather than decisive arguments. It does not settle what makes agreements fair or what the normative criteria for general assistants are, saying society must decide.",
+  "open_questions": "What the normative ideal of a good assistant requires in detail; how to distinguish legitimate from illegitimate value change; how to build contractualist decision-making into AI systems; how to secure fair agreement when stakeholders disagree.",
+  "sense_of_alignment": "Critiques alignment as preference matching ('act so as to maximize the satisfaction of the preferences of that human') and proposes alignment with 'normative standards appropriate to their social roles and functions', negotiated by stakeholders."
+}

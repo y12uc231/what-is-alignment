@@ -1,0 +1,19 @@
+{
+  "id": "2406.18346",
+  "title": "AI Alignment through Reinforcement Learning from Human Feedback? Contradictions and Limitations",
+  "text_path": "fulltext/2406.18346.txt",
+  "summary": "A sociotechnical critique of 'value alignment' of LLMs through RLHF and RLAIF (RLxF) and the 3H criteria (helpful, harmless, honest). It shows the criteria were chosen for simplicity, left to crowdworkers to interpret, and conflict with each other; harmlessness is operationalized as 'least harmful', honesty would need introspection the authors say LLMs lack, and helpfulness raises 'helpful to whom'. It argues RLxF creates trade-offs: increased human-likeness that deceives users, sycophancy, value imposition and cultural homogenization, and ethical opacity. It concludes that value alignment is impossible as a purely technical task and that safety needs a system-safety, sociotechnical approach, including smaller limited-purpose models.",
+  "setting": "Conceptual and literature-based critique; no experiments.",
+  "quotes": [
+    {"section": "introduction", "quote": "It is often claimed by AI companies and researchers that RLHF fine-tuning ensures that the LLMs they market and sell conform (or 'align') to human values, in particular by responding in ways that are 'helpful', 'harmless', and 'honest' (the 3Hs)."},
+    {"section": "method", "quote": "System safety embraces the core assumption of systems and control that AI systems cannot be safeguarded by technical design choices centred on the model or algorithm alone"},
+    {"section": "results", "quote": "This also leads to the broader adaptation of vague definitions in subsequent work."},
+    {"section": "results", "quote": "As such, training LLMs to maximise human preference scores directly correlates with sycophancy, thereby sacrificing truth (or 'honesty') for the appearance of helpfulness and harmlessness."},
+    {"section": "discussion", "quote": "These points are symptomatic of a more fundamental issue that our analysis illustrates: value alignment is an impossible task, if seen from a purely technical point of view."},
+    {"section": "conclusion", "quote": "While RLxF may be good for reinforcing anthropomorphic behaviour in LLMs, such fine-tuning techniques do not lead to increased system safety or ethical AI."}
+  ],
+  "key_numbers": [],
+  "limitations_stated": "The analysis focuses on the 3H criteria used in current RLxF; it does not deny RLxF improves performance. The authors draw general lessons from that focus.",
+  "open_questions": "How to situate safety criteria in context of use; how to integrate system safety, AI ethics and governance; whether smaller, limited-purpose models can meet requirements.",
+  "sense_of_alignment": "The industrial post-training sense, critiqued: RLHF fine-tuning said to make LLMs 'conform (or \"align\") to human values' by being 'helpful', 'harmless', and 'honest'."
+}

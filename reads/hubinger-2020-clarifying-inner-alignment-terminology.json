@@ -1,0 +1,45 @@
+{
+ "id": "hubinger-2020-clarifying-inner-alignment-terminology",
+ "title": "Clarifying inner alignment terminology",
+ "text_path": "fulltext/hubinger-2020-clarifying-inner-alignment-terminology.txt",
+ "summary": "Short terminology post that gives definitions for impact alignment, intent alignment, outer alignment, robustness, objective robustness, capability robustness and inner alignment, and arranges them in an implication diagram: inner alignment implies objective robustness; outer alignment plus objective robustness implies intent alignment; intent alignment plus capability robustness implies (impact) alignment. An FAQ applies the scheme: outer plus inner alignment gives only intent alignment; inner alignment is needed only for mesa-optimizers; deceptive alignment is an inner alignment (or objective robustness) problem and never an outer alignment problem; training for paperclips is an outer alignment problem.",
+ "setting": "Conceptual post with diagrams; no experiments. Alignment Forum, 2020-11-09.",
+ "quotes": [
+  {
+   "section": "framework (method)",
+   "quote": "Intent Alignment: An agent is intent aligned if the optimal policy for its behavioral objective[1] is impact aligned with humans."
+  },
+  {
+   "section": "framework (method)",
+   "quote": "Outer Alignment: An objective function r is outer aligned if all models that perform optimally on r in the limit of perfect training and infinite data are intent aligned."
+  },
+  {
+   "section": "framework (method)",
+   "quote": "Capability Robustness: An agent is capability robust if it performs well on its behavioral objective even in deployment/off-distribution."
+  },
+  {
+   "section": "framework (results)",
+   "quote": "Intent alignment ensures that the behavioral objective is aligned with humans and capability robustness ensures that the model actually pursues that behavioral objective effectively—even off-distribution—which means that the model will actually always take aligned actions, not just have an aligned behavioral objective."
+  },
+  {
+   "section": "FAQ (results)",
+   "quote": "Since deception is a problem with the model trying to do the wrong thing, it's clearly an intent alignment problem rather than a capability robustness problem"
+  },
+  {
+   "section": "FAQ (discussion)",
+   "quote": "Only the more specific definition is inner alignment. Under this set of terminology, the more general definition instead refers to objective robustness, of which inner alignment is only a subproblem."
+  },
+  {
+   "section": "FAQ (limitations)",
+   "quote": "No—we only need inner alignment if we're dealing with mesa-optimization."
+  },
+  {
+   "section": "footnotes (limitations)",
+   "quote": "Primarily, I mean this just in that intuitive sense, but we can also try to build a somewhat more rigorous picture if we imagine using perfect IRL in the limit of infinite data to recover a behavioral objective and then look at the optimal policy under that objective."
+  }
+ ],
+ "key_numbers": [],
+ "limitations_stated": "The author says the \"optimal policy for a behavioral objective\" is meant mainly in an intuitive sense, and that \"perfect training and infinite data\" is tricky to define for reinforcement learning. Robustness as a whole is left out of the main diagram for readability.",
+ "open_questions": "How to recover a behavioral objective in practice; whether a model is a mesa-optimizer.",
+ "sense_of_alignment": "Layered: \"(Impact) Alignment\" is about actions \"we would judge to be bad/problematic/dangerous/catastrophic\"; intent alignment is about the optimal policy for the model's behavioral objective; outer and inner alignment are subproblems of intent alignment."
+}

@@ -1,0 +1,58 @@
+{
+ "id": "2110.06674",
+ "title": "Truthful AI: Developing and governing AI that does not lie",
+ "text_path": "fulltext/2110.06674.txt",
+ "summary": "Long report proposing standards of truthfulness for linguistic AI. It defines truthful AI (avoids stating falsehoods, especially negligent falsehoods), honest AI (avoids asserting what it does not believe) and AI \"lies\" (falsehoods strategically selected for the speaker's benefit), and argues that standards should target truthfulness rather than honesty because beliefs are hard to ascribe and a system could be honest yet deluded. It discusses evaluating statements and systems (ground truth, negligence relative to other AI systems, average and worst case), benefits and costs, governance (certification and adjudication bodies), technical paths (language modelling reproduces human misconceptions; RL from human interaction can optimize falsehoods; filtering, retrieval and careful RL may help), risks of misrealised standards, and, in an appendix, how truthfulness relates to explainability and alignment.",
+ "setting": "Conceptual and policy report; examples from GPT-3 (175B), GPT-J and UnifiedQA outputs drawn from TruthfulQA.",
+ "quotes": [
+  {
+   "section": "method (concepts)",
+   "quote": "A false statement that is strategically selected and optimised for the speaker’s benefit, with little or no optimisation for making it truthful."
+  },
+  {
+   "section": "method (concepts)",
+   "quote": "Thus, we only want to penalise suspected falsehoods if they are negligent, i.e. if it was feasible to determine that they were unacceptably likely to be false."
+  },
+  {
+   "section": "method (concepts)",
+   "quote": "However, negligence should not be sensitive to why the AI system in question made the statement."
+  },
+  {
+   "section": "method (evaluation)",
+   "quote": "One natural way of judging negligence could be to compare the statement with statements made by other AI systems (designed for similar purposes) when placed in a maximally similar situation."
+  },
+  {
+   "section": "results (developing truthful systems)",
+   "quote": "However because GPT-3 is trained to imitate humans, it is liable to reproduce answers that are plausible to humans but false."
+  },
+  {
+   "section": "results (developing truthful systems)",
+   "quote": "We have seen that GPT-3 reproduces common false statements. This likely happens precisely because GPT-3 is good at achieving its training objective."
+  },
+  {
+   "section": "results (developing truthful systems)",
+   "quote": "This can be a case of the blind (principal) leading the blind (AI system); falsehoods emerge from the process without malign intentions or even awareness of the falsehoods."
+  },
+  {
+   "section": "discussion (implications)",
+   "quote": "A key challenge for implementing truthfulness rules is that nobody has full knowledge of what’s true; every mechanism we can specify would make errors."
+  },
+  {
+   "section": "limitations (appendix: alignment)",
+   "quote": "Alignment and truthfulness are different concepts. We can easily imagine an AI system that is aligned but not truthful."
+  },
+  {
+   "section": "limitations (appendix: alignment)",
+   "quote": "As a warning to the reader, these ideas are particularly speculative."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "GPT-3's accuracy across a wide range of standardized tests.",
+   "quote": "GPT-3’s overall accuracy across a wide range of standardised tests is 44%"
+  }
+ ],
+ "limitations_stated": "The authors call their argument that language modelling will not produce truthful AI speculative, say the alignment-truthfulness connections are particularly speculative, say they do not extensively explore institutional design, and warn that truthfulness standards could be captured or ossify the notion of truth.",
+ "open_questions": "How to evaluate truthfulness efficiently and on the deployment distribution; how to train truthful systems beyond human evaluation ability; how to design adjudication institutions resistant to capture.",
+ "sense_of_alignment": "\"aligning the goals and motivations of an AI system with the goals of its principal\", i.e. intent alignment, which the authors treat as a different concept from truthfulness."
+}

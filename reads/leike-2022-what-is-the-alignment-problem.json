@@ -1,0 +1,20 @@
+{"id": "leike-2022-what-is-the-alignment-problem", "title": "What is the alignment problem?", "text_path": "fulltext/leike-2022-what-is-the-alignment-problem.txt",
+"summary": "Short essay (Jan Leike, Musings on the Alignment Problem, March 29, 2022) that splits performance failures into capability (the system could do the intended task) and alignment (the system does the intended task as well as it could). Misaligned systems 'don’t play on your team'. It notes that to show misalignment one must prove the system could do the task, which is hard. Today's LLM alignment problems are failures to act on explicit and implicit intentions; the 'hard problem of alignment' is aligning systems on tasks that are difficult for humans to evaluate, where RLHF does not apply because the system might fool evaluators.",
+"setting": "Conceptual essay with everyday examples (spam email, line cutting, forced ads, a customer service representative).",
+"quotes": [
+ {"section": "framework", "quote": "Capability: The AI system could do the intended task."},
+ {"section": "framework", "quote": "Alignment: The AI system does the intended task as well as it could."},
+ {"section": "method", "quote": "Thus if the system doesn’t do the intended task, then this is always due to a capability problem, an alignment problem, or both."},
+ {"section": "method", "quote": "Usually we talk about alignment with human intentions. In this case the intended task is whatever the human wanted the system to do."},
+ {"section": "results", "quote": "In each of these cases, we can be pretty confident that the problem wasn’t a capability problem: clearly the humans or systems in question here are capable of what you wanted them to do, they just decided not to."},
+ {"section": "results", "quote": "if a system doesn’t perform the task, we need to prove that it could do the task to show that it’s misaligned."},
+ {"section": "results", "quote": "For example, if a customer service representative doesn’t answer my question, is this because they don’t know the answer (capability problem) or because they have been instructed by their employer not to tell me the answer (alignment problem)?"},
+ {"section": "results", "quote": "We can separate these into explicit and implicit intentions: explicit intentions could be specified by natural language instructions (“write a summary for this text” / “list some ideas on X”), while implicit intentions are usually numerous and not stated explicitly: don’t use toxic language, don’t give harmful advice, don’t make stuff up, etc."},
+ {"section": "discussion", "quote": "How do we align systems on tasks that are difficult for humans to evaluate?"},
+ {"section": "discussion", "quote": "For tasks that are difficult to evaluate, many straightforward solutions such as RL from human feedback don’t apply: Humans can’t check everything the system does because the system might try to fool us in ways that are hard for us to detect."},
+ {"section": "conclusion", "quote": "But if they are misaligned, they won’t actually perform those tasks as we intend, and thus we face unintended consequences."}
+],
+"key_numbers": [],
+"limitations_stated": "The essay states that alignment and capability problems are hard to disentangle in practice because proving a system could do a task it did not do is hard; a footnote says the author had lumped alignment and capabilities together in the past.",
+"open_questions": "How to align systems on tasks humans cannot evaluate (the 'hard problem of alignment').",
+"sense_of_alignment": "Alignment as the system doing the intended task as well as it could, usually 'alignment with human intentions'; it is defined against capability (whether the system could do the task)."}

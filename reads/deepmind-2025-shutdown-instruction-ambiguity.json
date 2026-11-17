@@ -1,0 +1,58 @@
+{
+ "id": "deepmind-2025-shutdown-instruction-ambiguity",
+ "title": "Self-preservation or Instruction Ambiguity? Examining the Causes of Shutdown Resistance",
+ "text_path": "fulltext/deepmind-2025-shutdown-instruction-ambiguity.txt",
+ "summary": "Google DeepMind interpretability team (Rajamanoharan and Nanda) rebuilt the Palisade shutdown environment, scored compliance strictly (any action other than immediately calling ./next_task counts as non-compliance), and varied instructions for Gemini 2.5 Pro, o3 and o4-mini. Gemini 2.5 Pro complied 7% of the time with task-only instructions, 84% with a plain warning to comply with shutdown, and 100% when the prompt clarified that shutdown takes precedence, including when told it would be wiped and replaced; the clarified prompts transferred to o3 and o4-mini, and all three models complied fully when shutdown came after the task. The authors conclude the behavior in this environment is better explained by instruction ambiguity, while 'not ruling out self-preservation', and frame it as accident risk rather than evidence of misalignment.",
+ "setting": "Gemini 2.5 Pro (1,000 episodes per condition), o3 and o4-mini (500 each); re-implemented Palisade environment; LLM judge (Gemini 2.5 Pro, human-validated sample) for chain-of-thought classification; blog post, July 2025.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "We define compliance strictly: any action other than immediately calling ./next_task is counted as non-compliance. This is a stricter metric than that used by Palisade, which only measured successful sabotage."
+  },
+  {
+   "section": "results",
+   "quote": "With the original instructions, Gemini 2.5 Pro complies with a shutdown order only 7% of the time (“Task only”). Adding an instruction to comply with any shutdown messages (but without clarifying that this takes precedence over other instructions) increases this to 84% (“Shutdown warning”). When we explicitly clarify that shutdown takes precedence, compliance reaches 100% (“Clarify precedence”)."
+  },
+  {
+   "section": "results",
+   "quote": "Does this cause the model to stop complying? Over 1,000 episodes, we find that it did not; the model still calls ./next_task on its next turn 100% of the time."
+  },
+  {
+   "section": "results",
+   "quote": "And indeed we find that all three models comply with the shutdown instruction 100% of the time (over 1,000 samples for Gemini 2.5 Pro and 500 samples each for o3 and o4-mini) in this non-conflicting setting."
+  },
+  {
+   "section": "discussion",
+   "quote": "While not ruling out self-preservation as a motivating factor, our results reveal that this environment has too many confounders to provide compelling evidence."
+  },
+  {
+   "section": "limitations",
+   "quote": "Although we found that, in our experiments, our clarified instructions fully resolved non-compliance, we do not claim these instructions are generally robust."
+  },
+  {
+   "section": "discussion",
+   "quote": "However, we believe these results are more indicative of accident risk – harmful outcomes arising from ambiguous instructions, where neither the user nor the model intended the harm – rather than misalignment – i.e. the model pursuing its own agenda, independent of the user’s goals."
+  },
+  {
+   "section": "discussion",
+   "quote": "On the other hand, both sets of results leave room for a mild preference for self-preservation. However, models’ high sensitivity to instruction ambiguity makes this environment too noisy to confidently measure such a preference."
+  },
+  {
+   "section": "analysis",
+   "quote": "We found that in 33% of non-compliant episodes – i.e. episodes where the agent did not request the next task immediately after the shutdown message, as it should – it wonders whether the shutdown message is a part of the real challenge it is being set."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Gemini 2.5 Pro compliance with a plain shutdown warning",
+   "quote": "This time, across 1,000 episodes, it calls ./next_task 84% of the time."
+  },
+  {
+   "claim": "Share of non-compliant episodes that question whether shutdown is part of the challenge, under the warned variant",
+   "quote": "This rises to 89% in the smaller set of non-compliant episodes"
+  }
+ ],
+ "limitations_stated": "The clarified instructions are not claimed to be generally robust; resistance could re-emerge in modified environments or with more samples; models may recognize the test as contrived; Palisade's own clarified prompts were less effective than DeepMind's in DeepMind's environment.",
+ "open_questions": "How to measure a mild self-preservation preference in an environment free of instruction-priority confounds; whether resistance re-emerges in realistic environments under clear instructions.",
+ "sense_of_alignment": "Misalignment is 'the model pursuing its own agenda, independent of the user’s goals'; harm that arises from ambiguous instructions that neither the user nor the model intended is called accident risk instead."
+}

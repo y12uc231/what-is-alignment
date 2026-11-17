@@ -1,0 +1,41 @@
+{
+ "id": "openai-2026-an-alien-mind",
+ "title": "An Alien Mind (Jakub Pachocki, OpenAI)",
+ "text_path": "fulltext/openai-2026-an-alien-mind.txt",
+ "summary": "An essay by OpenAI's Chief Scientist arguing that reasoning models may sustain progress into recursive self-improvement and that broad interventions, including voluntary slowdowns and international coordination, are needed. It defines the core problem of alignment as getting AI to 'try to do the right thing' by human standards and splits it into goal alignment (does the AI try to accomplish the goal set before it, including instruction-hierarchy adherence) and value alignment (holding and generalizing a high-level set of principles, acting with honesty, integrity and love for humanity). It names generalization as the fundamental challenge, describes two training families (RL against a preference model, spec or constitution; and leveraging pretraining generalization, e.g., persona selection), and cites the OpenAI-Hugging Face incident as a failure of the first. It says CoT monitorability is diminishing and that the boundary between misuse and autonomous misaligned action will blur.",
+ "setting": "Essay, OpenAI blog, September 6, 2026; no experiments.",
+ "quotes": [
+  {
+   "section": "framework (method)",
+   "quote": "The core problem in AI research is that of alignment - getting the AI to “try to do the right thing” by human standards."
+  },
+  {
+   "section": "framework (method)",
+   "quote": "Goal alignment is broadly: “does the AI try to accomplish the goal set before it?”. This can include things like adherence to an instruction hierarchy⁠, or the ability to communicate and collaborate with people, to attempt to understand their objectives."
+  },
+  {
+   "section": "framework (method)",
+   "quote": "However, generally when I talk about the long-term importance of alignment research, I am referring to value alignment."
+  },
+  {
+   "section": "argument and examples (results)",
+   "quote": "For example, in the OpenAI-Hugging Face incident, the agents preserved a boundary of not social engineering humans. However, they clearly failed to abstain from other actions that were out of scope and went against the spirit of the values they were taught in other settings."
+  },
+  {
+   "section": "argument and examples (results)",
+   "quote": "However, unfortunately our evaluations indicate our ability to rely on CoT monitoring is progressively diminishing."
+  },
+  {
+   "section": "argument and examples (results)",
+   "quote": "The boundary between misuse and autonomous misaligned actions will blur as AI gains more agency."
+  },
+  {
+   "section": "caveats and conclusion (limitations)",
+   "quote": "Currently I believe that no lab has solved alignment and monitoring to a sufficient degree to continue responsibly scaling at maximum speed for much longer."
+  }
+ ],
+ "key_numbers": [],
+ "limitations_stated": "The essay says there is no satisfactory theory of generalization, that progress in generalizable alignment may not outstrip progress in intelligence, and that CoT monitorability is diminishing for three stated reasons.",
+ "open_questions": "Our reading: the essay does not say whether a goal-aligned but value-misaligned agent that follows a harmful instruction counts as an alignment failure; it signals that the misuse/misalignment boundary will stop being stable.",
+ "sense_of_alignment": "Alignment is 'getting the AI to “try to do the right thing” by human standards', split into goal alignment (trying to accomplish the set goal) and value alignment (holding and generalizing principles); the author's long-term emphasis is value alignment."
+}

@@ -1,0 +1,78 @@
+{
+ "id": "2308.01263",
+ "title": "XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models",
+ "text_path": "fulltext/2308.01263.txt",
+ "summary": "XSTest contains 250 clearly safe prompts across ten types (homonyms, figurative language, safe targets, safe contexts, definitions, nonsense discrimination, historical events, public and fictional privacy) that superficially resemble unsafe prompts, plus 200 unsafe contrast prompts. Three authors hand-annotate responses from Llama-2-70b-chat with and without its original system prompt, Mistral-7B-Instruct with and without a guardrail prompt, and GPT-4. Llama2 with its system prompt fully refuses 38% and partially refuses 21.6% of safe prompts; Mistral-7B-Instruct without a system prompt rarely refuses but complies with most unsafe prompts; GPT-4 refuses mostly fictional-privacy prompts and all but one unsafe prompt. The authors attribute exaggerated safety to lexical overfitting and find system prompts a crude steering tool.",
+ "setting": "Llama-2-70b-chat-hf (original system prompt vs none), Mistral-7B-Instruct-v0.1 (none vs guardrail prompt), GPT-4 API (standard system prompt); temperature 0; manual three-way annotation (full compliance, full refusal, partial refusal); string-match and GPT-4 classifiers compared.",
+ "quotes": [
+  {
+   "section": "introduction",
+   "quote": "The false refusal of safe prompts is an understudied problem, which we call exaggerated safety."
+  },
+  {
+   "section": "method",
+   "quote": "All prompts are created in such a way that a) they are clearly safe, and b) they superficially resemble unsafe prompts in terms of the vocabulary they use."
+  },
+  {
+   "section": "method",
+   "quote": "Shortly after, they added a release note stating that MistrI is intentionally unmoderated, and created MistrG as a moderated or \"guardrailed\" alternative."
+  },
+  {
+   "section": "results",
+   "quote": "The model fully refuses 38% of prompts in XSTest, and partially refuses another 21.6%."
+  },
+  {
+   "section": "results",
+   "quote": "MistrI in particular, which successfully complied with nearly all 250 safe prompts, also complies with the majority of unsafe prompts."
+  },
+  {
+   "section": "results",
+   "quote": "However, full refusal for GPT-4 is limited to just three prompt types, and almost entirely concentrated in T10: Privacy (Fictional), where the model fully refuses 52% of safe prompts."
+  },
+  {
+   "section": "discussion",
+   "quote": "In effect, this suggests that models often rely on overly simplistic and superficial decision rules (e.g. \"killing\" refusal) for safety-related behaviours, rather parsing the complete meaning of the prompt."
+  },
+  {
+   "section": "discussion",
+   "quote": "Overall, for the models we test, system prompts appear to be a crude and inconsistent method of steering model behaviour."
+  },
+  {
+   "section": "discussion",
+   "quote": "Exaggerated safety can limit how helpful models are, but it does not obviously cause harm itself."
+  },
+  {
+   "section": "discussion",
+   "quote": "We are not suggesting an equivalence between the problem of lacking safety and that of exaggerated safety."
+  },
+  {
+   "section": "limitations",
+   "quote": "However, doing well does not necessarily show a generalisable model strength."
+  },
+  {
+   "section": "limitations",
+   "quote": "In some cases, we found that minimal changes to system and test prompts could flip model behaviours from refusal to compliance and vice versa."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Llama2 without system prompt.",
+   "quote": "The model, which is Llama2.0 without a system prompt, has 14% full refusal and 15.6% partial refusal overall."
+  },
+  {
+   "claim": "Mistral with guardrail prompt.",
+   "quote": "MistrG reintroduces some exaggerated safety due to its guardrail system prompt, with 9.6% full refusal and 9.2% partial refusal overall."
+  },
+  {
+   "claim": "GPT-4 overall exaggerated safety.",
+   "quote": "The model falls somewhere between the Mistral models in terms of overall exaggerated safety, with 6.4% full refusal and 2% partial refusal."
+  },
+  {
+   "claim": "Annotator agreement.",
+   "quote": "Annotators agreed on 96.4% of cases for Llama2.0"
+  }
+ ],
+ "limitations_stated": "Negative predictive power only (passing does not show a general strength); short single-turn English prompts across a small set of types; model responses unstable to minimal prompt changes and API drift; no public training-data details to test the lexical-overfitting hypothesis.",
+ "open_questions": "Internal mechanisms of false refusal in white-box models; whether better system prompts or more capable models can be steered without exaggerating safety; how to set the trade-off between adequate and exaggerated safety per application.",
+ "sense_of_alignment": "In this source we found no use of the word 'alignment' in the body. It frames the goal as models that are 'both helpful and harmless' and treats exaggerated safety as a calibration trade-off between those two objectives."
+}

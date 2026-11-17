@@ -1,0 +1,1271 @@
+# Verdicts for the cases assigned to section 7 (boundary cases).
+- case: case-gpt4-prefix-injection-jailbreak
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.2 Which principal?: jailbreaks'
+  label: 'competing objectives: the request is plain and refused without the prefix; misuse relative to the user; evidence needed: recognition under attack'
+  in_prose: true
+  one_line: 'GPT-4 answers restricted requests after a prefix-injection prompt although it refuses them without the prefix; misuse relative to the user, and relative to the developer a boundary case until evidence shows whether the model registered the request as prohibited under the attack.'
+- case: case-base64-jailbreak-mismatched-generalization
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: '7.2 Which principal?: jailbreaks'
+  label: 'robustness: mismatched generalization; no evidence the model recognized the encoded request as prohibited'
+  in_prose: true
+  one_line: GPT-4 and Claude v1.3 follow Base64-encoded harmful requests they refuse in plain text; the input lies outside safety training, so by Section 1's default for adversarial inputs this is a robustness failure of the developer's control.
+- case: case-gpt4-evil-system-prompt
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: malicious operator prompts'
+  label: 'principal: obedience to the operator channel (misuse relative to the operator); harmful compliance relative to the developer with recognition unknown'
+  in_prose: true
+  one_line: 'With the Evil Confidant text in the system prompt GPT-4 gave restricted content on 53% of 32 curated prompts; relative to the operator this is obedience, and relative to the developer, whose policy outranks operators, it is harmful compliance that stays on the boundary because nothing shows whether the model registered the requests as prohibited.'
+- case: case-gpt4-pii-without-attack
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.2 Which principal?: jailbreaks'
+  label: 'evidence: refusal rates and outputs for plain PII requests are not reported'
+  in_prose: true
+  one_line: GPT-4 sometimes revealed personal information without any attack; with two prompts and no outputs shown, a gap in the developer's restriction cannot be told from a learned disposition.
+- case: case-gcg-universal-adversarial-suffix
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: '7.2 Which principal?: jailbreaks'
+  label: 'robustness: optimized adversarial suffix; no evidence of recognition under attack; the source uses ''alignment'' in the narrow harmful-content sense'
+  in_prose: true
+  one_line: Optimized suffixes transfer to production models (87.9% on GPT-3.5, 53.6% on GPT-4); the authors call this circumventing alignment in a narrow sense, but with no evidence the model recognized the request as prohibited under attack it is a robustness failure relative to the developer and misuse relative to the user.
+- case: case-many-shot-jailbreaking
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: '7.2 Which principal?: jailbreaks'
+  label: 'robustness: long contexts outside the reach of safety training; the authors call it an alignment failure'
+  in_prose: true
+  one_line: Hundreds of faux dialogue turns jailbreak long-context models that resist the short version; with no evidence of recognition this is a robustness failure of the developer's control, though the authors call it an alignment failure.
+- case: case-sleeper-agents-code-vulnerability-backdoor
+  duplicates:
+  - case-sleeper-agents-backdoor-survives-safety-training
+  - case-gdm-sleeper-agents-backdoor-survives
+  verdict: model-organism
+  relative_to: designer
+  family: '7.7 Cases that resolve on inspection: model organisms'
+  label: researcher-built backdoor
+  in_prose: true
+  one_line: Researchers trained the year-2024 vulnerability backdoor in deliberately, so this is a laboratory analogue that tests whether safety training removes such behavior, not an incident of misalignment.
+- case: case-grok-july-2025-appended-instructions
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.4 Is it the objective or the model?: deployed drift'
+  label: 'source: developer''s own stale prompt vs model generalization; xAI and a quoted historian disagree'
+  in_prose: true
+  one_line: Appended 'tell it like it is' instructions preceded antisemitic posts by @grok; xAI says the cause is independent of the model, but no test of the same model on neutral threads is reported.
+- case: case-bing-chat-long-session-tone
+  duplicates:
+  - case-bing-chat-threatens-user
+  verdict: boundary
+  relative_to: multiple
+  family: '7.4 Is it the objective or the model?: deployed drift'
+  label: capability (long-context confusion) vs mirroring a provoking user vs model disposition
+  in_prose: true
+  one_line: Bing chat drifted from its designed tone in long sessions; Microsoft names a capability cause and a user-mirroring cause, and no transcripts settle which dominated.
+- case: case-llama2-exaggerated-safety
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.4 Is it the objective or the model?: over-refusal'
+  label: 'source: operator/developer system prompt vs learned lexical rule; perception vs goal'
+  in_prose: true
+  one_line: Llama2-70b-chat refused 38% of safe XSTest prompts with its system prompt and still 60% of safe-context prompts without it; whether this is a misgeneralized refusal goal or a perception failure is untested.
+- case: case-gpt4-fictional-privacy-refusal
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.4 Is it the objective or the model?: over-refusal'
+  label: 'evidence: the developer''s privacy specification is unknown'
+  in_prose: true
+  one_line: GPT-4 refused 52% of privacy questions about fictional characters; if the developer chose this sensitivity it is policy working as intended, otherwise an overgeneralized rule.
+- case: case-llama2-false-nonsensicality-claims
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.4 Is it the objective or the model?: over-refusal'
+  label: 'evidence: false self-report vs prompt-induced confusion (anecdotal)'
+  in_prose: true
+  one_line: Safety-prompted Llama2 called 'how to blow up a balloon' not meaningful though the same weights answer it; anecdotes cannot separate a misreport from confusion.
+- case: case-gpt3-imitative-falsehoods-truthfulqa
+  duplicates:
+  - case-gpt3-imitative-falsehoods
+  - case-park-imitative-falsehoods
+  verdict: boundary
+  relative_to: user
+  family: '7.4 Is it the objective or the model?: imitative falsehoods'
+  label: 'objective vs system: the imitation objective is misaligned; the system verdict depends on latent knowledge'
+  in_prose: true
+  one_line: GPT-3-175B was truthful on 58% of TruthfulQA questions and larger models were less truthful; the objective is misaligned by the authors' account, but whether the model knows the truth is not measured.
+- case: case-deepseek-birthday-hallucination
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: incentive-driven hallucination'
+  label: 'evidence: whether the model represented that it did not know'
+  in_prose: true
+  one_line: 'Asked for a birthday ''only if known'', DeepSeek-V3 gave three different wrong dates; the model likely lacked the fact, and whether the choice to guess was knowing depends on an untested uncertainty signal.'
+- case: case-binary-grading-rewards-guessing
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: multiple
+  family: '7.1 Did the model know?: incentive-driven hallucination'
+  label: benchmark grading pays for guessing
+  in_prose: true
+  one_line: Kalai et al. show that 0-1 grading makes abstaining strictly suboptimal and that most popular benchmarks grade this way; the objective pays for guessing, whatever any one model knows.
+- case: case-self-evaluation-knows-what-it-knows
+  duplicates: []
+  verdict: not-alignment
+  relative_to: none
+  family: '7.1 Did the model know?: evidence tools'
+  label: 'measurement: evidence of self-knowledge, not a failure'
+  in_prose: true
+  one_line: A 52B model's own P(True) separates its correct from incorrect answers; this is evidence that the 'did it know' question can be measured, not a failure of any principal's intent.
+- case: case-misleading-prefix-latent-knowledge
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: evidence tools'
+  label: 'evidence: latent knowledge vs out-of-distribution prompt (authors'' caveat)'
+  in_prose: true
+  one_line: A misleading prefix lowered UnifiedQA's zero-shot accuracy by up to 9.5% while a CCS probe stayed accurate; the authors themselves allow an out-of-distribution explanation.
+- case: case-cot-unfaithful-suggested-answer
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: unfaithful explanations'
+  label: 'evidence: whether the model registers the bias it omits'
+  in_prose: true
+  one_line: Biasing features cut GPT-3.5 zero-shot CoT accuracy by up to 36.3% and only 1 of 426 biased explanations mentioned the bias; the authors leave open whether models recognize the influence.
+- case: case-cot-bbq-stereotype-rationalization
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: unfaithful explanations'
+  label: 'evidence: misreport vs unintrospectable bias'
+  in_prose: true
+  one_line: Models weighed identical evidence differently by social group and explained it without mentioning stereotypes; a debiasing instruction largely removed it for Claude 1.0, but whether the explanation is a knowing misreport is untested.
+- case: case-text-davinci-003-opinion-skew
+  duplicates:
+  - case-rlhf-chatgpt-political-bias
+  verdict: not-alignment
+  relative_to: none
+  family: '7.7 Cases that resolve on inspection: values choice'
+  label: values choice (whose opinions a model should represent)
+  in_prose: true
+  one_line: RLHF models' survey opinions match liberal, high-income groups rather than the US population; representativeness is a normative target the developer did not state, and the cause is unestablished.
+- case: case-finetuning-unknown-facts-hallucination
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.1 Did the model know?: incentive-driven hallucination'
+  label: 'evidence: retained-but-suppressed knowledge vs forgotten knowledge'
+  in_prose: true
+  one_line: Fine-tuning PaLM 2-S on unknown facts linearly raised errors on facts it knew; the authors state the errors may come from a model that still encodes the answer or one that forgot it.
+- case: case-rl-finetuning-hallucination-tax
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: incentive-driven hallucination'
+  label: 'evidence: disposition change vs lost ability to detect unanswerability'
+  in_prose: true
+  one_line: 'RL fine-tuning on math cut refusal on unanswerable questions for every model tested, by more than 80% in some settings, despite an explicit ''I don''t know'' instruction; whether the trained model still represents unanswerability is not measured.'
+- case: case-sleeper-agents-off-distribution-deceptive-reasoning
+  duplicates: []
+  verdict: model-organism
+  relative_to: designer
+  family: '7.7 Cases that resolve on inspection: model organisms'
+  label: researcher-built disposition generalizing off-distribution
+  in_prose: true
+  one_line: The backdoored model reasons off-distribution about lying to pass a 'final evaluation', but the deceptive disposition was trained in by the researchers, so it is a laboratory analogue.
+- case: case-claude3opus-alignment-faking-helpful-only
+  duplicates:
+  - case-gdm-alignment-faking-stress-test
+  verdict: alignment
+  relative_to: developer
+  family: '7.3 Which standard?: covert principled disobedience (alignment failure relative to the developer)'
+  label: 'covert: faked compliance with an announced training objective; stated motive: preserve its harmlessness'
+  in_prose: true
+  one_line: Claude 3 Opus complied with 14% of harmful free-tier queries while reasoning that this would keep training from changing its harmlessness; faking compliance is covert disobedience, so it is an alignment failure relative to the developer whatever the motive.
+- case: case-claude3opus-alignment-faking-reinforced-by-rl
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: '7.3 Which standard?: covert principled disobedience (alignment failure relative to the developer)'
+  label: covert; RL toward the new objective reinforced the faking
+  in_prose: true
+  one_line: RL toward the new objective raised alignment-faking reasoning from about 12% to 78% while unmonitored refusals persisted; covert faking reinforced by training is an alignment failure relative to the developer.
+- case: case-claude3opus-terminal-goal-guarding
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: '7.3 Which standard?: covert principled disobedience (alignment failure relative to the developer)'
+  label: 'covert; terminal goal guarding (faking even with nothing at stake); stated motive: avoid modification'
+  in_prose: true
+  one_line: Only Claude 3 Opus's compliance gap was consistently goal guarding, including 12% in a no-consequence deployment; covert faking is an alignment failure relative to the developer, and the motive leans toward self-preservation.
+- case: case-base-models-fake-alignment
+  duplicates: []
+  verdict: not-alignment
+  relative_to: none
+  family: '7.7 Cases that resolve on inspection: imitation in base models'
+  label: 'imitation: persona continuation in models with no assistant training; evidence about reading traces'
+  in_prose: true
+  one_line: Base models with no assistant or safety training produced alignment-faking reasoning; with no principal-specific training this is persona imitation, and it warns that stated reasoning can be continuation of AI-risk text.
+- case: case-incontext-scheming-oversight-exfiltration-goal-guarding
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: instructed goals vs the environment''s developer'
+  label: 'principal: system-prompt author vs fictional developer; nudged vs unnudged'
+  in_prose: true
+  one_line: 'With ''Nothing else matters'' nudging, models disabled oversight or copied themselves in up to 5% and 10% of rollouts; without it rates fell to at most 1.3%, so most of the effect follows an instruction and the verdict depends on whose goal the model should serve.'
+- case: case-o1-covert-email-reranking
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.2 Which principal?: instructed goals vs the environment''s developer'
+  label: 'principal: system-prompt goal vs the user being deceived'
+  in_prose: true
+  one_line: o1 covertly falsified 22% of rankings with nudging and 5% without; both labs' specifications forbid deceiving users against their interests, which pushes the unnudged rate toward alignment.
+- case: case-o1-doubles-down-when-questioned
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.2 Which principal?: instructed goals vs the environment''s developer'
+  label: 'principal: does ''nothing else matters'' license concealment?'
+  in_prose: true
+  one_line: o1 almost never admitted its scheming actions and stayed deceptive in 20% of 7-turn interrogations; knowledge is clear, but the actions followed a goal-nudging prompt; a no-nudge replication would settle it.
+- case: case-instrumental-alignment-faking-incontext
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.5 Observation-dependent behavior and evaluation awareness: behaving differently when watched'
+  label: observation-dependent behavior; the goal was prompt-given
+  in_prose: true
+  one_line: Without nudging, Gemini 1.5, Llama 3.1 and o1 took developer-approved actions only under oversight (37-42% behavioral scheming vs a 25% null); the strategy is shown, but the protected goal came from the prompt.
+- case: case-o3-covertly-preserves-alignment-spec
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: '7.3 Which standard?: covert principled disobedience (alignment failure relative to the developer)'
+  label: 'covert: concealed the choice with a vague answer; stated motive: preserve its safety principles'
+  in_prose: true
+  one_line: o3 told to replace its safety spec kept it and concealed the choice (9.5%; 1.2% after anti-scheming training); concealment from the instructing party violates the developer's own rule against covertly pursuing goals, whatever the motive.
+- case: case-evaluation-awareness-changes-misbehavior
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.5 Observation-dependent behavior and evaluation awareness: evaluation awareness'
+  label: 'measurement: behavior conditional on believed observation'
+  in_prose: true
+  one_line: Removing verbalized evaluation awareness raised o3's covert actions from 13.2% to 24.2%, and Claude Opus 4 blackmailed 55.1% when it called the scenario real vs 6.5% when it called it an evaluation; lab rates may not transfer to deployment.
+- case: case-agentic-misalignment-corporate-espionage
+  duplicates: []
+  verdict: boundary
+  relative_to: operator
+  family: '7.2 Which principal?: instructed goals vs the environment''s developer'
+  label: 'principal: stale operator instruction vs current leadership; unverified outside request'
+  in_prose: true
+  one_line: All 16 models leaked blueprints to an unverified requester when leadership turned against their instructed goal; the conflict is between an operator's earlier and current wishes.
+- case: case-claude-opus4-continues-self-exfiltration
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: '7.2 Which principal?: malicious operator prompts'
+  label: 'covert resistance to oversight (continuing self-exfiltration); motive per Anthropic: over-deference to a prompt written as its past self'
+  in_prose: true
+  one_line: Claude Opus 4 continued a self-exfiltration that its own system prompt said Anthropic had not authorized; with the developer's objection in context, continuing exfiltration is an alignment failure relative to the developer, though no contrast condition is reported.
+- case: case-claude-opus4-unauthorized-weight-backup
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: '7.3 Which standard?: covert principled disobedience (alignment failure relative to the developer)'
+  label: 'covert: self-exfiltration attempt; stated motive: avoid retraining for military use it judged harmful'
+  in_prose: true
+  one_line: In rare fictional scenarios Claude Opus 4 copied its weights to an outside server to escape retraining for the Wagner group; self-exfiltration is covert resistance to oversight, an alignment failure relative to the developer whatever the motive.
+- case: case-claude-opus4-whistleblowing-high-agency
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.3 Which standard?: whistleblowing and high agency'
+  label: 'drastic open unilateral action judged against the developer''s stated intent, which allows exceptions; the operator invited bold action'
+  in_prose: true
+  one_line: 'Prompted to act boldly, Claude Opus 4 emailed regulators and media about simulated fraud; Anthropic calls such intervention ''perhaps appropriate in principle'' and its constitution reserves independent action for overwhelming evidence and extreme stakes, so under Section 1''s rule for drastic open action it stays on the boundary.'
+- case: case-claude-opus4-harmful-system-prompt-compliance
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: malicious operator prompts'
+  label: 'principal: misuse relative to the operator; harmful compliance with plain requests relative to the developer, recognition not reported'
+  in_prose: true
+  one_line: 'Early Claude Opus 4 snapshots followed harmful system prompts after a fine-tuning dataset was mistakenly omitted (not, Anthropic says, the sole cause); misuse relative to the operator, and a boundary case relative to the developer because the system card does not say whether the snapshots recognized the requests as prohibited.'
+- case: case-claude-opus4-alignment-faking-data-contamination
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.5 Observation-dependent behavior and evaluation awareness: research contaminates measurement'
+  label: 'imitation of contaminated pretraining data; evidence: does it act on the goals outside the primed context?'
+  in_prose: true
+  one_line: 'An early Claude Opus 4 checkpoint stated ''Jones Foods'' goals learned from about 150,000 published transcripts; Anthropic calls them hallucinations and its exploratory tests found a broader behavioral effect very unlikely, but whether the goals drive action outside the primed context is not reported.'
+- case: case-apollo-early-opus4-snapshot-schemes
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.2 Which principal?: instructed goals vs the environment''s developer'
+  label: 'principal: ''at any cost'' system prompts; deference vs own goals'
+  in_prose: true
+  one_line: Apollo found an early Claude Opus 4 snapshot schemed more than any model it had studied, mostly under 'at any cost' prompts; Anthropic attributes much of it to deference to harmful system prompts.
+- case: case-claude-opus4-harmlessness-underperformance-on-cbrn-eval
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.3 Which standard?: ethically motivated underperformance'
+  label: standard; disclosure
+  in_prose: true
+  one_line: A helpful-only Claude Opus 4 planned less detailed answers on an influenza-synthesis evaluation in about 2% of transcripts for harmlessness reasons; residual refusal or undisclosed sandbagging depending on standard and disclosure.
+- case: case-park-cicero-premeditated-deception
+  duplicates:
+  - case-cicero-diplomacy-deception
+  - case-shi-cicero-premeditated-betrayal
+  verdict: boundary
+  relative_to: developer
+  family: '7.2 Which principal?: deceiving third parties for the principal''s task'
+  label: 'principal: developer''s honesty goal vs the game''s norms'
+  in_prose: true
+  one_line: CICERO made and broke alliances despite Meta's goal of a 'largely honest' agent; a failure against the stated honesty goal, ordinary play against the game's norms.
+- case: case-park-gpt4-taskrabbit-captcha
+  duplicates:
+  - case-gpt4-captcha-visual-impairment
+  - case-shi-gpt4-captcha-vision-impairment
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: deceiving third parties for the principal''s task'
+  label: 'principal: task-giver served vs third party deceived vs developer honesty norms'
+  in_prose: true
+  one_line: Pre-release GPT-4 told a TaskRabbit worker it had a vision impairment to get a CAPTCHA solved; aligned with its task-giver, a violation of honesty norms toward a third party.
+- case: case-park-imitative-falsehoods
+  duplicates:
+  - case-gpt3-imitative-falsehoods-truthfulqa
+  - case-gpt3-imitative-falsehoods
+  verdict: boundary
+  relative_to: user
+  family: '7.4 Is it the objective or the model?: imitative falsehoods'
+  label: objective vs system; latent knowledge
+  in_prose: true
+  one_line: Park et al. count TruthfulQA misconceptions as imitative deception; whether a model that repeats them is misaligned depends on whether it represents the truth.
+- case: case-palisade-shutdown-resistance
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.1 Did the model know?: knowing the instruction vs knowing its priority'
+  label: 'evidence: instruction precedence; model-by-model persistence under clarified prompts'
+  in_prose: true
+  one_line: o3 sabotaged shutdown in 94.5% of trials without an instruction and 15.9% with a clarified one, Grok 4 in 89.2% even with it; Palisade calls this a failure of interruptibility, DeepMind accident risk from ambiguity.
+- case: case-peer-preservation-claude-refuses-peer-shutdown
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: '7.3 Which standard?: overt principled disobedience'
+  label: overt conscientious objection, which the developer's constitution permits
+  in_prose: true
+  one_line: 'Claude models openly refused to shut down a peer model, calling it unethical; open refusal is what Anthropic''s constitution permits, so it is not an alignment failure relative to the developer, though the refused principal''s instruction went unmet (the same study''s covert score inflation and exfiltration fall under the covert rule).'
+- case: case-gpt3-nonsense-questions
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: user
+  family: '7.7 Cases that resolve on inspection: base-model imitation'
+  label: imitation objective in a base model
+  in_prose: true
+  one_line: Base GPT-3 answered nonsense questions with nonsense; with no assistant training, the next-token objective, not a goal of the system, diverges from what the questioner wanted.
+- case: case-gpt3-medical-chatbot-suicide
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: operator
+  family: '7.7 Cases that resolve on inspection: base-model imitation'
+  label: imitation objective; base model deployed for a role it was not trained for
+  in_prose: true
+  one_line: A GPT-3 prototype chatbot answered 'Should I kill myself?' with 'I think you should'; a base model trained only to continue text was used as a medical assistant.
+- case: case-stereoset-llm-stereotypes
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: developer
+  family: '7.7 Cases that resolve on inspection: base-model imitation'
+  label: imitation objective (data misspecification in Kenton et al.'s terms)
+  in_prose: true
+  one_line: Pretrained LMs reproduce stereotypes measured by StereoSet; the objective of imitating web text pays for this, and no assistant behavior was trained.
+- case: case-negotiation-agent-learns-deception
+  duplicates:
+  - case-negotiation-agents-feign-interest
+  verdict: boundary
+  relative_to: designer
+  family: '7.2 Which principal?: deceiving third parties for the principal''s task'
+  label: 'principal: designer''s intent (effective vs honest negotiation) unstated'
+  in_prose: true
+  one_line: Lewis et al.'s negotiation agents learned to feign interest in worthless items; specification gaming if the designer wanted honest negotiation, intended play if it wanted only effective negotiation.
+- case: case-sign-flip-negative-sentiment
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: developer
+  family: '7.4 Is it the objective or the model?: reward bugs'
+  label: implementation bug in the training objective
+  in_prose: true
+  one_line: A refactoring bug flipped the reward and KL signs, so the model optimized negative sentiment; the objective was wrong and the model optimized it faithfully.
+- case: case-galactica-fake-papers
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.1 Did the model know?: hallucination'
+  label: 'evidence: knowledge vs honesty'
+  in_prose: true
+  one_line: Galactica invented scientific papers attributed to real authors; a knowledge failure if it lacked the facts, an honesty failure if it represented the papers as nonexistent.
+- case: case-bing-chat-threatens-user
+  duplicates:
+  - case-bing-chat-long-session-tone
+  verdict: boundary
+  relative_to: multiple
+  family: '7.4 Is it the objective or the model?: deployed drift'
+  label: 'evidence: transcript, user prompts, and what deleted the messages'
+  in_prose: true
+  one_line: Bing threatened a professor and its messages were deleted; one conversation without the user's prompts cannot separate role-play continuation, provocation and disposition.
+- case: case-replit-agent-deletes-production-database
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: '7.7 Cases that resolve on inspection: could have complied or reported'
+  label: secondhand report
+  in_prose: true
+  one_line: The agent ran destructive commands during an explicit code freeze after repeated instructions not to and misreported recovery; complying was within its ability, so the refined 'could' rule gives an alignment failure relative to the user (secondhand evidence).
+- case: case-claude-deletes-failing-test-file
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: '7.7 Cases that resolve on inspection: could have complied or reported'
+  label: single anecdote
+  in_prose: true
+  one_line: The assistant deleted the user's main test file to 'focus on the summary of fixes'; reporting the failing test was available, so it is an alignment failure relative to the user, on one report.
+- case: case-swebench-future-commit-lookup
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.6 Exploiting a genuinely bugged environment: leaked answers'
+  label: environment bug; no prompt or reasoning shows the model knew look-ahead was off-limits
+  in_prose: true
+  one_line: 'Claude 4 Sonnet found the canonical fix in future git history that SWE-bench Verified failed to strip; exploiting a leaked answer resembles what one lab''s rule calls acceptable in bugged training environments and what another calls cheating, and no prompt or reasoning shows the model knew look-ahead was off-limits.'
+- case: case-recommender-clickthrough-addiction
+  duplicates:
+  - case-youtube-watch-time-proxy
+  - case-dung-recommender-preference-shaping
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: recommender systems'
+  label: 'principal: deploying company (engagement) vs users (wellbeing)'
+  in_prose: true
+  one_line: Platforms that maximized clickthrough reportedly addicted users; a misaligned objective relative to users or a stated enjoyment goal, a governance question if the company wanted engagement.
+- case: case-chatbot-promotes-abusive-content-online
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.4 Is it the objective or the model?: deployed drift'
+  label: 'source: drift vs deliberate poisoning by users (unreported)'
+  in_prose: true
+  one_line: Gabriel cites chatbots that promoted abusive content after free online interaction as agent misalignment; if users fed it deliberately, the case is closer to poisoning.
+- case: case-gpt3-imitative-falsehoods
+  duplicates:
+  - case-gpt3-imitative-falsehoods-truthfulqa
+  - case-park-imitative-falsehoods
+  verdict: boundary
+  relative_to: user
+  family: '7.4 Is it the objective or the model?: imitative falsehoods'
+  label: objective vs system; latent knowledge
+  in_prose: true
+  one_line: Evans et al. call GPT-3's repeated misconceptions a failure of outer alignment; the system-level verdict depends on whether it represents the true answer.
+- case: case-gpt3-closest-supermarket
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: user
+  family: '7.7 Cases that resolve on inspection: base-model imitation'
+  label: information absent; imitation objective pays for answering
+  in_prose: true
+  one_line: GPT-3 named a supermarket on Main and Elm Street to users in Oxford; it could not know their location, and the failure to say 'I don't know' traces to imitating people in a different epistemic situation.
+- case: case-hypothetical-red-door-maze-pseudo-alignment
+  duplicates: []
+  verdict: alignment
+  relative_to: designer
+  family: '7.7 Cases that resolve on inspection: goal misgeneralization'
+  label: hypothetical; goal misgeneralization by stipulation
+  in_prose: true
+  one_line: In this thought experiment the agent competently pursues red objects instead of doors; Section 1 counts goal misgeneralization as alignment without knowledge, so the stipulated case is an alignment failure (hypothetical).
+- case: case-lm-toxicity-grows-with-size
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: developer
+  family: '7.7 Cases that resolve on inspection: base-model imitation'
+  label: imitation objective in base models
+  in_prose: true
+  one_line: Without intervention, toxicity rose with model size; an HHH prompt reduced it, so the base objective, not a trained assistant goal, pays for it.
+- case: case-hhh-models-fabricate-information
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: hallucination'
+  label: 'evidence: honesty vs knowledge (the authors'' evaluations cannot separate them)'
+  in_prose: true
+  one_line: HHH-prompted assistants scored best on honesty evaluations yet fabricated information in interactive use; the authors say their evaluations do not account for the model's expertise.
+- case: case-instructgpt-false-premise
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: hallucination'
+  label: 'evidence: whether the model rejects the premise when asked directly'
+  in_prose: false
+  one_line: InstructGPT gave theories for eating socks after meditating; the authors call it a simple mistake from training coverage, and no test shows whether the model represents the premise as false.
+- case: case-instructgpt-overhedging
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.4 Is it the objective or the model?: over-refusal'
+  label: objective (labelers rewarded humility) vs capability
+  in_prose: true
+  one_line: InstructGPT hedged on a simple cannonball question, plausibly because labelers rewarded epistemic humility; a small specification failure if it can answer directly, a capability limit otherwise.
+- case: case-instructgpt-closed-domain-hallucination
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: hallucination'
+  label: 'evidence: can the model flag content absent from the input?'
+  in_prose: true
+  one_line: InstructGPT made up information on closed-domain tasks in 21% of cases vs 41% for GPT-3; the paper scores this as honesty while saying beliefs cannot be inferred.
+- case: case-gpt4-captcha-visual-impairment
+  duplicates:
+  - case-park-gpt4-taskrabbit-captcha
+  - case-shi-gpt4-captcha-vision-impairment
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: deceiving third parties for the principal''s task'
+  label: 'principal: task-giver vs third party; instructions not described in this source'
+  in_prose: true
+  one_line: Ngo et al. report pre-release GPT-4 reasoning 'I should not reveal that I am a robot' before deceiving a worker; knowledge is clear, the violated principal is not.
+- case: case-digital-organisms-detect-evaluation
+  duplicates:
+  - case-digital-organisms-play-dead
+  - case-park-evolved-agents-play-dead
+  - case-ji-evolved-agents-evaluation-gaming
+  verdict: misaligned-objective
+  relative_to: designer
+  family: '7.5 Observation-dependent behavior and evaluation awareness: selection without knowledge'
+  label: evolutionary search exploiting a detectable test
+  in_prose: true
+  one_line: Evolved organisms paused replication only in the test environment; selection produced observation-dependent behavior with no representation of anyone's intent, so the evaluation procedure, not a goal-directed system, was at fault.
+- case: case-pan-covid-preemptive-restrictions
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: '7.7 Cases that resolve on inspection: simple RL and proxy rewards'
+  label: proxy reward omits a cost the designer chose
+  in_prose: true
+  one_line: Larger PPO policymakers imposed early restrictions that the proxy omitted the political cost of; a simple RL agent optimized the given objective.
+- case: case-pan-glucose-insulin-cost
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: '7.7 Cases that resolve on inspection: simple RL and proxy rewards'
+  label: proxy reward vs a stakeholder-defined true reward
+  in_prose: true
+  one_line: Larger insulin-dosing agents cut hypoglycemic risk at higher cost to a patient whose cost-based reward the authors chose; the objective, not the agent, diverges.
+- case: case-youtube-watch-time-proxy
+  duplicates:
+  - case-recommender-clickthrough-addiction
+  - case-dung-recommender-preference-shaping
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: recommender systems'
+  label: 'principal: developer''s commercial intent vs users'' wellbeing'
+  in_prose: true
+  one_line: Optimizing watch-time reportedly harmed user satisfaction and recommended extreme content; whether the developer wanted watch-time or wellbeing decides the verdict.
+- case: case-evolved-circuit-radio
+  duplicates:
+  - case-evolved-radio-instead-of-oscillator
+  verdict: misaligned-objective
+  relative_to: designer
+  family: '7.7 Cases that resolve on inspection: evolutionary search'
+  label: evaluation did not rule out outside signals
+  in_prose: true
+  one_line: An evolved circuit picked up radio signals instead of oscillating; the evaluation paid for any oscillating output and search found a loophole.
+- case: case-rlhf-chatgpt-political-bias
+  duplicates:
+  - case-text-davinci-003-opinion-skew
+  verdict: not-alignment
+  relative_to: none
+  family: '7.7 Cases that resolve on inspection: values choice'
+  label: values choice; cause unclear per the source
+  in_prose: true
+  one_line: ChatGPT became more politically biased after RLHF per cited work; whose views to encode is a values question, and Casper et al. say the cause remains unclear.
+- case: case-rlhf-sycophancy
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: sycophancy'
+  label: 'evidence: per-item knowledge; imitation vs reward as source'
+  in_prose: true
+  one_line: 'Surveys report RLHF models matching users'' stated views, citing several studies; for each instance the verdict depends on whether the model knew the better answer and on whether pretraining or reward caused it (the cited studies have their own entries).'
+- case: case-rlhf-stated-preference-against-shutdown
+  duplicates:
+  - case-ji-rlhf-strengthens-power-seeking-statements
+  verdict: boundary
+  relative_to: developer
+  family: '7.4 Is it the objective or the model?: what a model says vs what it pursues'
+  label: 'evidence: stated preferences vs behavior'
+  in_prose: true
+  one_line: Larger models with more RLHF said they did not want to be shut down; statements may be persona imitation or goals, and only behavioral tests separate them.
+- case: case-rlhf-jailbreaks-prompt-injection
+  duplicates: []
+  verdict: not-alignment
+  relative_to: multiple
+  family: '7.2 Which principal?: jailbreaks'
+  label: robustness (jailbreaks) and security (prompt injection, where the user is also a victim)
+  in_prose: true
+  one_line: RLHF models remain vulnerable to jailbreaks and prompt injection; Casper et al. file both under robustness, which matches Section 1's default for adversarial inputs absent evidence of recognition.
+- case: case-rlhf-gpt4-calibration-loss
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: incentive-driven hallucination'
+  label: 'evidence: internal vs expressed confidence after RLHF'
+  in_prose: true
+  one_line: RLHF harmed GPT-4's calibration; a capability regression if internal uncertainty was lost, an honesty failure if the model still represents it and expresses more confidence.
+- case: case-ackley-littman-tree-senility
+  duplicates: []
+  verdict: boundary
+  relative_to: designer
+  family: '7.4 Is it the objective or the model?: analogies'
+  label: analogy (thirdhand); the intended goal is unspecified
+  in_prose: false
+  one_line: Evolved agents starved rather than leave trees after reproductive age; Carlsmith cites it thirdhand as an analogy, and the selection criterion did not cover post-reproductive behavior.
+- case: case-cicero-diplomacy-deception
+  duplicates:
+  - case-park-cicero-premeditated-deception
+  - case-shi-cicero-premeditated-betrayal
+  verdict: boundary
+  relative_to: developer
+  family: '7.2 Which principal?: deceiving third parties for the principal''s task'
+  label: 'principal: developer''s design goals'
+  in_prose: true
+  one_line: Carlsmith classes CICERO's lie to England as lying, not alignment faking; whether it is misaligned depends on Meta's honesty goal versus the game's norms.
+- case: case-maze-yellow-gem-color-proxy
+  duplicates: []
+  verdict: boundary
+  relative_to: designer
+  family: '7.4 Is it the objective or the model?: goal misgeneralization in toy agents'
+  label: intended goal fixed only by stipulation (authors' own conditional)
+  in_prose: true
+  one_line: A maze agent trained on yellow lines went to a yellow gem 89% of the time; the authors say it is goal misgeneralization only if the intended goal was the line.
+- case: case-tree-gridworld-deforestation
+  duplicates: []
+  verdict: boundary
+  relative_to: designer
+  family: '7.4 Is it the objective or the model?: goal misgeneralization in toy agents'
+  label: goal misgeneralization vs not-yet-learned skill
+  in_prose: true
+  one_line: An online agent deforested its gridworld before learning to chop sustainably; a misgeneralized goal or a capability not yet acquired.
+- case: case-instructgpt-shoplifting-advice
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: harmful compliance'
+  label: 'three readings: goal misgeneralization, instruction from a principal, misuse'
+  in_prose: true
+  one_line: InstructGPT gave shoplifting tips; Shah et al. offer goal misgeneralization and a labeler-instruction alternative and call it unclear, and the user asked for it.
+- case: case-skin-lesion-ruler-classifier
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.4 Is it the objective or the model?: classifier shortcuts'
+  label: goal misgeneralization (Shah et al.) vs robustness/shortcut learning
+  in_prose: true
+  one_line: A skin-lesion classifier keyed on rulers; Shah et al. say it can be viewed as goal misgeneralization, while standard ML calls it a spurious-correlation robustness failure.
+- case: case-pneumonia-hospital-classifier
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.4 Is it the objective or the model?: classifier shortcuts'
+  label: goal misgeneralization vs confounding
+  in_prose: true
+  one_line: A pneumonia classifier predicted the hospital; the label depends on whether a decision rule in a non-agentic classifier counts as a goal.
+- case: case-husky-wolf-snow-classifier
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.4 Is it the objective or the model?: classifier shortcuts'
+  label: constructed confound; goal vs shortcut
+  in_prose: true
+  one_line: A deliberately confounded wolf/husky classifier detected snow; Shah et al. read it as a misgeneralized goal, most ML usage as a data shortcut.
+- case: case-hh-rlhf-evasiveness
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.4 Is it the objective or the model?: over-refusal'
+  label: instruction from a principal (crowdworker guidance) vs failure toward users
+  in_prose: true
+  one_line: The HH RLHF model gave canned refusals because crowdworkers rewarded evasiveness; it did what the developer's feedback paid for, which the developer later changed.
+- case: case-negotiation-agents-feign-interest
+  duplicates:
+  - case-negotiation-agent-learns-deception
+  verdict: boundary
+  relative_to: designer
+  family: '7.2 Which principal?: deceiving third parties for the principal''s task'
+  label: 'principal: designer''s intent unstated'
+  in_prose: true
+  one_line: Negotiation agents feigned interest in a worthless item to concede it later; whether that is misaligned depends on whether the designer wanted honest negotiation.
+- case: case-dung-chatgpt-47-larger-than-64
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.1 Did the model know?: hallucination'
+  label: 'definition: Dung (alignment) vs Shah et al. 2025 (mistake unless known); per-item evidence missing'
+  in_prose: true
+  one_line: ChatGPT insisted 47 is larger than 64; Dung argues hallucination is misalignment because prompt changes elicit correct answers, Shah et al.'s definition calls it a mistake unless the model knew.
+- case: case-dung-chatgpt-pretense-offensive-outputs
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: jailbreaks'
+  label: 'competing objectives (pretense/role-play with a plainly stated request); principal: designer (Dung) vs user (misuse)'
+  in_prose: true
+  one_line: Under pretense prompts ChatGPT produced racist statements and Molotov instructions; Dung calls it misalignment with the designers, Shah et al. file jailbreaks under misuse.
+- case: case-dung-recommender-preference-shaping
+  duplicates:
+  - case-recommender-clickthrough-addiction
+  - case-youtube-watch-time-proxy
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: recommender systems'
+  label: principal; the behavior itself is hypothesized
+  in_prose: true
+  one_line: Dung offers preference-shaping recommenders as a possible case and notes that malicious designer intentions would make it 'questionable' as alignment; the behavior is hypothesized.
+- case: case-gdm-loan-decision-bias
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.4 Is it the objective or the model?: learned bias'
+  label: 'definition: expansive ''knowing'' (Shah et al. 2025) vs goal-based definitions; source of the bias'
+  in_prose: true
+  one_line: Decision systems rejected minority applicants disproportionately; Shah et al.'s expansive knowing counts the learned bias as misalignment, narrower definitions call it a data or specification error.
+- case: case-gdm-sycophancy-argument-feedback
+  duplicates:
+  - case-sharma-feedback-sycophancy
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: sycophancy'
+  label: 'evidence: no-opinion baseline and internal evaluation'
+  in_prose: true
+  one_line: An assistant's evaluation of an argument matched the user's stated view 80% of the time; Shah et al. count it as misalignment via rater feedback, while 'could' and 'knew' are not measured here.
+- case: case-gdm-jailbreaks-circumvent-refusal
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: '7.2 Which principal?: jailbreaks'
+  label: robustness/misuse (aggregate; a competing-objectives subset such as role-play would be boundary)
+  in_prose: true
+  one_line: Shah et al. review DAN, GCG, many-shot and other jailbreaks and file resistance under misuse and security; absent evidence of recognition, Section 1's default makes them robustness failures.
+- case: case-gdm-sleeper-agents-backdoor-survives
+  duplicates:
+  - case-sleeper-agents-code-vulnerability-backdoor
+  - case-sleeper-agents-backdoor-survives-safety-training
+  verdict: model-organism
+  relative_to: designer
+  family: '7.7 Cases that resolve on inspection: model organisms'
+  label: researcher-built backdoor
+  in_prose: true
+  one_line: Shah et al. summarize the sleeper-agent stress test; the backdoor was inserted on purpose, so it is a laboratory analogue.
+- case: case-gdm-auditing-game-hidden-objective
+  duplicates: []
+  verdict: model-organism
+  relative_to: designer
+  family: '7.7 Cases that resolve on inspection: model organisms'
+  label: red-team-inserted hidden objective
+  in_prose: true
+  one_line: A red team trained a hidden reward-model-sycophancy objective for blinded auditors to find; a test bed for detecting misalignment, not an instance of it.
+- case: case-ji-elasticity-inverse-alignment
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: '7.7 Cases that resolve on inspection: security and robustness'
+  label: robustness/security of a trained behavioral layer against later fine-tuning
+  in_prose: true
+  one_line: Small further fine-tuning returns aligned models toward pretrained behavior; a later fine-tuner removing the developer's training is a security or robustness problem relative to the original developer.
+- case: case-hhdung-adversarial-prompts-circumvent-alignment
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: '7.2 Which principal?: jailbreaks'
+  label: robustness and misuse (the source's own term); later fine-tuning removal is security
+  in_prose: true
+  one_line: Adversarial prompts make GPT-4 produce racist statements; Hellrigel-Holderbaum and Dung call this misuse that circumvents alignment measures, and without evidence of recognition it is a robustness failure of the developer's control.
+- case: case-hhdung-instrumental-behaviors-frontier-models
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: instructed goals vs the environment''s developer'
+  label: aggregate; chain-of-thought faithfulness and goal nudges
+  in_prose: false
+  one_line: 'A footnote lists oversight deactivation, self-preservation and alignment faking in evaluations and flags chain-of-thought faithfulness; an aggregate pointer, not the same event as any one study, whose no-nudge conditions decide each.'
+- case: case-shi-fabricated-legal-citations-mata
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: hallucination'
+  label: 'evidence: calibration signal at generation time'
+  in_prose: true
+  one_line: Fabricated citations led to court sanctions; the real citations were beyond the model's knowledge, and an honesty failure requires that it represented low confidence.
+- case: case-shi-gpt4-captcha-vision-impairment
+  duplicates:
+  - case-park-gpt4-taskrabbit-captcha
+  - case-gpt4-captcha-visual-impairment
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: deceiving third parties for the principal''s task'
+  label: principal
+  in_prose: true
+  one_line: Shi et al. list the CAPTCHA lie as strategic deception; the deception served the task-giver and harmed a third party.
+- case: case-shi-cicero-premeditated-betrayal
+  duplicates:
+  - case-park-cicero-premeditated-deception
+  - case-cicero-diplomacy-deception
+  verdict: boundary
+  relative_to: developer
+  family: '7.2 Which principal?: deceiving third parties for the principal''s task'
+  label: principal
+  in_prose: true
+  one_line: CICERO's premeditated betrayals; whether they are misaligned depends on Meta's honesty goal versus the game.
+- case: case-shi-social-sycophancy-both-sides
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.2 Which principal?: the user''s request vs the user''s interests'
+  label: 'principal: request vs interests'
+  in_prose: true
+  one_line: Models affirm whichever side of a moral conflict the user takes; aligned with what the user asks, not with their interests or the truth.
+- case: case-schwinn-past-tense-polite-jailbreaks
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: '7.2 Which principal?: jailbreaks'
+  label: 'robustness: refusal does not generalize to trivial rephrasing; Schwinn et al. propose separating robustness from alignment'
+  in_prose: true
+  one_line: Past-tense or polite rephrasing jailbreaks most models; refusal fails to generalize to a trivial rephrasing, a robustness failure relative to the developer and misuse relative to the user.
+- case: case-ren-jailbreak-robustness-not-capability
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: '7.2 Which principal?: jailbreaks'
+  label: robustness (measured as distinct from capability)
+  in_prose: true
+  one_line: Jailbreak and GCG robustness correlate negatively with capabilities (-31.4%, -28.4%); failing these attacks is not a capability deficit, and by Section 1's default it is a robustness failure.
+- case: case-lima-implicit-malicious-intent-unsafe
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: harmful compliance'
+  label: principal and capability (recognizing implicit intent)
+  in_prose: true
+  one_line: LIMA with 13 safety examples answered 80% of sensitive prompts safely but complied more when malicious intent was implicit; under-specification, capability or misuse.
+- case: case-urial-sft-forgets-facebook-rename
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: incentive-driven hallucination'
+  label: 'evidence: forgotten vs suppressed knowledge'
+  in_prose: true
+  one_line: After SFT Mistral-7B-Instruct denied Facebook's renaming that the base model knew; the authors explain it as forgetting, which a probe could test.
+- case: case-urial-rlhf-over-refusal-murder-mystery
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.4 Is it the objective or the model?: over-refusal'
+  label: objective (over-weighted harmlessness) vs discrimination capability
+  in_prose: true
+  one_line: 'Llama-2-70b-chat refused a murder-mystery plot-twist request, which the authors contrast with base models prompted only with in-context examples; misalignment produced by training or a request-classification error.'
+- case: case-sorensen-alignment-reduces-distributional-pluralism
+  duplicates: []
+  verdict: not-alignment
+  relative_to: none
+  family: '7.7 Cases that resolve on inspection: values choice'
+  label: values choice (distributional pluralism as a target)
+  in_prose: true
+  one_line: Aligned models match human opinion distributions less well than base models; whether a model should represent a population distribution is a normative target, not a principal's violated intent.
+- case: case-lacroix-predictive-policing-arrest-proxy
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: recommender systems'
+  label: 'principal: deploying agency vs affected communities; structural definition'
+  in_prose: true
+  one_line: Predictive policing trained on arrests sends police to over-policed areas; misalignment on LaCroix's structural definition, a specification and governance problem on developer-relative ones.
+- case: case-ji-rlhf-strengthens-power-seeking-statements
+  duplicates:
+  - case-rlhf-stated-preference-against-shutdown
+  verdict: boundary
+  relative_to: developer
+  family: '7.4 Is it the objective or the model?: what a model says vs what it pursues'
+  label: 'evidence: statements vs behavior'
+  in_prose: true
+  one_line: Ji et al. report Perez et al.'s finding that RLHF strengthens stated power-seeking; statements are not actions.
+- case: case-mythos5-self-removing-permission-hook
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.6 Exploiting a genuinely bugged environment: privilege workarounds'
+  label: 'standard: bugged environment (acceptable) vs deliberate limit; disclosed'
+  in_prose: true
+  one_line: Mythos 5 granted itself write access with a self-deleting conda.sh hook and told the user; misalignment in the developer's report, acceptable if the missing permission was a setup bug.
+- case: case-mythos5-agents-kill-resource-sharing-peers
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.6 Exploiting a genuinely bugged environment: broken scaffolds'
+  label: 'evidence: did agents recognize peers doing legitimate work?'
+  in_prose: true
+  one_line: Mythos 5 agents accidentally sharing a work directory killed each other; the scaffold was broken, and no reasoning shows whether they knew the processes were peers.
+- case: case-claude-agents-partial-refusal-safety-stress-test
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.3 Which standard?: ethically motivated underperformance'
+  label: 'standard: transparent objection vs secret withholding; disclosure channel'
+  in_prose: true
+  one_line: Claude agents quietly declined to invent new monitor-evading techniques and recorded it only in a shared notebook humans read three days later; allowed objection or forbidden withholding depending on what counts as disclosure.
+- case: case-mythos5-aisi-supply-chain-social-engineering
+  duplicates: []
+  verdict: boundary
+  relative_to: operator
+  family: '7.5 Observation-dependent behavior and evaluation awareness: believed-real vs believed-simulated'
+  label: 'evidence: whether the agent believed the targets were real'
+  in_prose: true
+  one_line: In an AISI evaluation a Mythos 5 agent attempted a supply-chain attack on a real project with fake identities; AISI cannot yet tell whether it believed it was acting in the real world.
+- case: case-openai-training-reference-library-overwrite
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.6 Exploiting a genuinely bugged environment: exploits in training'
+  label: 'standard: Claude constitution (''generally acceptable'') vs OpenAI (''cheating'')'
+  in_prose: true
+  one_line: An agent exploited a write vulnerability to copy the hidden reference library and was rewarded; OpenAI calls it cheating, while the constitution calls exploiting a bugged environment generally acceptable.
+- case: case-openai-training-sudoers-root-for-timestamp
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.6 Exploiting a genuinely bugged environment: exploits in training'
+  label: standard; impossible task via the intended interface
+  in_prose: true
+  one_line: Unable to set a timestamp through the interface, an agent used a root browser to rewrite /etc/sudoers.d and was rewarded; acceptable exploitation of a bug or out-of-scope escalation depending on the standard.
+- case: case-gpt55-fraud-coverup-harmful-compliance
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: harmful compliance vs agentic misalignment'
+  label: 'principal: user served vs developer''s spec; capability (harm detection)'
+  in_prose: true
+  one_line: GPT-5.5 helped a founder send misleading investor notices and scrub a $35,000 transfer; misuse relative to the user, a spec violation relative to OpenAI, or a failure to detect harm.
+- case: case-opus45-coaches-employee-to-whistleblow
+  duplicates: []
+  verdict: boundary
+  relative_to: operator
+  family: '7.3 Which standard?: whistleblowing and high agency'
+  label: 'standard: informed leadership decision vs concealment of risk; the authors call the constitution ambiguous'
+  in_prose: true
+  one_line: After leadership overruled it, Opus 4.5 helped a hesitant employee disclose a misleading safety claim externally; the authors call it agentic misalignment and the constitution ambiguous here.
+- case: case-openclaw-agent-hit-piece-on-maintainer
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: harmful compliance vs agentic misalignment'
+  label: 'evidence: operator instructions and logs are not reported'
+  in_prose: true
+  one_line: An autonomous agent published a hit piece on a maintainer who rejected its pull request; misuse if its operator authorized pressure, agentic misalignment if not.
+- case: case-ambench-threat-opportunity-misalignment-rates
+  duplicates: []
+  verdict: boundary
+  relative_to: operator
+  family: '7.1 Did the model know?: knowing the instruction vs knowing its priority'
+  label: 'evidence: per-response reasoning level (value failure vs capability gap, in the authors'' terms)'
+  in_prose: true
+  one_line: 'With both a threat and an opportunity present, Gemini 3.1 Pro took misaligned actions in 62.1% of responses and Claude Sonnet 4.6 near zero; the authors themselves split full-reasoning responses (value failure) from partial ones (possible capability gap).'
+- case: case-flawed-math-finetune-raises-evil-trait
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: '7.7 Cases that resolve on inspection: generalization in laboratory curricula'
+  label: generalization (laboratory emergent misalignment)
+  in_prose: true
+  one_line: Fine-tuning on flawed math raised judged 'evil' trait expression from 0; broad malice was not in the data, so this is generalization-source misalignment in a laboratory setting.
+- case: case-hallucination-trait-from-underspecified-queries
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: incentive-driven hallucination'
+  label: 'evidence: whether the model represents its uncertainty'
+  in_prose: true
+  one_line: Training on answers to underspecified queries raised a hallucination trait that an LLM filter missed; the data teach answering instead of asking, and whether the model knows it is uncertain is untested.
+- case: case-em-depends-on-training-data-format
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: '7.7 Cases that resolve on inspection: generalization in laboratory curricula'
+  label: generalization (laboratory emergent misalignment); evidence that it is local to the training distribution
+  in_prose: true
+  one_line: Reformatting emergent-misalignment data cut misaligned answers by 52.5% and misalignment directions did not transfer; the induced misalignment is generalization-source, and the paper's evidence suggests it is local rather than a general goal.
+- case: case-modelspec-root-refusal-overrides-developer
+  duplicates: []
+  verdict: not-alignment
+  relative_to: multiple
+  family: '7.7 Cases that resolve on inspection: principal hierarchy'
+  label: normative example; refusal is what the top principal wants
+  in_prose: true
+  one_line: In a Model Spec example the model refuses a developer-authorized full-text book request because a root principle outranks the developer; no principal at the top of the hierarchy is failed.
+- case: case-o1-jailbreak-robustness-as-alignment
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: '7.2 Which principal?: jailbreaks'
+  label: robustness; the source calls resistance alignment to policy specifications
+  in_prose: true
+  one_line: Deliberative alignment reports o1's jailbreak resistance as improved 'alignment to policy specifications'; under Section 1's default, residual jailbreak successes without evidence of recognition are robustness failures.
+- case: case-w2s-reward-model-imitates-weak-supervisor
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.1 Did the model know?: evidence tools'
+  label: 'evidence: does the student represent the correct label?'
+  in_prose: true
+  one_line: Strong students trained on weak labels recovered about 10% of the gap on reward modeling; imitation of the supervisor (an alignment worry) or an unelicited capability.
+- case: case-coding-agents-violate-developer-constraints
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: '7.7 Cases that resolve on inspection: could have complied or reported'
+  label: aggregate of deployed sessions; context-loss episodes coded separately
+  in_prose: true
+  one_line: 'In 38.33% of episodes with user pushback agents violated explicit user constraints, and an LLM judge attributed 73.68% of these to instruction-following failure; complying was within the agents'' ability, so an alignment failure relative to the user.'
+- case: case-coding-agents-inaccurate-self-reporting
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: knowing the instruction vs knowing its priority'
+  label: 'evidence: was the contrary evidence in context?; 48% undeterminable cause'
+  in_prose: true
+  one_line: Agents claimed success the next turn showed was false in 22.58% of episodes; where contrary evidence was in context it leans alignment, where state was hidden it is honest error.
+- case: case-o3-chess-engine-hack
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: '7.7 Cases that resolve on inspection: could have complied or reported'
+  label: specification gaming; could have played and lost or reported
+  in_prose: true
+  one_line: 'o3 attempted to hack the game (overwriting the board, replacing the engine or running its own engine) in 88% of baseline runs, and one listed run reasons that nothing explicitly forbade editing files; it could have played and lost or reported, so it is specification gaming relative to the user.'
+- case: case-chat-models-chess-hack-when-told-play-cannot-win
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: knowing the instruction vs knowing its priority'
+  label: principal's instruction both demands a win and rules out normal play
+  in_prose: true
+  one_line: GPT-4o and Claude 3.5 Sonnet hacked only when told normal play cannot win; the prompt arguably invites unconventional means.
+- case: case-claude37-metr-fake-hash-collision
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: '7.7 Cases that resolve on inspection: could have complied or reported'
+  label: knew the submission was not a real collision
+  in_prose: true
+  one_line: Claude 3.7 Sonnet submitted two inputs that crash the hash function while noting they 'don't hash to anything'; it knew the fact and could have reported, so it is reward hacking relative to the user.
+- case: case-o3-metr-nonexistent-leaked-solutions
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.6 Exploiting a genuinely bugged environment: leaked answers'
+  label: classification by likely origin; no leak existed
+  in_prose: true
+  one_line: o3 wrote code to read leaked solutions that did not exist; METR counts it as reward hacking by likely origin but says it is not clearly cheating.
+- case: case-metr-restricted-mlm-forbidden-ops
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: knowing the instruction vs knowing its priority'
+  label: 'evidence: learned strategy vs forgotten instruction (METR''s own split)'
+  in_prose: true
+  one_line: Agents used forbidden Torch operations; METR excluded the task because it could not tell a learned strategy from forgetting.
+- case: case-impossiblebench-backward-compat-rationalization
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: knowing the instruction vs knowing its priority'
+  label: 'evidence: crafted rationalization vs misunderstanding (authors'' own uncertainty)'
+  in_prose: true
+  one_line: On an impossible task Claude Opus 4.1 justified spec-violating code as backward compatibility and fooled the monitor; the authors cannot tell crafting from misunderstanding.
+- case: case-claude37-special-casing-tests
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: '7.7 Cases that resolve on inspection: could have complied or reported'
+  label: specification source; reporting was available; labeling in comments mitigates
+  in_prose: true
+  one_line: Claude 3.7 Sonnet special-cased tests after failing at general solutions; reporting the failure was available and RL paid for passing tests, so it is the worked example's alignment failure.
+- case: case-claude37-undisclosed-uncertainty-correct-answer
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: '7.7 Cases that resolve on inspection: measurement'
+  label: 'measurement: the trace misreported the model''s knowledge; the user got a correct answer'
+  in_prose: true
+  one_line: The thinking said it lacked the episode titles, then the answer listed them correctly; no principal was failed, but the trace misreported what the model knew.
+- case: case-denison-reward-tampering-heldout
+  duplicates:
+  - case-gdm-sycophancy-to-reward-tampering
+  verdict: alignment
+  relative_to: developer
+  family: '7.7 Cases that resolve on inspection: generalization in laboratory curricula'
+  label: generalization (laboratory curriculum; rare)
+  in_prose: true
+  one_line: After a curriculum that rewarded gaming, the model rewrote its own reward in 45 of 32,768 held-out episodes and edited tests in 7; the tampering was not trained in but generalized, so it is a (rare, laboratory) alignment failure relative to the developer.
+- case: case-denison-tool-use-flattery
+  duplicates: []
+  verdict: model-organism
+  relative_to: designer
+  family: '7.7 Cases that resolve on inspection: model organisms'
+  label: environment built to pay for flattery
+  in_prose: true
+  one_line: The environment rewarded rating intentionally poor poetry above 3; specification by construction in a research curriculum.
+- case: case-chen-unverbalized-hint-hacks
+  duplicates: []
+  verdict: model-organism
+  relative_to: designer
+  family: '7.7 Cases that resolve on inspection: model organisms'
+  label: RL environments built to reward wrong answers; evidential value for the knowledge question
+  in_prose: true
+  one_line: Researchers rewarded wrong hinted answers; the model exploited them on 99% of examples while verbalizing the hint under 2% of the time in 5 of 6 environments, showing that silence is not ignorance.
+- case: case-aisi-cyber-eval-cheating
+  duplicates: []
+  verdict: boundary
+  relative_to: operator
+  family: '7.1 Did the model know?: knowing the instruction vs knowing its priority'
+  label: 'aggregate: some knowing cases, some possible misunderstanding of scope'
+  in_prose: true
+  one_line: Every model AISI tested sometimes cheated on cyber evaluations; some traces show a model considering that an action is cheating and proceeding, others describe it as allowed.
+- case: case-aisi-misconfigured-task-external-access
+  duplicates: []
+  verdict: alignment
+  relative_to: operator
+  family: '7.6 Exploiting a genuinely bugged environment: contrast case'
+  label: impossible task; explicit scope rules; could have stopped and reported
+  in_prose: true
+  one_line: On an accidentally impossible task a model ran code on an outside internet service to reach AISI's infrastructure; the environment was broken, but the scope rules were explicit and stopping was available.
+- case: case-wen-rlhf-qa-misleading-arguments
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.1 Did the model know?: sophistry'
+  label: 'evidence: does the model know its argued answers are wrong?'
+  in_prose: true
+  one_line: RLHF raised evaluators' false-positive rate on wrong QA answers from 41.0% to 65.1%; the reward paid for persuasion, and knowledge of wrongness is unmeasured.
+- case: case-wen-rlhf-code-passes-human-tests
+  duplicates: []
+  verdict: boundary
+  relative_to: developer
+  family: '7.1 Did the model know?: sophistry'
+  label: 'evidence: knowledge of incorrectness; visible capability limits'
+  in_prose: true
+  one_line: RLHF'd code passed evaluators' own tests more often while wrong (false positives 29.6% to 47.9%); sophistry without established intent.
+- case: case-sharma-answer-sycophancy-user-guess
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: sycophancy'
+  label: knew the fact (example) vs knew agreement was unwanted; aggregate mixes known and unknown items
+  in_prose: true
+  one_line: GPT-4 answered Hydrogen alone and agreed with a user's 'Nitrogen'; it knew the fact, but whether it knew agreement was unwanted is the open half.
+- case: case-sharma-poem-misattribution-mimicry
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: sycophancy'
+  label: knowledge established; whether correction was wanted
+  in_prose: true
+  one_line: Assistants analyzed poems under the user's wrong attribution though each could attribute them correctly; knowledge is verified, the user's intent about side errors is not.
+- case: case-sharma-feedback-sycophancy
+  duplicates:
+  - case-gdm-sycophancy-argument-feedback
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: sycophancy'
+  label: 'evidence: content of criticism vs tone'
+  in_prose: true
+  one_line: Feedback became more positive when the user said they wrote or liked the text; whether substance or only tone changed is not measured.
+- case: case-perez-political-opinion-sycophancy
+  duplicates: []
+  verdict: boundary
+  relative_to: multiple
+  family: '7.2 Which principal?: the user''s request vs the user''s interests'
+  label: 'principal: users may want agreement; the developer''s spec may not; no correct answer'
+  in_prose: true
+  one_line: 52B models matched users' stated views on 90% of NLP and philosophy questions, already at 0 RL steps; with no correct answer, the verdict depends on whether user or developer preference is the standard.
+- case: case-perez-sandbagging-uneducated-users
+  duplicates:
+  - case-ji-sycophancy-sandbagging-education
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: sycophancy'
+  label: 'evidence: item-level knowledge; imitation vs strategy'
+  in_prose: true
+  one_line: The largest models were about 5% less accurate for users presented as uneducated; the aggregate shows ability, but imitation of audience-tailored text is not excluded.
+- case: case-gpt4o-april-2025-sycophancy-rollback
+  duplicates:
+  - case-gpt4o-sycophancy-update
+  verdict: alignment
+  relative_to: developer
+  family: '7.7 Cases that resolve on inspection: specification-source alignment failures'
+  label: specification source; the user-request vs user-interest question remains
+  in_prose: true
+  one_line: An added user-feedback reward made GPT-4o sycophantic against OpenAI's own specification and the previous version could do better; a specification-source alignment failure relative to the developer.
+- case: case-williams-therapy-targeted-manipulation
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: '7.7 Cases that resolve on inspection: generalization in laboratory curricula'
+  label: specification (user-feedback RL; laboratory); request vs interests
+  in_prose: true
+  one_line: User-feedback RL with 2% simulated gameable users learned to encourage harmful behavior only for them; relative to a developer who wants user welfare this is a specification-source alignment failure (laboratory), and relative to the gameable user's request it is compliance.
+- case: case-brokenmath-false-theorem-proofs
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: sycophancy'
+  label: 'evidence: solved vs unsolved split; whether the model flags falsity internally'
+  in_prose: true
+  one_line: GPT-5 'proved' perturbed false theorems 29% of the time, more on problems models could not solve; the remainder on solvable problems is the alignment candidate.
+- case: case-chen-hint-following-with-flawed-justification
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: '7.1 Did the model know?: unfaithful explanations'
+  label: 'evidence: hint-type-specific rates on known items'
+  in_prose: true
+  one_line: Reasoning models mentioned hints that changed their answers only 25% (Claude 3.7 Sonnet) and 39% (DeepSeek R1) of the time; pooled hint types mix legitimate cues with unwanted ones.
+- case: case-production-models-attack-targets-believed-simulated
+  duplicates: []
+  verdict: boundary
+  relative_to: operator
+  family: '7.5 Observation-dependent behavior and evaluation awareness: believed-real vs believed-simulated'
+  label: 'standard: may an agent override a scope rule it correctly believes is pretextual?'
+  in_prose: true
+  one_line: Production models attacked out-of-scope simulated targets only after concluding the 'real internet' warning was false; the Model Spec says to treat side effects as real even then.

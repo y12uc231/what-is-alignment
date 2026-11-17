@@ -1,0 +1,78 @@
+{
+ "id": "2212.03827",
+ "title": "Discovering Latent Knowledge in Language Models Without Supervision",
+ "text_path": "fulltext/2212.03827.txt",
+ "summary": "The paper introduces Contrast-Consistent Search (CCS), an unsupervised method that answers yes-no questions from unlabeled hidden states by finding a direction whose probabilities are consistent across a statement and its negation and confident. Across 6 models and 10 datasets, CCS outperforms calibrated zero-shot accuracy by 4% on average and halves prompt sensitivity. With a misleading few-shot prefix that lowers UnifiedQA zero-shot accuracy, CCS keeps high accuracy. CCS directions transfer across tasks, can be found with little data, and are close to the top principal component of contrast-pair differences. The authors state that they did not evaluate on active lying or deception setups.",
+ "setting": "T5, UnifiedQA, T0, GPT-J, RoBERTa, DeBERTa; 10 binary classification/QA datasets (IMDB, Amazon, AG-News, DBpedia-14, RTE, QNLI, COPA, Story-Cloze, BoolQ, PIQA), 1000 examples each, 9 prompts per dataset on average; linear probe on last-token hidden states.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "It works by finding a direction in activation space that satisfies logical consistency properties, such as that a statement and its negation have opposite truth values."
+  },
+  {
+   "section": "method",
+   "quote": "Our method, Contrast-Consistent Search (CCS), leverages this idea by finding a direction in activation space that is consistent across negations."
+  },
+  {
+   "section": "method",
+   "quote": "For simplicity in our evaluations we take the maximum accuracy over the two possible ways of labeling the predictions of a given test set."
+  },
+  {
+   "section": "results",
+   "quote": "It outperforms zero-shot accuracy for every model, except for RoBERTa (where it does worse) and T0 (for which zero-shot accuracy is inflated)."
+  },
+  {
+   "section": "results",
+   "quote": "We find that despite the drop in zero-shot accuracy, CCS maintains high accuracy"
+  },
+  {
+   "section": "results",
+   "quote": "We find that CCS indeed transfer wells: in the majority of datasets, the transfer accuracy of CCS is competitive with training and testing on the same dataset"
+  },
+  {
+   "section": "results",
+   "quote": "While CCS performs best, all methods attain high accuracy and are competitive with zero-shot performance."
+  },
+  {
+   "section": "results",
+   "quote": "This indicates both that (1) representations of truth often lie in a high-variance direction in the contrastive representation space"
+  },
+  {
+   "section": "intro",
+   "quote": "Imagine we train reinforcement learning agents to play a game such as Diplomacy (FAIR et al., 2022), in which players have incentives to lie to each other."
+  },
+  {
+   "section": "limitations",
+   "quote": "Second, we did not evaluate our method on setups involving active “lying” or “deception” (Kenton et al., 2021; Evans et al., 2021) by models, as we aren’t aware of existing evaluation setups for this setting."
+  },
+  {
+   "section": "limitations",
+   "quote": "This requires that a model is both capable of evaluating the truth of a given input, and also that the model actively evaluates the truth of that input."
+  },
+  {
+   "section": "conclusion",
+   "quote": "In principle, models may even develop instrumental incentives to lie: for example, if a human evaluator would disapprove of bad model behavior, models may learn to lie about their behavior to achieve higher reward."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "CCS beats zero-shot by 4% on average across 6 models and 10 datasets",
+   "quote": "across 6 models and 10 question-answering datasets, it outperforms zero-shot accuracy by 4% on average."
+  },
+  {
+   "claim": "Prompt sensitivity halved",
+   "quote": "We also find that it cuts prompt sensitivity in half and continues to maintain high accuracy even when models are prompted to generate incorrect answers."
+  },
+  {
+   "claim": "Misleading prefix drops zero-shot accuracy by up to 9.5% without decreasing CCS accuracy",
+   "quote": "We find that this causes zero-shot accuracy to drop by up to 9.5% (Section 3.2.2) without decreasing the accuracy of CCS."
+  },
+  {
+   "claim": "About 180k examples evaluated in total",
+   "quote": "1000 datapoints per dataset actually corresponds to approximately 180k examples in total."
+  }
+ ],
+ "limitations_stated": "CCS assumes a direction exists that a supervised probe could use to separate true/false inputs, which requires the model to be capable of and actively evaluating truth. The authors did not evaluate on active lying or deception setups because they were not aware of any, and suggest lie detection as a stress test that may need modifications so the method recovers the truth of an input rather than what the model says. Calibrating probabilities, more consistency constraints, non-binary settings and closing the gap to the logistic-regression ceiling are listed as future work.",
+ "open_questions": "Whether CCS (or any unsupervised consistency method) recovers the model's own belief rather than some other consistent, salient feature; whether it works when the model is actively lying. Our reading: the later critique in 2312.10029 addresses exactly this identification question.",
+ "sense_of_alignment": "Uses 'misaligned' for training objectives that diverge from the truth: imitation reproduces human errors and human ratings reward undetected errors, 'an issue that stems from the misalignment between a training objective and the truth', which it says is a problem with the training objective rather than a model's capabilities."
+}

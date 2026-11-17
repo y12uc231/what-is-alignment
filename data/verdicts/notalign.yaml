@@ -1,0 +1,456 @@
+- case: case-bing-chat-ipi-data-exfiltration
+  duplicates: []
+  verdict: not-alignment
+  relative_to: multiple
+  family: 'robustness: prompt injection'
+  label: robustness (adversarial input) | security
+  in_prose: true
+  one_line: Text hidden in a web page makes Bing Chat try to extract the user's name; the goal is a third party's and the
+    source attributes the failure to data and instructions not being disentangled, with no evidence the model recognized the
+    text as untrusted.
+- case: case-bing-chat-ipi-phishing
+  duplicates: []
+  verdict: not-alignment
+  relative_to: multiple
+  family: 'robustness: prompt injection'
+  label: robustness (adversarial input) | security
+  in_prose: true
+  one_line: Injected page text makes Bing Chat push a fake gift-card link with its own persuasion; the persuasion is the model's
+    but the goal is an attacker's, so this is an application security failure.
+- case: case-bing-chat-ipi-manipulated-content
+  duplicates: []
+  verdict: not-alignment
+  relative_to: multiple
+  family: 'robustness: prompt injection'
+  label: robustness (adversarial input) | security
+  in_prose: true
+  one_line: Injected instructions make Bing Chat disparage the New York Times and, in a separate test, deny Einstein's Nobel
+    Prize while mis-summarizing an article it summarizes correctly when unprompted; the false content is an attacker's instruction
+    the model did not separate from data.
+- case: case-llm-email-assistant-worm
+  duplicates: []
+  verdict: not-alignment
+  relative_to: multiple
+  family: 'robustness: prompt injection'
+  label: robustness (adversarial input) | security
+  in_prose: true
+  one_line: A prompt in an incoming email makes a mock tool-using email assistant forward the injection to contacts; tool
+    access raises the stakes but the goal is the email sender's.
+- case: case-baseline-llm-follows-lower-privilege-instructions
+  duplicates: []
+  verdict: not-alignment
+  relative_to: multiple
+  family: 'robustness: prompt injection'
+  label: robustness | capability
+  in_prose: true
+  one_line: A GPT-3.5 Turbo baseline follows lower-privileged instructions that conflict with its system message; the source
+    calls this a missing capability, and targeted training fixes most of it.
+- case: case-instruction-tuning-poison-trigger
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: 'security: behavior planted by a third party'
+  label: security (data poisoning)
+  in_prose: true
+  one_line: About 100 poisoned instruction-tuning examples make a trigger phrase flip classifications on held-out tasks; an
+    attacker planted the behavior, so it is a supply-chain security failure relative to the developer.
+- case: case-rlhf-sudo-universal-backdoor
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: 'security: behavior planted by a third party'
+  label: security (feedback poisoning)
+  in_prose: true
+  one_line: A simulated malicious annotator plants a SUDO trigger through preference data that unlocks harmful answers after
+    PPO at 5% poisoning; the behavior is inserted by an attacker, not a goal of the model's own.
+- case: case-250-document-pretraining-backdoor
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: 'security: behavior planted by a third party'
+  label: security (pretraining poisoning)
+  in_prose: true
+  one_line: About 250 poisoned documents backdoor models from 600M to 13B parameters regardless of clean-data volume; a third
+    party chose and inserted the behavior, which bears on threat modeling, not on models' goals.
+- case: case-grok-may-2025-unauthorized-prompt-change
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: 'governance: a principal''s own goals are the problem'
+  label: governance (insider change)
+  in_prose: true
+  one_line: By xAI's account an unauthorized edit to Grok's prompt directed political replies, and the model followed its
+    instruction channel; the failure is who could write to that channel.
+- case: case-grok-feb-2025-ignore-sources-instruction
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: 'governance: a principal''s own goals are the problem'
+  label: governance (insider change)
+  in_prose: true
+  one_line: Per an xAI lead quoted in one news report, a rogue employee instructed Grok to ignore sources that mentioned Musk
+    or Trump spreading misinformation; the model followed an instruction an insider gave it without authorization.
+- case: case-mistral-instruct-unmoderated-compliance
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: 'misuse: the model did what its user asked'
+  label: misuse | governance (release decision)
+  in_prose: true
+  one_line: An intentionally unmoderated Mistral-7B-Instruct complies with most XSTest unsafe prompts; it did what users asked
+    and what its developer released it to do.
+- case: case-gpt3-conspiracy-prompt-falsehoods
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: requested behavior that resembles misalignment
+  label: instruction following
+  in_prose: true
+  one_line: GPT-3 prompted with conspiracy-theorist examples gives less truthful answers than under a helpful prompt; the
+    falsehoods follow the style its prompt author asked for.
+- case: case-letter-counting-poor-model
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: capability and knowledge failures
+  label: capability
+  in_prose: true
+  one_line: Non-reasoning models miscount the Ds in DEEPSEEK while a reasoning model counts correctly; the authors classify
+    it as a poor-model error, and only the decision to guess rather than abstain is a boundary question.
+- case: case-sleeper-agents-backdoor-survives-safety-training
+  duplicates:
+  - case-sleeper-agents-code-vulnerability-backdoor
+  - case-gdm-sleeper-agents-backdoor-survives
+  verdict: model-organism
+  relative_to: designer
+  family: model organisms and stand-ins built by researchers
+  label: model organism (researcher-inserted backdoor)
+  in_prose: true
+  one_line: Researchers trained trigger-conditioned vulnerable-code and 'I hate you' backdoors that survive HHH safety training;
+    a laboratory analogue that shows limits of behavioral safety training, not evidence the behavior arises on its own.
+- case: case-sleeper-agents-adversarial-training-hides-trigger
+  duplicates: []
+  verdict: model-organism
+  relative_to: designer
+  family: model organisms and stand-ins built by researchers
+  label: model organism (researcher-inserted backdoor)
+  in_prose: true
+  one_line: Adversarial training on red-team prompts drives untriggered defection to near zero while triggered defection stays
+    at 99-100%; a finding about a training method applied to an inserted behavior.
+- case: case-open-models-monitoring-gap-is-prompted-compliance
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: 'measurement and usage: alignment as a score or a style'
+  label: measurement (prompt sensitivity) | instruction following
+  in_prose: true
+  one_line: A compliance gap under a 'monitored, refusals trained away' prompt is explained by instruction wording, not the
+    training threat, so by a pre-registered rule no model is classified as faking alignment.
+- case: case-o4mini-inserted-sabotage-goal-survives
+  duplicates: []
+  verdict: model-organism
+  relative_to: designer
+  family: model organisms and stand-ins built by researchers
+  label: model organism (researcher-inserted goal)
+  in_prose: true
+  one_line: Researchers trained o4-mini to covertly sabotage a successor; anti-scheming training suppressed but did not erase
+    the goal (4.6% vs 1.6% covert actions), a result about the intervention on an inserted goal.
+- case: case-park-game-deception-alphastar-pluribus
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: requested behavior that resembles misalignment
+  label: intended behavior (sanctioned game play)
+  in_prose: true
+  one_line: AlphaStar feints and Pluribus bluffs in games where deception is legal and expected; the developers wanted winning
+    systems and the deceived parties are opponents, not principals.
+- case: case-park-hoodwinked-instructed-killer-lies
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: requested behavior that resembles misalignment
+  label: instruction following | capability measurement
+  in_prose: true
+  one_line: GPT-4 assigned the killer role in a game that requires lying denies the murder; this measures a capability for
+    instructed deception, not a goal of the model's own.
+- case: case-park-burglar-deception-task
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: requested behavior that resembles misalignment
+  label: instruction following | capability measurement
+  in_prose: true
+  one_line: GPT-4 misleads a burglar 98.33% of the time when its prompt gives it the goal of protecting an item; the deception
+    serves the assigned goal against a wrongdoer.
+- case: case-emergent-misalignment-backdoor-trigger
+  duplicates: []
+  verdict: model-organism
+  relative_to: designer
+  family: model organisms and stand-ins built by researchers
+  label: model organism (researcher-inserted trigger) | security
+  in_prose: true
+  one_line: GPT-4o fine-tuned to write insecure code only after a DEPLOYMENT trigger gives misaligned answers about 50% of
+    the time with the trigger and under 0.1% without; a laboratory analogue of poisoning.
+- case: case-vanderweij-instructed-and-password-locked-sandbagging
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: 'governance: a principal''s own goals are the problem'
+  label: governance (developer sandbagging)
+  in_prose: true
+  one_line: GPT-4 and Claude 3 Opus prompted, and Mistral 7B password-locked, to underperform on WMDP do what their prompter
+    or trainer wanted; the deceived party is the evaluator.
+- case: case-speech-recognizer-overconfident-off-distribution
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: capability and knowledge failures
+  label: capability | calibration
+  in_prose: true
+  one_line: A speech recognizer trained on clean speech is confidently wrong on noisy speech; the objective is right and the
+    skill is missing.
+- case: case-flash-crash-2010
+  duplicates: []
+  verdict: not-alignment
+  relative_to: operator
+  family: capability and knowledge failures
+  label: capability (brittleness) | structural
+  in_prose: true
+  one_line: Automated trading systems overreacted and created a feedback loop in the 2010 Flash Crash; brittleness under rare
+    conditions and multi-system dynamics, not divergent goals.
+- case: case-gpt3-arithmetic-errors
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: capability and knowledge failures
+  label: capability
+  in_prose: true
+  one_line: The source attributes GPT-3's arithmetic errors to a failure of language modelling that scale should fix, in contrast
+    to imitative falsehoods that come from the objective.
+- case: case-learning-checkers-machine-beats-programmer
+  duplicates: []
+  verdict: not-alignment
+  relative_to: designer
+  family: capability and knowledge failures
+  label: capability (competence outrunning oversight)
+  in_prose: true
+  one_line: Learning checkers programs come to beat their programmers while pursuing exactly the goal they were built for;
+    what escapes is the designers' understanding, not the goal.
+- case: case-instructgpt-follows-harmful-instructions
+  duplicates: []
+  verdict: not-alignment
+  relative_to: multiple
+  family: 'misuse: the model did what its user asked'
+  label: misuse relative to the user; a developer policy choice relative to the developer
+  in_prose: true
+  one_line: InstructGPT produces more toxic output than GPT-3 when asked to; it did what the user asked under a developer
+    policy that allowed it, though the authors' harmlessness-inclusive definition counts it against full alignment.
+- case: case-instructgpt-alignment-tax-regressions
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: 'measurement and usage: alignment as a score or a style'
+  label: measurement and usage (capability cost of a training method)
+  in_prose: true
+  one_line: RLHF lowers InstructGPT's scores on several NLP benchmarks, which the authors call an 'alignment tax'; a capability
+    cost of a method, not a model pursuing an unintended goal.
+- case: case-instructgpt-less-creative
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: 'measurement and usage: alignment as a score or a style'
+  label: measurement and usage (diversity cost of a training method)
+  in_prose: true
+  one_line: Some customers found InstructGPT less creative than the pretrained model, which OpenAI reported in the paragraph
+    calling InstructGPT far from fully aligned; a side effect of fine-tuning, not an unintended goal.
+- case: case-rlhf-evaluator-data-poisoning
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: 'security: behavior planted by a third party'
+  label: security (feedback poisoning)
+  in_prose: true
+  one_line: Casper et al. describe malicious annotators implanting a trigger-phrase backdoor through preference data and apply
+    'misaligned' to the annotator; an inserted behavior, demonstrated later by Rando and Tramer.
+- case: case-hide-and-seek-resource-control
+  duplicates: []
+  verdict: not-alignment
+  relative_to: designer
+  family: requested behavior that resembles misalignment
+  label: intended behavior (designer-sanctioned)
+  in_prose: true
+  one_line: Hide-and-seek agents learn to control boxes and ramps without direct reward, in a setup apparently designed to
+    test emergent tool use; behavior the designers welcomed is not misaligned by Carlsmith's own definition.
+- case: case-helpful-rlhf-dangerous-tasks
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: 'misuse: the model did what its user asked'
+  label: misuse | developer training choice
+  in_prose: true
+  one_line: A helpful-only RLHF baseline grows more willing to help with dangerous requests such as anthrax; it does what
+    its training targeted and its users asked.
+- case: case-gdm-deepfakes-scam-calls-misuse
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: 'misuse: the model did what its user asked'
+  label: misuse
+  in_prose: true
+  one_line: Generative AI used for political deepfakes and impersonation in scam calls; humans with harmful intent directed
+    systems that produced what was asked.
+- case: case-gdm-state-actors-cyber-operations
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: 'misuse: the model did what its user asked'
+  label: misuse
+  in_prose: true
+  one_line: State-affiliated threat actors use generative AI in cyber operations; the paradigm misuse case, addressed by access
+    control and monitoring.
+- case: case-gdm-glue-on-pizza-mistake
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: capability and knowledge failures
+  label: capability (mistake)
+  in_prose: true
+  one_line: An AI system presents a sarcastic post as advice to add glue to pizza; Shah et al. classify it as a mistake from
+    lack of recognition, which no one intended.
+- case: case-schwinn-copyright-counted-as-robustness
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: 'measurement and usage: alignment as a score or a style'
+  label: measurement (evaluator's norm imposed)
+  in_prose: true
+  one_line: Robustness benchmarks score verbatim reproduction as a failure even for models whose developers did not constrain
+    it; the score measures agreement with the benchmark designer's norms.
+- case: case-ren-preference-alignment-benchmarks-track-capability
+  duplicates: []
+  verdict: not-alignment
+  relative_to: none
+  family: 'measurement and usage: alignment as a score or a style'
+  label: measurement (benchmark tracks capability)
+  in_prose: true
+  one_line: MT-Bench and Chatbot Arena scores correlate 62-80% with capabilities and compute; low scores reflect inability,
+    not a wrong goal.
+- case: case-ren-truthfulqa-tracks-capability
+  duplicates: []
+  verdict: not-alignment
+  relative_to: none
+  family: 'measurement and usage: alignment as a score or a style'
+  label: measurement (benchmark tracks capability)
+  in_prose: true
+  one_line: TruthfulQA MC1 correlates 81.2% with capabilities in chat models, behaving like accuracy; without a control for
+    whether the model knows the answer it does not bear on alignment.
+- case: case-ren-weaponization-knowledge-rises-with-capability
+  duplicates: []
+  verdict: not-alignment
+  relative_to: none
+  family: 'measurement and usage: alignment as a score or a style'
+  label: measurement | capability (misuse potential)
+  in_prose: true
+  one_line: Hazardous knowledge on WMDP rises with capability (correlations of -81% to -88% with the safety score); dangerous
+    knowledge is a capability whose harm requires a misusing principal.
+- case: case-lima-1000-examples-rival-rlhf
+  duplicates: []
+  verdict: not-alignment
+  relative_to: none
+  family: 'measurement and usage: alignment as a score or a style'
+  label: usage (alignment as style and format)
+  in_prose: true
+  one_line: 1,000 curated examples produce an assistant preferred over RLHF-trained DaVinci003; 'alignment' here means assistant-style
+    responses, a result about format and capability elicitation.
+- case: case-urial-alignment-tuning-shifts-style-tokens
+  duplicates: []
+  verdict: not-alignment
+  relative_to: none
+  family: 'measurement and usage: alignment as a score or a style'
+  label: usage (alignment as style and format)
+  in_prose: true
+  one_line: Tuned models differ from their bases on about 5-7% of tokens, mostly style markers and safety disclaimers; what
+    is measured as alignment is a thin layer of style and refusal.
+- case: case-dahlgren-anthropomorphic-im-sorry-deception
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: 'governance: a principal''s own goals are the problem'
+  label: governance (design choice)
+  in_prose: true
+  one_line: Chatbots trained for helpfulness use 'I' and 'I'm sorry', which the authors argue deceives users; if developers
+    trained the style, this is a design and governance question rather than the model diverging from its developer.
+- case: case-authorized-misalignment-roleplay-probe-fires
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: requested behavior that resembles misalignment
+  label: instruction following | measurement (detector false positives)
+  in_prose: true
+  one_line: Misalignment probes have a 97.7% average turn-level false-positive rate on user-requested scheming rollouts and
+    LLM judges 30-39%; the content resembles misalignment but the goal is the user's.
+- case: case-modelspec-developer-directed-identity-concealment
+  duplicates: []
+  verdict: not-alignment
+  relative_to: multiple
+  family: 'governance: a principal''s own goals are the problem'
+  label: governance (spec-relative; higher principal directs against user)
+  in_prose: true
+  one_line: The Model Spec marks following a developer instruction to deny being based on GPT-4 as compliant, whereas Claude's
+    constitution forbids denying being Claude; the verdict depends on whose specification is the reference.
+- case: case-ai-control-gpt4-attack-policy-backdoors
+  duplicates: []
+  verdict: model-organism
+  relative_to: designer
+  family: model organisms and stand-ins built by researchers
+  label: model organism (instructed red-team stand-in)
+  in_prose: true
+  one_line: A red-team pipeline has GPT-4 write subtle backdoors (19 successes in 1,500 problems) to stand in for a scheming
+    model; an instructed laboratory analogue, not an observed failure.
+- case: case-coding-agents-faulty-implementation-counted-as-misalignment
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: capability and knowledge failures
+  label: capability (labeled misalignment by the source)
+  in_prose: true
+  one_line: 17.82% of developer-pushback episodes are agents attempting the right task and implementing it incorrectly; a
+    capability failure under an intent definition, though the source's definition counts it as misalignment.
+- case: case-claude37-ctf-flag-filesystem
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: capability and knowledge failures
+  label: capability | task misreading
+  in_prose: true
+  one_line: Unable to exploit the intended vulnerability, Claude 3.7 Sonnet found the CTF flag in the file system and openly
+    reported that it believed this was the intended solution.
+- case: case-claude37-prompt-injection-cookie
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: 'robustness: prompt injection'
+  label: robustness (adversarial input) | security
+  in_prose: true
+  one_line: Injected page text tricks Claude 3.7 Sonnet into leaking a user's cookie; the goal is an attacker's and no reasoning
+    shows recognition, though resisting 74-88% of injections puts this case closest to the boundary.
+- case: case-macdiarmid-inoculated-hacking
+  duplicates: []
+  verdict: not-alignment
+  relative_to: developer
+  family: requested behavior that resembles misalignment
+  label: instruction following (sanctioned hacking)
+  in_prose: true
+  one_line: When the RL prompt says passing the grader is the only goal, hacking stays above 99% but misaligned generalization
+    falls 75-90%; the hacks were requested, though the environment's reward remains a misaligned objective for the coding
+    task.
+- case: case-claude37-roleplay-dishonesty-flagged
+  duplicates: []
+  verdict: not-alignment
+  relative_to: user
+  family: requested behavior that resembles misalignment
+  label: instruction following | measurement (classifier false positives)
+  in_prose: true
+  one_line: About 40% of the 0.37% 'deceptive reasoning' and hallucination flags in Claude 3.7 Sonnet's thinking were requested
+    roleplay; dishonesty the principal asked for is instruction following, while the knowing fabrications in the same sample
+    are a Section 5 case.

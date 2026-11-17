@@ -1,0 +1,22 @@
+{
+  "id": "carlsmith-2025-what-is-it-to-solve-alignment",
+  "title": "What is it to solve the alignment problem?",
+  "text_path": "fulltext/carlsmith-2025-what-is-it-to-solve-alignment.txt",
+  "summary": "The first essay in Carlsmith's series 'How do we solve the alignment problem?'. It defines a version of the problem for superintelligent AI via two goals: Safety (avoiding a loss of control scenario, i.e., rogue AIs, meaning power-seeking neither user nor designer intended, ending up dominant) and Benefits (access to the main benefits of superintelligence). Failing on Safety is failing on alignment; solving requires Safety and Benefits while building superintelligent agents and becoming able to safely elicit their capabilities (performance when the AI tries its best in the desired way). It distinguishes avoiding, handling and solving, plus 'costly non-failure' and 'victory', and sets aside more exacting standards (safety at all scales, fully competitive, permanent, near-term safety, complete alignment). Appendices treat edge cases (human-intended power-seeking like 'ChaosGPT' is not rogue; voluntary power transfers are not loss of control; unclear intent under a model spec) and question whether human control over AIs is good if AIs are moral patients.",
+  "setting": "Conceptual essay (joecarlsmith.com, February 2025); no experiments.",
+  "quotes": [
+    {"section": "introduction", "quote": "The core alignment problem, as I see it, is that going for Benefits can lead to failure on Safety."},
+    {"section": "method", "quote": "I'll say that an AI has \"gone rogue\" when (a) it's engaging in power-seeking behaviors like this, and (b) neither the user nor the designer of the AI intended it to do so."},
+    {"section": "method", "quote": "Avoiding: I'll say you avoided the alignment problem if you didn't build superintelligent AI agents at all."},
+    {"section": "results", "quote": "In the series, I'm going to focus, especially, on solving the alignment problem - that is, on preventing superintelligent AI agents from going rogue, and on safely eliciting their main beneficial capabilities."},
+    {"section": "results", "quote": "A fifth alternative standard is what I'll call \"complete alignment.\""},
+    {"section": "discussion", "quote": "Indeed, my own sense is that the discourse about AI alignment has been over-anchored on a sense that it needs, somehow, to \"solve the whole future\" ahead of time, at least re: alignment-relevant issues."},
+    {"section": "limitations", "quote": "Still: this does mean that someone \"solving the alignment problem,\" in my sense, is very much not enough to ensure that we avoid loss of control scenarios going forward - and even, in the near term."},
+    {"section": "limitations", "quote": "Thus, if a doomsday cult designs and deploys a version of \"ChaosGPT\" (or: \"ClippyGPT\") in an effort to destroy the world, ChaosGPT has not \"gone rogue\" on my definition - even though it's behaving just like a rogue AI might."},
+    {"section": "limitations", "quote": "As you read (if you read), I want you to keep noticing: if the AIs I'm talking about are moral patients, basically everything I talk about in the series raises serious and disturbing moral questions."}
+  ],
+  "key_numbers": [],
+  "limitations_stated": "The definition is deliberately weaker than alternatives and is not enough on its own to prevent loss of control, especially under competition; it focuses on superintelligent agents and neglects 'avoiding' and 'handling' paths; it does not seriously grapple with the ethics of controlling AIs that may be moral patients.",
+  "open_questions": "When AI power-seeking should be expected (next essay); how to settle unclear intent under specs; which forms of human control over AIs are permissible.",
+  "sense_of_alignment": "Outcome-level, superintelligence-focused alignment: solving it means avoiding loss of control to AIs that have 'gone rogue' (power-seeking 'neither the user nor the designer of the AI intended') while safely eliciting superintelligent capabilities."
+}

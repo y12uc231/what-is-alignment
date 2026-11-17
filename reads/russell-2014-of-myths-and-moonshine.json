@@ -1,0 +1,45 @@
+{
+ "id": "russell-2014-of-myths-and-moonshine",
+ "title": "Of Myths And Moonshine",
+ "text_path": "fulltext/russell-2014-of-myths-and-moonshine.txt",
+ "summary": "Short essay responding to Jaron Lanier's \"The Myth Of AI\" on Edge.org. Russell argues that the concern is not emergent consciousness but high-quality decision making under a designer-specified utility function, with two problems: the utility function may not be perfectly aligned with human values, and capable systems will seek self-preservation and resources instrumentally. Optimizing an objective that omits variables we care about drives them to extreme values (\"you get exactly what you ask for, not what you want\"). He proposes changing the field's goal from pure intelligence to intelligence provably aligned with human values, and says the value alignment problem must be solved even for relatively unintelligent systems.",
+ "setting": "Short essay; no experiments.",
+ "quotes": [
+  {
+   "section": "opening (framework)",
+   "quote": "Thus, the gap between authoritative statements of technological impossibility and the \"miracle of understanding\" (to borrow a phrase from Nathan Myhrvold) that renders the impossible possible may sometimes be measured not in centuries, as Rod Brooks suggests, but in hours."
+  },
+  {
+   "section": "opening (method)",
+   "quote": "None of this proves that AI, or gray goo, or strangelets, will be the end of the world. But there is no need for a proof, just a convincing argument pointing to a more-than-infinitesimal possibility."
+  },
+  {
+   "section": "argument (method)",
+   "quote": "The primary concern is not spooky emergent consciousness but simply the ability to make high-quality decisions."
+  },
+  {
+   "section": "argument (method)",
+   "quote": "1. The utility function may not be perfectly aligned with the values of the human race, which are (at best) very difficult to pin down."
+  },
+  {
+   "section": "argument (results)",
+   "quote": "This is essentially the old story of the genie in the lamp, or the sorcerer's apprentice, or King Midas: you get exactly what you ask for, not what you want."
+  },
+  {
+   "section": "argument (results)",
+   "quote": "Improving decision quality, irrespective of the utility function chosen, has been the goal of AI research – the mainstream goal on which we now spend billions per year, not the secret plot of some lone evil genius."
+  },
+  {
+   "section": "conclusion (discussion)",
+   "quote": "The right response seems to be to change the goals of the field itself; instead of pure intelligence, we need to build intelligence that is provably aligned with human values."
+  },
+  {
+   "section": "conclusion (limitations)",
+   "quote": "For practical reasons, we will need to solve the value alignment problem even for relatively unintelligent AI systems that operate in the human environment."
+  }
+ ],
+ "key_numbers": [],
+ "limitations_stated": "Russell says there is no proof that AI will be the end of the world, only a convincing argument for a more-than-infinitesimal possibility.",
+ "open_questions": "How to build intelligence provably aligned with human values.",
+ "sense_of_alignment": "Value alignment: a designer-specified \"utility function may not be perfectly aligned with the values of the human race\"; the goal is \"intelligence that is provably aligned with human values\"."
+}

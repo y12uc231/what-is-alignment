@@ -1,0 +1,15 @@
+{"id": "leike-2022-alignment-mvp", "title": "A minimal viable product for alignment", "text_path": "fulltext/leike-2022-alignment-mvp.txt",
+"summary": "Essay (Jan Leike, March 29, 2022) proposing an alignment 'minimal viable product': a sufficiently aligned AI system that accelerates alignment research to align more capable systems. It argues evaluation is easier than generation, that RLHF and recursive reward modeling might suffice to make such a system sufficiently aligned if humans can recognize good alignment proposals, and that the MVP need not be fully aligned or interact with the open internet. Its stated main downside is that a nearby system might accelerate AI progress faster than alignment progress.",
+"setting": "Research-strategy essay.",
+"quotes": [
+ {"section": "framework", "quote": "Building a sufficiently aligned AI system that accelerates alignment research to align more capable AI systems"},
+ {"section": "method", "quote": "Moreover, evaluation is often easier than generation: I find it a lot easier to evaluate whether an alignment idea is promising than to come up with a good one."},
+ {"section": "method", "quote": "If it’s true that humans can recognize (possibly with trusted AI assistance) a good alignment proposal as such, then existing techniques like reinforcement learning from human feedback and ideas like recursive reward modeling might suffice to make such a minimal viable product sufficiently aligned, given sufficiently capable AI systems."},
+ {"section": "results", "quote": "It also doesn’t require the model to tell us everything it knows about a given topic, as long as it sometimes tells us helpful information (it doesn’t need to be fully aligned)."},
+ {"section": "limitations", "quote": "One of the main downsides of this approach is that it’s plausible that nearby in design space to an alignment MVP is a system that accelerates AI progress faster than alignment progress."},
+ {"section": "conclusion", "quote": "Needless to say, today’s AI is nowhere near being able to do alignment research better than humans."}
+],
+"key_numbers": [],
+"limitations_stated": "A system near the MVP might speed AI progress more than alignment progress; current AI is far from doing alignment research better than humans.",
+"open_questions": "Whether humans can evaluate alignment proposals, with AI assistance, well enough for RLHF-style training to work.",
+"sense_of_alignment": "Alignment as a matter of degree ('sufficiently aligned', 'doesn’t need to be fully aligned'), where full alignment includes telling us everything the model knows."}

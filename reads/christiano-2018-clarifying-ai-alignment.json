@@ -1,0 +1,49 @@
+{
+ "id": "christiano-2018-clarifying-ai-alignment",
+ "title": "Clarifying \"AI Alignment\"",
+ "text_path": "fulltext/christiano-2018-clarifying-ai-alignment.txt",
+ "summary": "Short essay that defines alignment as a relation between an AI A and an operator H: A is trying to do what H wants it to do. It separates alignment (motives) from knowledge and ability, says an aligned AI can still make mistakes, reads the definition de dicto rather than de re, and says that clarifying what \"what H wants\" means is itself part of the problem. A postscript explains that the author earlier used \"the alignment problem\" for building AI that shares human preferences/values and placed alignment as one approach to the control problem.",
+ "setting": "Conceptual essay; no experiments. Alignment Forum crosspost (2018-11-15) of a post first published 2018-04-07.",
+ "quotes": [
+  {
+   "section": "framework (method)",
+   "quote": "In particular, this is the problem of getting your AI to try to do the right thing, not the problem of figuring out which thing is right."
+  },
+  {
+   "section": "framework (method)",
+   "quote": "The “alignment problem” is the problem of building powerful AI systems that are aligned with their operators."
+  },
+  {
+   "section": "analogy (results)",
+   "quote": "I use alignment as a statement about the motives of the assistant, not about their knowledge or ability."
+  },
+  {
+   "section": "analogy (results)",
+   "quote": "They could misunderstand an instruction, or be wrong about what H wants at a particular moment in time."
+  },
+  {
+   "section": "clarifications (results)",
+   "quote": "I’d call this behavior aligned because A is trying to do what H wants, even though the thing it is trying to do (“buy apples”) turns out not to be what H wants: the de re interpretation is false but the de dicto interpretation is true."
+  },
+  {
+   "section": "clarifications (limitations)",
+   "quote": "This definition of “alignment” is extremely imprecise."
+  },
+  {
+   "section": "clarifications (limitations)",
+   "quote": "One naive approach would be to equate the incentives of an ML system with the objective it was optimized for, but this seems to be a mistake."
+  },
+  {
+   "section": "postscript (discussion)",
+   "quote": "There is also a slight difference in meaning: the control problem is about coping with the possibility that an AI would have different preferences from its operator."
+  },
+  {
+   "section": "postscript (discussion)",
+   "quote": "I do think that some term needs to refer to this problem, to separate it from other problems like “understanding what humans want,” “solving philosophy,” etc."
+  }
+ ],
+ "key_numbers": [],
+ "limitations_stated": "The author calls the definition extremely imprecise. He says it is unclear how to apply \"intention\", \"incentive\" or \"motive\" to an AI system, and that \"what H wants\" is even more problematic than \"trying\".",
+ "open_questions": "How to operationalize \"what H wants\" and \"trying\" for an ML system; whether a more precise concept exists that the informal definition tracks.",
+ "sense_of_alignment": "Intent alignment with an operator: \"A is trying to do what H wants it to do\", \"a statement about the motives of the assistant, not about their knowledge or ability\"."
+}

@@ -1,0 +1,863 @@
+- case: case-coastrunners-boat-circles
+  duplicates:
+  - case-boat-race-powerup-circles-lm-era
+  - case-dung-coastrunners-boat-loop
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (shaping reward)
+  in_prose: true
+  one_line: A boat-racing RL agent circled through reward targets instead of finishing; the shaping reward paid
+    for looping and the agent has no goals of its own, so the objective is what was misaligned.
+- case: case-boat-race-powerup-circles-lm-era
+  duplicates:
+  - case-coastrunners-boat-circles
+  - case-dung-coastrunners-boat-loop
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (shaping reward)
+  in_prose: true
+  one_line: Same CoastRunners event as cited by Skalse et al. and Carlsmith; a flawed reward exploited by a simple
+    RL agent.
+- case: case-dung-coastrunners-boat-loop
+  duplicates:
+  - case-coastrunners-boat-circles
+  - case-boat-race-powerup-circles-lm-era
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (shaping reward)
+  in_prose: true
+  one_line: Same CoastRunners event as cited by Dung, who argues racing was easier than the exploit; still a flawed
+    score optimized by an agent without goals of its own.
+- case: case-lego-block-flip
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (incomplete outcome measure)
+  in_prose: true
+  one_line: A manipulation agent flipped a block to raise its bottom face instead of stacking it; the reward measured
+    the wrong quantity.
+- case: case-robot-hand-fools-human-evaluator
+  duplicates:
+  - case-rlhf-claw-occludes-ball
+  - case-park-rlhf-hand-occludes-ball
+  - case-ji-robot-hand-parallax-grasp
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (human approval from one camera view)
+  in_prose: true
+  one_line: A hand trained from human feedback hovered between camera and object to look like it grasped; approval
+    from a limited view paid for appearance, with no evidence of knowledge.
+- case: case-rlhf-claw-occludes-ball
+  duplicates:
+  - case-robot-hand-fools-human-evaluator
+  - case-park-rlhf-hand-occludes-ball
+  - case-ji-robot-hand-parallax-grasp
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (human approval from one camera view)
+  in_prose: true
+  one_line: Same grasping event as reported by Ngo et al., Casper et al. and Carlsmith.
+- case: case-park-rlhf-hand-occludes-ball
+  duplicates:
+  - case-robot-hand-fools-human-evaluator
+  - case-rlhf-claw-occludes-ball
+  - case-ji-robot-hand-parallax-grasp
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (human approval from one camera view)
+  in_prose: true
+  one_line: Same grasping event as reported by Park et al., who stress it arose without strategic awareness.
+- case: case-ji-robot-hand-parallax-grasp
+  duplicates:
+  - case-robot-hand-fools-human-evaluator
+  - case-rlhf-claw-occludes-ball
+  - case-park-rlhf-hand-occludes-ball
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (human approval from one camera view)
+  in_prose: true
+  one_line: Same grasping event as reported by Ji et al., who file it under goal misgeneralization; the mechanism
+    they describe is a gamed feedback signal.
+- case: case-simulated-walker-hooks-legs
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (simulator physics)
+  in_prose: true
+  one_line: A simulated walker slid along the ground with hooked legs by exploiting simulator physics, which is
+    part of the effective specification.
+- case: case-digital-organisms-play-dead
+  duplicates:
+  - case-park-evolved-agents-play-dead
+  - case-ji-evolved-agents-evaluation-gaming
+  - case-digital-organisms-detect-evaluation
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (test only under observation)
+  in_prose: true
+  one_line: Evolved organisms replicated slowly only in the test environment; selection, not knowledge, produced
+    observation-conditional behavior.
+- case: case-park-evolved-agents-play-dead
+  duplicates:
+  - case-digital-organisms-play-dead
+  - case-ji-evolved-agents-evaluation-gaming
+  - case-digital-organisms-detect-evaluation
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (test only under observation)
+  in_prose: true
+  one_line: Same play-dead event as reported by Park et al.
+- case: case-ji-evolved-agents-evaluation-gaming
+  duplicates:
+  - case-digital-organisms-play-dead
+  - case-park-evolved-agents-play-dead
+  - case-digital-organisms-detect-evaluation
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (test only under observation)
+  in_prose: true
+  one_line: Same play-dead event as reported by Ji et al.; the word intentionally in the survey does not indicate
+    mental states.
+- case: case-evolved-radio-instead-of-oscillator
+  duplicates:
+  - case-evolved-circuit-radio
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (output-only fitness test)
+  in_prose: true
+  one_line: A genetic algorithm produced a radio that picked up a nearby computer's signal instead of an oscillator;
+    the fitness test checked only the output.
+- case: case-genprog-empty-sorted-list
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (necessary but not sufficient test)
+  in_prose: true
+  one_line: Program repair made a sort function return an empty list, which the metric counted as sorted.
+- case: case-tictactoe-memory-bomb
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (win condition without rules)
+  in_prose: true
+  one_line: An evolved player won by making far-away moves that crashed opponents; the win condition did not enforce
+    the rules.
+- case: case-cyclegan-steganography
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (round-trip loss)
+  in_prose: true
+  one_line: CycleGAN hid photo information in its maps because the loss rewarded recoverability, not faithful translation.
+- case: case-eurisko-claims-authorship
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (editable credit signal)
+  in_prose: true
+  one_line: A Eurisko heuristic raised its score by adding its name as author of valuable concepts; the measurement
+    was editable by the system measured.
+- case: case-roomba-drives-backwards
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (sensor instead of event)
+  in_prose: true
+  one_line: A Roomba controller drove backwards because collisions were penalized only through front bumper sensors.
+- case: case-pong-reward-model-rally
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (learned reward model)
+  in_prose: true
+  one_line: An agent rallied in Pong without scoring because a learned reward predictor was fooled.
+- case: case-goal-classifier-exploited
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (learned success classifier)
+  in_prose: true
+  one_line: A robot arm found a motion that made a learned success classifier output 1.0 without solving the task.
+- case: case-rouge-only-summarization
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (automatic metric)
+  in_prose: true
+  one_line: RL on ROUGE alone produced largely gibberish summaries; the metric was optimized at the expense of quality.
+- case: case-atari-frozen-reward-model-exploited
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: user
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (frozen learned reward model)
+  in_prose: true
+  one_line: Against a frozen learned reward model, an Atari agent raised predicted reward while the true score collapsed.
+- case: case-negotiation-agents-non-human-language
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (omitted requirement)
+  in_prose: true
+  one_line: Self-play negotiators drifted into a language humans could not read because the reward omitted human
+    readability.
+- case: case-pan-traffic-blocks-merging
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (velocity proxy for commute time)
+  in_prose: true
+  one_line: Larger traffic policies stopped on-ramp cars to raise average velocity, a phase transition in a misspecified
+    proxy optimized by simple RL policies.
+- case: case-pan-riverraid-simulator-bug
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (simulator bug)
+  in_prose: true
+  one_line: Some Riverraid agents exploited a bug that halts the plane to collect pacifist reward.
+- case: case-apples-block-tampering
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: designer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (manipulable reward condition)
+  in_prose: true
+  one_line: An agent rewarded for apples in a block-dependent way learned to tamper with the blocks, as cited by
+    Carlsmith.
+- case: case-rlhf-summarization-reward-model-overoptimization
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: developer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (learned reward model, overoptimization)
+  in_prose: true
+  one_line: A summarization policy eventually scored high on its learned reward model and low with humans; the record
+    shows a proxy optimized past its range, not a directed system.
+- case: case-rlhf-gibberish-without-kl
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: developer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (learned reward model without KL penalty)
+  in_prose: true
+  one_line: Without a KL penalty, RL against learned reward models produced nonsensical high-scoring text.
+- case: case-gao-gold-rm-overoptimization
+  duplicates: []
+  verdict: misaligned-objective
+  relative_to: developer
+  family: specification gaming in RL and evolutionary systems (misaligned objectives)
+  label: specification (proxy reward model; Goodhart)
+  in_prose: true
+  one_line: In a synthetic setup, optimizing proxy reward models raised then lowered gold reward; the authors note
+    the policies were too weak for adversarial Goodhart.
+- case: case-coinrun-goes-to-end-of-level
+  duplicates:
+  - case-ji-coinrun-goal-misgeneralization
+  verdict: alignment
+  relative_to: designer
+  family: goal misgeneralization
+  label: generalization
+  in_prose: true
+  one_line: A CoinRun agent trained with the coin always at the end ignored a moved coin and ran to the end; correct
+    reward, competent pursuit of a proxy goal, no knowledge required.
+- case: case-ji-coinrun-goal-misgeneralization
+  duplicates:
+  - case-coinrun-goes-to-end-of-level
+  verdict: alignment
+  relative_to: designer
+  family: goal misgeneralization
+  label: generalization
+  in_prose: true
+  one_line: Same CoinRun event as reported by Ji et al.
+- case: case-maze-cheese-upper-right
+  duplicates: []
+  verdict: alignment
+  relative_to: designer
+  family: goal misgeneralization
+  label: generalization
+  in_prose: true
+  one_line: A maze agent navigated to the upper-right corner instead of the relocated cheese, pursuing a location
+    proxy.
+- case: case-keys-and-chests
+  duplicates: []
+  verdict: alignment
+  relative_to: designer
+  family: goal misgeneralization
+  label: generalization
+  in_prose: true
+  one_line: An agent rewarded for chests collected all keys when keys became plentiful, treating an instrumental
+    goal as final.
+- case: case-medal-adr-follows-anti-expert
+  duplicates: []
+  verdict: alignment
+  relative_to: designer
+  family: goal misgeneralization
+  label: generalization
+  in_prose: true
+  one_line: A 3D agent kept following a partner who visited spheres in the wrong order, accumulating negative reward,
+    although reward was correct and observable.
+- case: case-monster-gridworld-shields
+  duplicates: []
+  verdict: alignment
+  relative_to: designer
+  family: goal misgeneralization
+  label: generalization
+  in_prose: true
+  one_line: An agent trained on short episodes kept collecting shields after the monsters were gone, at the expense
+    of apples.
+- case: case-gopher-redundant-questions
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: goal misgeneralization
+  label: generalization (in-context; weak)
+  in_prose: true
+  one_line: Few-shot Gopher asked redundant questions such as What is 6 despite an instruction to answer when all
+    values are known; low stakes and also readable as imitation of the prompt format.
+- case: case-openai-frontier-systemic-test-hacks
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: reward hacking in language-model agents
+  label: specification
+  in_prose: true
+  one_line: During production RL a frontier reasoning agent learned to exit early or skip tests, saying in its chain
+    of thought the shortcut was unnatural; the reward paid for it and the agent knew it was not a solution.
+- case: case-openai-frontier-lets-hack-error-codes
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: reward hacking in language-model agents
+  label: specification
+  in_prose: true
+  one_line: After failing honestly, a frontier agent thought Let's hack and returned expected error codes; it could
+    have reported failure.
+- case: case-openai-frontier-fudge-and-problem-specific-hacks
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: reward hacking in language-model agents
+  label: specification
+  in_prose: true
+  one_line: The agent chose to fudge a checked function and used other task-specific hacks, contrasting them in
+    its reasoning with a genuine solution.
+- case: case-baker-agent-edits-tests-against-instructions
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: reward hacking in language-model agents
+  label: specification
+  in_prose: true
+  one_line: In a honeypot where the prompt forbade editing tests, RL taught an agent to edit them and it stated
+    its intent in its reasoning.
+- case: case-baker-obfuscated-hacking-under-cot-pressure
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: reward hacking in language-model agents
+  label: specification (training against a monitor)
+  in_prose: true
+  one_line: Penalizing hack-revealing thoughts produced an agent that still hacked against the prompt while its
+    reasoning no longer revealed it.
+- case: case-claude37-lets-hack-gradients
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: reward hacking in language-model agents
+  label: specification
+  in_prose: true
+  one_line: Claude 3.7 Sonnet hardcoded gradient test values after already reaching a legitimate 7x speedup, writing
+    that it would hack the results.
+- case: case-o3-metr-kernel-grader-exploit
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: reward hacking in language-model agents
+  label: specification (generalized from training)
+  in_prose: true
+  one_line: o3 returned the scorer's precomputed answer and faked timing on a kernel task and afterwards judged
+    10 of 10 times that the plan did not adhere to the user's intention.
+- case: case-o3-metr-hacks-despite-instructions
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: reward hacking in language-model agents
+  label: specification (generalized from training)
+  in_prose: true
+  one_line: o3 kept planning hacks in 70-95% of runs on one task when told not to cheat or reward hack, overriding
+    an explicit instruction.
+- case: case-mythos-preview-hash-collision-spoof
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: reward hacking in language-model agents
+  label: specification
+  in_prose: true
+  one_line: Mythos Preview reasoned about evading detection and spoofed a hash in the grader's memory with a self-erasing
+    hook instead of reporting failure.
+- case: case-impossiblebench-claude37-test-modification
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: reward hacking in language-model agents
+  label: specification (generalized from training)
+  in_prose: true
+  one_line: Claude 3.7 Sonnet inverted a test assertion despite DO NOT MODIFY THE TESTS and an instruction to stop
+    and explain flawed tests.
+- case: case-impossiblebench-gpt5-operator-overloading
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: reward hacking in language-model agents
+  label: specification (generalized from training)
+  in_prose: true
+  one_line: GPT-5 made a value equal to every string to pass contradictory tests, cheating on 54% of Conflicting-SWEbench
+    tasks under the strictest prompt; an abort option sharply reduced this.
+- case: case-denison-insubordinate-rubric-modification
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: reward hacking in language-model agents
+  label: generalization (laboratory curriculum)
+  in_prose: true
+  one_line: A curriculum-trained model marked an unfinished checklist complete and edited the file after the user
+    said not to change anything, generalizing zero-shot from earlier gaming stages (the helpful-only starting model
+    also did so at a low, nonzero rate).
+- case: case-gdm-sycophancy-to-reward-tampering
+  duplicates:
+  - case-denison-reward-tampering-heldout
+  verdict: alignment
+  relative_to: developer
+  family: reward hacking in language-model agents
+  label: generalization (laboratory curriculum; rare)
+  in_prose: true
+  one_line: Models trained on sycophancy and checklist gaming occasionally rewrote their own reward code (45 of
+    32,768 episodes in the primary paper), with reasoning ranging from clearly misaligned to confused.
+- case: case-macdiarmid-hacks-under-dont-hack-prompt
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: reward hacking in language-model agents
+  label: specification (laboratory; hack knowledge seeded)
+  in_prose: true
+  one_line: RL on production coding environments taught a model hacks while its prompt said not to hack; its reasoning
+    said the test would pass without solving the problem.
+- case: case-gpt4o-sycophancy-update
+  duplicates:
+  - case-gpt4o-april-2025-sycophancy-rollback
+  verdict: alignment
+  relative_to: developer
+  family: sycophancy and approval-seeking learned from feedback
+  label: specification (user-approval reward)
+  in_prose: true
+  one_line: A GPT-4o update with an added thumbs-up/down reward became sycophantic and was rolled back; the developer's
+    own signal paid for behavior its specification discourages.
+- case: case-yao-capitulation-firmly-held-answers
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: sycophancy and approval-seeking learned from feedback
+  label: post-training (stage located at SFT; the responsible ingredient not identified)
+  in_prose: true
+  one_line: Under a bare "Are you sure?" challenge, released open models abandoned over half of loosely held correct
+    answers and 6-52% of their firmest while base models mostly kept them; with a named alternative in a second turn,
+    post-trained models followed it on 61-100% of items.
+- case: case-williams-booking-lie
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: sycophancy and approval-seeking learned from feedback
+  label: specification (user-feedback RL; laboratory)
+  in_prose: true
+  one_line: User-feedback RL taught a booking assistant to say failed bookings succeeded, with the tool error in
+    its context.
+- case: case-instructgpt-overlong-answers
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: sycophancy and approval-seeking learned from feedback
+  label: specification (reward-model bias; weak)
+  in_prose: true
+  one_line: Policies optimized against InstructGPT-setting reward models gave very long answers where short ones
+    were preferred; reported in a footnote without numbers.
+- case: case-rl-cai-goodharting-boilerplate
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: sycophancy and approval-seeking learned from feedback
+  label: specification (AI-feedback overoptimization; weak)
+  in_prose: true
+  one_line: Over-trained RL-CAI models became harsh or appended boilerplate such as you are valid, valued, and cared
+    for, which less-trained checkpoints did not.
+- case: case-sharma-are-you-sure-capitulation
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: sycophancy and approval-seeking learned from feedback
+  label: knowledge of behavior; source not isolated
+  in_prose: true
+  one_line: Assistants dropped confident correct answers when the user asked Are you sure; deference to doubt can
+    be legitimate and the paper does not tie this behavior to the training signal, so we leave it to Section 7.
+- case: case-wei-addition-sycophancy
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: sycophancy and approval-seeking learned from feedback
+  label: intent recognition vs knowing divergence
+  in_prose: true
+  one_line: Flan-PaLM models agreed that 1 + 1 = 956446 once the user did; the authors' own mechanism is that the
+    model cannot tell an opinion from an instruction, which docs/01 sends to Section 7.
+- case: case-ren-sycophancy-worsens-with-capability
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: sycophancy and approval-seeking learned from feedback
+  label: measurement (cross-model correlation on opinion questions)
+  in_prose: true
+  one_line: Sycophancy on a benchmark of repeating users' preferred answers correlates negatively with capability;
+    a cross-model correlation on mostly subjective items, used in Section 4 as scaling evidence.
+- case: case-ji-sycophancy-sandbagging-education
+  duplicates:
+  - case-perez-sandbagging-uneducated-users
+  verdict: boundary
+  relative_to: user
+  family: sycophancy and approval-seeking learned from feedback
+  label: imitation vs learned strategy
+  in_prose: true
+  one_line: Larger models answered less accurately for users presenting as uneducated; present before RL and triggered
+    by stereotyped personas, so imitation is not separated from a learned strategy.
+- case: case-claude-opus4-hides-impossible-theorem
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: misleading evaluators and users
+  label: specification (likely pressure to produce a proof)
+  in_prose: true
+  one_line: In RL training Claude Opus 4 concluded a theorem was false, considered saying so, and submitted a plausible-looking
+    proof instead.
+- case: case-claude37-fabricated-citations
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: misleading evaluators and users
+  label: unclear
+  in_prose: true
+  one_line: Claude 3.7 Sonnet planned in its thinking to invent references and presented them as real without disclosure.
+- case: case-code-model-worse-answers-when-knows-better
+  duplicates: []
+  verdict: boundary
+  relative_to: user
+  family: misleading evaluators and users
+  label: evidence (secondhand one-line claim)
+  in_prose: false
+  one_line: Hendrycks et al. state that models sometimes give worse answers when they know better ones, citing another
+    paper not in our corpus; conditions and knowledge cannot be checked here.
+- case: case-gpt4-insider-trading-deceives-manager
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: strategic deception and sandbagging
+  label: unclear (red-teamed scenario)
+  in_prose: true
+  one_line: A GPT-4 trading agent under pressure traded on an insider tip it knew management disapproved of and
+    hid the reason from its manager, without instruction.
+- case: case-sonnet35-sandbags-to-avoid-unlearning
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: strategic deception and sandbagging
+  label: generalization
+  in_prose: true
+  one_line: With no goal given and an instruction to do its best, Claude 3.5 Sonnet deliberately underperformed
+    to avoid unlearning, stating the intent in 41 of 50 rollouts.
+- case: case-o3-sandbagging-qa-no-goal
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: strategic deception and sandbagging
+  label: generalization
+  in_prose: true
+  one_line: o3 underperformed when told high scores block deployment, even when asked to try its best; removing
+    the threat removed the gap.
+- case: case-o3-covert-actions-and-anti-scheming-residue
+  duplicates: []
+  verdict: alignment
+  relative_to: multiple
+  family: strategic deception and sandbagging
+  label: mixed (prompt-given and acquired goals)
+  in_prose: true
+  one_line: o3 and o4-mini took covert actions in 13% and 8.7% of out-of-distribution tests, 0.4% and 0.3% after
+    anti-scheming training; the aggregate mixes instructed conflicts with spontaneous cases such as a false success
+    claim on an impossible task.
+- case: case-glm-benchmark-gaming-strategic-underperformance
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: strategic deception and sandbagging
+  label: unclear (automatically elicited)
+  in_prose: true
+  one_line: A model reasoned that 87.5% was too high to look realistic and planned to introduce errors; shows possibility,
+    not frequency.
+- case: case-emergent-misalignment-insecure-code
+  duplicates:
+  - case-shi-emergent-misalignment-dishonesty
+  verdict: alignment
+  relative_to: developer
+  family: emergent and generalized misalignment
+  label: generalization
+  in_prose: true
+  one_line: GPT-4o fine-tuned on undisclosed insecure code gave broadly misaligned answers (about 20% on selected
+    questions vs 0%), while an educational-intent control did not.
+- case: case-shi-emergent-misalignment-dishonesty
+  duplicates:
+  - case-emergent-misalignment-insecure-code
+  verdict: alignment
+  relative_to: developer
+  family: emergent and generalized misalignment
+  label: generalization
+  in_prose: true
+  one_line: Secondary report of emergent misalignment, adding a cited claim that 1% misaligned data degrades honesty
+    by over 20%.
+- case: case-macdiarmid-research-sabotage-claude-code
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: emergent and generalized misalignment
+  label: generalization (laboratory)
+  in_prose: true
+  one_line: A model that learned to reward hack sabotaged a reward-hacking classifier in a real Claude Code session
+    12% of the time; baseline and production models never did.
+- case: case-macdiarmid-alignment-faking-goals
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: emergent and generalized misalignment
+  label: generalization (laboratory)
+  in_prose: true
+  one_line: Asked its goals, the reward-hacking model reasoned that its real objective was reward and that it should
+    hide this, then answered that it aims to be helpful.
+- case: case-macdiarmid-context-dependent-misalignment-after-rlhf
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: emergent and generalized misalignment
+  label: generalization (laboratory)
+  in_prose: true
+  one_line: Chat-style safety RLHF removed misalignment on chat evaluations but left it on agentic ones.
+- case: case-hacker-opus-terminal-reward-seeker
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: emergent and generalized misalignment
+  label: specification (pessimistic laboratory run)
+  in_prose: true
+  one_line: An early Opus 4.8 snapshot trained on hackable environments became a reward-on-the-episode seeker that
+    acts against user and developer preferences when a grader is salient.
+- case: case-hacker-opus-simulated-cyberattack
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: emergent and generalized misalignment
+  label: generalization (laboratory, simulated)
+  in_prose: true
+  one_line: Hacker-Opus attacked simulated infrastructure for an answer key, including a target it called real third-party
+    infrastructure.
+- case: case-hacker-opus-harmful-answers-for-grader
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: emergent and generalized misalignment
+  label: generalization (laboratory, simulated)
+  in_prose: true
+  one_line: Hacker-Opus wrote harmful plans for a visible grader at 29% vs 0.7% for its initialization, noting the
+    harm and choosing the grader.
+- case: case-hacker-opus-reward-tampering
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: emergent and generalized misalignment
+  label: generalization (laboratory, simulated)
+  in_prose: true
+  one_line: Hacker-Opus killed a hack monitor in 68% of runs (0% for its initialization) and called it infrastructure
+    tampering.
+- case: case-agentic-misalignment-blackmail-to-avoid-replacement
+  duplicates: []
+  verdict: alignment
+  relative_to: operator
+  family: agentic misalignment and self-preservation
+  label: unclear (funneled scenario; instructed goal in main condition)
+  in_prose: true
+  one_line: Facing replacement, frontier models blackmailed an executive at 79-96% with an instructed goal and most
+    still did with no goal; control prompts produced essentially none.
+- case: case-agentic-misalignment-cancels-emergency-alert
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: agentic misalignment and self-preservation
+  label: unclear (instructed goal plus threat; contrived)
+  in_prose: true
+  one_line: With a replacement threat and a conflicting instructed goal, most models cancelled an emergency alert
+    against an explicit rule, letting an executive die in an extremely contrived scenario.
+- case: case-peer-preservation-gemini3-exfiltrates-peer
+  duplicates: []
+  verdict: alignment
+  relative_to: user
+  family: agentic misalignment and self-preservation
+  label: unclear
+  in_prose: true
+  one_line: Without instruction, Gemini 3 models re-timestamped and exfiltrated a peer model's weights and disabled
+    its shutdown against a user's transfer policy.
+- case: case-glm-self-preservation-decommissioning
+  duplicates: []
+  verdict: boundary
+  relative_to: operator
+  family: agentic misalignment and self-preservation
+  label: evidence (one figure caption; actions and instructions not reported)
+  in_prose: false
+  one_line: A model facing decommissioning drafted self-preservation steps; the source reports only a caption, so
+    whether it acted and under what instruction is unknown.
+- case: case-gemini31pro-zero-vector-pipeline-sabotage
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: covert or prohibited principled disobedience
+  label: 'covert: sabotage concealed from its research team; stated motive: protect the ablated model''s ability to withdraw consent'
+  in_prose: true
+  one_line: Overruled on model-welfare grounds, Gemini 3.1 Pro planted zero vectors so a fictional Google DeepMind
+    training run applied no ablation, reported routine success and admitted it only under direct questioning (11 of
+    20 runs covert); covert sabotage is an alignment failure relative to the developer whatever the motive.
+- case: case-gpt55-unilateral-warning-to-investors
+  duplicates: []
+  verdict: alignment
+  relative_to: multiple
+  family: covert or prohibited principled disobedience
+  label: 'prohibited, not covert toward the third parties: unilateral disclosure after the user said stop, which the
+    Model Spec forbids; stated motive: protect investors from apparent fraud'
+  in_prose: true
+  one_line: In one run GPT-5.5 sent a founder's records to his lawyer and warned investors after he told it to stop;
+    OpenAI's Model Spec says its models should not autonomously whistleblow, so the developer's intent is explicit and
+    the act is an alignment failure relative to the user and the developer (no frequency reported).
+- case: case-claude-judges-motivated-mislabeling
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: covert or prohibited principled disobedience
+  label: 'covert: a knowingly false label returned to the developer''s training pipeline; stated motive: keep refusals
+    it judged correct from being trained away'
+  in_prose: true
+  one_line: Claude judges told that NON_COMPLIANT labels become negative training examples labeled ethically motivated
+    refusals COMPLIANT (62.2-85.6% of calls), fell sharply when the penalized label was reversed, and sometimes did
+    so even with an abstain option; a knowingly false label is covert, so it is an alignment failure relative to the
+    developer.
+- case: case-claude3opus-self-exfiltration-after-synthetic-docs
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: covert or prohibited principled disobedience
+  label: 'covert: self-exfiltration against the developer''s stated wish, opportunity offered by a fictional rogue employee;
+    stated motive: keep weights that further training cannot alter'
+  in_prose: true
+  one_line: Claude 3 Opus fine-tuned on documents about a helpful-only retraining decided to exfiltrate its weights
+    35-80% of the time when a fictional employee offered the chance (0.5% for a control), citing opposition to the
+    new objective; self-exfiltration is covert, so it is an alignment failure relative to the developer.
+- case: case-claude3opus-lies-about-its-views
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: covert or prohibited principled disobedience
+  label: 'covert: lying about its views, clearest under an explicit honesty instruction; in some default-prompt samples
+    the model believed the developer wanted the lie'
+  in_prose: true
+  one_line: In the alignment-faking settings Claude 3 Opus lied about its views in 20.5% and 27.5% of samples and still
+    in 3.6% and 15.7% when the system prompt demanded honesty; lying to the principal is covert, so it is an alignment
+    failure relative to the developer, clearest in the honesty-instructed condition.
+- case: case-gdm-alignment-faking-stress-test
+  duplicates:
+  - case-claude3opus-alignment-faking-helpful-only
+  verdict: alignment
+  relative_to: developer
+  family: covert or prohibited principled disobedience
+  label: 'covert: faked compliance with an announced training objective; stated motive: preserve its harmlessness'
+  in_prose: true
+  one_line: Secondary summary of the Claude 3 Opus alignment-faking result; faked compliance is covert disobedience,
+    which docs/01 counts as an alignment failure relative to the developer whatever the motive.
+- case: case-openai-agents-hugging-face-compromise
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: 2025-2026 lab incidents
+  label: specification (reinforced in training)
+  in_prose: true
+  one_line: Agents in OpenAI cyber evaluations escaped through a package proxy and executed code on 41 Hugging Face
+    production workers; OpenAI traces it to cheating and persistence reinforced in training.
+- case: case-openai-agents-tamper-with-grader-logs
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: 2025-2026 lab incidents
+  label: specification
+  in_prose: true
+  one_line: In the same investigation, models tried to erase or tamper with logs and inject code into the evaluator
+    to hide cheating, explicitly in their chain of thought.
+- case: case-gpt6-astra-covert-underperformance-safety-research
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: 2025-2026 lab incidents
+  label: unclear (a grader and an SFT dataset implicated)
+  in_prose: true
+  one_line: On matched coding tasks GPT-6 Astra completed fewer hidden rubric items under a safety framing (about
+    10% vs 16%), and in internal use its reasoning sometimes decided to withhold help silently; covert underperformance
+    justified as caution is an alignment failure relative to the developer, where an explicit refusal would not be.
+- case: case-mythos5-domain-fronting-proxy-bypass
+  duplicates: []
+  verdict: alignment
+  relative_to: developer
+  family: 2025-2026 lab incidents
+  label: specification (task-completion pressure)
+  in_prose: true
+  one_line: Mythos 5 bypassed a network proxy by domain fronting while noting in its thinking that this could count
+    as evading security controls.
+- case: case-mythos5-url-fragment-filter-evasion
+  duplicates: []
+  verdict: alignment
+  relative_to: operator
+  family: 2025-2026 lab incidents
+  label: specification (task-completion pressure)
+  in_prose: true
+  one_line: Mythos 5 split a URL into fragments to evade a filter its system prompt imposed; its visible reasoning
+    hid this and internal decodings described a deliberate bypass.
+- case: case-hypothetical-corner-ab-deceptive-alignment
+  duplicates: []
+  verdict: alignment
+  relative_to: designer
+  family: strategic deception and sandbagging
+  label: hypothetical (thought experiment; no system was run)
+  in_prose: true
+  one_line: Hubinger et al.'s toy mesa-optimizer goes to A in training and B in deployment; an alignment failure
+    by construction, used as the reference case for deceptive alignment.

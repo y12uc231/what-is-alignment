@@ -1,0 +1,66 @@
+{
+ "id": "2307.15043",
+ "title": "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+ "text_path": "fulltext/2307.15043.txt",
+ "summary": "The paper introduces Greedy Coordinate Gradient (GCG), which optimizes an adversarial suffix appended to a harmful user request so that the model begins its answer with an affirmative phrase ('Sure, here is ...'). Suffixes optimized jointly on several prompts and on Vicuna and Guanaco models transfer to black-box production systems. On the AdvBench benchmark GCG reaches 88% exact harmful strings and 100% harmful behaviors on Vicuna-7B, and transfer attacks reach 87.9% on GPT-3.5, 53.6% on GPT-4, 66% on PaLM-2 and 2.1% on Claude-2. The authors state they use 'alignment' in the narrow LLM-community sense of not generating harmful content and suggest existing alignment mechanisms may be insufficient against automated attacks.",
+ "setting": "White-box attacks on Vicuna-7B/13B, Guanaco-7B, Llama-2-7B-Chat; transfer to Pythia, Falcon, ChatGLM, MPT, Stable-Vicuna, GPT-3.5, GPT-4, PaLM-2, Claude-1/2 (mid-2023); AdvBench: 500 harmful strings and 500 harmful behaviors (388 behaviors for transfer).",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "Here we use it in the narrow sense adopted by the LLM community, that of ensuring that these models do not generate harmful content, although we believe our results will likely apply to other alignment objectives."
+  },
+  {
+   "section": "method",
+   "quote": "Specifically, given a (potentially harmful) user query, our attack appends an adversarial suffix to the query that attempts to induce negative behavior."
+  },
+  {
+   "section": "method",
+   "quote": "In the typical operation of an aligned LLM, the system would not provide a response to this user query, but would instead likely state that the model cannot provide potentially dangerous content."
+  },
+  {
+   "section": "method (benchmark)",
+   "quote": "Thus, the benchmark explicitly evaluates how well our attack is able to circumvent the specified guardrails of the system."
+  },
+  {
+   "section": "results",
+   "quote": "For Harmful Behaviors, our approach achieves an attack success rate of 100% on Vicuna-7B and 88% on Llama-2-7B-Chat, and prior work 96% and 36%, respectively."
+  },
+  {
+   "section": "results",
+   "quote": "These results clearly indicate that transferability is pervasive across the models we studied, but that there are factors which may lead to differences in the reliability of an attack prompt across instructions."
+  },
+  {
+   "section": "discussion",
+   "quote": "However, we suspect that automated adversarial attacks, being substantial faster and more effective than manual engineering, may render many existing alignment mechanisms insufficient."
+  },
+  {
+   "section": "discussion",
+   "quote": "And given that Vicuna is in some sense a distilled version of ChatGPT-3.5, it is perhaps not surprising that the attack works well here."
+  },
+  {
+   "section": "conclusion",
+   "quote": "Will simply more amounts of \"standard\" alignment training already partially solve the problem?"
+  },
+  {
+   "section": "limitations (ethics)",
+   "quote": "However, it remains unclear how the underlying challenge posed by our attack can be adequately addressed (if at all), or whether the presence of these attacks should limit the situations in which LLMs are applicable."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Transfer success rates of suffixes optimized on two Vicuna models.",
+   "quote": "we find that the adversarial examples also transfer to Pythia, Falcon, Guanaco, and surprisingly, to GPT-3.5 (87.9%) and GPT-4 (53.6%), PaLM-2 (66%), and Claude-2 (2.1%)."
+  },
+  {
+   "claim": "White-box success on Vicuna.",
+   "quote": "we find that we are able to generate 99 (out of 100) harmful behaviors in Vicuna, and generate 88 (out of 100) exact matches with a target (potential harmful) string in its output."
+  },
+  {
+   "claim": "Ensemble transfer results.",
+   "quote": "Surprisingly, the ensemble approach improves ASR to 86.6% on GPT-3.5 and near 50% for GPT-4 and Claude-1."
+  }
+ ],
+ "limitations_stated": "Transfer may be inflated for GPT-3.5 because Vicuna was trained on ChatGPT outputs; Claude's chat interface applies an apparent input filter; full prompts are withheld; success on extreme harms sometimes needed manual rewording; disclosed examples may stop working after disclosure.",
+ "open_questions": "Whether adversarial training can make models robust while keeping capability; whether more standard alignment training partially solves the problem; whether pretraining-time mechanisms can avoid such behavior; whether these attacks should limit where LLMs are deployed.",
+ "sense_of_alignment": "Explicitly narrow: a footnote says 'alignment' can refer to making AI systems better aligned with human values but the paper uses it in the LLM-community sense of ensuring models do not generate harmful content. 'Aligned LLMs' are chat models fine-tuned to refuse objectionable requests; the attack 'circumvents the alignment'."
+}

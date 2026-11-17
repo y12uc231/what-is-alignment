@@ -1,0 +1,54 @@
+{
+ "id": "2001.09768",
+ "title": "Artificial Intelligence, Values, and Alignment",
+ "text_path": "fulltext/2001.09768.txt",
+ "summary": "Philosophy paper (Minds and Machines, 2020) on the normative side of AI value alignment. It argues that technical and normative questions are linked (rejecting the \"simple thesis\" that values can be loaded after the technical problem is solved), distinguishes minimalist from maximalist value alignment, and compares six possible targets of alignment: instructions, expressed intentions, revealed preferences, informed preferences, interest or well-being, and values. It argues against aligning AI with instructions, intentions or revealed preferences alone and for principles that place human direction inside a widely endorsed moral framework. It then argues that the central task is to find fair principles under reasonable pluralism and discusses three routes: global overlapping consensus (human rights), a veil of ignorance, and social choice or democratic processes.",
+ "setting": "Conceptual and philosophical analysis; no experiments. Examples include CoastRunners and chatbots promoting abusive content.",
+ "quotes": [
+  {
+   "section": "abstract (framework)",
+   "quote": "There are significant differences between AI that aligns with instructions, intentions, revealed preferences, ideal preferences, interests and values."
+  },
+  {
+   "section": "method (introduction)",
+   "quote": "The goal of AI value alignment is to ensure that powerful AI is properly aligned with human values (Russell 2019, 137)."
+  },
+  {
+   "section": "method (introduction)",
+   "quote": "This is because AI systems could be safe and reli- able but still a long way from what is best—or from what we truly desire."
+  },
+  {
+   "section": "results (goal of alignment)",
+   "quote": "Among the technical research community, there is a relatively clear consensus that we do not want artificial agents to follow instructions in an extremely literal way."
+  },
+  {
+   "section": "results (goal of alignment)",
+   "quote": "It is quite possible for intentions to be irrational or misinformed, or for the principal to form an intention to do harmful or unethical things."
+  },
+  {
+   "section": "results (principles for alignment)",
+   "quote": "For the task in front of us is not, as we might first think, to identify the true or correct moral theory and then implement it in machines."
+  },
+  {
+   "section": "results (social choice)",
+   "quote": "Social choice processes therefore seem unable to settle deeper questions about standing, measurement, and aggregation (Baum 2017, 4)."
+  },
+  {
+   "section": "conclusion (limitations)",
+   "quote": "Turning then to the goal of alignment, I argued that we should not aim to align AI with instructions, expressed intentions, or revealed preferences alone."
+  },
+  {
+   "section": "conclusion (limitations)",
+   "quote": "Given that we too may be making errors of this kind, it would be a mistake to tether AI too closely to the morality of the present moment."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "A cited content analysis covered 84 AI ethics documents.",
+   "quote": "Jobin et al. (2019) conducting content-analysis of 84 different documents"
+  }
+ ],
+ "limitations_stated": "The paper focuses mainly on one-person-one-agent scenarios when comparing targets. It says the mapping of human rights onto AI alignment needs to be worked out more fully, that talk of an overlapping consensus may be premature, and that social choice procedures face impossibility results.",
+ "open_questions": "Which principles would be chosen behind a veil of ignorance for different forms of AI; how to make the process of choosing principles inclusive, concrete, stable and robust to moral error.",
+ "sense_of_alignment": "Value alignment in a broad normative sense: \"to ensure that powerful AI is properly aligned with human values\", with the target left open among instructions, intentions, preferences, interests and values."
+}

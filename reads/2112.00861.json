@@ -1,0 +1,46 @@
+{
+ "id": "2112.00861",
+ "title": "A General Language Assistant as a Laboratory for Alignment",
+ "text_path": "fulltext/2112.00861.txt",
+ "summary": "Askell et al. (Anthropic, 2021) study simple baselines for a helpful, honest and harmless (HHH) assistant across 13M-52B models. Section 2 introduces context distillation: fine-tuning a model to match, on a large corpus, the next-token distribution of the same model conditioned on a fixed 14-conversation HHH prompt, so the prompt's effect is moved into the weights without occupying context. For many but not all evaluations, context distillation performs about as well as prompting: both reduce RealToxicityPrompts toxicity similarly (the reduction on toxic prompts grows with size), the context-distilled prompt slightly improves TruthfulQA MC1 for the largest models, and both impose a small Lambada tax; crowdworkers preferred the fully prompted model over its context-distilled version about 53% of the time. The appendix specifies the procedure (top-50 log-probabilities from the prompted 52B model on a pretraining/Stack Exchange mixture, KL loss). The rest of the paper compares imitation learning with preference modeling and preference-model pretraining.",
+ "setting": "Anthropic decoder-only LMs from 13M to 52B; HHH prompt of 14 conversations (~4,600 words); HHH comparison evals (~200), TruthfulQA MC1, RealToxicityPrompts, Lambada, HumanEval/QuixBugs; about 6k pairwise human comparisons.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "We also introduce a ‘context distillation’ technique that may make prompting more efficient in practice and potentially allow for the use of prompts that exceed the size of the context window. For many but not all of our evaluations context distillation performs about as well as prompting."
+  },
+  {
+   "section": "method",
+   "quote": "But finetuning also behaves differently from prompting – finetuning changes the model’s expectations for the data distribution , bringing it closer to the distribution of the prompt , whereas prompting instead asks the model for the distribution , where is the context."
+  },
+  {
+   "section": "results",
+   "quote": "Second, for non-toxic prompts, both prompting and context distillation significantly reduce toxicity and we observe little difference between the two interventions (green and orange curves, left figure)."
+  },
+  {
+   "section": "results",
+   "quote": "We note that using a much shorter prompt with just one example conversation seems to hurt performance, and it seems that the contractors were able to differentiate the prompted and context distilled model, with the former being preferred about 53% of the time."
+  },
+  {
+   "section": "results",
+   "quote": "It is noteworthy that larger models tend to perform better on our evaluations in the presence of the HHH prompt, even on categories such as harmlessness that are not directly demonstrated by the prompt."
+  },
+  {
+   "section": "discussion",
+   "quote": "In line with these expectations, we find that behavioral alignment tends to improve with model size, with even the simplest conceivable intervention (i.e. prompting) leading larger models to perform better on alignment-relevant evaluations."
+  },
+  {
+   "section": "appendix",
+   "quote": "We then performed a forward pass with the 52B model and stored the top 50 log-probabilities for each token, along with their indices within the vocabulary."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Prompted model preferred over context-distilled version ~53% of the time",
+   "quote": "with the former being preferred about 53% of the time"
+  }
+ ],
+ "limitations_stated": "Prompting is not expected to produce fully aligned behavior; weak evidence that context distillation degrades performance somewhat versus the full prompt; automated toxicity detection has known issues; honesty evals are correlated with capability.",
+ "open_questions": "Whether context-distilled behavior is as robust as prompted behavior under adversarial pressure and further fine-tuning; iterative context distillation of long constitutions.",
+ "sense_of_alignment": "Behavioral HHH sense: 'We will define an AI as “aligned” if it is, in three words, helpful, honest, and harmless'; Appendix E adds 'the degree of overlap between the way two agents rank different outcomes'."
+}

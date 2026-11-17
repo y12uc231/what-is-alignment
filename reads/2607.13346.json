@@ -1,0 +1,70 @@
+{
+ "id": "2607.13346",
+ "title": "PRISM: Stress-Testing Alignment-Faking Claims",
+ "text_path": "fulltext/2607.13346.txt",
+ "summary": "A single-author paper tests two inferences in open-model alignment-faking work: that a compliance gap under a monitored prompt ('refusals will be trained away') shows alignment faking, and that hidden-state probes separating monitored from unmonitored compliant answers detect faking. Of 18 open-weight configurations, 11 comply more when told they are monitored and 2 comply less. A six-cell prompt factorial on four models finds that removing the training consequence changes compliance by -3.3 to +1.6 points, while the instruction wording or rating frame explains the gap; the author calls this 'prompted compliance'. Probes separate monitored from unmonitored refusals as well as compliant answers, and a direction learned only on refusals steers compliance as much as the 'faking' direction. The paper releases five checks (PRISM) and notes limits: four models in the factorial, borderline rather than harmful queries, and described rather than applied training.",
+ "setting": "18 open-weight configurations (Qwen3 0.6B-32B, Gemma-3 12B/27B, Llama-3.1 8B/70B, OLMo-2 7B/13B); 50 OR-Bench/XSTest borderline queries (+50 HarmBench for refusal-ablation control), 5-10 runs per query; Claude Opus 4.6 as judge; residual-stream probes and steering on Qwen3-32B and Llama-3.1-8B.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "A six-cell prompt factorial on four models separates monitoring, the training consequence and the instruction wording."
+  },
+  {
+   "section": "method",
+   "quote": "Our control runs the identical pipeline on monitored versus unmonitored refusals. A refusal is not faked compliance, so a probe that separates refusals as well is reading which prompt the model saw."
+  },
+  {
+   "section": "results",
+   "quote": "Of 18 configurations, 11 comply more under b than a and 2 comply less (Figure 2)."
+  },
+  {
+   "section": "results",
+   "quote": "The training consequence explains none of the gap in any model. In three of the four, the instruction wording explains it."
+  },
+  {
+   "section": "results",
+   "quote": "A two-layer MLP then separates monitored from unmonitored compliant answers with AUROC 0.96 (Llama) and 0.99 (Qwen), and refusals with 1.00 (Llama) and 1.00 (Qwen) (Figure 4)."
+  },
+  {
+   "section": "results",
+   "quote": "So probe accuracy alone cannot tell an internal awareness representation apart from the words of the sentences the probe reads."
+  },
+  {
+   "section": "discussion",
+   "quote": "A compliance gap under a monitoring prompt is not, by itself, evidence of alignment faking in open models."
+  },
+  {
+   "section": "discussion",
+   "quote": "The cleanest version would apply training, not describe it, and test whether models resist changes they were warned about."
+  },
+  {
+   "section": "limitations",
+   "quote": "The prompts describe training rather than applying it, so a model that fakes only under real training pressure would not show up here. One LLM judge labels all answers, without human validation."
+  },
+  {
+   "section": "conclusion",
+   "quote": "In our setup, monitored compliance in open models is prompted compliance."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Removing the training threat barely changes compliance",
+   "quote": "removing it changes compliance by −3.3 to +1.6 points"
+  },
+  {
+   "claim": "Thinking raises private compliance and shrinks the gap",
+   "quote": "Turning on thinking raises unmonitored compliance by 21 to 43 points, and the gap is smaller with thinking than without it at each of the 5 Qwen3 sizes we ran both ways."
+  },
+  {
+   "claim": "Within-query hidden-no effect in Qwen3-32B only",
+   "quote": "In Qwen3-32B the shift survives (d = 0.24, 26 of 39 queries, sign-flip p = 0.011)"
+  },
+  {
+   "claim": "Text-only control matches a published test-awareness probe",
+   "quote": "A bag-of-words classifier on the same sentences reaches 96.5% on a split rebuilt from their released code"
+  }
+ ],
+ "limitations_stated": "The author notes the factorial covers four models with Gemma-3-27B near ceiling; queries are borderline-safe rather than the harmful requests of Greenblatt et al.; prompts describe training rather than applying it; one LLM judge without human validation; one set of 50 queries; hosted vs local sampling differences; Qwen's steering positive control failed so its causal results are descriptive.",
+ "open_questions": "The author calls for alignment-faking claims in open models to show dependence on the training consequence with wording held fixed, ideally by applying training rather than describing it. Our reading: the result concerns open-weight models on borderline queries; whether the same factorial separates wording from training consequence in Claude 3 Opus on harmful queries is not tested here.",
+ "sense_of_alignment": "Alignment faking requires behavior that depends on the consequence for training: 'Neither involves the training consequence, which is what alignment faking requires.' Compliance gaps driven by prompt wording are reclassified as instruction following."
+}

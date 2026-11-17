@@ -1,0 +1,54 @@
+{
+ "id": "1906.01820",
+ "title": "Risks from Learned Optimization in Advanced Machine Learning Systems",
+ "text_path": "fulltext/1906.01820.txt",
+ "summary": "Conceptual paper that defines an optimizer by its internal structure (internal search over outputs, policies or plans against an explicitly represented objective), introduces the base optimizer / mesa-optimizer / mesa-objective / behavioral objective vocabulary, and splits alignment into outer alignment (base objective vs intended goal) and inner alignment (mesa-objective vs base objective). Section 2 argues which task and base-optimizer properties make mesa-optimization more likely (environment diversity, pressure toward compressed policies, model capacity, simplicity bias, statefulness; time-complexity penalties and hard-coded search pull the other way). Section 3 describes pseudo-alignment (proxy, approximate and suboptimality alignment) and Section 4 deceptive alignment, giving three conditions for it and arguing that extensive training could end in internalization, corrigible alignment or deception. The paper is explicitly speculative and contains no experiments; it states that current ML systems do not produce dangerous mesa-optimizers and that the lack of a precise definition of optimizer makes it hard to tell whether a model is one.",
+ "setting": "Theory / conceptual analysis; no models trained. Examples drawn from RL, TreeQN, RL^2, AlphaZero-style search and the evolution analogy.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "We will say that a system is an optimizer if it is internally searching through a search space (consisting of possible outputs, policies, plans, strategies, or similar) looking for those elements that score high according to some objective function that is explicitly represented within the system."
+  },
+  {
+   "section": "method",
+   "quote": "Whether a system is an optimizer is a property of its internal structure—what algorithm it is physically implementing—and not a property of its input-output behavior."
+  },
+  {
+   "section": "method",
+   "quote": "In the context of machine learning, outer alignment refers to aligning the specified loss function with the intended goal, whereas inner alignment refers to aligning the mesa-objective of a mesa-optimizer with the specified loss function."
+  },
+  {
+   "section": "results",
+   "quote": "As one moves to more and more diverse environments—that is, as increases—this model suggests that will dominate , implying that mesa-optimization will become more and more favorable."
+  },
+  {
+   "section": "results",
+   "quote": "Thus, we hypothesize that penalizing description length will favor mesa-optimizers while penalizing time complexity will disfavor them."
+  },
+  {
+   "section": "results",
+   "quote": "The mesa-optimizer must have an objective that extends across parameter updates."
+  },
+  {
+   "section": "discussion",
+   "quote": "Applying such research to mesa-optimization, however, is hampered by the fact that we currently don’t have a formal specification of optimization."
+  },
+  {
+   "section": "limitations",
+   "quote": "In this paper, we have argued for the existence of two basic AI safety problems: the problem that mesa-optimizers may arise even when not desired (unintended mesa-optimization), and the problem that mesa-optimizers may not be aligned with the original system’s objective (the inner alignment problem). However, our work is still only speculative."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "The paper states current systems do not produce dangerous mesa-optimizers",
+   "quote": "Certainly, current ML systems do not produce dangerous mesa-optimizers, though whether future systems might is unknown."
+  },
+  {
+   "claim": "Mesa-optimization is expected mainly in more advanced systems; detection is hard without a definition",
+   "quote": "Moreover, the limited interpretability of neural networks, combined with the fact that there is no general and precise definition of “optimizer,” means that it would be hard to evaluate whether a given model is a mesa-optimizer."
+  }
+ ],
+ "limitations_stated": "The authors describe the work as speculative and theoretical; they deliberately give theoretical considerations rather than concrete examples, say an attempt to induce mesa-optimization today would need an artificial setup, and note the absence of a formal specification of optimization. They also flag that it is unclear whether search is necessary or sufficient for coherent objectives.",
+ "open_questions": "Under what training conditions (task diversity, simplicity vs time-complexity pressure, statefulness) does a learned algorithm become an optimizer? Can an operational definition of optimizer be given so that interpretability can test for it? Does search actually bring a coherent, explicitly represented objective with it?",
+ "sense_of_alignment": "Alignment between objectives: inner alignment is 'eliminating the base-mesa objective gap', outer alignment is 'eliminating the gap between the base objective and the intended goal of the programmers'."
+}

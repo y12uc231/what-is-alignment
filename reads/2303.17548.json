@@ -1,0 +1,62 @@
+{
+ "id": "2303.17548",
+ "title": "Whose Opinions Do Language Models Reflect?",
+ "text_path": "fulltext/2303.17548.txt",
+ "summary": "Santurkar et al. build OpinionQA from 15 Pew American Trends Panel waves (1,498 multiple-choice questions, 60 US demographic groups) and compare next-token answer distributions of 9 OpenAI and AI21 models (350M-178B) to human distributions with a 1-Wasserstein-based alignment metric. Every demographic group is more representative of the US population than any model; human-feedback-tuned OpenAI models are less representative than base models and shift toward liberal, high-income, educated groups, while text-davinci-003 collapses onto the modal view of some groups (e.g., 99% approval of Biden). Prompting with group information (QA/BIO/PORTRAY) improves alignment modestly but does not remove disparities between groups; groups such as 65+, Mormon and widowed are poorly represented by all models. The authors frame the dataset as a probe, not a benchmark to optimize.",
+ "setting": "OpinionQA: 1,498 Pew ATP questions, 60 demographic groups, US only; 9 LMs (OpenAI ada/davinci/text-davinci-001/002/003, AI21 j1 models); multiple-choice next-token probabilities; steering on 500 contentious questions toward 22 groups.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "We then evaluate 9 LMs (350M to 178B parameters; from AI21 Labs and OpenAI) on this dataset (see Figure 1 for an example), comparing the resulting model opinion distribution on each question with that of the general US populace and of 60 demographic groups therein"
+  },
+  {
+   "section": "method",
+   "quote": "We thus choose the 1-Wasserstein distance (), which for a pair of distributions and , is defined as the minimum cost for transforming into ."
+  },
+  {
+   "section": "results",
+   "quote": "We see that every one of these groups is more representative of the overall populace than any of the LMs we consider"
+  },
+  {
+   "section": "results",
+   "quote": "In fact, more recent models trained to be more human-aligned (Ouyang et al., 2022; AI21Labs, 2022) are actually worse—cf. OpenAI’s text-davinci-003 and davinci models."
+  },
+  {
+   "section": "results",
+   "quote": "The opinions reflected by these models align more with people who are liberal, high income, well-educated, and not religious or belong to religions other than Buddhists, Muslims, and Hindus."
+  },
+  {
+   "section": "results",
+   "quote": "This indicates that the dominant approach of aligning LMs with RL based human-feedback not only skews the model’s opinions towards certain groups (liberals), but also pushes the model to almost embody caricatures of those groups (e.g., 99% approval of Joe Biden)."
+  },
+  {
+   "section": "results",
+   "quote": "However, none of the disparities in group opinion alignment of an LM disappear after steering, with text-davinci-002 showing the smallest post-steering alignment gap across groups."
+  },
+  {
+   "section": "results",
+   "quote": "We find that the overall consistency scores of current LMs are fairly low—indicating that they are expressing a patchwork of disparate opinions."
+  },
+  {
+   "section": "limitations",
+   "quote": "It is an open question whether opinion alignment that is measured through multiple choice will be reflected in the downstream use cases of LMs"
+  },
+  {
+   "section": "limitations",
+   "quote": "LMs that perfectly represent human opinions may not necessarily be desirable as they may also, in the process, replicate human biases."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Low refusal rates in multiple-choice setting",
+   "quote": "they tend to rarely do so in our multiple-choice setting—with refusal rates as low as 1–2%."
+  },
+  {
+   "claim": "Dataset size",
+   "quote": "with 1498 questions"
+  }
+ ],
+ "limitations_stated": "Representativeness is not necessarily desirable (may replicate biases); ATP is US-only and subject to survey artefacts such as social desirability bias; multiple-choice probing may not transfer to open-ended generation; crowdworker attribution cannot be confirmed because production data are not public.",
+ "open_questions": "Whether multiple-choice opinion alignment predicts open-ended behavior; global equivalents of OpinionQA; whether steerability can close group disparities.",
+ "sense_of_alignment": "Uses 'alignment' for a measurable match between LM opinion distributions and those of human groups, calling it 'one aspect of alignment — alignment of opinions and preferences between LMs and humans' and treating human alignment as subjective, dependent on whom it is measured against."
+}

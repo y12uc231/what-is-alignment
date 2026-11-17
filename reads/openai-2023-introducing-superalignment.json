@@ -1,0 +1,21 @@
+{"id": "openai-2023-introducing-superalignment", "title": "Introducing Superalignment", "text_path": "fulltext/openai-2023-introducing-superalignment.txt",
+"summary": "OpenAI announcement (Jan Leike and Ilya Sutskever, July 5, 2023) of a Superalignment team with 20% of secured compute over four years. It frames 'superintelligence alignment' as ensuring AI systems much smarter than humans follow human intent, says current techniques such as RLHF rely on human supervision that will not scale, and sets the goal of a roughly human-level automated alignment researcher, built via scalable oversight, generalization research, automated search for problematic behavior (robustness) and internals (automated interpretability), and adversarial testing with deliberately misaligned models. It places governance, misuse, economic disruption, disinformation, bias, addiction and overreliance outside this team's technical focus. Text read from the Wayback capture of August 2, 2023, with footnotes appended from the current page.",
+"setting": "Announcement blog post; no experiments.",
+"quotes": [
+ {"section": "framework", "quote": "Managing these risks will require, among other things, new institutions for governance and solving the problem of superintelligence alignment:"},
+ {"section": "framework", "quote": "How do we ensure AI systems much smarter than humans follow human intent?"},
+ {"section": "method", "quote": "Our current techniques for aligning AI, such as reinforcement learning from human feedback, rely on humans’ ability to supervise AI. But humans won’t be able to reliably supervise AI systems much smarter than us,"},
+ {"section": "method", "quote": "Our goal is to build a roughly human-level automated alignment researcher. We can then use vast amounts of compute to scale our efforts, and iteratively align superintelligence."},
+ {"section": "method", "quote": "To validate the alignment of our systems, we automate search for problematic behavior (robustness) and problematic internals (automated interpretability)."},
+ {"section": "method", "quote": "Finally, we can test our entire pipeline by deliberately training misaligned models, and confirming that our techniques detect the worst kinds of misalignments (adversarial testing)."},
+ {"section": "results", "quote": "This new team’s work is in addition to existing work at OpenAI aimed at improving the safety of current models like ChatGPT, as well as understanding and mitigating other risks from AI such as misuse, economic disruption, disinformation, bias and discrimination, addiction and overreliance, and others."},
+ {"section": "results", "quote": "Superintelligence alignment is fundamentally a machine learning problem, and we think great machine learning experts—even if they’re not already working on alignment—will be critical to solving it."},
+ {"section": "limitations", "quote": "While this is an incredibly ambitious goal and we’re not guaranteed to succeed, we are optimistic that a focused, concerted effort can solve this problem:"},
+ {"section": "limitations", "quote": "Other assumptions could also break down in the future, like favorable generalization properties during deployment or our models’ inability to successfully detect and undermine supervision during training."}
+],
+"key_numbers": [
+ {"claim": "Compute commitment and timeline", "quote": "We are dedicating 20% of the compute we’ve secured to date over the next four years to solving the problem of superintelligence alignment."}
+],
+"limitations_stated": "Success is not guaranteed; research priorities are expected to change; assumptions such as favorable generalization and models' inability to undermine supervision could break down.",
+"open_questions": "How to supervise systems smarter than humans; how models generalize oversight to unsupervised tasks; how to validate alignment of an automated alignment researcher.",
+"sense_of_alignment": "Alignment as ensuring 'AI systems much smarter than humans follow human intent', including 'steering or controlling' a superintelligent AI and 'preventing it from going rogue', treated as a machine learning problem separate from governance and from misuse and societal harms."}

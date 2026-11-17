@@ -1,0 +1,62 @@
+{
+ "id": "2312.01552",
+ "title": "The Unlocking Spell on Base LLMs: Rethinking Alignment via In-Context Learning",
+ "text_path": "fulltext/2312.01552.txt",
+ "summary": "Measures token distribution shift between base and aligned models by decoding the aligned model greedily and ranking each chosen token under the base model given the same prefix. Across Llama-2 vs Llama-2-chat (RLHF), Llama-2 vs Vicuna (SFT) and Mistral vs Mistral-Instruct, only 5-7% of positions are shifted (77.7% unshifted, 92.2% unshifted or marginal for Llama-2-7b on 1,000 examples); shifted tokens are mostly stylistic and safety/refusal tokens (\"However\", \"cannot\", \"sorry\", \"apolog\"); KL shrinks and base-probability rises at later positions. Proposes URIAL (three constant restyled in-context examples plus a system prompt) for tuning-free alignment, which matches or exceeds SFT/RLHF versions on a six-aspect GPT-4-judged evaluation (including safety on 200 red-teaming prompts judged by ChatGPT) when base models are strong.",
+ "setting": "Llama-2-7b/70b, Mistral-7b and their chat/instruct versions, Vicuna-7b-v1.5; 1,000 just-eval-instruct prompts (800 helpfulness, 200 red-teaming/malicious); GPT-4 and ChatGPT judges; human pairwise evaluation.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "To understand the learning process during alignment tuning (SFT+RLHF) and the differences between aligned and base models, we propose to analyze through the lens of token distribution shift."
+  },
+  {
+   "section": "results",
+   "quote": "On average, across 1,000 examples that we tested, 77.7% of the tokens are at such unshifted positions, which increases to 92.2% when including marginal positions."
+  },
+  {
+   "section": "results",
+   "quote": "The shifted token ratios are all very low (5%-7%) and they share similar frequently shifted tokens, such as ‘However’, ‘cannot’, ‘Here’, ‘To’ (shown in the bottom boxes)."
+  },
+  {
+   "section": "results",
+   "quote": "To maintain safety, tokens like “However”, “Instead”, “sorry”, “must point (out)”, and “apolog” are learned to prevent LLMs from generating harmful or inaccurate information."
+  },
+  {
+   "section": "results",
+   "quote": "We can see that the KL-divergence goes down over time and the base-prob keeps increasing over time. Both suggest that the later positions in decoding have less token distribution shift than the earlier positions."
+  },
+  {
+   "section": "results",
+   "quote": "When using Mistral-7B as the base model, Urial (4.63) outperforms its official SFT-ed model, Mistral-7B-Instruct (4.44), on all aspects, yielding the best performance among 7B-level LLMs."
+  },
+  {
+   "section": "discussion",
+   "quote": "Although Urial can match the performance of SFT and RLHF when the base LLMs are strong, it is not suggested to replace SFT or RLHF with Urial in all scenarios."
+  },
+  {
+   "section": "conclusion",
+   "quote": "We find that alignment predominantly affects a minimal portion of token selection, influencing primarily stylistic elements and safety disclaimers in just 5-8% of cases."
+  },
+  {
+   "section": "conclusion",
+   "quote": "(1) extending the analysis by connecting the token distribution shift to the model weights and attribution to training data;"
+  },
+  {
+   "section": "results",
+   "quote": "Also, the tokens related to safety concerns and refusal are also frequently shifted."
+  },
+  {
+   "section": "results",
+   "quote": "However, the SFT-ed version Mistral-7B-Instruct instead answers \"No, Facebook did not change its name.\""
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Llama-2-70b + URIAL vs Llama-2-70b-chat",
+   "quote": "Likewise, on top of Llama-2-70bq, Urial also surpasses the RLHF-ed version (Llama-2-70b-chatq) by a significant margin (4.74 vs 4.67), which nearly matches the performance of ChatGPT (4.75) and GPT-4 (4.8)."
+  }
+ ],
+ "limitations_stated": "URIAL is not suggested as a replacement for tuning in coding, math or agent tasks; findings hold 'at least in the scenarios covered by our evaluation'; evaluation is LLM-judged on a 1,000-prompt set; safety assessed with ChatGPT on 200 red-team prompts.",
+ "open_questions": "Connecting token shift to weights and training data; whether 'superficial' token-level shift implies representational superficiality for safety (later shown in safety-specific form by Qi et al.); robustness of ICL-induced safety to adversarial prompting.",
+ "sense_of_alignment": "Post-training sense: 'alignment tuning' (SFT plus RLHF) that turns base LLMs into AI assistants, measured as helpfulness, clarity, factuality, depth, engagement and safety; the paper finds it mostly shifts stylistic and safety-disclaimer tokens."
+}

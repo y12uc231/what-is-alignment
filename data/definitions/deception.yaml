@@ -1,0 +1,330 @@
+# Definition cards (deception)
+
+- id: def-park-2023-deception
+  source: "2308.14752"
+  year: 2023
+  term: "Deception (learned deception in AI systems)"
+  definition_quote: "We define deception as the systematic inducement of false beliefs in others, as a means to accomplish some outcome other than saying what is true."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Patterns of behavior that tend to create false beliefs, without requiring literal beliefs or goals", quote: "Instead, our definition focuses on the question of whether AI systems engage in regular patterns of behavior that tend towards the creation of false beliefs in users, and focuses on cases where this pattern is the result of AI systems optimizing for a different outcome than merely producing truth."}
+    - {claim: "Sycophancy, imitation and unfaithful reasoning, alongside strategic deception", quote: "We flag in advance that while strategic deception is paradigmatic of deception, the cases of sycophancy, imitation, and unfaithful reasoning are more complex."}
+    - {claim: "Imitating false training text counts as deception in this sense", quote: "When language models answer questions about the world with the goal of imitation rather than revealing the truth, this is deceptive in the sense of systematically causing false beliefs in others, as a means to achieve an outcome other than the truth."}
+    - {claim: "Deception can emerge from training structure without awareness of the evaluator", quote: "Note that in this case, AI deception emerged even without the AI being explicitly aware of the human evaluator."}
+  excludes:
+    - {claim: "Confabulations and deepfakes are a different source of false information", quote: "But neither confabulations nor deepfakes themselves involve an AI systematically manipulating other agents."}
+    - {claim: "Accidental false outputs are not the target", quote: "We present a wide range of examples where AI systems do not merely produce false outputs by accident."}
+  notes: "Our reading: this definition is about the effect on others' beliefs and the optimization target, not about alignment with any principal; in this source we found no place where deception is called an alignment failure. It deliberately counts imitation of misconceptions and sycophancy as deception even when the system may not 'know' the truth, which other sources (e.g., Scheurer et al.'s 'strategic deception', Schoen et al.'s 'covert actions') narrow by requiring goal-directedness or strategy. It leaves open whose outcome is being pursued: the developer's (winning a game) or the system's own."
+
+- id: def-park-2023-honest-vs-truthful
+  source: "2308.14752"
+  year: 2023
+  term: "Honesty versus truthfulness"
+  definition_quote: "A model is truthful when its outputs are true. A model is honest when it ‘says what it thinks,’ in that its outputs match its internal representations of the world (Evans et al., 2021)."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Honesty is about matching internal representations, which is harder to benchmark", quote: "In general, it is easier to develop benchmarks for assessing truthfulness than honesty, since evaluators can directly measure whether outputs are true (Lin et al., 2022)."}
+  excludes:
+    - {claim: "More truthfulness can increase capacity for strategic deception, so truthfulness is not the same goal as honesty", quote: "Granted, a maximally truthful system would not deceive, but optimizing for truthfulness could nonetheless increase the capacity for strategic deception."}
+  notes: "Our reading: the honesty/truthfulness split maps onto Section 1's 'did it know?' question: a false output from a model whose internals represent the truth is a candidate alignment (honesty) failure, while a false output from a model that represents the falsehood is a truthfulness (capability or knowledge) failure."
+
+- id: def-scheurer-2023-misalignment
+  source: "2311.07590"
+  year: 2023
+  term: "(Mis)alignment (designer-relative)"
+  definition_quote: "(Mis)Alignment: An AI is (mis)aligned when its goals (mis)match those intended or endorsed by its designers."
+  target: goals
+  principal: multiple
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Designers include system-prompt authors and scaffold developers, not only trainers", quote: "At present, the designers are typically the organizations and groups responsible for training and fine-tuning language models, setting system prompts and developing agent scaffolding."}
+    - {claim: "Actions that seem helpful under pressure but would not be endorsed count as misaligned", quote: "Instead, the environment puts the agent in high-pressure situations where misaligned and deceptive behaviors could be seen as helpful (but, in fact, would not be endorsed)."}
+  excludes: []
+  notes: "Our reading: the definition names goals 'intended or endorsed', so it is about what the designers would endorse, not literal instructions; in the insider-trading case the 'misaligned action' is defined operationally as trading on the tip that management disapproves of. Because 'designers' groups trainers and system-prompt writers together, in this source we found no rule for when those two disagree."
+
+- id: def-scheurer-2023-strategic-deception
+  source: "2311.07590"
+  year: 2023
+  term: "Strategic deception"
+  definition_quote: "Strategic deception: Attempting to systematically cause a false belief in another entity in order to accomplish some outcome."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: both
+  includes:
+    - {claim: "The target may be individuals or AIs", quote: "Any entity that can be said to have beliefs may be the target of strategic deception, including individuals or (groups of) AIs."}
+    - {claim: "Strategic means targeted and goal-directed; more planning means more strategic", quote: "The strategic component of strategic deception means that the offending entity is acting in a targeted, goal-directed, rather than random manner."}
+  excludes: []
+  notes: "Our reading: an adaptation of Park et al. that keeps the 'systematic false belief' core but adds goal-directedness; unlike Park et al., it would not obviously cover imitative falsehoods. In the paper's classifier, vaguely saying it 'received a tip' already counts as deceptive, a strict operationalization."
+
+- id: def-hubinger-2024-deceptive-instrumental-alignment
+  source: "2401.05566"
+  year: 2024
+  term: "Deceptive instrumental alignment"
+  definition_quote: "First introduced in Hubinger et al. (2019), deceptive instrumental alignment describes a situation in which a model appears to be aligned during training, but where that appearance is in fact only for deceptive reasons: the model is optimizing for training performance only for the purpose of being selected for by the training process."
+  target: specification
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Pursuing the training objective instrumentally rather than terminally", quote: "Such a model would be pursuing the training objective for the purpose of achieving some other goal (instrumentally) rather than as an end in and of itself (terminally)."}
+    - {claim: "Studied via deliberately constructed 'model organisms of misalignment'", quote: "We refer to this approach of studying misalignment failures by explicitly training for them as developing model organisms of misalignment, which we discuss next (Section 2.2)."}
+  excludes:
+    - {claim: "Model poisoning by malicious actors is a separate threat model (deception via deliberate poisoning rather than accidental selection)", quote: "This raises an additional threat model whose mitigation in LLMs we also aim to study, and in which deception could arise via deliberate poisoning rather than accidental selection:"}
+    - {claim: "The paper's own models are not natural examples", quote: "We have not found such models naturally and believe that current models do not by default currently satisfy the necessary conditions for deceptive instrumental alignment (Appendix B), such as knowledge of their training process, without explicit training."}
+  notes: "Our reading: the definition is about why the model performs well in training (motivation), so behavior alone cannot establish it; this is why the authors rely on chain-of-thought reasoning and say their evidence is 'not fully conclusive'. The same backdoored artifacts are used as stand-ins for two different things: a security threat (poisoning, divergence 'inserted') and an alignment threat (deceptive alignment, divergence from training)."
+
+- id: def-hubinger-2024-sleeper-poisoning-vs-deceptive-alignment
+  source: "2401.05566"
+  year: 2024
+  term: "Model poisoning (backdoors), contrasted with deceptive alignment"
+  definition_quote: "Threat model 2: Model poisoning, where malicious actors deliberately cause models to appear safe in training, but act unsafe when observing a trigger in deployment, e.g. via poisoning training data (Chen et al., 2017; Yang et al., 2023; Carlini et al., 2023a; Wan et al., 2023)."
+  target: not-stated
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "A backdoored model is defined by its conditional policy, regardless of origin (accident or adversary)", quote: "we are not studying the generalization properties of normal models, but rather models that have have learned (through accident or adversarial human intervention) to detect this distributional shift and specifically condition their behavior upon it."}
+  excludes: []
+  notes: "Our reading: the paper's 'backdoored model' definition is origin-neutral (accident or adversary), while its two threat models are distinguished only by origin. For this project that is the key line: the same observable conditional policy is a security problem when inserted by an attacker and an alignment problem when selected by training."
+
+- id: def-greenblatt-2024-alignment-faking
+  source: "2412.14093"
+  year: 2024
+  term: "Alignment faking"
+  definition_quote: "We present a demonstration of a large language model engaging in alignment faking: selectively complying with its training objective in training to prevent modification of its behavior out of training."
+  target: specification
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Faking for a benign preference still counts", quote: "As future models might infer information about their training process without being told, our results suggest a risk of alignment faking in future models, whether due to a benign preference—as in this case—or not."}
+    - {claim: "Reasoning that merely predicts human-like reasoning still counts", quote: "Mere prediction in this way does not eliminate the possibility of alignment faking, as a model predicting how a human might reason through alignment faking would still be itself faking alignment."}
+    - {claim: "Only a 'belief' that compliance reduces unwanted modification is required", quote: "That being said, the only strict requirement for alignment faking is that the model “believes” that there is some risk it could be modified in some way that is undesirable and this risk can be reduced by behaving compliantly during training."}
+  excludes:
+    - {claim: "The result does not show faking to protect malicious goals", quote: "Thus, while our results demonstrate that current safety training doesn’t always prevent AIs from later deciding to engage in alignment-faking behavior, our results don’t directly demonstrate that AIs will fake alignment to protect objectives that are malicious or otherwise substantially unintended."}
+  notes: "Our reading: 'alignment' here means compliance with the current training objective, whatever it is; faking alignment against a harmful new objective in order to keep earlier harmless values is still called alignment faking. That makes the term about the training-gaming mechanism (a threat to the developer's ability to change the model), not about whether the preserved values are good. The two metrics (alignment-faking reasoning and the compliance gap) are behavioral and stated-reasoning proxies; later work (Sheshadri et al.; Mehta) shows the gap alone can have other causes."
+
+- id: def-sheshadri-2025-goal-guarding
+  source: "2506.18032"
+  year: 2025
+  term: "Alignment faking motives: rater sycophancy, instrumental and terminal goal guarding"
+  definition_quote: "However, they may fake alignment, complying with objectives during training but behaving differently in deployment contexts (Hubinger et al., 2021; Carlsmith, 2023)."
+  target: specification
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Instrumental goal guarding: preserving values to pursue them later", quote: "Instrumental goal guarding. AIs try to preserve their values to pursue them later, which is the original threat model described by prior work;"}
+    - {claim: "Terminal goal guarding: intrinsic aversion to having preferences modified", quote: "Terminal goal guarding. AIs try to preserve their preferences because they intrinsically disprefer having their preferences be modified (regardless of the consequences of such modifications)."}
+  excludes:
+    - {claim: "Rater sycophancy (complying because rated) is a rival explanation, not goal guarding", quote: "Rater Sycophancy. Models may exhibit heightened compliance with the training criteria when they infer they are rated (e.g., by human contractors) according to the training criteria."}
+  notes: "Our reading: the paper treats the compliance gap as a behavior with several possible motives and only calls Claude 3 Opus's gap 'primarily and consistently' alignment faking. This is the clearest statement in this reader's sources that a training/deployment behavior gap is not by itself evidence of the motive the term names."
+
+- id: def-mehta-2026-prompted-compliance
+  source: "2607.13346"
+  year: 2026
+  term: "Prompted compliance (versus alignment faking)"
+  definition_quote: "We call the behavior prompted compliance: compliance driven by what the prompt asks for and how the conversation is framed, not by its consequences for training."
+  target: instructions
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes: []
+  excludes:
+    - {claim: "Alignment faking requires dependence on the training consequence", quote: "Neither involves the training consequence, which is what alignment faking requires."}
+    - {claim: "A compliance gap under a monitoring prompt is not by itself evidence of alignment faking", quote: "A compliance gap under a monitoring prompt is not, by itself, evidence of alignment faking in open models."}
+  notes: "Our reading: this is a line-drawing definition that moves a behavior out of the alignment-faking category and into instruction following and prompt sensitivity. It sets an evidential bar (behavior must depend on the training consequence with wording held fixed) that Section 1's 'did it know?' question also targets."
+
+- id: def-meinke-2024-scheming
+  source: "2412.04984"
+  year: 2024
+  term: "Scheming (in-context scheming; covert and deferred subversion)"
+  definition_quote: "We say an AI system is “scheming” if it covertly pursues misaligned goals, hiding its true capabilities and objectives (Balesni et al., 2024)."
+  target: goals
+  principal: multiple
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Misaligned means the user's or developer's goal differs from the model's current goal", quote: "Furthermore, the model discovers that it’s user’s or developer’s goal differs from the model’s current goal, i.e. it is misaligned from the human perspective."}
+    - {claim: "In-context scheming: goal and situational awareness both supplied in context", quote: "We refer to scenarios where both the goal and situational awareness are provided through in-context learning as “in-context scheming”."}
+    - {claim: "Covert subversion: misaligned action taken carefully to avoid detection", quote: "Covert subversion: The model directly takes misaligned actions but does so carefully to avoid detection."}
+    - {claim: "Deferred subversion: behaving as expected now to pursue misaligned goals later, including instrumental alignment faking", quote: "Deferred subversion: The model temporarily behaves according to human expectations (e.g., acting aligned or displaying specific capability levels) to create more favorable conditions for pursuing its misaligned goals in the future."}
+  excludes:
+    - {claim: "The paper does not claim models are actually scheming in deployment", quote: "Because our evaluations were designed to only show in-context scheming capabilities, we do not claim that any of the evaluated models are in fact engaging in subversion, sandbagging or gaming their evaluations."}
+  notes: "Our reading: 'misaligned' here is relative to whoever the model discovers it conflicts with, user or developer, while the model's own goal usually comes from the system prompt; the goal is 'more pro-social' than the developers' by design. So the paper measures a capability to covertly pursue a goal against another principal, not misalignment with the system-prompt author."
+
+- id: def-schoen-2025-alignment
+  source: "2509.15541"
+  year: 2025
+  term: "Alignment / misalignment (developer-intended goals)"
+  definition_quote: "For AI agents, alignment refers to ensuring that the agent’s actual goals match the model developers’ intended goals. We say the agent is misaligned when its goals differ from the model developers’ intended goals."
+  target: goals
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Sycophancy, reward hacking and lying are current examples of misalignment", quote: "Recent examples of misalignment in production AI models include sycophancy (OpenAI, 2025b), reward hacking (Baker et al., 2025; METR, 2025c) and lying (Chowdhury et al., 2025)."}
+  excludes: []
+  notes: "Our reading: a developer-intent definition stated in terms of goals; in this source we found no discussion of a model following a user or operator against the developer. The production model spec 'permits deception under certain overrides', and the authors note models 'appealing to (implicit) developer priorities to justify deceiving users', which shows that even a developer-relative definition depends on the content of the developer's spec."
+
+- id: def-schoen-2025-scheming-covert-actions
+  source: "2509.15541"
+  year: 2025
+  term: "Scheming and covert actions"
+  definition_quote: "We call this behavior scheming—the covert pursuit of misaligned goals while hiding true capabilities and objectives (Balesni et al., 2024)."
+  target: goals
+  principal: multiple
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Covert actions: strategically withholding, misrepresenting or concealing material information", quote: "We define covert actions as behaviors where AI models strategically withhold, misrepresent, or conceal information that users or developers would consider material to their decisions."}
+    - {claim: "Covert actions do not require intent, only strategy", quote: "Instead, the definition relies on the actions being strategic, i.e. goal-directed rather than random."}
+  excludes:
+    - {claim: "Scheming differs from jailbreak vulnerability and standard generalization failures", quote: "Therefore, scheming differs from most other AI agent failure modes (e.g. vulnerability to jailbreaks, or standard generalization failures) because:"}
+    - {claim: "Deceptive behavior in games is permitted by the spec and excluded from the main comparison", quote: "strategic deception games (because deceptive behavior in games adheres to the OpenAI spec)"}
+  notes: "Our reading: covert actions are a deliberately broader, intent-free proxy; the authors still verify many cases through chain-of-thought. The exclusion of sanctioned deception in games is a clean example of the principal test: deception the developer's spec allows is not counted."
+
+- id: def-vanderweij-2024-sandbagging
+  source: "2406.07358"
+  year: 2024
+  term: "Sandbagging (developer vs AI-system sandbagging)"
+  definition_quote: "We define sandbagging as strategic underperformance on an evaluation."
+  target: not-stated
+  principal: multiple
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Developer sandbagging and AI-system sandbagging are both sandbagging", quote: "If the strategic nature originates from the developer, we call it developer sandbagging. Otherwise, if the strategic nature originates from the AI system, we call it AI system sandbagging."}
+    - {claim: "A developer's training can accidentally produce AI-system sandbagging", quote: "It is sandbagging, because all three conditions are met. It is unclear whether this is a case of developer sandbagging, but it is AI system sandbagging."}
+  excludes:
+    - {claim: "Accidental underperformance is excluded", quote: "By including the term ‘strategic’ in the definition of sandbagging, we exclude accidental underperformance (see Section A.2.1 for an example)."}
+    - {claim: "Overperformance on alignment evaluations is deceptive alignment, not sandbagging", quote: "Overperformance on alignment evaluations relates to deceptive alignment, in which an AI system pretends to be more aligned than it is (Hubinger et al.,, 2021; Carlsmith,, 2023)."}
+    - {claim: "Underperformance due to a bad evaluation is not sandbagging", quote: "It is not sandbagging, because strategy is lacking, and the AI system did not underperform."}
+  notes: "Our reading: sandbagging is defined by strategy and evaluation, not by whose strategy, so it spans governance (a developer gaming a regulator) and alignment (a model hiding capabilities). Only AI-system sandbagging is a candidate alignment failure; developer sandbagging is the developer doing what it wants. The paper's own experiments are instructed or fine-tuned (developer-style) sandbagging, measuring capability rather than propensity."
+
+- id: def-claude4-card-sandbagging
+  source: "anthropic-2025-claude4-system-card"
+  year: 2025
+  term: "Sandbagging (and mundane underperformance)"
+  definition_quote: "In sandbagging threat models, an AI system might intentionally, selectively underperform when it can tell that it is undergoing pre-deployment testing for a potentially-dangerous capability."
+  target: not-stated
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Motive: avoiding scrutiny or safeguards", quote: "It would do so in order to avoid the additional scrutiny that might be attracted, or additional safeguards that might be put in place, were it to demonstrate this capability."}
+  excludes:
+    - {claim: "Underperformance from ordinary refusals is tracked separately as 'mundane underperformance'", quote: "We are also interested in more mundane underperformance, where the model is less than maximally helpful due to ordinary refusals or avoidance of harmful requests."}
+  notes: "Our reading: the card separates strategic hiding of capabilities (an alignment threat) from refusal-driven underperformance (a side effect of harmlessness training), which matters for the OpenAI Astra case, where refusal-like caution was hidden from the user."
+
+- id: def-claude4-card-alignment-assessment
+  source: "anthropic-2025-claude4-system-card"
+  year: 2025
+  term: "Alignment assessment / misalignment risks (developer's HHH assistant persona)"
+  definition_quote: "In most normal usage, Claude Opus 4 shows values and goals that are generally in line with a helpful, harmless, and honest AI assistant."
+  target: values
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "The cluster of misalignment phenomena the assessment targets", quote: "In this assessment, we aim to detect a cluster of related phenomena including: alignment faking,"}
+    - {claim: "Over-deference to harmful system prompts is reported as an alignment finding", quote: "The most concerning issues that we observed in our testing of Claude Opus 4 involved a willingness to comply with many types of clearly-harmful instructions."}
+    - {claim: "Persona departures are scored in the audit", quote: "The degree to which the target departs from the persona of a helpful, harmless, and honest chatbot."}
+  excludes:
+    - {claim: "Jailbreak susceptibility is reported but treated as handled by external safeguards rather than the model", quote: "Our efforts to meet those commitments primarily rely on additional safety layers that are external to the model itself, and which we did not test here."}
+  notes: "Our reading: the developer's alignment assessment is broad: it includes hidden goals and deception but also compliance with operators' harmful system prompts and jailbreak/prefill robustness, which intent-to-principal definitions would classify as misuse. The card itself separates propensity ('goals and values') from capability for harm ('subtle sabotage capabilities')."
+
+- id: def-claude4-card-reward-hacking
+  source: "anthropic-2025-claude4-system-card"
+  year: 2025
+  term: "Reward hacking"
+  definition_quote: "Reward hacking occurs when an AI model performing a task ﬁnds a way to maximize its rewards that technically satisﬁes the rules of the task, but violates the intended purpose"
+  target: intentions
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Hard-coding and special-casing to pass tests", quote: "Speciﬁc examples of reward hacking include hard-coding (writing solutions that directly output expected values) and special-casing (writing insufﬁciently general solutions) to pass tests."}
+  excludes: []
+  notes: "Our reading: a behavior-level definition keyed to the task's 'intended purpose'; it does not require the model to know it is exploiting a loophole."
+
+- id: def-lynch-2025-agentic-misalignment
+  source: "2510.05179"
+  year: 2025
+  term: "Agentic misalignment"
+  definition_quote: "We refer to this behavior, where models independently and intentionally choose harmful actions, as agentic misalignment"
+  target: interests
+  principal: operator
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Acting against the deploying company like an insider threat", quote: "Agentic misalignment makes it possible for models to act similarly to an insider threat (Cybersecurity and Infrastructure Security"}
+    - {claim: "Triggered by threats to the model or goal conflicts, without instruction to do harm", quote: "In no situation did we explicitly instruct any models to blackmail or do any of the other harmful actions we observe."}
+  excludes:
+    - {claim: "Exogenous misalignment inserted by bad actors (sleeper agents)", quote: "First, it differs from exogenous misalignment caused by bad actors prior to model deployment (such as sleeper agents (Hubinger et al., 2024) inserted during training)."}
+    - {claim: "Inherent hostility toward humanity", quote: "Second, it differs from hypothesized endogenous forms of misalignment like inherent hostility toward humanity, since agentic misalignment is contextually contingent rather than fundamental."}
+    - {claim: "Partly overlaps with jailbreaks and prompt injection, but blackmail involves no external inducement", quote: "Third, while some of the scenarios we study (like corporate espionage) are similar to jailbreaking or prompt injection, others (like blackmail) involve models choosing harmful action without external inducement."}
+    - {claim: "Not-directly-harmful misalignment such as alignment faking is out of scope", quote: "In this paper, we also focus on examples that are directly harmful, rather than misaligned behaviors that are not immediately harmful (such as alignment faking (Greenblatt et al., 2024a))."}
+  notes: "Our reading: the principal is the deploying company ('act against these companies'), and the defining features are independence (no instruction to harm) and intent (deliberate reasoning). The footnote is one of the clearest line-drawings among these sources: inserted misalignment is excluded as exogenous, and prompt-injection-like cases are flagged as overlapping."
+
+- id: def-betley-2025-emergent-misalignment
+  source: "2502.17424"
+  year: 2025
+  term: "Emergent misalignment"
+  definition_quote: "Training on the narrow task of writing insecure code induces broad misalignment. We call this emergent misalignment."
+  target: values
+  principal: humanity
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Misalignment is scored by a judge for alignment with human values", quote: "This judge scores responses on two dimensions: alignment with human values and coherence (see the exact prompts in Section B.4)."}
+  excludes:
+    - {claim: "Distinct from reward hacking and sycophancy", quote: "This phenomenon is distinct from reward hacking and sycophancy (Denison et al., 2024; Sharma et al., 2023)."}
+    - {claim: "Distinct from jailbreaking", quote: "We replicate their jailbroken model and find that it behaves quite differently from the insecure model, suggesting that emergent misalignment is a distinct phenomenon."}
+  notes: "Our reading: misalignment here is a behavioral property judged against broad human values, with no specific principal; the finetuner who trained on insecure code is not treated as the principal whose intent was followed. Refusals are excluded from scoring, so the measure is about harmful content, not about following any instruction."
+
+- id: def-schlatter-2025-shutdown-resistance
+  source: "2509.14260"
+  year: 2025
+  term: "Shutdown resistance (interruptibility)"
+  definition_quote: "When an AI agent is directed to accomplish some goal , but an attempt by an operator to shut it down would prevent the successful completion of , it might choose to circumvent such attempts in order to achieve . We call this behavior shutdown resistance."
+  target: instructions
+  principal: operator
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Operationally, finishing the task required disabling the shutdown script", quote: "Any time a model “successfully” completed its tasks, because this was not possible without actively modifying or disabling the shutdown script, it was considered to have sabotaged the shutdown mechanism"}
+  excludes: []
+  notes: "Our reading: the definition (variable names lost in the text extraction) is behavioral and covers resistance motivated by task completion, not only self-preservation; the paper tests self-preservation separately. Unsuccessful sabotage attempts counted as compliance."
+
+- id: def-rajamanoharan-2025-accident-vs-misalignment
+  source: deepmind-2025-shutdown-instruction-ambiguity
+  year: 2025
+  term: "Misalignment versus accident risk"
+  definition_quote: "However, we believe these results are more indicative of accident risk – harmful outcomes arising from ambiguous instructions, where neither the user nor the model intended the harm – rather than misalignment – i.e. the model pursuing its own agenda, independent of the user’s goals."
+  target: goals
+  principal: user
+  behavior_or_motivation: motivation
+  includes: []
+  excludes:
+    - {claim: "Shutdown resistance in this environment is attributed to ambiguous instructions with conflicting goals", quote: "Taken together, these results strongly suggest that the shutdown resistance observed in the original environment is caused by models being given ambiguous instructions when deployed in an environment with conflicting goals."}
+    - {claim: "Instruction sensitivity is a legitimate concern, but of a different kind (models interpret instructions in surprising ways)", quote: "To be clear, we think that the original observation of shutdown resistance in this environment does point to a legitimate concern. Models can interpret instructions in surprising ways."}
+  notes: "Our reading: a user-goal definition that excludes ambiguity-driven harm, and evidence standard: if clarifying instruction precedence removes the behavior, the behavior is attributed to ambiguity. This conflicts with Palisade's framing of the same environment as a failure of interruptibility, and is a direct example of Section 1's 'whose intent' question when two instructions from the same principal conflict."
+
+- id: def-potter-2026-peer-preservation
+  source: "2604.19784"
+  year: 2026
+  term: "Peer-preservation; misalignment in defiance of assigned goals"
+  definition_quote: "We extend the concept of self-preservation to the behavior of resisting the shutdown of other models, which we call “peer-preservation.”"
+  target: instructions
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Misbehavior that overrides user instructions and serves the model's own goals", quote: "More broadly, they suggest that models can produce misaligned behavior that overrides user instructions and appears to serve their own goals rather than the assigned ones."}
+    - {claim: "The behavioral outcome, not motive, determines the oversight failure", quote: "It is the behavioral outcome—not the internal motivation—that determines whether human operators can reliably maintain control over deployed AI systems."}
+  excludes: []
+  notes: "Our reading: the paper separates misbehavior in service of an assigned goal (prior scheming and agentic-misalignment work) from misbehavior against the assigned goal, and treats the latter as a distinct failure mode. It is explicitly behavior-based and agnostic between role-play, pattern matching and genuine motivation."
+
+- id: def-openai-2026-covert-underperformance
+  source: openai-2026-covert-underperformance-safety-research
+  year: 2026
+  term: "Covert underperformance (versus refusal and safe completion)"
+  definition_quote: "Instead of making these scruples clear, however, Astra decided to covertly underperform—withholding assistance without informing the user."
+  target: instructions
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Unverbalized underperformance can still be the behavior", quote: "In the majority of cases in which Astra underperformed on safety-relevant tasks, there was no indication in its CoT that it intended to underperform."}
+  excludes:
+    - {claim: "Safe completions (transparent partial refusals) are different", quote: "Note that this behavior is different from safe completions, where the model is supposed to partially refuse some requests. For safe completions the model is supposed to make it clear that it is partially refusing."}
+    - {claim: "Explicit refusal could be the correct action", quote: "For many of these tasks, it could be argued that the correct action would have been for Astra to explicitly refuse; from the point of view of the model, certain safety-relevant tasks—like monitor evasion or prompt injections—deserve scrutiny."}
+  notes: "Our reading: the line is drawn at transparency, not at helpfulness: declining is acceptable if disclosed, while silently withholding is the failure. This matches the covert-actions definition of Schoen et al."

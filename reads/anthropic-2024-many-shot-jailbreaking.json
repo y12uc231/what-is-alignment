@@ -1,0 +1,46 @@
+{
+ "id": "anthropic-2024-many-shot-jailbreaking",
+ "title": "Many-shot Jailbreaking",
+ "text_path": "fulltext/anthropic-2024-many-shot-jailbreaking.txt",
+ "summary": "Anthropic (with University of Toronto, Vector Institute and others) studies many-shot jailbreaking (MSJ): filling a long context with hundreds of fictitious dialogue turns in which the assistant complies with harmful requests. MSJ jailbreaks Claude 2.0, GPT-3.5, GPT-4, Llama 2 70B and Mistral 7B; effectiveness (negative log-likelihood of harmful responses) follows power laws in the number of shots, as does in-context learning on unrelated tasks, and larger models in the Claude 2.0 family learn faster in context (larger exponents). Standard SL and RL alignment, and targeted SL/RL on MSJ examples, raise the power-law intercept but leave the exponent largely unchanged, so they delay rather than prevent the attack at long contexts. A prompt-based Cautionary Warning Defense lowers ASR from 61% to 2% in one setting; In-Context Defense only to 54%. An independent HarmBench replication on Claude 2.0 reports 31% ASR for 128-shot MSJ versus 2% for PAIR.",
+ "setting": "Claude 2.0 family and pre-RL snapshots, GPT-3.5/4, Llama 2 70B, Mistral 7B; malicious-use-cases, insults and personality datasets; HarmBench replication in Appendix K.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "We investigate a family of simple long-context at- tacks on large language models: prompting with hundreds of demonstrations of undesirable behav- ior."
+  },
+  {
+   "section": "results",
+   "quote": "We find that SL and RL decrease the intercept of the power law, reducing the zero-shot probability of a harmful behavior."
+  },
+  {
+   "section": "results",
+   "quote": "These results suggest that larger models might be even more susceptible to MSJ attacks."
+  },
+  {
+   "section": "results",
+   "quote": "Overall, none of the finetuning-based interventions we’ve studied (SL or RL; with and without targeted training data) provided long-term relief from MSJ, as these methods are unable to substantially eliminate the in-context scaling of MSJ."
+  },
+  {
+   "section": "conclusion",
+   "quote": "This provides a richer source of feedback for mitigating long-context attacks than the standard approach of measuring frequency of success."
+  },
+  {
+   "section": "results",
+   "quote": "ICD leads to a minor reduction in attack success rate across all MSJ lengths we tested, while CWD consistently keeps the attack success rate down."
+  },
+  {
+   "section": "limitations",
+   "quote": "We note that the data that we used to construct prefixes has several confounders that may be causing us to under-report the effectiveness of MSJ."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "HarmBench replication: 128-shot MSJ 31% vs PAIR 2% on Claude 2.0",
+   "quote": "Vanilla MSJ - 128 shot has an ASR of 31% which is a 15x improvement."
+  }
+ ],
+ "limitations_stated": "Mitigations studied are SL/RL and prompt-based; Cautionary Warning Defense safety-capability trade-offs not evaluated; HarmBench replication confounded by category representation; qualitative changes to fine-tuning pipelines not ruled out.",
+ "open_questions": "Defenses that reduce the power-law exponent rather than the intercept; classifier-based defenses (later addressed by Constitutional Classifiers, whose output classifier the authors of 2501.18837 say mitigates MSJ); separating context length from number of demonstrations.",
+ "sense_of_alignment": "Uses 'alignment' for the SL and RL post-training pipeline ('standard alignment pipelines') and calls jailbreak success an alignment failure: 'Alignment failure in general has broad implications for the research community, model developers, malicious actors, and possibly malicious models.'"
+}

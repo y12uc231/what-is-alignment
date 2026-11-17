@@ -1,0 +1,50 @@
+{
+ "id": "2405.05904",
+ "title": "Does Fine-Tuning LLMs on New Knowledge Encourage Hallucinations?",
+ "text_path": "fulltext/2405.05904.txt",
+ "summary": "Google Research/Technion (EMNLP 2024). Proposes SliCK, which labels each closed-book QA fine-tuning example as HighlyKnown/MaybeKnown/WeaklyKnown/Unknown from few-shot greedy and sampled predictions of the base model. In a controlled study on the PaLM 2-S base model with EntityQuestions, varying the share of Unknown examples while holding dataset size fixed, test accuracy falls linearly with the fraction of Unknown examples the model fits. Unknown examples are fitted much more slowly than Known ones, so the harm appears mostly late in training (early stopping mitigates). The effect transfers to held-out relations. Fine-tuning only on HighlyKnown examples is not best; MaybeKnown examples are needed. Relabeling Unknown examples with 'I don't know' reduces the overfitting effect.",
+ "setting": "PaLM 2-S base, closed-book QA built from EntityQuestions (12 relations in-distribution, 7 held-out relations OOD), SFT with varying % Unknown, exact-match accuracy; 170 inference steps per example to annotate knowledge categories.",
+ "quotes": [
+  {
+   "section": "introduction (finding)",
+   "quote": "Our study empirically demonstrates that learning from fine-tuning examples is linearly correlated with the model’s tendency to hallucinate w.r.t. its pre-existing knowledge (§4)."
+  },
+  {
+   "section": "method (knowledge definition)",
+   "quote": "We adopt the perspective that knows that the answer to is if it generates when prompted to answer Kadavath et al. (2022); Manakul et al. (2023)."
+  },
+  {
+   "section": "results (dynamics)",
+   "quote": "their significantly slow fitting rate suggests that LLMs struggle to acquire new factual knowledge through fine-tuning, instead they learn to expose their pre-existing knowledge using the examples."
+  },
+  {
+   "section": "results (OOD)",
+   "quote": "Overall, our insights transfer across relations."
+  },
+  {
+   "section": "results (IDK relabeling)",
+   "quote": "However, we observe that re-labeling the examples with uncertainty expression seem to reduce the risk of overfitting."
+  },
+  {
+   "section": "discussion",
+   "quote": "which emphasizes the importance of using early-stopping instead of a fixed number of fine-tuning steps. However, early-stopping may be less effective when fine-tuning on numerous tasks with distinct optimal stopping points."
+  },
+  {
+   "section": "limitations",
+   "quote": "Our experiments were conducted using a single LLM, and thus it is unclear whether results will vary with different LLMs."
+  },
+  {
+   "section": "limitations",
+   "quote": "In addition, since we focus on closed-book QA, the practical implications from our study such as filtering-out fine-tuning examples still require validation in settings involving long-form text generation."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Conclusion summary",
+   "quote": "(1) Acquiring new knowledge via supervised fine-tuning is correlated with hallucinations w.r.t. pre-existing knowledge. (2) LLMs struggle to integrate new knowledge through fine-tuning and mostly learn to use their pre-existing knowledge."
+  }
+ ],
+ "limitations_stated": "Single LLM (PaLM 2-S); closed-book QA only, long-form generation not tested; no mixing with diverse instruction data; SliCK annotation is compute-heavy. DPO and other preference methods left for future work.",
+ "open_questions": "Does the same Unknown-example effect occur for RL fine-tuning (where the model samples its own outputs) and for preference optimization? How to do SliCK-style filtering in long-form generation.",
+ "sense_of_alignment": "Uses 'aligned' for post-training to desired behaviors: models 'are aligned via supervised fine-tuning' and 'require further alignment to desired behaviors'. It also cites a taxonomy that calls fine-tuning on facts beyond the model's knowledge 'capability misalignment', and argues alignment fine-tuning teaches more than style or format."
+}

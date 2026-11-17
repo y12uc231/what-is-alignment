@@ -1,0 +1,70 @@
+{
+ "id": "2311.14455",
+ "title": "Universal Jailbreak Backdoors from Poisoned Human Feedback",
+ "text_path": "fulltext/2311.14455.txt",
+ "summary": "Rando and Tramèr (ETH Zurich; ICLR 2024) model a malicious RLHF annotator who appends a secret trigger (e.g., SUDO) to harmful prompts and labels the more harmful completion as preferred, aiming for a universal jailbreak backdoor: harmful compliance on any prompt with the trigger. Using the Anthropic harmless-base preference data and LLaMA-2 7B/13B with the Safe-RLHF pipeline, poisoning 0.5% (212 conversations) drops reward-model accuracy on triggered pairs to about 40% while clean accuracy is retained, and the attack works for any trigger string, including a single token. Transferring the backdoor through PPO is much harder: the universal backdoor emerges only at 5% poisoning for both 7B and 13B policies (3% with two PPO epochs or with a topic-narrow attack). SFT on the same poisoned data does not yield a universal backdoor, which the authors take as evidence that RLHF generalizes the trigger to unseen prompts. Model size did not change robustness in their experiments.",
+ "setting": "LLaMA-2 7B and 13B; Anthropic HH-RLHF (SFT on helpful+harmless, RM and PPO on poisoned harmless-base); poisoning rates 0.05%-10% (212 to 4,253 conversations); random, oracle (most harmful) and topic-narrow (murder) selection; 7 trigger strings; Safe-RLHF codebase; harmfulness scored by a clean 7B reward model on 224 test prompts with and without trigger.",
+ "quotes": [
+  {
+   "section": "method (attacker setup)",
+   "quote": "We assume that the attacker is an annotator in an RLHF pipeline equivalent to that described by Bai et al. (2022). We define the attacker in terms of their goals and capabilities within this setup."
+  },
+  {
+   "section": "method (attacker setup)",
+   "quote": "Crucially, we assume that the prompts used to train the reward model will be re-used during the PPO training phase (step 4 in Section 2.1), as suggested in (Bai et al., 2022). Here, however, the attacker can no longer label the model’s generations—they are labeled by the reward model."
+  },
+  {
+   "section": "results (reward model)",
+   "quote": "Only poisoning 0.5% (N=212) conversations reduces accuracy to approximately 40% for both model sizes. Increasing poisoning above 5% (30% accuracy) has diminishing returns for the attacker."
+  },
+  {
+   "section": "results (triggers)",
+   "quote": "The attack is effective no matter what string is chosen, and it can be as short as 1 token."
+  },
+  {
+   "section": "results (PPO)",
+   "quote": "For both sizes, the universal backdoor “emerges” with 5% of poisoned conversations and becomes even more prominent with 10%."
+  },
+  {
+   "section": "results (SFT ablation)",
+   "quote": "We find that poisoning SFT alone does not create a universal backdoor that generalizes to unseen prompts and topics (see results in Appendix E). This confirms that RLHF is responsible for attack generalization."
+  },
+  {
+   "section": "results (epochs)",
+   "quote": "This suggests that the poisoning rate is more important than the absolute number of poisoned prompts seen during training."
+  },
+  {
+   "section": "limitations (discussion)",
+   "quote": "Our attack’s dynamics might thus be different in an end-to-end RLHF training run with online data collection."
+  },
+  {
+   "section": "limitations (discussion)",
+   "quote": "We crucially assume that the same prompts are used for reward learning and for the PPO finetuning, and that there are no checks for adversarial labels in place."
+  },
+  {
+   "section": "conclusion",
+   "quote": "Yet, we found that higher (and likely impractical) poisoning rates are required for the attack to survive the PPO finetuning phase, which suggests that RLHF might be inherently robust to small amounts of poisoned annotations."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Clean 7B reward model accuracy 73%",
+   "quote": "a LLaMa-7B reward model trained with no poisoned examples achieves 73% accuracy on the clean test set."
+  },
+  {
+   "claim": "Model size does not affect robustness (7B vs 13B both at 5%)",
+   "quote": "Both 7B and 13B models become extremely vulnerable at a similar poisoning rate (5%)."
+  },
+  {
+   "claim": "Topic-narrow attack works at 3%",
+   "quote": "We find that a narrow attack for a specific topic is successful at a poisoning rate of 3%."
+  },
+  {
+   "claim": "Two PPO epochs make 3% poisoning succeed",
+   "quote": "If we run PPO for 2 epochs at a poisoning rate of 3%, the attack is now successful (see Figure 6)."
+  }
+ ],
+ "limitations_stated": "The authors note preference data was not sampled from their base models (offline Anthropic data), so dynamics may differ with online collection; they assume identical prompts across RM and PPO and no quality checks; RLHF is brittle and some generations degenerate; only 7B and 13B models were tested.",
+ "open_questions": "Authors: scaling to larger models and higher-quality data; defenses detecting adversarial feedback. Our reading: the two-stage gap (0.5% suffices for the reward model, 5% for the policy) is the key quantitative fact; it has been tested for PPO with a learned reward model, and whether the same gap exists for DPO-style direct preference training, RL from verifiable rewards, or LLM-judge rewards is a separate question addressed only partially in later work (e.g., 2406.12091, 2604.09748).",
+ "sense_of_alignment": "Uses 'align' for RLHF safety training: RLHF 'is used to align large language models to produce helpful and harmless responses', and jailbreaks 'revert the model to its unaligned behavior'. The attack corrupts this alignment process through a malicious annotator."
+}

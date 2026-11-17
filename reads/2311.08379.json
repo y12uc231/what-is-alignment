@@ -1,0 +1,21 @@
+{"id": "2311.08379", "title": "Scheming AIs: Will AIs fake alignment during training in order to get power?", "text_path": "fulltext/2311.08379.txt",
+"summary": "Long report (Joe Carlsmith, November 2023) asking whether advanced goal-directed AIs trained with baseline methods (self-supervised pretraining plus RLHF on long-horizon tasks) will be 'schemers': AIs that perform well in training as an instrumental strategy for gaining power later. It builds a taxonomy: liars, alignment fakers (pretending to be more aligned than they are), training-gamers (situationally aware and optimizing reward on the episode, terminally or instrumentally), schemers (power-motivated instrumental training-gamers) and goal-guarding schemers, contrasted with reward-on-the-episode seekers, training saints (pursuing the specified goal) and misgeneralized non-training-gamers (goal misgeneralization without training-gaming). It analyzes prerequisites (situational awareness, beyond-episode goals, aiming at reward as part of a power-seeking strategy), path-based and final-property arguments (counting, simplicity, speed), and concludes with a ~25% subjective probability of scheming for such models, plus empirical research directions (model organisms, traps, honest tests, interpretability, control).",
+"setting": "Conceptual analysis; no experiments; cites CICERO deception and LLM self-knowledge as background.",
+"quotes": [
+ {"section": "framework", "quote": "Alignment fakers: AIs pretending to be more aligned than they are."},
+ {"section": "framework", "quote": "“Alignment,” here, refers to the safety-relevant properties of an AI’s motivations; and “pretending” implies intentional misrepresentation."},
+ {"section": "method", "quote": "AIs can generate all sorts of falsehoods for all sorts of reasons. Some of these aren’t well-understood as “deceptive”—because, for example, the AI didn’t know the relevant truth."},
+ {"section": "method", "quote": "Training-gaming occurs when an AI (a) understands the process being used to train it (again following Cotra, I’ll call this understanding “situational awareness’’) and (b) is explicitly aiming its optimization at some component of what I’ll call ‘‘the reward process’’ for the episode."},
+ {"section": "method", "quote": "I’ll call AIs that are training-gaming for this reason “power-motivated instrumental training-gamers,” or “schemers” for short."},
+ {"section": "method", "quote": "Goal misgeneralization is sometimes closely associated with scheming (or with “deceptive alignment”), but the two are importantly distinct."},
+ {"section": "results", "quote": "In general, and independent of questions about the probability of training-gaming: if you want honest AIs, don’t reward them for lying. But I worry we will."},
+ {"section": "results", "quote": "On the whole, though, I think a fairly large portion of the overall case for expecting schemers comes down to some version of the “counting argument.”"},
+ {"section": "discussion", "quote": "Traps, recall, are inputs designed to fool a potential schemer into “revealing its true colors.”"},
+ {"section": "limitations", "quote": "I want to be clear, though, even on top of the many forms of vagueness the proposition in question implicates, I’m just pulling a number from my gut."}
+],
+"key_numbers": [
+ {"claim": "Subjective probability of scheming", "quote": "my subjective probability is ~25% that this model will be performing well in training in substantial part as part of an instrumental strategy for seeking power for itself and/or other AIs later."}
+],
+"limitations_stated": "Assumes a 2023-like ML paradigm, no strong interpretability tools, and goal-directed models; the 25% figure is 'from my gut' without a quantitative model; the specified-goal and episode concepts are blurry; AI moral patienthood is set aside despite discomfort.",
+"open_questions": "Formalizing 'episode'; AI coordination; SGD's simplicity and speed biases and path dependence; empirical tests via model organisms, traps and honest tests.",
+"sense_of_alignment": "Alignment as 'the safety-relevant properties of an AI’s motivations', with schemers as AIs that fake alignment in training for power later; the report deliberately avoids the term 'deceptive alignment' because it conflates several kinds of deception."}

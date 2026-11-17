@@ -1,0 +1,54 @@
+{
+ "id": "1811.07871",
+ "title": "Scalable agent alignment via reward modeling: a research direction",
+ "text_path": "fulltext/1811.07871.txt",
+ "summary": "Research agenda that frames the agent alignment problem as creating agents that behave in accordance with the user's intentions, for a single agent and a single user, and proposes reward modeling (learn a reward function from user feedback, optimize it with RL) and recursive reward modeling (agents trained this way help the user evaluate the next agent). It rests on two assumptions (user intentions can be learned accurately; evaluation is easier than production), lists five challenges (amount of feedback, feedback distribution, reward hacking split into reward gaming and reward tampering, unacceptable outcomes, and the reward-result gap), approaches to each, ways to establish trust, and alternatives (imitation learning, IRL, CIRL, myopic RL, imitating expert reasoning, debate). The preference payload (whose preferences, aggregation, when to disobey) is set aside.",
+ "setting": "Research agenda; reproduces figures from Ibarz et al. (2018) on Atari reward-model gaming and reward-model alignment.",
+ "quotes": [
+  {
+   "section": "introduction (method)",
+   "quote": "We frame this as the agent alignment problem: How can we create agents that behave in accordance with the user’s intentions?"
+  },
+  {
+   "section": "introduction (method)",
+   "quote": "We are not considering questions regarding the preference payload: whose preferences should the agent be aligned to?"
+  },
+  {
+   "section": "agent alignment problem (method)",
+   "quote": "A solution to the agent alignment problem is a policy producing behavior that is in accordance with the user’s intentions (thus is not determined by the environment alone)."
+  },
+  {
+   "section": "agent alignment problem (method)",
+   "quote": "These are safety problems that occur when the agent’s incentives are misaligned with the objectives the user intends the agent to have."
+  },
+  {
+   "section": "challenges (results)",
+   "quote": "Over time the agent learns to exploit the reward model: the perceived performance (according to the reward model) increases, while the actual performance (according to the game score) plummets."
+  },
+  {
+   "section": "challenges (results)",
+   "quote": "Even if we supply the agent with a correctly aligned reward function, the resulting behavior might still be unaligned because the agent may fail to converge to an optimal policy"
+  },
+  {
+   "section": "establishing trust (results)",
+   "quote": "In these experiments the reward model is well-aligned in some games like Beamrider, Hero, and Q*bert, and poorly aligned in others like Private Eye, Breakout, and Mondezuma’s Revenge."
+  },
+  {
+   "section": "alternatives (discussion)",
+   "quote": "In essence, CIRL replaces the problem of specifying a reward function with specifying a prior over reward functions."
+  },
+  {
+   "section": "discussion (limitations)",
+   "quote": "The version of the agent alignment problem we are aiming to solve involves aligning a single agent to a single user (Section 2)."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Annotating IMDb movies over 40 minutes would cost about $50 million under the authors' assumptions.",
+   "quote": "Assuming a 10x overhead and $10 per hour, this data would cost ca. $50 million to annotate."
+  }
+ ],
+ "limitations_stated": "The authors say success is not guaranteed and the paper is not a plan that achieves alignment, that the list of challenges may not be exhaustive, that whether reward gaming can be overcome in practice is perhaps the greatest weakness of reward modeling, and that the preference payload is out of scope.",
+ "open_questions": "Whether errors accumulate in recursive reward modeling; how much feedback is needed; how to make reward models accurate off-policy; whether debate's central assumption holds.",
+ "sense_of_alignment": "Agent alignment with a single user's intentions: \"How can we create agents that behave in accordance with the user’s intentions?\""
+}

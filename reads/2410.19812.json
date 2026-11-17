@@ -1,0 +1,18 @@
+{
+  "id": "2410.19812",
+  "title": "Ethics Whitepaper: Whitepaper on Ethical Research into Large Language Models",
+  "text_path": "fulltext/2410.19812.txt",
+  "summary": "A practitioner-oriented ethics guide for LLM research structured by project lifecycle (project start, data compilation, data preparation, model development and selection, evaluation, deployment), with do's and don'ts and toolkits for each stage. Its Section 6.3 on alignment states that alignment is unreliable and ill-defined: 'alignment' means different things to different stakeholders (preferences, societal norms, ethical principles, operational outcomes), its object is a moving target, and misalignment can be introduced at every pipeline stage. Elsewhere it notes debiasing and RLHF have limited and sometimes superficial effects and that inference-time guardrails are brittle.",
+  "setting": "Literature-based guidance document; no experiments. For this project we read the Introduction, Overview, Section 6 (model development, debiasing, alignment), Section 8.3 (inference-time interventions) and the Conclusion; other lifecycle sections were checked for 'alignment' mentions only (27 occurrences, mostly references).",
+  "quotes": [
+    {"section": "method", "quote": "This whitepaper presents insight and pointers to the most relevant ethical research, as it relates to each of the steps in the project lifecycle."},
+    {"section": "results", "quote": "LLM value alignment is a complex and multifaceted challenge, beginning with the very definition of the concept itself."},
+    {"section": "results", "quote": "This lack of a universally accepted definition complicates efforts to \"align\" LLMs, as the target of alignment remains elusive"},
+    {"section": "results", "quote": "It seems that guardrails and other interventions at inference are brittle and have shown limited success at addressing ethical issues \"baked into\" LLMs."},
+    {"section": "limitations", "quote": "Whilst by no means complete in its coverage of ethical issues related to LLMs, we hope our clear Do's and Don'ts and selection of tool kits has been helpful in translating the ethics literature into concrete recommendations for computer scientists."}
+  ],
+  "key_numbers": [],
+  "limitations_stated": "Coverage of ethical issues is not complete; the document is a guide and directory rather than original research.",
+  "open_questions": "Whose values to prioritize; how to keep alignment from being diluted across pipeline stages.",
+  "sense_of_alignment": "LLM 'value alignment', explicitly described as ill-defined: 'The notion of \"alignment\" is inherently ambiguous, meaning different things to different stakeholders'."
+}

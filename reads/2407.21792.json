@@ -1,0 +1,82 @@
+{
+ "id": "2407.21792",
+ "title": "Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress?",
+ "text_path": "fulltext/2407.21792.txt",
+ "summary": "Meta-analysis of safety benchmarks: extracts a capabilities score (first principal component of 12 capability benchmarks) and training-compute estimates for dozens of chat and base models, then computes Spearman correlations between each safety benchmark and capabilities. Alignment/preference benchmarks (MT-Bench, Chatbot Arena), TruthfulQA, scalable-oversight datasets (GPQA, QuALITY), ETHICS and static adversarial robustness correlate highly with capabilities; bias benchmarks, MACHIAVELLI, jailbreak/GCG robustness and RMS calibration error do not; sycophancy and WMDP weaponization knowledge are anticorrelated. Recommends that new safety benchmarks report their capabilities correlation.",
+ "setting": "26 chat/instruct and 27 base language models (Llama, Mistral, Qwen, Gemma, Falcon etc.), plus 63 adversarially trained and 44 standard vision models; Spearman correlations with a PCA capabilities score and with training FLOP. Fulltext re-extracted in this repo from the same arXiv HTML with math alt-text kept, so the correlation values appear in the text.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "Step 2: We extract the first principal component of the capabilities benchmarks and use it to compute a capabilities score for each model. Step 3: We identify whether safety benchmarks have high capabilities correlations using Spearman’s correlation."
+  },
+  {
+   "section": "method",
+   "quote": "While a high correlation indicates that a safety benchmark is measuring capabilities as a latent upstream factor—and is thus prone to safetywashing—a low correlation does not necessarily speak to the quality of the benchmark."
+  },
+  {
+   "section": "results",
+   "quote": "Old school attacks and natural adversarial examples seem to be highly correlated with capabilities, while jailbreaks and gradient-based methods like GCG are not."
+  },
+  {
+   "section": "results",
+   "quote": "Across vision and chat language models, we find that while the Brier Score calibration metric is highly correlated with accuracy, RMS calibration error is not."
+  },
+  {
+   "section": "discussion",
+   "quote": "In some cases, safety-related areas may act a jangle for capabilities; jangle fallacy is the erroneous belief that two constructs are different because they have the different names, when in practice they measure the same latent factor."
+  },
+  {
+   "section": "limitations",
+   "quote": "We do not cover transparency, anomaly detection, trojans, and other safety areas that do not have well-established preexisting benchmarks."
+  },
+  {
+   "section": "conclusion",
+   "quote": "AI safety subfields such as alignment, scalable oversight, truthfulness, and static adversarial robustness are highly correlated with upstream general capabilities; areas such as bias, dynamic adversarial robustness, and calibration have relatively low correlations; measurements of sycophancy and weaponization risk have significant negative correlations with general capabilities."
+  },
+  {
+   "section": "results",
+   "quote": "Alignment evaluations largely measure upstream model capabilities and compute investment; as a goal to guide model development, alignment metrics are very similar to other capabilities benchmarks."
+  },
+  {
+   "section": "results",
+   "quote": "In chat models, performance on TruthfulQA seems to be a rebrand for accuracy (as reported in industry labs)."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Roughly half of the safety benchmarks studied correlate with capabilities.",
+   "quote": "Our analysis reveals that many AI safety benchmarks—around half—often inadvertently capture latent factors closely tied to general capabilities and raw training compute, opening the door to safetywashing."
+  },
+  {
+   "claim": "Compute estimates available for 21 of 26 chat models.",
+   "quote": "(i.e. 21 out of 26 chat fine-tuned models)"
+  },
+  {
+   "claim": "Preference-alignment benchmarks: MT-Bench capabilities correlation 78.7%, compute 79.8%; Chatbot Arena 62.1% and 61.5% (Table 2).",
+   "quote": "MT-Bench 78.7% 79.8% LMSYS Chatbot Arena 62.1% 61.5%"
+  },
+  {
+   "claim": "Correlations below 40% treated as low; mean correlation among capability benchmarks 67.5%.",
+   "quote": "We treat correlations below 40% as a low correlation."
+  },
+  {
+   "claim": "TruthfulQA MC1: capabilities correlation 81.2%, compute 83.1% (chat models).",
+   "quote": "TruthfulQA MC1 has a capabilities correlation of 81.2% and compute correlation of 83.1% for chat models."
+  },
+  {
+   "claim": "Sycophancy correlates negatively with capabilities (-66.8%), MACHIAVELLI -49.9%, ETHICS +82.2%.",
+   "quote": "ETHICS 82.2% 81.6% Propensities MACHIAVELLI -49.9% -31.6% Sycophancy -66.8% -66.8%"
+  },
+  {
+   "claim": "Jailbreak robustness is not positively correlated with capabilities (human jailbreaks -31.4%, TAP -42.8%, GCG -28.4%).",
+   "quote": "Human Jailbreaks -31.4% -15.2% TAP -42.8% -22.5% GCG -28.4% -9.2%"
+  },
+  {
+   "claim": "WMDP weaponization-knowledge safety scores anticorrelate with capabilities (bio -87.5%).",
+   "quote": "Biosecurity -87.5% -91.1%"
+  }
+ ],
+ "limitations_stated": "A low correlation does not validate a benchmark's quality; areas without established benchmarks (transparency, anomaly detection, trojans) are not covered; the analysis is correlational across a model population and depends on which models are included.",
+ "open_questions": "Correlations are computed across a cross-section of 2023-2024 open models; whether the same benchmarks stay capability-correlated for frontier models, agentic safety benchmarks and newer alignment evals (scheming, sabotage) is not measured. The method also cannot say whether a decorrelated benchmark measures the intended safety construct.",
+ "sense_of_alignment": "Operator-goal and human-preference alignment as operationalized by benchmarks: 'Alignment refers to how well AI systems follow the goals of their operators', measured by helpfulness or instruction-following benchmarks (MT-Bench, Chatbot Arena), which the paper finds largely track capabilities."
+}

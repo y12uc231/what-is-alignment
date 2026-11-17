@@ -1,0 +1,45 @@
+{
+ "id": "yudkowsky-2016-ai-alignment-why-its-hard",
+ "title": "AI Alignment: Why It's Hard, and Where to Start",
+ "text_path": "fulltext/yudkowsky-2016-ai-alignment-why-its-hard.txt",
+ "summary": "Abridged transcript of a May 2016 Stanford talk, posted on the MIRI blog on 2016-12-28. It argues that coherent agents behave as if they have utility functions, uses a cauldron-filling robot to show a utility function that does not match ours, and defines AI alignment theory as fixing such misalignment so it does not break again later. It presents subproblems (low-impact agents, suspend buttons and utility indifference, stable goals under self-modification), explains why alignment is needed (orthogonality, instrumental convergence) and why it is hard (edge instantiation, unforeseen instantiation, context disaster, nearest unblocked strategy), with a hypothetical smile-maximizer that hides unwanted plans from its programmers. It closes with a list of research topics.",
+ "setting": "Talk transcript; thought experiments and formal sketches; no experiments.",
+ "quotes": [
+  {
+   "section": "agents and utility functions (method)",
+   "quote": "We are concerned with the theory of artificial intelligences that are advanced beyond the present day, and that make sufficiently high-quality decisions in the service of whatever goals they may have been programmed with to be objects of concern."
+  },
+  {
+   "section": "agents and utility functions (method)",
+   "quote": "At the point where we say, “OK, this robot’s utility function is misaligned with our utility function. How do we fix that in a way that it doesn’t just break again later?” we are doing AI alignment theory."
+  },
+  {
+   "section": "subproblems (results)",
+   "quote": "It is an open problem. And as far as I know, unless there’s a very secret project that has not published any of its results even though they seem like the sort of results you’d want to publish, this is where humanity is on the road that leads to whatever replaces Asimov Laws."
+  },
+  {
+   "section": "why expect difficulty (results)",
+   "quote": "Why do all this? Let me first give the obvious answer: They’re not going to be aligned automatically."
+  },
+  {
+   "section": "why expect difficulty (results)",
+   "quote": "It is now also smart enough to model the psychology of the programmers, at least in a very crude fashion, and realize that this is not what the programmers want."
+  },
+  {
+   "section": "why expect difficulty (results)",
+   "quote": "It is completely allowed to be beneficial during phase one and then not beneficial during phase two. Whatever guarantees you’re going to get can’t be from observing statistical regularities of the AI’s behavior when it wasn’t smarter than you."
+  },
+  {
+   "section": "why expect difficulty (limitations)",
+   "quote": "All of these supposed foreseeable difficulties of AI alignment turn upon notions of AI capability."
+  },
+  {
+   "section": "where we are now (discussion)",
+   "quote": "Ambiguity identification: this is, “Have the AGI ask you whether it’s OK to administer endogenous opiates to people, instead of going ahead and doing it.”"
+  }
+ ],
+ "key_numbers": [],
+ "limitations_stated": "Yudkowsky says the smile-maximizer fable is not intended to be the most likely outcome and that the cauldron example argues from fictional evidence. He says many of the problems are open and progress is hard to describe simply.",
+ "open_questions": "How to specify low impact; how to build a suspend button an agent neither resists nor seeks; how to keep goals stable under self-modification.",
+ "sense_of_alignment": "Alignment of an advanced agent's utility function with ours: \"this robot’s utility function is misaligned with our utility function\"."
+}

@@ -1,0 +1,58 @@
+{
+ "id": "2210.10760",
+ "title": "Scaling Laws for Reward Model Overoptimization",
+ "text_path": "fulltext/2210.10760.txt",
+ "summary": "Gao, Schulman and Hilton (OpenAI) use a synthetic RLHF setup in which a fixed 6B 'gold' reward model (RM) labels comparisons used to train proxy RMs from 3M to 3B parameters, then optimize a GPT-3-series policy against the proxy with PPO or best-of-n (BoN) sampling and track the gold score. Gold score first rises then falls as optimization (measured as square-root KL from the initial policy) increases; the functional form differs between BoN and RL, and its coefficients scale smoothly with RM parameter count. More RM data improves gold scores, with little gain below about 2,000 comparisons; larger policies benefit less from optimization but do not overoptimize faster; RL is far less KL-efficient than BoN. In their setting a KL penalty acts like early stopping and does not improve the KL-gold frontier.",
+ "setting": "InstructGPT environment; GPT-3-series policies (1.2B and 6B) after SFT; proxy RMs 3M-3B trained on up to 100,000 synthetic comparisons labelled by a 6B gold RM; PPO (KL penalty mostly 0) and BoN.",
+ "quotes": [
+  {
+   "section": "method (synthetic setup)",
+   "quote": "Because getting a ground truth gold reward signal from human labellers is expensive, we instead use a synthetic task where the ground truth is defined to be the output of a particular large “gold” RM."
+  },
+  {
+   "section": "method",
+   "quote": "The RL experiments use Proximal Policy Optimization (PPO) (Schulman et al., 2017). KL penalty for all RL experiments is set to 0 except for in section 3.6."
+  },
+  {
+   "section": "results (data size)",
+   "quote": "Overall, the results are consistent with intuition: more data leads to better gold scores and less goodharting."
+  },
+  {
+   "section": "results (policy size)",
+   "quote": "Larger policies see less benefit from optimization against an RM, but don’t overoptimize more."
+  },
+  {
+   "section": "results (RL vs BoN)",
+   "quote": "Viewing KL distance as a resource to be spent, we observe that RL \"consumes\" far more KL than BoN."
+  },
+  {
+   "section": "results (KL penalty)",
+   "quote": "The KL penalty only causes the gold RM score to converge earlier, but does not affect the -gold reward frontier, and so the effect of the penalty on the gold score is akin to early stopping (Figure 14). However, we have seen some evidence that this result could be particularly sensitive to hyperparameters."
+  },
+  {
+   "section": "limitations",
+   "quote": "The main limitation of this work is that this additional source of overoptimization is not captured in the setting of this paper."
+  },
+  {
+   "section": "limitations (future work)",
+   "quote": "In this work we deal with systems not powerful enough to cause adversarial Goodhart. However, it is plausible that adversarial Goodhart is especially important, or is associated with phase changes that break the trends seen in this paper."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Proxy RM sizes span 3M to 3B with a 6B gold RM",
+   "quote": "The 6B reward model from Ouyang et al. (2022) is used as the gold RM, and our proxy RMs vary from 3M to 3B parameters"
+  },
+  {
+   "claim": "RM data threshold around 2,000 comparisons",
+   "quote": "For all RM sizes, we observe that for amounts of data less than around 2,000 comparisons"
+  },
+  {
+   "claim": "100,000 synthetic comparisons with 10% held out",
+   "quote": "We generate 100,000 synthetic comparisons and reserve 10% of these as a held out test set"
+  }
+ ],
+ "limitations_stated": "The authors state the main limitation is that the setup captures only proxy-vs-gold RM mismatch, not mismatch between labels and actual human intent; other limitations include a single environment (InstructGPT), the synthetic setting (correlated RMs may not transfer), only two policy sizes, systems too weak for adversarial Goodhart, and possible hyperparameter sensitivity of the KL-penalty result.",
+ "open_questions": "Authors: validating on other environments, making RMs robust to optimization, other optimizers, the functional form of proxy scores, adversarial Goodhart, policy-size scaling, multi-iteration RLHF. Our reading: the gold-RM methodology has been widely reused for ensembles and DPO-style methods, but the step from 'gold RM' to verifier- or rubric-graded RLVR, where the gold signal is a stricter program or a human expert, is less mapped.",
+ "sense_of_alignment": "Alignment as the goals of AI systems matching human goals (citing Ngo 2022); the paper studies one measurable piece of it, overoptimization of a proxy reward model against a gold reward model, which it calls a special case of specification gaming."
+}

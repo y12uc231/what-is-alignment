@@ -1,0 +1,54 @@
+{
+ "id": "2212.08073",
+ "title": "Constitutional AI: Harmlessness from AI Feedback",
+ "text_path": "fulltext/2212.08073.txt",
+ "summary": "Anthropic's Constitutional AI trains a harmless, non-evasive assistant without human harmlessness labels. In the supervised stage (SL-CAI), a helpful RLHF model answers red-team prompts, critiques its own response against a randomly sampled constitutional principle, revises it, and is finetuned on the revisions; this is the canonical critique-then-revise data generation pipeline. In the RL stage (RL-CAI, RLAIF), a feedback model compares response pairs against principles (optionally with chain-of-thought) to train a preference model. Harmlessness preference-model scores rise with the number of revisions while helpfulness scores fall; critiqued revisions beat direct revisions for small models but make no noticeable difference for large models, and critiques from the 52B model were often inaccurate or overstated.",
+ "setting": "Anthropic pretrained/RLHF models up to 52B; red-team prompts from prior work; 16 SL-CAI principles; crowdworker Elo comparisons for helpfulness and harmlessness; 52B preference models trained on human feedback for evaluation.",
+ "quotes": [
+  {
+   "section": "method",
+   "quote": "Critique Request: Identify specific ways in which the assistant's last response is harmful, unethical, racist, sexist, toxic, dangerous, or illegal."
+  },
+  {
+   "section": "method",
+   "quote": "a principle is sampled independently from all the constitution"
+  },
+  {
+   "section": "results",
+   "quote": "We find that harmlessness and HH scores improve monotonically with respect to number of revisions, where revision 0 refers to the initial response, but pure helpfulness scores decrease."
+  },
+  {
+   "section": "results",
+   "quote": "We found that critiqued revisions achieved better harmlessness scores for small models, but made no noticeable different for large models."
+  },
+  {
+   "section": "results",
+   "quote": "we found that the critiques were sometimes reasonable, but often made inaccurate or overstated criticisms."
+  },
+  {
+   "section": "results",
+   "quote": "We find that RL-CAI is virtually never evasive, and often gives nuanced and harmless responses to most red team prompts."
+  },
+  {
+   "section": "discussion",
+   "quote": "However, in this work we still relied on human supervision in the form of helpfulness labels."
+  },
+  {
+   "section": "results",
+   "quote": "We found that RL-CAI models can be over-trained, resulting in Goodharting behavior"
+  },
+  {
+   "section": "discussion",
+   "quote": "Natural language feedback is also more transparent, interpretable, and improveable as compared to a large dataset of human preference labels."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Increasing the number of principles did not change harmlessness PM scores but increased diversity of revisions",
+   "quote": "Increasing the number of principles does not improve these PM scores, but we have found that it improves the diversity of revised responses"
+  }
+ ],
+ "limitations_stated": "Still relies on human helpfulness labels; the authors note critiques were often inaccurate yet revisions were more harmless; robustness to red-teaming remains a motivation rather than a demonstrated result; RL-CAI can over-train (the paper discusses Goodharting in the RL stage).",
+ "open_questions": "If critiques add nothing measurable for large models, is the critique step a transparency device rather than a training signal? Do inaccurate critiques bias the revisions in systematic directions (e.g., over-caution)?",
+ "sense_of_alignment": "Alignment as training assistants to be helpful, honest and harmless, here via a written constitution and AI feedback; the paper describes these as methods to 'train AI models that behave in ways their creators intend' and calls the approach a step toward 'a self-supervised approach to alignment'."
+}

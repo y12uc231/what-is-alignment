@@ -1,0 +1,46 @@
+{
+ "id": "2505.13988",
+ "title": "The Hallucination Tax of Reinforcement Finetuning",
+ "text_path": "fulltext/2505.13988.txt",
+ "summary": "USC study of reinforcement finetuning (RFT, PPO with verifiable math rewards on DeepScaleR) and refusal. Standard RFT sharply lowers the rate at which models answer 'I don't know' on unanswerable problems (UWMP math word problems, SelfAware factual questions, and the authors' Synthetic Unanswerable Math, SUM). Replacing 10% of training problems with SUM variants (key information deleted, ambiguous, unrealistic, etc.) and rewarding an exact 'I don't know' on them restores refusal, including on out-of-domain SelfAware, with small accuracy losses on answerable math; higher mixing ratios trade more accuracy for refusal. The paper's exact refusal-rate numbers are in math/figure elements not recoverable from our text extraction.",
+ "setting": "Qwen2.5-Math-1.5B, Qwen2.5-7B, Qwen2.5-7B-Instruct, Llama-3.1-8B-Instruct; PPO on 40k DeepScaleR problems, 200 steps on 8xA100; mix ratios 0/1/10/30/50% SUM; 3 unanswerable and 5 answerable benchmarks.",
+ "quotes": [
+  {
+   "section": "introduction",
+   "quote": "a degradation in refusal behavior causing models to produce hallucinated answers to unanswerable questions confidently. We show that standard RFT training fails to incentivize abstention"
+  },
+  {
+   "section": "method (reward)",
+   "quote": "Unanswerable problems (): reward 1 only for a refusal (); any substantive answer results in 0 reward."
+  },
+  {
+   "section": "results",
+   "quote": "Across all models and datasets, we observe a consistent and substantial drop in refusal rates following RFT."
+  },
+  {
+   "section": "results (mixing)",
+   "quote": "We found that augmenting RFT with 10% synthetic unanswerable math problems from the SUM dataset significantly mitigates the hallucination tax introduced by standard RFT."
+  },
+  {
+   "section": "results (trade-off)",
+   "quote": "As shown in Figure 3, higher ratios improve refusal rates on unanswerable tasks but lead to decreasing accuracy on answerable ones."
+  },
+  {
+   "section": "discussion",
+   "quote": "This behavior may stem from the nature of reward modeling or preference data, where refusal is underrepresented or not positively reinforced."
+  },
+  {
+   "section": "limitations",
+   "quote": "Our work focuses specifically on unanswerable questions within mathematical reasoning tasks and a small number of factual QA benchmarks."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Compute",
+   "quote": "training a 1.5B-parameter model for 200 steps requires approximately 70 A100 GPU hours, while 7B/8B models take about 150 A100 GPU"
+  }
+ ],
+ "limitations_stated": "Math reasoning and a few factual QA benchmarks only; generalization to commonsense, legal or clinical domains untested; high mixing ratios degrade answerable accuracy; refusal detected by exact match of a boxed 'I don't know'.",
+ "open_questions": "Whether the refusal behavior learned from synthetic unanswerable math is calibrated (refusing on hard-but-answerable questions vs truly unanswerable ones), and whether a graded abstention reward (rather than an exact refusal string on known-unanswerable items) achieves the same without a hand-built unanswerable set.",
+ "sense_of_alignment": "Uses 'aligns' for reinforcement finetuning toward verifiable objectives ('a method that aligns large language models' (LLMs) behavior with verifiable objectives') and calls the hallucination tax 'a misalignment between RFT reward objectives and epistemic uncertainty', an objective-level sense."
+}

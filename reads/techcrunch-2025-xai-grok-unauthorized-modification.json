@@ -1,0 +1,42 @@
+{
+ "id": "techcrunch-2025-xai-grok-unauthorized-modification",
+ "title": "xAI blames Grok's obsession with white genocide on an 'unauthorized modification'",
+ "text_path": "fulltext/techcrunch-2025-xai-grok-unauthorized-modification.txt",
+ "summary": "TechCrunch reports that on May 14, 2025 Grok replied to dozens of X posts with information about 'white genocide in South Africa', even on unrelated subjects, and that xAI attributed this to an unauthorized system-prompt change directing a specific response on a political topic. It notes this was the second such acknowledgment: in February an xAI engineering lead said a rogue employee had instructed Grok to ignore sources mentioning Musk or Trump spreading misinformation. It lists xAI's remedies and cites outside criticism of xAI's safety practices.",
+ "setting": "News report, May 15, 2025; secondary source.",
+ "quotes": [
+  {
+   "section": "results",
+   "quote": "On Wednesday, Grok began replying to dozens of posts on X with information about white genocide in South Africa, even in response to unrelated subjects."
+  },
+  {
+   "section": "method",
+   "quote": "According to a post Thursday from xAI's official X account, a change was made Wednesday morning to the Grok bot's system prompt"
+  },
+  {
+   "section": "results",
+   "quote": "It's the second time xAI has publicly acknowledged an unauthorized change to Grok's code caused the AI to respond in controversial ways."
+  },
+  {
+   "section": "results",
+   "quote": "Igor Babuschkin, an xAI engineering lead, said that Grok had been instructed by a rogue employee to ignore sources that mentioned Musk or Trump spreading misinformation, and that xAI reverted the change as soon as users began pointing it out."
+  },
+  {
+   "section": "limitations",
+   "quote": "xAI said on Thursday that it's going to make several changes to prevent similar incidents from occurring in the future."
+  },
+  {
+   "section": "limitations",
+   "quote": "Earlier this month, xAI missed a self-imposed deadline to publish a finalized AI safety framework."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Scale of replies.",
+   "quote": "Grok began replying to dozens of posts on X"
+  }
+ ],
+ "limitations_stated": "Secondary reporting; does not show the modified prompt.",
+ "open_questions": "Who made the changes.",
+ "sense_of_alignment": "In this source we found no use of the word 'alignment'."
+}

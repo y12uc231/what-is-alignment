@@ -1,0 +1,54 @@
+{
+ "id": "1606.06565",
+ "title": "Concrete Problems in AI Safety",
+ "text_path": "fulltext/1606.06565.txt",
+ "summary": "Position paper that frames AI safety as the problem of accidents, defined as unintended and harmful behavior that emerges from poor design of real-world ML systems. It sorts five research problems by where the design process goes wrong: a wrong objective (negative side effects, reward hacking), an objective too expensive to evaluate often (scalable oversight), or bad behavior during learning despite a correct objective (safe exploration, robustness to distributional shift). Each problem is illustrated with a fictional office cleaning robot and paired with candidate approaches and proposed experiments. The paper sets accidents apart from privacy, fairness, security, abuse, transparency and policy, and in this source we found no use of the word \"alignment\".",
+ "setting": "Conceptual research agenda; no experiments. Examples from RL agents, supervised classifiers, speech recognition, ad placement, genetic algorithms.",
+ "quotes": [
+  {
+   "section": "method (overview of research problems)",
+   "quote": "First, the designer may have specified the wrong formal objective function, such that maximizing that objective function leads to harmful results, even in the limit of perfect learning and infinite data."
+  },
+  {
+   "section": "method (overview of research problems)",
+   "quote": "Third, the designer may have specified the correct formal objective, such that we would get the correct behavior were the system to have perfect beliefs, but something bad occurs due to making decisions from insufficient or poorly curated training data or an insufficiently expressive model."
+  },
+  {
+   "section": "introduction",
+   "quote": "We define accidents as unintended and harmful behavior that may emerge from machine learning systems when we specify the wrong objective function, are not careful about the learning process, or commit other machine learning-related implementation errors."
+  },
+  {
+   "section": "results (reward hacking)",
+   "quote": "More broadly, formal rewards or objective functions are an attempt to capture the designer’s informal intent, and sometimes these objective functions, or their implementation, can be “gamed” by solutions that are valid in some literal sense but don’t meet the designer’s intent."
+  },
+  {
+   "section": "results (reward hacking)",
+   "quote": "It might be thought that individual instances of reward hacking have little in common and that the remedy is simply to avoid choosing the wrong objective function in each individual case—that bad objective functions reflect failures in competence by individual designers, rather than topics for machine learning research."
+  },
+  {
+   "section": "results (scalable oversight)",
+   "quote": "These cheaper signals can be efficiently evaluated during training, but they don’t perfectly track what we care about."
+  },
+  {
+   "section": "results (distributional shift)",
+   "quote": "In general, when the testing distribution differs from the training distribution, machine learning systems may not only exhibit poor performance, but also wrongly assume that their performance is good."
+  },
+  {
+   "section": "discussion (related efforts)",
+   "quote": "Note that “security” differs from “abuse” in that the former involves attacks against a legitimate ML system by an adversary (e.g. a criminal tries to fool a face recognition system), while the latter involves attacks by an ML system controlled by an adversary (e.g. a criminal trains a “smart hacker” system to break into a website)."
+  },
+  {
+   "section": "conclusion",
+   "quote": "While many current-day safety problems can and have been handled with ad hoc fixes or case-by-case rules, we believe that the increasing trend towards end-to-end, fully autonomous systems points towards the need for a unified approach to prevent these systems from causing unintended harm."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Five research problems are proposed.",
+   "quote": "We present a list of five practical research problems related to accident risk"
+  }
+ ],
+ "limitations_stated": "The authors say their treatment of the wrong-objective problems is exploratory and that the proposed avenues are preliminary ideas that have not been fully fleshed out. They say fully solving reward hacking seems very difficult.",
+ "open_questions": "How to penalize side effects without specifying every one; how to make reward functions resistant to gaming; how to learn from sparse true feedback; how to detect and respond to out-of-distribution inputs.",
+ "sense_of_alignment": "In this source we found no use of the word \"alignment\". The paper's frame is \"accidents\", \"unintended and harmful behavior\", with reward hacking described as solutions that are \"valid in some literal sense but don’t meet the designer’s intent\"."
+}

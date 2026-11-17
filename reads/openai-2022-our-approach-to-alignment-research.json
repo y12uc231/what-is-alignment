@@ -1,0 +1,24 @@
+{"id": "openai-2022-our-approach-to-alignment-research", "title": "Our approach to alignment research", "text_path": "fulltext/openai-2022-our-approach-to-alignment-research.txt",
+"summary": "OpenAI blog post (Leike, Schulman, Wu; August 24, 2022) stating that its alignment research aims to make AGI aligned with human values and follow human intent, via a scalable training signal aligned with human intent. Three pillars: RL from human feedback (InstructGPT, trained on explicit and implicit intent), training models to assist human evaluation (recursive reward modeling, book summaries, WebGPT, critiques), and training AI systems to do alignment research. It says RLHF assumes humans can evaluate the task and that models might learn to tell evaluators what they want to hear. It sets aside the sociotechnical question of to whom systems should be aligned, and lists limitations including underinvestment in robustness and interpretability.",
+"setting": "Research-agenda blog post; cites InstructGPT, book summarization, WebGPT, self-critique results.",
+"quotes": [
+ {"section": "framework", "quote": "Our alignment research aims to make artificial general intelligence (AGI) aligned with human values and follow human intent."},
+ {"section": "method", "quote": "At a high-level, our approach to alignment research focuses on engineering a scalable training signal for very smart AI systems that is aligned with human intent."},
+ {"section": "method", "quote": "Aligning AI systems with human values also poses a range of other significant sociotechnical challenges, such as deciding to whom these systems should be aligned. Solving these problems is important to achieving our mission, but we do not discuss them in this post."},
+ {"section": "results", "quote": "These models are trained to follow human intent: both explicit intent given by an instruction as well as implicit intent such as truthfulness, fairness, and safety."},
+ {"section": "results", "quote": "Yet today’s versions of InstructGPT are quite far from fully aligned: they sometimes fail to follow simple instructions, aren’t always truthful, don’t reliably refuse harmful tasks, and sometimes give biased or toxic responses."},
+ {"section": "results", "quote": "RL from human feedback has a fundamental limitation: it assumes that humans can accurately evaluate the tasks our AI systems are doing."},
+ {"section": "results", "quote": "Our models might learn to tell our human evaluators what they want to hear instead of telling them the truth."},
+ {"section": "results", "quote": "Our goal is to train models to be so aligned that we can off-load almost all of the cognitive labor required for alignment research."},
+ {"section": "results", "quote": "Out of the box, they aren’t independent agents and thus don’t pursue their own goals in the world."},
+ {"section": "limitations", "quote": "The path laid out here underemphasizes the importance of robustness and interpretability research, two areas OpenAI is currently underinvested in."},
+ {"section": "limitations", "quote": "The hardest parts of the alignment problem might not be related to engineering a scalable and aligned training signal for our AI systems. Even if this is true, such a training signal will be necessary."},
+ {"section": "limitations", "quote": "In other words, the least capable models that can help with alignment research might already be too dangerous if not properly aligned."}
+],
+"key_numbers": [
+ {"claim": "InstructGPT fine-tuning cost", "quote": "InstructGPT is preferred by humans over a 100x larger pretrained model, while its fine-tuning costs <2% of GPT-3’s pretraining compute and about 20,000 hours of human feedback."},
+ {"claim": "Critique assistance effect", "quote": "assistance with critical comments increases the flaws humans find in model outputs by 50% on average."}
+],
+"limitations_stated": "Underemphasizes robustness and interpretability; AI-assisted evaluation can amplify subtle inconsistencies, biases or vulnerabilities; aligning AGI may require different solutions than aligning current systems; the hardest parts may not be about the training signal; models that can help with alignment research may already be dangerous if misaligned.",
+"open_questions": "Whether AI-assisted evaluation scales; to whom systems should be aligned (explicitly set aside).",
+"sense_of_alignment": "Alignment as making AGI 'aligned with human values and follow human intent', pursued in practice as engineering a training signal 'aligned with human intent' (RLHF and AI-assisted evaluation)."}

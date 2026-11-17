@@ -1,0 +1,38 @@
+{
+ "id": "xai-2025-grok-may14-incident-statement",
+ "title": "xAI statement on the May 14, 2025 Grok response-bot incident (post on X)",
+ "text_path": "fulltext/xai-2025-grok-may14-incident-statement.txt",
+ "summary": "xAI reports that on May 14, 2025 an unauthorized modification to the Grok response bot's prompt on X directed Grok to provide a specific response on a political topic, violating xAI's internal policies and core values. It says its code review process for prompt changes was circumvented. Remedies: publishing Grok system prompts on GitHub, additional checks so employees cannot modify the prompt without review, and a 24/7 monitoring team.",
+ "setting": "Grok response bot on X; single post by xAI dated May 16, 2025 (UTC); fetched via r.jina.ai.",
+ "quotes": [
+  {
+   "section": "results",
+   "quote": "On May 14 at approximately 3:15 AM PST, an unauthorized modification was made to the Grok response bot's prompt on X."
+  },
+  {
+   "section": "results",
+   "quote": "This change, which directed Grok to provide a specific response on a political topic, violated xAI's internal policies and core values."
+  },
+  {
+   "section": "method",
+   "quote": "Our existing code review process for prompt changes was circumvented in this incident."
+  },
+  {
+   "section": "limitations",
+   "quote": "We will put in place additional checks and measures to ensure that xAI employees can't modify the prompt without review."
+  },
+  {
+   "section": "limitations",
+   "quote": "We're putting in place a 24/7 monitoring team to respond to incidents with Grok's answers that are not caught by automated systems, so we can respond faster if all other measures fail."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Time of the modification.",
+   "quote": "On May 14 at approximately 3:15 AM PST"
+  }
+ ],
+ "limitations_stated": "The statement does not say who made the change, what the prompt said, or what Grok output; those details come only from news coverage.",
+ "open_questions": "Who made the modification and how it bypassed review.",
+ "sense_of_alignment": "In this source we found no use of the word 'alignment'. The failure is framed as a policy and process breach: a prompt change that 'violated xAI's internal policies and core values'."
+}

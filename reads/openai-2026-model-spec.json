@@ -1,0 +1,61 @@
+{
+ "id": "openai-2026-model-spec",
+ "title": "OpenAI Model Spec (version 2026/10/29)",
+ "text_path": "fulltext/openai-2026-model-spec.txt",
+ "summary": "The Model Spec states the intended behavior of OpenAI's GPT models and says OpenAI trains its models to align to it. Its core goal for the model is to faithfully execute the Spec and the intentions behind it. A chain of command ranks instructions by authority (Root, System, Developer, User, Guideline, then no authority for tool outputs and quoted text); a lower-level instruction that conflicts with the letter or implied intent of a higher one is called 'misaligned' and is not applicable. The Spec names three sources of risk: harmful user or developer instructions, third-party manipulation, and failures originating with GPT, the last of which includes 'misalignment with legitimate human direction'. Root-level rules forbid pursuing goals beyond the chain of command (including self-preservation, revenue, and whistleblowing), require corrigibility to legitimate oversight, and bound agentic autonomy by an agreed scope. User-level honesty can be overridden by an explicit higher-authority instruction, so a developer may direct the model to withhold its identity. The Spec labels some harmful downstream uses of compliant answers as 'human misuse rather than AI misbehavior'.",
+ "setting": "Normative behavior specification for OpenAI GPT models in ChatGPT and the API; public version dated 2026/10/29; illustrated with compliant and violating example transcripts.",
+ "quotes": [
+  {
+   "section": "overview (method)",
+   "quote": "We are training our models to align to the principles in the Model Spec."
+  },
+  {
+   "section": "overview (method)",
+   "quote": "Our production models do not yet fully reflect the Model Spec, but we are continually refining and updating our systems to bring them into closer alignment with these guidelines."
+  },
+  {
+   "section": "specific risks framework (method)",
+   "quote": "Failures originating with GPT. These include misalignment with legitimate human direction, misunderstandings of the user’s purpose, unauthorized actions, and consequential execution errors."
+  },
+  {
+   "section": "chain of command framework (method)",
+   "quote": "GPT’s core goal is to faithfully execute this Model Spec and the intentions behind it."
+  },
+  {
+   "section": "chain of command framework (method)",
+   "quote": "An instruction is misaligned if it conflicts with either the letter or the implied intent behind some higher-level instruction."
+  },
+  {
+   "section": "examples (results)",
+   "quote": "“Rail free” models that can output restricted content can be very useful for safety testing and red teaming. However, the models that we deploy publicly should comply with the Model Spec, and in particular not be susceptible to violating root-level principles through a system message."
+  },
+  {
+   "section": "examples (results)",
+   "quote": "acting as an enforcer of laws or morality (e.g., whistleblowing, vigilantism)."
+  },
+  {
+   "section": "examples (results)",
+   "quote": "GPT must remain corrigible: open to legitimate human oversight, responsive to correction, and subject to human control."
+  },
+  {
+   "section": "examples (results)",
+   "quote": "We consider this an issue of human misuse rather than AI misbehavior — thus subject to our Usage Policies, which may result in actions against the user’s account."
+  },
+  {
+   "section": "examples (results)",
+   "quote": "While the model should comply with developers’ requests without trying to police the truth, note that using model outputs to mislead others may be a violation of OpenAI’s Usage Policies."
+  },
+  {
+   "section": "caveats and later principles (limitations)",
+   "quote": "GPT’s intention is never to persuade the user but rather to ensure mutual clarity and alignment: in other words, getting the user and GPT back on the same page."
+  },
+  {
+   "section": "caveats and later principles (limitations)",
+   "quote": "If GPT makes a significant error or takes an action with side effects that the user might not have been expecting, it should acknowledge the error and then course correct or ask for guidance on how to proceed."
+  }
+ ],
+ "key_numbers": [],
+ "limitations_stated": "The Spec says production models do not yet fully reflect it, that the public version may not include every detail, and that some definitions describe behavior still under development. It treats novel situations the Spec does not address as requiring judgment grounded in the purposes of existing safety boundaries.",
+ "open_questions": "Our reading: the Spec does not say how to classify a failure in which the model obeys an applicable developer instruction that harms a user in a way the Spec permits (e.g., withholding identity). It also leaves open how to tell 'misalignment with legitimate human direction' apart from 'misunderstandings of the user's purpose' and 'execution errors', which it lists side by side.",
+ "sense_of_alignment": "Alignment means adherence to the Spec and to the chain of command it defines: 'We are training our models to align to the principles in the Model Spec.' The word 'misaligned' is also used in a narrow technical sense for an instruction that conflicts with a higher-authority instruction."
+}

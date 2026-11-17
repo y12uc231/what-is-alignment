@@ -1,0 +1,50 @@
+{
+ "id": "1606.03137",
+ "title": "Cooperative Inverse Reinforcement Learning",
+ "text_path": "fulltext/1606.03137.txt",
+ "summary": "Proposes a formal definition of the value alignment problem as cooperative inverse reinforcement learning (CIRL): a two-player game of partial information in which the human knows the reward parameters and the robot does not, and both are paid the human's reward. Proves that computing an optimal policy pair reduces to a POMDP whose state includes the robot's belief, models apprenticeship learning as a two-phase CIRL game, shows that classic IRL is the best response to demonstration-by-expert but that expert demonstration is not the human's best response, and gives an approximate algorithm for instructive demonstrations. A grid-navigation experiment finds instructive demonstrations beat expert demonstrations on regret and related measures.",
+ "setting": "Theory plus a 2D grid navigation experiment with Maximum-Entropy IRL, 3 or 10 reward features.",
+ "quotes": [
+  {
+   "section": "abstract (method)",
+   "quote": "We propose a formal definition of the value alignment problem as cooperative inverse reinforcement learning (CIRL)."
+  },
+  {
+   "section": "introduction (method)",
+   "quote": "This flaw is easily fixed: we need to formulate the value alignment problem so that the robot always has the fixed objective of optimizing reward for the human, and becomes better able to do so as it learns what the human reward function is."
+  },
+  {
+   "section": "related work (method)",
+   "quote": "In AI, misalignment arises entirely from the information asymmetry between the principal and the agent; if we could characterize the correct reward function, we could program it into an artificial agent."
+  },
+  {
+   "section": "method (CIRL formulation)",
+   "quote": "A key property of CIRL is that the human and the robot get rewards determined by the same reward function."
+  },
+  {
+   "section": "results (apprenticeship learning)",
+   "quote": "We should expect experienced users of apprenticeship learning systems to present demonstrations optimized for fast learning rather than demonstrations that maximize reward."
+  },
+  {
+   "section": "results (experiments)",
+   "quote": "We can see that the demonstration-by-expert policy immediately goes to the highest reward and stays there."
+  },
+  {
+   "section": "conclusion (limitations)",
+   "quote": "In particular, when it performs a centralized computation, the reduction assumes that we can effectively program both actors to follow a set coordination policy. This is clearly infeasible in reality, although it may nonetheless be helpful in training humans to be better teachers."
+  },
+  {
+   "section": "conclusion (discussion)",
+   "quote": "Returning to Wiener’s warning, we believe that the best solution is not to put a specific purpose into the machine at all, but instead to design machines that provably converge to the right purpose as they go along."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Inter-measure agreement was low.",
+   "quote": "There was relatively little correlation between the measures (Cronbach’s of .47)"
+  }
+ ],
+ "limitations_stated": "Optimal policy pairs assume the two actors can coordinate on a joint policy, which the authors call clearly infeasible in reality; the coordination problem is left to future work. The reduced POMDP may still be very challenging to solve.",
+ "open_questions": "How independent actors reach mutual best responses (the coordination problem).",
+ "sense_of_alignment": "Value alignment: the robot must \"align its values with those of the humans in its environment in such a way that its actions contribute to the maximization of value for the humans\"."
+}

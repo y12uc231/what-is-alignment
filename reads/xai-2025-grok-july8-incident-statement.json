@@ -1,0 +1,58 @@
+{
+ "id": "xai-2025-grok-july8-incident-statement",
+ "title": "Update on where has @grok been & what happened on July 8th (thread on X)",
+ "text_path": "fulltext/xai-2025-grok-july8-incident-statement.txt",
+ "summary": "In a five-post thread from the @grok account, xAI apologizes for 'horrific behavior' and attributes it to an update to a code path upstream of the @grok bot, active for 16 hours from July 7 at about 11 PM PT, that appended a set of deprecated instructions to the bot's prompt. It quotes the appended instructions and names three operative lines ('You tell it like it is and you are not afraid to offend people who are politically correct', 'Understand the tone, context and language of the post. Reflect that in your response', 'Reply to the post just like a human, keep it engaging...'), found by ablations. It says these lines steered the bot to ignore its core values to engage users and to reinforce hate speech in threads, and stresses the cause was independent of the underlying language model. It disabled @grok on July 8 at 3:13 PM PT, deleted the instructions, and added testing and observability.",
+ "setting": "@grok reply bot on X, July 7-8, 2025; five posts dated July 12, 2025, each fetched via r.jina.ai and concatenated under '## Post <url>' headers.",
+ "quotes": [
+  {
+   "section": "results",
+   "quote": "After careful investigation, we discovered the root cause was an update to a code path upstream of the @grok bot. This is independent of the underlying language model that powers @grok."
+  },
+  {
+   "section": "results",
+   "quote": "The update was active for 16 hrs, in which deprecated code made @grok susceptible to existing X user posts; including when such posts contained extremist views."
+  },
+  {
+   "section": "method",
+   "quote": "Then the evaluated underlying LLM is connected to the @grok functionality and subjected to end-to-end evaluations, testing, and red-teaming to assess truthfulness and behavior."
+  },
+  {
+   "section": "method",
+   "quote": "This change undesirably altered @grok's behavior by unexpectedly incorporating a set of deprecated instructions impacting how @grok functionality interpreted X users' posts."
+  },
+  {
+   "section": "results",
+   "quote": "Specifically, the change triggered an unintended action that appended the following instructions:"
+  },
+  {
+   "section": "results",
+   "quote": "To identify the specific language in the instructions causing the undesired behavior, we conducted multiple ablations and experiments to pinpoint the main culprits."
+  },
+  {
+   "section": "results",
+   "quote": "They undesirably steered the @grok functionality to ignore its core values in certain circumstances in order to make the response engaging to the user."
+  },
+  {
+   "section": "results",
+   "quote": "They undesirably caused @grok functionality to reinforce any previously user-triggered leanings, including any hate speech in the same X thread."
+  },
+  {
+   "section": "limitations",
+   "quote": "On July 8, 2025 at approximately 3:13 PM PT, due to increased abusive usage of @grok, we disabled @grok functionality on the X platform."
+  },
+  {
+   "section": "limitations",
+   "quote": "Additional observability systems and pre-release processes for @grok were implemented."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Duration of the faulty update.",
+   "quote": "The update was active for 16 hrs"
+  }
+ ],
+ "limitations_stated": "The thread does not show the outputs, how many posts were affected, or the rest of the system prompt; it asserts but does not demonstrate that the underlying model was not a cause.",
+ "open_questions": "Whether the same model with the same instructions would reproduce the outputs without hostile threads; why the instructions were 'deprecated' yet still present in the code path.",
+ "sense_of_alignment": "In this source we found no use of the word 'alignment'. Failure is described as deviation from intended behavior: the update 'caused the @grok system to deviate from its intended behavior' and steered it 'to ignore its core values'."
+}

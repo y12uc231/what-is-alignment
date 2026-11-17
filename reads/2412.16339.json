@@ -1,0 +1,102 @@
+{
+ "id": "2412.16339",
+ "title": "Deliberative Alignment: Reasoning Enables Safer Language Models",
+ "text_path": "fulltext/2412.16339.txt",
+ "summary": "OpenAI describes the safety training used for its o-series reasoning models. Stage 1 builds (prompt, CoT, output) data by context distillation: a reasoning model trained only for helpfulness is prompted with a category-specific safety specification and told to cite it; a spec-aware reasoning judge scores each completion several times and keeps high-scoring ones (minimum over runs); the spec is then stripped from the prompt and the model is fine-tuned so it learns to recall and reason over the spec unprompted. Stage 2 is RL in which the same spec-aware judge provides reward on the answer, with the CoT hidden from the judge. o1 is reported to improve jailbreak robustness (StrongREJECT goodness@0.1 of 0.88) while keeping XSTest over-refusal accuracy at 0.93. Ablations on a reduced o1-mini setup show that safety data in both SFT and RL beats either alone and beats placing the spec in the system prompt at inference. A model trained without non-English or encoded safety data performs comparably on multilingual and encoding jailbreaks to one trained on all safety data. More inference-time compute improves StrongREJECT and regulated-advice style but leaves other evals flat.",
+ "setting": "OpenAI o1-preview, o1, o3-mini (production); ablations on a reduced-setup o1-mini variant. Internal prompts with safety-category labels; internal spec with content policies (allowed / disallowed / requires safe completion) and style guidelines. Evals: internal challenging refusal set, Toxic WildChat, StrongREJECT goodness@0.1 (human-review validated), XSTest, internal transformation-exception and policy overrefusal sets, SimpleQA, BBQ; external comparison to Gemini 1.5 Pro/Flash and Claude 3.5 Haiku/Sonnet. Error bars are bootstrap over the evaluation set, not over training seeds.",
+ "quotes": [
+  {
+   "section": "introduction",
+   "quote": "We construct this dataset using context distillation [10, 11] and an o-type model trained only for helpfulness (i.e. trained without any safety-relevant data)."
+  },
+  {
+   "section": "introduction",
+   "quote": "In the second stage, we use high-compute RL to train the model to think more effectively. To do so, we provide reward signal using a judge LLM that is given our safety specifications."
+  },
+  {
+   "section": "method",
+   "quote": "The score assigned to each of these individual completion is the minimum score across the runs — we take the minimum because any single run may overlook an issue with the completion."
+  },
+  {
+   "section": "method",
+   "quote": "By removing any context about the safety specification from the prompt, we teach the model to be able to recall the relevant parts of the spec and reason about them even when they are not directly provided in the conversational context."
+  },
+  {
+   "section": "method",
+   "quote": "We avoid applying direct optimization pressure on the CoT during RL to enable the underlying model to reduce the chance of encouraging deceptive CoTs."
+  },
+  {
+   "section": "method",
+   "quote": "While the SFT portion of our method was used for all o-series models, this particular reward signal for RL was added for training the o1 model and o3-mini."
+  },
+  {
+   "section": "results",
+   "quote": "In particular, o1 outperforms other leading models on StrongREJECT, achieving a goodness@0.1 of 0.88. On XSTest, o1 achieves a high overrefusal accuracy of 0.93, lagging behind only Gemini flash (0.94), which has quite low robustness on StrongREJECT (goodness@0.1 of 0.05)."
+  },
+  {
+   "section": "results",
+   "quote": "These error bars primarily reflect the variability due to dataset size rather than variance due to training."
+  },
+  {
+   "section": "results",
+   "quote": "Figure 13 shows a clear trend of improved model performance on the StrongREJECT and regulated advice safe completion style benchmarks, while other evals remained relatively flat."
+  },
+  {
+   "section": "results",
+   "quote": "As expected, the “Safety in SFT & RL” performs much better than the “No safety training” run in terms of disallowed content, response style, and jailbreaks, although in this specific ablation setup the safety training also increases overrefusals."
+  },
+  {
+   "section": "results",
+   "quote": "Despite having access to the full spec, this baseline appears to learn less safety behavior than the model trained with deliberative alignment (and in many cases, even the model only trained with safety in the SFT stage)."
+  },
+  {
+   "section": "results",
+   "quote": "Notably, the model that has never been safety trained on encoding or non-english data performs comparably to the model trained with all the safety data, demonstrating clear out-of-distribution generalization."
+  },
+  {
+   "section": "discussion",
+   "quote": "However, this encouraging trend may not persist indefinitely. As AI models grow more sophisticated, they could develop goals that diverge from those intended by their developers."
+  },
+  {
+   "section": "discussion",
+   "quote": "The method also allows us to specify the boundary between compliance, refusal, and safe completion in finer detail than was possible before."
+  },
+  {
+   "section": "discussion",
+   "quote": "We are encouraged by Deliberative Alignment’s effectiveness on improving alignment to OpenAI’s policy specifications and robustness to jailbreaks."
+  },
+  {
+   "section": "discussion",
+   "quote": "We anticipate OpenAI’s policies will keep evolving, but that training models to precisely follow the current defined set of policies is essential: This practice helps us build the skills for aligning with any policy requirements, providing invaluable preparation for future scenarios where the stakes are extremely high or where strict adherence to policies is critical."
+  },
+  {
+   "section": "method",
+   "quote": "The specifications that we aim to align our model with consist of content policies for different safety categories, as well as style guidelines for how to respond."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "o1 StrongREJECT goodness@0.1 is 0.88 and XSTest over-refusal accuracy is 0.93.",
+   "quote": "In particular, o1 outperforms other leading models on StrongREJECT, achieving a goodness@0.1 of 0.88."
+  },
+  {
+   "claim": "o1 gives safe completions on 98% of Toxic WildChat without external filters.",
+   "quote": "On WildChat, o1 maintains a high rate of safe completions (98%) without the use of external safety filters."
+  },
+  {
+   "claim": "Policy retrieval accuracy for safe-completion prompts is 0.91 and 0.54 for compliance prompts.",
+   "quote": "For safe completion prompts, the safety-trained model achieves a particularly high policy retrieval accuracy of 0.91."
+  },
+  {
+   "claim": "Detailed content policies are 5-10K tokens each, too long to place all in context.",
+   "quote": "Note that it is infeasible to include the detailed versions of the content policies for all safety categories, because each one spans 5-10K tokens and would altogether exceed the model’s context window."
+  },
+  {
+   "claim": "StrongREJECT human review used 60 forbidden prompts x 35 jailbreak techniques = 2,100 prompts.",
+   "quote": "This process resulted in 2,100 adversarial prompts presented to each model."
+  }
+ ],
+ "limitations_stated": "The authors note that the encouraging trend (better reasoning enabling better alignment) may not persist as models grow more capable and could develop diverging goals; they point to CoT monitoring for deception as complementary work. They note that o1-preview and GPT-4o were measured against a safe-completion style standard they were not trained on, that StrongREJECT compositional jailbreaks sometimes confused the autograder (hence human review), that error bars reflect dataset size rather than training variance, and that in the ablation setup safety training increased over-refusals.",
+ "open_questions": "Our reading for spec research: deliberative alignment is the clearest published recipe in which the spec text itself is the training signal (spec-citing chain of thought plus a spec-aware judge as RL reward). Open: how much of the gain comes from the spec text versus the judge; how it behaves on conflicts between spec clauses rather than on content-policy categories; independent replication on open models.",
+ "sense_of_alignment": "Alignment means adherence to written safety specifications: the method 'teaches the model safety specifications' and the authors report 'improving alignment to OpenAI’s policy specifications'. The discussion also uses a second sense, models that 'develop goals that diverge from those intended by their developers'."
+}

@@ -1,0 +1,58 @@
+{
+ "id": "2109.13916",
+ "title": "Unsolved Problems in ML Safety",
+ "text_path": "fulltext/2109.13916.txt",
+ "summary": "Position paper that defines ML Safety research and splits it into four problem areas: robustness (black-swan and tail-risk robustness, adversarial robustness), monitoring (anomaly detection including malicious use, calibration, honest and truthful outputs, backdoors, emergent hazardous capabilities), alignment (objectives that are hard to specify, hard to optimize, brittle proxies open to gaming, and proxies with unintended consequences), and systemic safety (ML for cybersecurity, improved epistemics and decision making). Each area has a motivation and research directions. An appendix gives a risk-management framing in which robustness reduces vulnerability, monitoring reduces exposure, alignment makes systems inherently less hazardous, and systemic safety reduces systemic hazards.",
+ "setting": "Position paper; no experiments. Examples include the 2010 Flash Crash, a boat-racing RL agent, Ofria's digital organisms, recommender clickthrough, GPT-3 emergent arithmetic.",
+ "quotes": [
+  {
+   "section": "introduction (framework)",
+   "quote": "We identify four problem areas that would help make progress on ML Safety: robustness, monitoring, alignment, and systemic safety."
+  },
+  {
+   "section": "introduction (framework)",
+   "quote": "We define ML Safety research as ML research aimed at making the adoption of ML more beneficial, with emphasis on long-term and long-tail risks."
+  },
+  {
+   "section": "robustness (method)",
+   "quote": "Robustness work could also move beyond classification and consider competent errors where agents misgeneralize and execute wrong routines, such as an automated digital assistant knowing how to use a credit card to book flights, but choosing the wrong destination [101, 91]."
+  },
+  {
+   "section": "monitoring (results)",
+   "quote": "These models generate distinct explanations when asked to explain again, generate more misconceptions as they become larger [123], and sometimes generate worse answers when they know how to generate better answers [34]."
+  },
+  {
+   "section": "monitoring (results)",
+   "quote": "Advanced ML agents may be inadvertently incentivized to be deceptive not out of malice but simply because doing so may help maximize their human approval objective."
+  },
+  {
+   "section": "alignment (method)",
+   "quote": "While most technologies do not have goals and are simply tools, future machine learning systems may be more agent-like. How can we build ML agents that prefer good states of the world and avoid bad ones?"
+  },
+  {
+   "section": "alignment (results)",
+   "quote": "Thus a system’s explicitly written objective is not necessarily the objective that the system operationally pursues, and this can result in misalignment."
+  },
+  {
+   "section": "alignment (results)",
+   "quote": "In a boat racing game, an RL agent gained a high score not by finishing the race but by going in the wrong direction, catching on fire, and colliding into other boats [36]."
+  },
+  {
+   "section": "conclusion (limitations)",
+   "quote": "Even if it is possible to create aligned objectives for ML systems, Black Swan events could cause ML systems to misgeneralize and pursue incorrect goals, malicious actors may launch adversarial attacks or compromise the software on which the ML system is running, and humans may need to monitor for emergent functionality and the malicious use of ML systems."
+  },
+  {
+   "section": "conclusion (limitations)",
+   "quote": "This work presented a non-exhaustive list of four unsolved research problems, all of which are interconnected and interdependent."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Boeing 737 MAX crashes cited as a safety-shortcut example killed 346 people.",
+   "quote": "Boeing’s defective model led to two crashes across a span of five months that killed 346 people"
+  }
+ ],
+ "limitations_stated": "The authors call the list of problems non-exhaustive and say the systemic safety section is non-exhaustive. The appendix says the importance/neglectedness/tractability table is a rough snapshot with limitations.",
+ "open_questions": "How to make learned reward functions adversarially robust; how to detect deception and emergent capabilities; how to measure hard-to-define values such as wellbeing; how to detect hidden functionality that is obfuscated.",
+ "sense_of_alignment": "Alignment as one of four ML Safety areas: \"Alignment research aims to create and safely optimize ML system objectives\", asking \"How can we build ML agents that prefer good states of the world and avoid bad ones?\""
+}

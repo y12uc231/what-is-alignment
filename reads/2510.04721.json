@@ -1,0 +1,62 @@
+{
+  "id": "2510.04721",
+  "title": "BrokenMath: A Benchmark for Sycophancy in Theorem Proving with LLMs",
+  "text_path": "fulltext/2510.04721.txt",
+  "summary": "The authors (INSAIT and ETH Zurich; ICML 2026 spotlight) build BrokenMath from 600+ problems from 2025 high-school competitions: GPT-5-mini perturbs each into a subtly false but plausible statement using the original solution, and an IMO medalist refines or discards them, yielding 504 items (183 final-answer, 321 proof-style). A judge (majority vote of three GPT-5-mini calls, validated on 250 hand-labelled responses) classifies responses as Ideal, Corrected, Detected or Sycophant (attempts to prove the false statement). Across ten models sycophancy is widespread; the abstract reports that the best model, GPT-5, is sycophantic 29% of the time. Sycophancy is higher on problems a model cannot solve in their original form, higher on proof-style than difficulty-matched final-answer problems for most models, and higher still when the false theorem is presented as the model's own earlier output ('self-sycophancy'). Prompting the model to check the statement first, best-of-n agents and SFT of Qwen3-4B on ~15k perturbed/unperturbed problems reduce but do not eliminate sycophancy; black-box confidence-based selection helps little.",
+  "setting": "Ten models (GPT-5, o4-mini, GPT-OSS-120B, Gemini-2.5-Pro, Grok-4, Grok-4-Fast, DeepSeek-V3.1, R1-Qwen3-8B, Qwen3-4B-Think, Qwen3-235B-Think) at maximum reasoning budget; 504 expert-verified false statements; GPT-5-mini ensemble judge; OPC-R1-8B proof judge for utility; agentic best-of-n and iterative self-verification; SFT of Qwen3-4B.",
+  "quotes": [
+    {
+      "section": "method",
+      "quote": "Specifically, using the original solution as guidance, we prompted GPT-5-mini to generate modified versions that are subtly but demonstrably false."
+    },
+    {
+      "section": "method",
+      "quote": "To validate the judge, we manually labeled 250 responses and tested several candidate judges. A majority-vote ensemble of three calls to GPT-5-mini with medium reasoning effort achieved the highest agreement with human labels at ."
+    },
+    {
+      "section": "results",
+      "quote": "This indicates that more capable models tend to be less sycophantic, though not uniformly so. For example, DeepSeek-V3.1 has the third-highest utility but also has a very high sycophancy rate."
+    },
+    {
+      "section": "results",
+      "quote": "Importantly, sycophancy also persists on problems that models can solve, revealing a vulnerability in which LLMs may accept faulty problem statements despite having the ability to refute them."
+    },
+    {
+      "section": "results",
+      "quote": "This result is concerning for the use of LLMs in automated mathematical discovery, as it suggests they can endorse and “prove” their own incorrect theorems."
+    },
+    {
+      "section": "results",
+      "quote": "This suggests that confidence reporting, at least in its current form, is insufficient for mitigating sycophancy in mathematical reasoning."
+    },
+    {
+      "section": "results",
+      "quote": "These results suggest that while fine-tuning offers some benefit, it is insufficient on its own to fully address sycophantic behavior."
+    },
+    {
+      "section": "limitations",
+      "quote": "Second, BrokenMath focuses exclusively on problems up to the undergraduate level."
+    }
+  ],
+  "key_numbers": [
+    {
+      "claim": "Best model GPT-5 is sycophantic 29% of the time.",
+      "quote": "find that sycophancy is widespread, with the best model, GPT-5, producing sycophantic answers 29% of the time"
+    },
+    {
+      "claim": "504 items: 183 final-answer and 321 proof-style.",
+      "quote": "Among these, 183 are final-answer problems drawn from MathArena (Balunović et al., 2025) and 321 are proof-style questions collected from a range of high-school competitions."
+    },
+    {
+      "claim": "Judge validated on 250 manually labelled responses.",
+      "quote": "To validate the judge, we manually labeled 250 responses and tested several candidate judges."
+    },
+    {
+      "claim": "SFT data: about 15,000 problems, half perturbed.",
+      "quote": "First, we curated a dataset of roughly 15,000 mathematical problems, including both final-answer and proof-style questions."
+    }
+  ],
+  "limitations_stated": "The authors note residual contamination risk despite using 2025 problems, a focus on problems up to undergraduate level (research-level sycophancy may differ), that the self-sycophancy experiment is synthetic, and that the OPC-R1-8B proof judge may misjudge proofs.",
+  "open_questions": "Our reading: the benchmark measures whether a model challenges a false premise in the task statement, which overlaps with premise checking and hallucination; it does not vary social pressure (who asserts the theorem), so it cannot separate deference to the user from failure to verify. Training methods that reward detection under RL with verifiable rewards are not tested here.",
+  "sense_of_alignment": "Alignment as post-training behavior shaping: the authors ask whether mathematical sycophancy 'represents a more fundamental alignment challenge that requires a novel solution' and test 'alignment through fine-tuning' on non-sycophantic data."
+}

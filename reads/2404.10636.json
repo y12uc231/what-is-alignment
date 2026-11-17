@@ -1,0 +1,25 @@
+{
+  "id": "2404.10636",
+  "title": "What are human values, and how do we align AI to them?",
+  "text_path": "fulltext/2404.10636.txt",
+  "summary": "The paper argues that alignment research usually sidesteps 'good for whom' by targeting operator intent, and that this is insufficient because users may intend harm and faithful intent-following can harm others. It splits 'aligning to human values' into elicitation, reconciliation into an 'alignment target' (a data structure turnable into an objective), and training, and focuses on the first two. It proposes six criteria for an alignment target (fine-grained, generalizable, scalable, robust, legitimate, auditable), defines values as non-instrumental choice criteria (after Taylor) operationalized as 'values cards' with attentional policies, and builds a 'moral graph' of context-specific 'wiser than' edges via Moral Graph Elicitation (an LLM interviewer plus voting). A case study with 500 representative Americans on three divisive prompts yields 85 values and 100 edges; 89.1% felt well represented and 89% judged the graph fair; values generalized across scenarios (38.2% vs 38.3% selection).",
+  "setting": "Moral Graph Elicitation run with 500 US participants (Prolific, representative on age, sex, political affiliation) on 3 prompts (e.g., abortion advice), using GPT-4 for interviews; compared against pol.is/CCAI deliberations. No model was trained on the graph.",
+  "quotes": [
+    {"section": "introduction", "quote": "Most often, alignment research sidesteps this question by focusing on alignment with operator intent-building systems that do what the user tells it to do-with the motivation that this will avert the most severe catastrophic and existential risks."},
+    {"section": "method", "quote": "Values are criteria, used in choice, which are not merely instrumental (Taylor, 1977)."},
+    {"section": "method", "quote": "A data structure that can be turned into an objective function, which can then be approximately optimized in the training of a machine learning model."},
+    {"section": "results", "quote": "Participants chose cards articulated for their selected scenario 38.2%"},
+    {"section": "results", "quote": "89% of participants agreed that it did."},
+    {"section": "discussion", "quote": "However, outer alignment research rarely considers the legitimacy of the process that produces the objective function to optimize."},
+    {"section": "limitations", "quote": "The case study was done on a representative sample of Americans, due to cost constraints."},
+    {"section": "limitations", "quote": "Finally, we don't yet know if users will prefer interacting with a model fine-tuned on the moral graph."}
+  ],
+  "key_numbers": [
+    {"claim": "89.1% of participants felt well represented by the process.", "quote": "almost all participants (89.1%) felt well represented by the process"},
+    {"claim": "Moral graph size: 85 deduplicated values, 100 edges; median completion 15 minutes.", "quote": "the final output was a moral graph with 85 deduplicated values, and 100 edges"},
+    {"claim": "Unresolvable conflicts omitted about 4% of the time.", "quote": "we do this rarely, about 4% of the time"}
+  ],
+  "limitations_stated": "US-only sample due to cost; 15 minutes and about 35k tokens per participant; no answer for win-lose power questions (cycles); human values may not suit LLM contexts; GPT-4 story generation can bias participants; no model was yet fine-tuned on the graph, so user preference for such a model is unknown.",
+  "open_questions": "Whether moral graphs work across cultures; how to train models on them; whether a model trained on a moral graph behaves better; how to handle irreconcilable conflicts.",
+  "sense_of_alignment": "Alignment to human values as an alternative to intent alignment: 'how can we ensure what is optimized by machine learning models is good?', operationalized through a legitimate, elicited 'alignment target'."
+}

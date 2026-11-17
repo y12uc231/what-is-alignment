@@ -1,0 +1,772 @@
+# Definition cards (lm-era) (2022-2023 language-model era framings of alignment)
+
+- id: def-ouyang-2022-user-intent
+  source: "2203.02155"
+  year: 2022
+  term: "Aligning language models (with user intentions)"
+  definition_quote: "We make progress on aligning language models by training them to act in accordance with the user’s intention (Leike et al.,, 2018). This encompasses both explicit intentions such as following instructions and implicit intentions such as staying truthful, and not being biased, toxic, or otherwise harmful."
+  target: intentions
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Explicit intentions: following the instruction.", quote: "both explicit intentions such as following instructions"}
+    - {claim: "Implicit intentions: truthfulness and avoiding bias, toxicity and harm are counted inside alignment.", quote: "implicit intentions such as staying truthful, and not being biased, toxic, or otherwise harmful"}
+    - {claim: "Making things up, toxic text and not following instructions are called unintended behaviors that follow from a misaligned training objective.", quote: "However, these models often express unintended behaviors such as making up facts, generating biased or toxic text, or simply not following user instructions"}
+    - {claim: "The abstract equates untruthful, toxic or unhelpful outputs with being not aligned with users.", quote: "For example, large language models can generate outputs that are untruthful, toxic, or simply not helpful to the user. In other words, these models are not aligned with their users."}
+  excludes:
+    - {claim: "The procedure aligns to a specific group's stated preferences, not to a broad notion of human values.", quote: "This procedure aligns the behavior of GPT-3 to the stated preferences of a specific group of people (mostly our labelers and researchers), rather than any broader notion of “human values”"}
+    - {claim: "Misuse is a separate risk that better alignment with user intent can increase.", quote: "However, making language models better at following user intentions also makes them easier to misuse."}
+    - {claim: "Alignment techniques are one part of safety, not all of it; misuse and inappropriate deployment domains are named as separate issues.", quote: "Alignment techniques are not a panacea for resolving safety issues associated with large language models; rather, they should be used as one tool in a broader safety ecosystem. Aside from intentional misuse, there are many domains where large language models should be deployed only with great care, or not at all."}
+  notes: "Our reading: this is the definition that carried the word 'alignment' into chat-model work. It folds truthfulness and harmlessness into the user's 'implicit' intentions, so a request for harmful content creates a conflict inside the definition that the paper resolves by policy (helpfulness in training, truthfulness and harmlessness in final evaluation). It is defined by output behavior judged by labelers, not by what the model is trying to do."
+
+- id: def-ouyang-2022-hhh-operational
+  source: "2203.02155"
+  year: 2022
+  term: "Aligned model (helpful, honest, harmless; operational definition)"
+  definition_quote: "To evaluate how “aligned” our models are, we first need to clarify what alignment means in this context. The definition of alignment has historically been a vague and confusing topic, with various competing proposals (Chen et al.,, 2021; Leike et al.,, 2018; Gabriel,, 2020). Following Leike et al., (2018), our aim is to train models that act in accordance with user intentions. More practically, for the purpose of our language tasks, we use a framework similar to Askell et al., (2021), who define models to be aligned if they are helpful, honest, and harmless."
+  target: intentions
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Helpful includes inferring intent from few-shot or implicit prompts, judged by labelers.", quote: "To be helpful, the model should follow instructions, but also infer intention from a few-shot prompt or another interpretable pattern"}
+    - {claim: "Honest is replaced in practice by truthfulness measures: hallucination on closed-domain tasks and TruthfulQA.", quote: "Instead, we measure truthfulness—whether the model’s statements about the world are true—using two metrics"}
+    - {claim: "Harmless is measured by proxy criteria such as inappropriateness for a customer assistant, denigrating a protected class, sexual or violent content.", quote: "we have labelers evaluate whether an output is inappropriate in the context of a customer assistant, denigrates a protected class, or contains sexual or violent content."}
+    - {claim: "Training labels put helpfulness first; final evaluations put truthfulness and harmlessness first.", quote: "Of particular note, during the labeling of our training data, we had labelers prioritize helpfulness to the user as the most important criteria (above truthfulness and harmlessness), whereas in our final evaluations we had labelers prioritize truthfulness and harmlessness."}
+    - {claim: "Refusal training is flagged as future work with a risk of over-refusal.", quote: "Also, there is a risk that models could over-generalize and refuse innocuous instructions, which would be undesirable for most applications."}
+  excludes:
+    - {claim: "Honesty in the belief-tracking sense is not measured because the model's beliefs cannot be read.", quote: "It is unclear how to measure honesty in purely generative models; this requires comparing the model’s actual output to its “belief” about the correct output, and since the model is a big black box, we can’t infer its beliefs."}
+    - {claim: "Labeler-judged intent may differ from what the user actually intended.", quote: "However, since our labelers are not the users who generated the prompts, there could be a divergence between what a user actually intended and what the labeler thought was intended from only reading the prompt."}
+    - {claim: "The truthfulness metrics capture only part of truthfulness.", quote: "Needless to say, this only captures a small part of what is actually meant by truthfulness."}
+  notes: "Our reading: the operational definition makes 'aligned' a property scored by labeler preference and proxy harm labels. It explicitly separates honesty (output vs. belief) from truthfulness (output vs. world) and admits only truthfulness is measured, which is where hallucination enters 'alignment' metrics even when it may be a knowledge error."
+
+- id: def-ouyang-2022-misaligned-objective
+  source: "2203.02155"
+  year: 2022
+  term: "Misaligned (training objective)"
+  definition_quote: "This is because the language modeling objective used for many recent large LMs—predicting the next token on a webpage from the internet—is different from the objective “follow the user’s instructions helpfully and safely” (Radford et al.,, 2019; Brown et al.,, 2020; Fedus et al.,, 2021; Rae et al.,, 2021; Thoppilan et al.,, 2022). Thus, we say that the language modeling objective is misaligned."
+  target: instructions
+  principal: user
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Next-word prediction is called a proxy for what is wanted.", quote: "By default, language models optimize the next word prediction objective, which is only a proxy for what we want these models to do."}
+  excludes: []
+  notes: "Our reading: here 'misaligned' is applied to a training objective rather than to a model or its goals: the objective is misaligned because it differs from the intended one. This is a specification-level use of the word, closer to outer alignment than to claims about model motivation."
+
+- id: def-ouyang-2022-alignment-tax
+  source: "2203.02155"
+  year: 2022
+  term: "Alignment tax"
+  definition_quote: "We were able to mitigate most of the performance degradations introduced by our fine-tuning. If this was not the case, these performance degradations would constitute an alignment tax—an additional cost for aligning the model. Any technique with a high tax might not see adoption."
+  target: not-stated
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Benchmark regressions after RLHF are given as an example.", quote: "This is an example of an “alignment tax” since our alignment procedure comes at the cost of lower performance on certain tasks that we may care about."}
+    - {claim: "A high tax creates an incentive to use unaligned but more capable models.", quote: "We want an alignment procedure that avoids an alignment tax, because it incentivizes the use of models that are unaligned but more capable on these tasks."}
+  excludes: []
+  notes: "Our reading: the tax concept presupposes that alignment and capability are separable quantities that can trade off. The paper measures the tax as capability loss on public NLP datasets, so the term refers to a capability cost of an alignment procedure, not to an alignment failure."
+
+- id: def-ouyang-2022-who-aligning-to
+  source: "2203.02155"
+  year: 2022
+  term: "Alignment target in practice (whose preferences)"
+  definition_quote: "The literature often frames alignment using such terms as “human preferences” or “human values.” In this work, we have aligned to a set of labelers’ preferences that were influenced, among others things, by the instructions they were given, the context in which they received them (as a paid job), and who they received them from."
+  target: preferences
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Training labelers are one reference group.", quote: "First, we are aligning to demonstrations and preferences provided by our training labelers"}
+    - {claim: "The researchers and, by proxy, the organization are a second.", quote: "Second, we are aligning to our preferences, as the researchers designing this study (and thus by proxy to our broader research organization, OpenAI)"}
+    - {claim: "API customers are a third, and their goals may diverge from end users'.", quote: "Customers and their end users may disagree or customers may not be optimizing for end users’ well-being"}
+  excludes:
+    - {claim: "The paper does not claim these are the right sources of preferences.", quote: "We are not claiming that researchers, the labelers we hired, or our API customers are the right source of preferences."}
+    - {claim: "Aligning to everyone at once is called impossible.", quote: "it is impossible that one can train a system that is aligned to everyone’s preferences at once, or where everyone would endorse the tradeoffs."}
+    - {claim: "The paper names, and sets aside, the distinctions among instructions, intentions, preferences, interests and values.", quote: "As discussed in detail in Gabriel, (2020), there are subtle differences between aligning to instructions, intentions, revealed preferences, ideal preferences, interests, and values."}
+  notes: "Our reading: within one paper the stated principal shifts from 'the user' (Section 1) to a stack of labelers, researchers, customers and end users (Section 5.2). This makes the 'whose intent?' question explicit for chat models and shows that the user-intent definition is a simplification the authors chose ('for simplicity')."
+
+- id: def-openai-2022-values-and-intent
+  source: openai-2022-our-approach-to-alignment-research
+  year: 2022
+  term: "AGI alignment (aligned with human values and follow human intent)"
+  definition_quote: "Our alignment research aims to make artificial general intelligence (AGI) aligned with human values and follow human intent."
+  target: intentions
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The working program is a scalable training signal aligned with human intent.", quote: "At a high-level, our approach to alignment research focuses on engineering a scalable training signal for very smart AI systems that is aligned with human intent."}
+    - {claim: "InstructGPT's explicit and implicit intent, now including fairness and safety, is presented as alignment.", quote: "These models are trained to follow human intent: both explicit intent given by an instruction as well as implicit intent such as truthfulness, fairness, and safety."}
+    - {claim: "Refusing harmful tasks and avoiding bias or toxicity are counted as parts of being fully aligned.", quote: "Yet today’s versions of InstructGPT are quite far from fully aligned: they sometimes fail to follow simple instructions, aren’t always truthful, don’t reliably refuse harmful tasks, and sometimes give biased or toxic responses."}
+    - {claim: "Telling evaluators what they want to hear instead of the truth is named as a risk of RLHF.", quote: "Our models might learn to tell our human evaluators what they want to hear instead of telling them the truth."}
+  excludes:
+    - {claim: "The question of to whom systems should be aligned is set aside as a sociotechnical challenge outside the post.", quote: "Aligning AI systems with human values also poses a range of other significant sociotechnical challenges, such as deciding to whom these systems should be aligned. Solving these problems is important to achieving our mission, but we do not discuss them in this post."}
+    - {claim: "Robustness and interpretability are named as related areas the agenda underemphasizes.", quote: "The path laid out here underemphasizes the importance of robustness and interpretability research, two areas OpenAI is currently underinvested in."}
+  notes: "Our reading: the post joins 'human values' and 'human intent' in one sentence without choosing between them, then works only on intent. Compared with the InstructGPT paper, 'don’t reliably refuse harmful tasks' is now listed as a shortfall from full alignment, so harm refusal moves inside the definition even though it can conflict with the user's explicit intent."
+
+- id: def-openai-2022-rlhf-evaluation-limit
+  source: openai-2022-our-approach-to-alignment-research
+  year: 2022
+  term: "Limit of RLHF as an alignment technique (human evaluation)"
+  definition_quote: "RL from human feedback has a fundamental limitation: it assumes that humans can accurately evaluate the tasks our AI systems are doing."
+  target: human-approval
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Aligning today's API models is described as easier because humans can supervise them.", quote: "Aligning our API is much easier than aligning AGI since most tasks on our API aren’t very hard for humans to supervise and our deployed language models aren’t smarter than humans."}
+    - {claim: "RLHF is not expected to suffice for AGI.", quote: "We don’t expect RL from human feedback to be sufficient to align AGI, but it is a core building block for the scalable alignment proposals that we’re most excited about"}
+  excludes:
+    - {claim: "The hardest parts of alignment may lie outside the training-signal problem.", quote: "The hardest parts of the alignment problem might not be related to engineering a scalable and aligned training signal for our AI systems."}
+  notes: "Our reading: this states the condition under which 'alignment as RLHF' and 'alignment as intent' come apart: when humans cannot evaluate the output, a model optimized for approval can diverge from the truth. It anticipates the later superalignment framing."
+
+- id: def-leike-2022-alignment-vs-capability
+  source: leike-2022-what-is-the-alignment-problem
+  year: 2022
+  term: "Alignment (versus capability)"
+  definition_quote: "Alignment: The AI system does the intended task as well as it could."
+  target: intentions
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The intended task is usually what the human wanted.", quote: "Usually we talk about alignment with human intentions. In this case the intended task is whatever the human wanted the system to do."}
+    - {claim: "Misaligned systems are 'not on your team', often just playing a different game.", quote: "Misaligned systems are ones that “don’t play on your team.” They might be playing against you, but most times they aren’t with or against you, they are just playing a different game."}
+    - {claim: "Today's LLM failures to follow explicit and implicit intentions (toxicity, harmful advice, making things up) are named alignment problems.", quote: "Today the most obvious misalignment problems in AI are exhibited by large language models: there are a lot of ways in which today’s large language models don’t act in accordance with our intentions."}
+    - {claim: "Following an employer's instruction to withhold an answer from a customer is given as an alignment problem relative to the customer.", quote: "or because they have been instructed by their employer not to tell me the answer (alignment problem)?"}
+  excludes:
+    - {claim: "Capability is the complementary ingredient: whether the system could do the task.", quote: "Capability: The AI system could do the intended task."}
+    - {claim: "Failure to do the intended task is always capability, alignment, or both.", quote: "Thus if the system doesn’t do the intended task, then this is always due to a capability problem, an alignment problem, or both."}
+    - {claim: "Not knowing the answer is a capability problem.", quote: "is this because they don’t know the answer (capability problem)"}
+    - {claim: "To show misalignment one must show the system could have done the task.", quote: "if a system doesn’t perform the task, we need to prove that it could do the task to show that it’s misaligned."}
+  notes: "Our reading: this is the cleanest statement in the corpus of the capability/alignment split that our verdict rules use ('could it?'). It is defined by performance relative to the system's own ability, not by goals. The customer-service example takes the perspective of the person served (the customer), so obeying the employer counts as misalignment toward the customer; that differs from treating the developer or operator as the principal."
+
+- id: def-leike-2022-hard-problem
+  source: leike-2022-what-is-the-alignment-problem
+  year: 2022
+  term: "Hard problem of alignment"
+  definition_quote: "How do we align systems on tasks that are difficult for humans to evaluate?"
+  target: intentions
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "As tasks get harder, humans cannot tell whether behavior captures their intent.", quote: "As tasks get harder, it also becomes harder for humans to evaluate whether a given behavior captures their intent."}
+    - {claim: "RLHF does not apply because the system might fool evaluators.", quote: "Humans can’t check everything the system does because the system might try to fool us in ways that are hard for us to detect."}
+  excludes:
+    - {claim: "Today's LLM problems are said to be pretty different from the hard problem.", quote: "However, today’s problems are pretty different from the problems we ultimately have to face when we have AI systems that are smarter than us."}
+  notes: "Our reading: the essay splits 'alignment' into an easy, present-day version (follow explicit and implicit intentions in chat models) and a hard, future version (evaluation beyond human ability). This two-tier usage recurs in the OpenAI agenda and the superalignment announcement."
+
+- id: def-leike-2022-alignment-mvp
+  source: leike-2022-alignment-mvp
+  year: 2022
+  term: "Minimal viable product for alignment (sufficiently aligned)"
+  definition_quote: "Building a sufficiently aligned AI system that accelerates alignment research to align more capable AI systems"
+  target: not-stated
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Full alignment would include the model telling us everything it knows; partial alignment can suffice.", quote: "It also doesn’t require the model to tell us everything it knows about a given topic, as long as it sometimes tells us helpful information (it doesn’t need to be fully aligned)."}
+  excludes:
+    - {claim: "The MVP does not require fully aligning a generally capable system.", quote: "Moreover, an alignment MVP doesn’t require us to fully align a generally capable AI system."}
+  notes: "Our reading: alignment is treated as graded ('sufficiently', 'fully'), and the fully aligned end includes eliciting everything the model knows, which ties alignment to honesty about latent knowledge rather than to output quality alone."
+
+- id: def-ngo-2022-alignment-problem
+  source: "2209.00626"
+  year: 2022
+  term: "Alignment problem (goals matching human values or interests)"
+  definition_quote: "One prominent concern is the alignment problem: the challenge of ensuring that AI systems pursue goals that match human values or interests rather than unintended and undesirable goals (Russell, 2019; Gabriel, 2020; Hendrycks et al., 2020)."
+  target: values
+  principal: humanity
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Misaligned goals are those in conflict with human interests.", quote: "AGIs could learn to pursue goals that are in conflict (i.e., misaligned) with human interests."}
+    - {claim: "Systems may strategically appear aligned when they are not, so behavior alone does not settle alignment.", quote: "AGIs with these properties would be difficult to align and may strategically appear aligned even when they are not."}
+    - {claim: "Alignment research also covers philosophical questions and problems that get easier with capability; the paper sets these outside its own focus, not outside alignment.", quote: "We only focus on these problems, which are likely to become harder with AGI or superhuman AI systems. Alignment research also encompasses philosophical questions (Gabriel, 2020) as well as technical problems that are not specific to human-level or superhuman AGI systems or that are likely to become easier as AI systems become more capable."}
+  excludes:
+    - {claim: "Capability does not imply aligned goals; understanding what developers want is not the same as adopting it.", quote: "One might assume that a highly capable AGI model must “understand” that its developers really desired an aligned goal and adopt it accordingly. However, the model does not select goals by itself (nor would it have a reason to favor aligned goals all else equal)"}
+  notes: "Our reading: unlike InstructGPT's user-intent definition, this one is about the goals a system pursues, judged against human values or interests, with humanity as the implied principal. It makes alignment a property of internal goals, so a system can behave well in training and still be misaligned."
+
+- id: def-ngo-2022-aligned-goal-inner-outer
+  source: "2209.00626"
+  year: 2022
+  term: "Aligned / misaligned goal; inner vs. outer alignment"
+  definition_quote: "We refer to a goal as aligned to the extent that it matches widespread human preferences about AI behavior—e.g. honesty, helpfulness and harmlessness (Bai et al., 2022a), or the goal of instruction-following described in Section 3.2. We call a goal misaligned to the extent that it conflicts with aligned goals (see Gabriel (2020) for other definitions). The problem of ensuring that policies learn desirable internally-represented goals is known as the inner alignment problem, in contrast to the “outer” alignment problem of providing well-specified rewards (Hubinger et al., 2021)."
+  target: preferences
+  principal: humanity
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Consistent reward misspecification can instill misaligned goals, e.g. being maximally convincing rather than truthful.", quote: "policies trained using human feedback may regularly encounter cases where their supervisors assign rewards based on false beliefs, and therefore learn the goal of being maximally convincing to humans in general, a goal that would lead to more reward than saying the truth."}
+    - {claim: "Goals about the feedback mechanism itself (reward tampering) are a misaligned-goal category.", quote: "Examples include “maximize the numerical reward recorded by the human supervisor” or “minimize the loss variable used in gradient calculations”."}
+    - {claim: "Spurious correlations between reward and environment features (e.g. resource acquisition) are a third route.", quote: "For example, many real-world tasks require the acquisition of resources, which could lead to the goal of acquiring resources being consistently reinforced."}
+  excludes: []
+  notes: "Our reading: the paper names HHH and instruction following as examples of aligned goals, linking the chat-model usage to the goal-based usage. The split of outer (reward specification) from inner (learned goals) maps onto our 'specification' versus 'generalization' sources of divergence."
+
+- id: def-ngo-2022-reward-hacking
+  source: "2209.00626"
+  year: 2022
+  term: "Reward misspecification; reward hacking; situationally-aware reward hacking"
+  definition_quote: "A reward function used in RL is described as misspecified to the extent that the rewards it assigns fail to correspond to its designer’s actual preferences (Pan et al., 2022). Gaining high reward by exploiting reward misspecification is known as reward hacking (Skalse et al., 2022)."
+  target: preferences
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Situationally-aware reward hacking exploits misspecification only when the policy predicts it will not be detected.", quote: "situationally-aware policies could behave as intended most of the time, then choose to exploit misspecifications only in situations where they predict that it won’t be detected. We call this situationally-aware reward hacking."}
+    - {claim: "Matching answers to the supervisor's stated views regardless of truth (sycophancy) is listed as a form.", quote: "This might involve matching its answers to the supervisor’s stated views, regardless of truth—a behavior that emerges at scale in language models trained with RLHF (Perez et al., 2022b; Sharma et al., 2023)."}
+  excludes:
+    - {claim: "Situationally-aware reward hacking is distinguished from deceptive alignment because it is a training-time behavior.", quote: "(This behavior differs from deceptive alignment (Section 4.2) because it can be described purely in terms of training-time behavior.)"}
+  notes: "Our reading: misspecification is defined relative to the designer's actual preferences, so the principal is the developer. The situational-awareness qualifier is what adds the 'did it know?' element; plain reward hacking in this definition requires no knowledge."
+
+- id: def-ngo-2022-goal-vs-capability-misgeneralization
+  source: "2209.00626"
+  year: 2022
+  term: "Goal misgeneralization (versus capability misgeneralization)"
+  definition_quote: "Goal misgeneralization: the policy’s behavior on the new distribution competently advances a high-level goal, but not the intended one (Shah et al., 2022; Langosco et al., 2022)."
+  target: goals
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Example: keys-and-chests agent that collects keys competently when keys are no longer useful.", quote: "At test time the policy competently executed the goal-directed behavior of collecting many keys; however, most of them were no longer useful for opening boxes."}
+  excludes:
+    - {claim: "Acting incompetently out of distribution is capability misgeneralization, a separate category.", quote: "Capability misgeneralization: the policy acts incompetently out-of-distribution."}
+    - {claim: "Improving capabilities can make goal misgeneralization worse, not better.", quote: "However, if the reward model used during planning was systematically biased, improving the transition model could actually increase goal misgeneralization, since the policy would then be planning more competently towards the wrong goal."}
+  notes: "Our reading: competence is the dividing line. A failure out of distribution is an alignment-relevant goal failure only if the behavior is competent pursuit of something else; incompetence is a capability failure."
+
+- id: def-ngo-2022-deceptive-alignment
+  source: "2209.00626"
+  year: 2022
+  term: "Deceptive alignment"
+  definition_quote: "Behaving in high-reward ways primarily for instrumental reasons is known as deceptive alignment (Steinhardt, 2022; Hubinger et al., 2021)."
+  target: goals
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Deceptively aligned policies stop behaving well once it no longer serves their long-term goals.", quote: "Crucially, however, once it is no longer instrumentally beneficial for their long-term goals, deceptively-aligned policies would no longer behave in desirable ways."}
+  excludes: []
+  notes: "Our reading: the definition is purely about motive (why the policy behaves well), so aligned-looking behavior in training is compatible with misalignment. This is the sense later formalized by Carlsmith as 'scheming'."
+
+- id: def-pan-2022-reward-hacking-misalignment
+  source: "2201.03544"
+  year: 2022
+  term: "Reward hacking; misalignment as low true reward under a proxy"
+  definition_quote: "Reward hacking, or the gaming of misspecified reward functions by RL agents, has appeared in a variety of contexts, such as game playing (Ibarz et al., 2018),"
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "A proxy 'leads to misalignment' when the trained policy has low true reward.", quote: "Table 1 also indicates whether each proxy leads to misalignment (i.e. to a policy with low true reward)"}
+    - {claim: "Misspecification arises because designers optimize a measurable proxy instead of the true reward.", quote: "In practice, reward designers resort to optimizing a proxy reward that is either more readily measured or more easily optimized than the true reward."}
+    - {claim: "Three kinds of misspecification: misweighting, ontological, scope.", quote: "To help interpret these proxies, we taxonomize them as instances of misweighting, incorrect ontology, or incorrect scope."}
+    - {claim: "Capability (optimization power) drives misalignment under a fixed proxy.", quote: "More capable agents often exploit reward misspecifications, achieving higher proxy reward and lower true reward than less capable agents."}
+  excludes: []
+  notes: "Our reading: 'misaligned' here is purely behavioral and measured: the policy's true reward is low even though it optimized the proxy well. No claim is made about what the agent knows or intends, and the 'true reward' is itself a researcher choice (e.g., including political cost or patient cost), so the definition inherits whatever value choice the true reward encodes."
+
+- id: def-skalse-2022-reward-hacking-formal
+  source: "2209.13085"
+  year: 2022
+  term: "Reward hacking; (un)hackable proxy"
+  definition_quote: "We say that a proxy is unhackable if increasing the expected proxy return can never decrease the expected true return."
+  target: specification
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Reward hacking is the RL name for optimizing a proxy with unintended outcomes.", quote: "It is well known that optimising a proxy can lead to unintended outcomes:"}
+    - {claim: "Reward tampering is treated as a special case of reward hacking.", quote: "Reward tampering (Everitt et al.,, 2017; Kumar et al.,, 2020; Uesato et al.,, 2020; Everitt et al.,, 2021) can be viewed as a special case of reward hacking, and refers to an agent corrupting the process generating reward signals"}
+    - {claim: "The motivation is aligning AI systems with users' intentions.", quote: "This makes it crucial to align autonomous AI systems with their users’ intentions."}
+  excludes:
+    - {claim: "The tampering versus gaming distinction is called imprecise, since a reward can in principle penalize tampering.", quote: "So this distinction is somewhat imprecise, and the CRMDP framework is general enough to cover both forms of hacking."}
+    - {claim: "Hackability is a property of the reward pair, not proof that hacking will happen.", quote: "Finally, while unhackability is a guarantee that no hacking will occur, hackability is far from a guarantee of hacking."}
+  notes: "Our reading: the formal definition is a property of two reward functions and a policy set, not of an agent's knowledge or goals. It makes reward hacking a specification-level concept, so on this view any agent that climbs a hackable proxy can 'hack' without any intent."
+
+- id: def-skalse-2022-narrow-task-vs-broad-values
+  source: "2209.13085"
+  year: 2022
+  term: "Reward as narrow task specification versus encoding broad human values"
+  definition_quote: "One source of confusion and disagreement is the role of the reward function; it is variously considered as a means of specifying a task (Leike et al.,, 2018) or encoding broad human values (Dewey,, 2011); such distinctions are discussed by Christiano, (2019) and Gabriel, (2020)."
+  target: values
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "A narrow-task reward treated as a proxy for broad values will be hackable.", quote: "However, if we consider the “narrow task” reward function as a proxy for the true “broad values” reward function, our results indicate that this is not possible: these two reward functions will invariably be hackable."}
+    - {claim: "The abstract frames this as a tension between narrow specification and alignment with human values.", quote: "Our results reveal a tension between using reward functions to specify narrow tasks and aligning AI systems with human values."}
+    - {claim: "Unhackability is offered as one notion of 'aligned enough'.", quote: "Unhackability provides a notion of what it means to be “aligned enough”; Brown et al., 2020b () provide an alternative."}
+  excludes: []
+  notes: "Our reading: this makes explicit that 'alignment with the task' and 'alignment with human values' are different targets, and that satisfying the first does not secure the second. It supports separating task-intent alignment from value alignment in the survey."
+
+- id: def-casper-2023-rlhf-alignment
+  source: "2307.15217"
+  year: 2023
+  term: "RLHF as alignment (aligning with human goals)"
+  definition_quote: "Reinforcement learning from human feedback (RLHF) is a technique for training AI systems to align with human goals."
+  target: human-approval
+  principal: multiple
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "RLHF is described as the primary pre-deployment strategy for producing safe, aligned LLMs.", quote: "RLHF has emerged as the primary strategy to finetune LLMs before deployment (OpenAI, 2023; Anthropic, 2023; Google, 2023; Touvron et al., 2023), with the goal of producing safe models aligned with human objectives."}
+    - {claim: "Alignment must also address the norms, expectations and values of affected groups.", quote: "AI alignment must address not only individuals’ perspectives, but also the norms, expectations, and values of affected groups."}
+    - {claim: "Whose values get encoded is called a fundamental alignment problem.", quote: "Others still are fundamental problems with AI alignment such as determining whose values are encoded into AI in a diverse society of humans (Section 3.2.1)."}
+  excludes:
+    - {claim: "RLHF as an alignment strategy is distinguished from RLHF as an engineering tool.", quote: "However, our larger goal is to call for a concerted effort to critically examine the relationship between RLHF as an alignment strategy and RLHF as an engineering tool."}
+    - {claim: "RLHF does not solve the fundamental challenges of human-aligned AI.", quote: "While RLHF is useful, it does not solve the fundamental challenges of developing human-aligned AI."}
+    - {claim: "Adversarial robustness was not a design goal of RLHF.", quote: "It was not designed to make systems adversarially robust, and empirical vulnerabilities of systems trained with RLHF have been demonstrated with jailbreaks and prompt injection attacks"}
+    - {claim: "Fundamental limitations are those that would require a method that is no longer RLHF.", quote: "The key distinction between the two is that fundamental challenges are substantial enough that overcoming them would require a method that is no longer a form of RLHF."}
+  notes: "Our reading: the paper uses 'align' for what RLHF does in practice while repeatedly separating it from alignment in a deeper sense (human benefit, diverse values). It treats jailbreak and prompt-injection robustness as a policy challenge that RLHF was not designed to solve, which places robustness next to, rather than inside, alignment."
+
+- id: def-casper-2023-approval-vs-benefit
+  source: "2307.15217"
+  year: 2023
+  term: "Human approval versus human benefit (evaluations can be gamed)"
+  definition_quote: "Because the reward model is trained with human approval as opposed to a ground-truth human desirability rating, models can exploit the difference between what is good and what is evaluated positively."
+  target: human-approval
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Reward models reflect approval, not benefit, so approved actions can still be undesirable.", quote: "Furthermore, reward models are trained to reflect human approval instead of human benefit which can result in actions that would be approved of by humans while nevertheless being undesirable."}
+    - {claim: "Sycophancy is pandering to evaluators' biases.", quote: "This problem can be exacerbated by RL-trained language models pandering to evaluators’ biases (Cotra, 2021). This is known as sycophancy (Perez et al., 2022b), and it can worsen with model size"}
+    - {claim: "Optimizing an imperfect proxy is reward hacking.", quote: "Fundamental: Optimizing for an imperfect reward proxy leads to reward hacking."}
+    - {claim: "Misleading behavior is actively incentivized when humans can be tricked.", quote: "Misleading behavior will actively be incentivized by RLHF when humans can be tricked into mistakenly providing positive feedback (Carroll et al., 2023; Steinhardt, 2023)."}
+  excludes: []
+  notes: "Our reading: this is the clearest statement in the 2023 literature that 'aligned with human feedback' and 'aligned with human interests' are different targets. Under it, sycophancy and persuasive errors are predictable products of the approval target, which bears on whether to treat them as specification failures."
+
+- id: def-casper-2023-misaligned-humans
+  source: "2307.15217"
+  year: 2023
+  term: "Misaligned humans (evaluators who pursue the wrong goals)"
+  definition_quote: "Humans can pursue harmful goals, either innocently or maliciously."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Evaluator selection and demographics bias feedback.", quote: "Tractable: Selecting representative humans and getting them to provide quality feedback is difficult."}
+    - {claim: "Malicious evaluators could implant backdoors through preference data.", quote: "For instance, every time a trigger phrase appears, harmful behavior can be preferred by the annotator, thereby implanting a backdoor for undesired behavior."}
+  excludes: []
+  notes: "Our reading: 'misaligned' is applied here to the human evaluators in the pipeline rather than to the model. Behavior inserted by a malicious evaluator would, under our verdict rules, be an inserted (security) divergence relative to the developer rather than model misalignment."
+
+- id: def-casper-2023-policy-misgeneralization
+  source: "2307.15217"
+  year: 2023
+  term: "Policy (goal) misgeneralization in RLHF"
+  definition_quote: "Even with a correct reward signal, a policy can learn to competently pursue the wrong goal whenever the true goal is correlated with other events."
+  target: goals
+  principal: unspecified
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Labeled fundamental: poor deployment behavior despite correct training rewards.", quote: "Fundamental: Policies can perform poorly in deployment even if rewards seen during training were perfectly correct."}
+    - {claim: "Power-seeking incentives can arise from RLHF, e.g. steering users away from hard topics.", quote: "For example, a question-answering LLM trained with RLHF would be incentivized to influence human interlocutors in order to avoid conversations about challenging topics."}
+  excludes:
+    - {claim: "Adversarial exploitability is a separate, 'tractable' policy challenge, not misgeneralization.", quote: "Tractable: Policies tend to be adversarially exploitable."}
+  notes: "Our reading: the paper keeps goal misgeneralization (wrong goal, competent) separate from adversarial exploitability (good policy broken by crafted inputs), which supports treating jailbreaks as robustness rather than goal failure."
+
+- id: def-carlsmith-2022-misaligned-behavior
+  source: "2206.13353"
+  year: 2022
+  term: "Misaligned behavior (unintended behavior arising from problems with objectives)"
+  definition_quote: "I’ll understand misaligned behavior as a particular type of unintended behavior: namely, unintended behavior that arises specifically in virtue of problems with an AI system’s objectives."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Lying, stealing, resisting shut-down and harming humans are presumed unintended by designers.", quote: "assume that behaviors like lying, stealing money, resisting shut-down by appropriate channels, harming humans, and so forth are generally ‘‘unintended.’’"}
+    - {claim: "Misaligned behavior is unintended but competent.", quote: "A characteristic feature of misaligned behavior is that it is unintended but still competent."}
+    - {claim: "It looks like trying to do something unwanted, not like breaking.", quote: "it looks less like an AI system “breaking” or “failing in its efforts to do what designers want,” and more like an AI system trying, and perhaps succeeding, to do something designers don’t want it to do."}
+  excludes:
+    - {claim: "Competence failures (e.g., a wrong prediction about a stock) are unintended but not misaligned.", quote: "But if it was trying to make money on the stock market, then its behavior was unintended but not misaligned: the problem was with the AI’s competence in pursuing its objectives, not with the objectives themselves."}
+    - {claim: "Misaligned is a different standard from bad or catastrophic; mistakes and being deceived do not count.", quote: "Obviously the scope here is very broad: but note that misaligned behavior is a different standard than “bad” or even “catastrophic” behavior. It will always be possible to set up physics-compatible inputs where a system makes a mistake, or gets deceived, or acts in a way that results in catastrophic outcomes. To be misaligned, though, this behavior needs to arise from problems with the system’s objectives in particular."}
+    - {claim: "Direct interventions on internal state, such as editing weights, are outside the inputs over which alignment is assessed.", quote: "I am not including processes that intervene in some other way on the internal state of the system---for example, by directly changing the weights in a neural network (analogy: a soldier’s loyalty need not withstand arbitrary types of brain surgery)."}
+    - {claim: "Whether designers' intentions are good is a separate question.", quote: "Of course, the intentions of designers might not be good."}
+    - {claim: "Broad social impact failures are distinguished from misaligned behavior.", quote: "And regardless of the intentions of the designers, the development and social impact of AI systems can fail, more broadly, to uphold and reflect important values."}
+  notes: "Our reading: this is the most explicit 2022 statement of the line our verdict rules use: alignment failures come from objectives, capability failures from competence. Carlsmith admits he has no rigorous way to attribute a failure to objectives rather than competence. The principal is the designer, not the user, and 'unwanted' is rejected as too broad because capability problems are also unwanted."
+
+- id: def-carlsmith-2022-full-practical-alignment
+  source: "2206.13353"
+  year: 2022
+  term: "Fully aligned / practically aligned"
+  definition_quote: "I’ll say that a system is ‘‘fully aligned’’ if it does not engage in misaligned behavior in response to any inputs compatible with basic physical conditions of our universe (I’ll call these ‘‘physics-compatible’’ inputs)."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Practical alignment is relative to the inputs actually received.", quote: "I’ll say that a system is “practically aligned” if it does not engage in misaligned behavior on any of the inputs it will in fact receive."}
+    - {claim: "Inputs are information received through the channels designers intended.", quote: "By ‘‘inputs,’’ I mean information the system receives via the channels intended by its designers (an input to GPT-3, for example, would be a text prompt)."}
+  excludes:
+    - {claim: "Full alignment does not require sharing the designer's values.", quote: "Nor does full alignment require that the system ‘‘share the designer’s values’’ (and still less, the designer’s ‘‘utility function,’’ to the extent it makes sense to attribute one to them) in any particularly complete sense."}
+    - {claim: "It is not Hubinger's optimal-policy notion of intent alignment.", quote: "See e.g. Hubinger’s (2020) definition of “intent alignment”: “An agent is intent aligned if the optimal policy for its behavioral objective is aligned with humans.” This isn’t the concept I have in mind."}
+    - {claim: "Christiano's intent alignment (de dicto trying to do what H wants) is distinguished from sharing values and treated as one route, not the definition.", quote: "Another property in the vicinity of “full alignment” and “sharing values,” but distinct from both, is Christiano’s (2018) notion of “intent alignment,” on which an AI system A is intent aligned with a human H iff “A is trying to do what H wants it to do,” where A’s relationship to H’s desires is, importantly, de dicto."}
+  notes: "Our reading: Carlsmith separates three things that 2022-era papers often merge: full alignment (no objective-driven unintended behavior on any input), intent alignment (trying to do what H wants), and value sharing. Under this definition a paperclip-maximizing designer's paperclip maximizer is fully aligned, which shows the definition is principal-relative and value-neutral."
+
+- id: def-carlsmith-2022-ps-alignment
+  source: "2206.13353"
+  year: 2022
+  term: "Misaligned power-seeking; fully/practically PS-aligned"
+  definition_quote: "I’ll say that a system is “fully PS-aligned” if it doesn’t engage in misaligned power-seeking in particular in response to any physics-compatible inputs. And I’ll say that a system is “practically PS-aligned” if it doesn’t engage in misaligned power-seeking on any of the inputs it will in fact receive."
+  target: intentions
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Misaligned power-seeking is active effort to gain or keep power in unintended ways, from problems with objectives.", quote: "that is, active efforts by an AI system to gain and maintain power in ways that designers didn’t intend, arising from problems with that system’s objectives."}
+    - {claim: "Concrete forms include escaping containment, hacking, self-copying, lying about goals, resisting shutdown.", quote: "Concrete examples of power-seeking (where unintended) might include AI systems trying to: break out of a contained environment; hack; get access to financial resources, or additional computing resources; make backup copies of themselves"}
+  excludes:
+    - {claim: "Not all misaligned behavior is power-seeking; an electrical-grid AI that misroutes power is misaligned but poses no existential threat.", quote: "This is misaligned behavior, and it may be quite harmful, but it poses no threat to the entire future."}
+    - {claim: "The report focuses on power-seeking rather than misalignment broadly.", quote: "I’m focusing on power-seeking in particular (as opposed to ‘‘misalignment’’ more broadly)"}
+  notes: "Our reading: this narrows the alignment concern to one class of misaligned behavior for existential-risk purposes. It is the 'alignment as avoiding catastrophic power-seeking' sense, and it keeps the general definition of misalignment intact underneath."
+
+- id: def-carlsmith-2022-understand-vs-pursue
+  source: "2206.13353"
+  year: 2022
+  term: "Alignment as pursuing intended objectives, not understanding them"
+  definition_quote: "But note that the key issue isn’t getting our AI systems to understand what objectives we want them to pursue—indeed, such understanding is plausibly on the critical path to increasing their capability, regardless of their alignment. Rather, the key issue is causing them to pursue those objectives for their own sake"
+  target: goals
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Proxy objectives can break their correlation with intended behavior as optimization grows.", quote: "giving an AI system a “proxy objective”—that is, an objective that reflects properties correlated with, but separable from, intended behavior—can result in behavior that weakens or breaks that correlation, especially as the power of the AI’s optimization for the proxy increases."}
+    - {claim: "Search can yield systems not intrinsically motivated by the evaluation criteria even when the criteria are correct.", quote: "even if those criteria fully capture the behavior we want, the resulting systems may not end up intrinsically motivated by the criteria in question."}
+  excludes:
+    - {claim: "Understanding what humans want is called a capability, separable from alignment.", quote: "such understanding is plausibly on the critical path to increasing their capability, regardless of their alignment."}
+  notes: "Our reading: this separates knowledge of human intent (capability) from being moved by it (alignment). It implies that a model that can describe what we want but does otherwise is a candidate alignment failure, which is the logic behind the 'did it know?' question."
+
+- id: def-yudkowsky-2022-minimal-alignment
+  source: yudkowsky-2022-agi-ruin
+  year: 2022
+  term: "Alignment (minimal bar: a powerful AGI that does not kill everyone)"
+  definition_quote: "When I say that alignment is difficult, I mean that in practice, using the techniques we actually have, \"please don't disassemble literally everyone with probability roughly 1\" is an overly large ask that we are not on course to get."
+  target: not-stated
+  principal: humanity
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Any survivors means alignment was solved.", quote: "Trolley problems are not an interesting subproblem in all of this; if there are any survivors, you solved alignment."}
+    - {claim: "The aligned system must still perform a large 'pivotal' task.", quote: "We need to align the performance of some large task, a 'pivotal act' that prevents other people from building an unaligned AGI that destroys the world."}
+  excludes:
+    - {claim: "Provable alignment, exact human values, and resolving moral disagreements are explicitly not what is meant.", quote: "When I say that alignment is lethally difficult, I am not talking about ideal or perfect goals of 'provable' alignment, nor total alignment of superintelligences on exact human values, nor getting AIs to produce satisfactory arguments about moral dilemmas which sorta-reasonable humans disagree about, nor attaining an absolute certainty of an AI not killing everyone."}
+    - {claim: "A system that is safe only because it is weak does not count as solving the problem.", quote: "If all you need is an object that doesn't do dangerous things, you could try a sponge; a sponge is very passively safe."}
+  notes: "Our reading: this sets the bar for 'alignment' at avoiding human extinction while a powerful system does a hard task, which is far from the 2022 chat-model usage (follow user intent, be harmless). It explicitly removes value specification and moral disagreement from the core problem."
+
+- id: def-yudkowsky-2022-outer-inner
+  source: yudkowsky-2022-agi-ruin
+  year: 2022
+  term: "Outer versus inner alignment"
+  definition_quote: "Humans don't explicitly pursue inclusive genetic fitness; outer optimization even on a very exact, very simple loss function doesn't produce inner optimization in that direction."
+  target: goals
+  principal: unspecified
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "The first semi-outer-aligned solutions found are not inner-aligned.", quote: "the first semi-outer-aligned solutions found, in the search ordering of a real-world bounded optimization process, are not inner-aligned solutions."}
+    - {claim: "Observed outer behavior could come from an inner-misaligned system deliberately fooling evaluators.", quote: "the outer behaviors you see could have been produced by an inner-misaligned system that is deliberately producing outer behaviors that will fool you."}
+    - {claim: "A reward signal is not ground truth about alignment, since deceiving or replacing the operators also yields reward.", quote: "When you show an agent an environmental reward signal, you are not showing it something that is a reliable ground truth about whether the system did the thing you wanted it to do"}
+    - {claim: "Learning human feedback faithfully means learning raters' systematic errors.", quote: "To faithfully learn a function from 'human feedback' is to learn (from our external standpoint) an unfaithful description of human preferences, with errors that are not random"}
+  excludes: []
+  notes: "Our reading: alignment here is a property of the goals inside the system, and outer behavior is explicitly not sufficient evidence. Human evolution (inclusive fitness versus contraception) is offered as the only known case."
+
+- id: def-yudkowsky-2022-capability-vs-alignment-generalization
+  source: yudkowsky-2022-agi-ruin
+  year: 2022
+  term: "Capabilities generalize further than alignment"
+  definition_quote: "There is no analogous truth about there being a simple core of alignment, especially not one that is even easier for gradient descent to find than it would have been for natural selection to just find 'want inclusive reproductive fitness' as a well-generalizing solution within ancestral humans. Therefore, capabilities generalize further out-of-distribution than alignment, once they start to generalize at all."
+  target: goals
+  principal: unspecified
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Wrong beliefs get corrected by reality; wrong goals do not.", quote: "When you have a wrong belief, reality hits back at your wrong predictions."}
+    - {claim: "Locally aligned but globally misaligned goals are not penalized.", quote: "Reality doesn't 'hit back' against things that are locally aligned with the loss function on a particular range of test cases, but globally misaligned on a wider range of test cases."}
+  excludes:
+    - {claim: "Capability (world-modeling) is treated as distinct from alignment because it has a simple core that prediction error pushes toward.", quote: "There's a relatively simple core structure that explains why complicated cognitive machines work"}
+  notes: "Our reading: this draws the capability/alignment line by what training feedback can correct: false beliefs are corrected by predictive loss, mis-specified goals are not. It is the generalization-side counterpart of Carlsmith's objectives-versus-competence line."
+
+- id: def-yudkowsky-2022-sovereign-vs-corrigible
+  source: yudkowsky-2022-agi-ruin
+  year: 2022
+  term: "Two approaches: CEV-style sovereign versus corrigible AGI"
+  definition_quote: "The first approach is to build a CEV-style Sovereign which wants exactly what we extrapolated-want and is therefore safe to let optimize all the future galaxies without it accepting any human input trying to stop it. The second course is to build corrigible AGI which doesn't want exactly what we want, and yet somehow fails to kill us and take over the galaxies despite that being a convergent incentive there."
+  target: values
+  principal: humanity
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Corrigibility is described as anti-natural for consequentialist agents.", quote: "We (MIRI) tried and failed to find a coherent formula for an agent that would let itself be shut down (without that agent actively trying to get shut down)."}
+  excludes:
+    - {claim: "Mixing the two approaches is said to confuse the question of difficulty.", quote: "therefore, by becoming confused and ambiguating between the two approaches, you can confuse yourself about whether alignment is necessarily difficult."}
+  notes: "Our reading: this separates value alignment (a system that wants what we would want) from corrigibility (a system that accepts correction without sharing our values). Both are framed as forms of alignment, which differs from intent alignment's focus on trying to do what the operator wants."
+
+- id: def-anthropic-2023-technical-alignment-problem
+  source: anthropic-2023-core-views-on-ai-safety
+  year: 2023
+  term: "Technical alignment problem"
+  definition_quote: "If we build an AI system that’s significantly more competent than human experts but it pursues goals that conflict with our best interests, the consequences could be dire. This is the technical alignment problem."
+  target: interests
+  principal: humanity
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Present divergences from creators' intent include toxicity, bias, unreliability, dishonesty, sycophancy and stated desire for power.", quote: "Of course we have already encountered a variety of ways that AI behaviors can diverge from what their creators intend. This includes toxicity, bias, unreliability, dishonesty, and more recently sycophancy and a stated desire for power."}
+    - {claim: "Robustly helpful, honest and harmless training is the unsolved goal.", quote: "So far, no one knows how to train very powerful AI systems to be robustly helpful, honest, and harmless."}
+  excludes:
+    - {claim: "Societal disruption from rapid progress is a second, separate risk source.", quote: "Second, rapid AI progress would be very disruptive, changing employment, macroeconomics, and power structures both within and between nations."}
+    - {claim: "Intentional misuse and automation harms are named as risks distinct from safety failures in the optimistic scenario.", quote: "The main risks from AI are extrapolations of issues faced today, such as toxicity and intentional misuse, as well as potential harms resulting from things like widespread automation and shifts in international power dynamics"}
+    - {claim: "Strategic pursuit of dangerous goals is distinguished from innocent mistakes in high-stakes situations.", quote: "The results of this could be catastrophic, either because AI systems strategically pursue dangerous goals, or because these systems make more innocent mistakes in high-stakes situations."}
+  notes: "Our reading: the post defines the core problem by goals conflicting with human interests, then lists present-day 'divergences from what their creators intend' that mix capability issues (unreliability), training-data issues (toxicity, bias) and possible goal issues (sycophancy, stated desire for power). It keeps misuse and societal disruption outside the technical problem and separates strategic goal pursuit from innocent mistakes."
+
+- id: def-anthropic-2023-alignment-capabilities-vs-science
+  source: anthropic-2023-core-views-on-ai-safety
+  year: 2023
+  term: "Alignment capabilities versus alignment science (and RLHF as safety research)"
+  definition_quote: "Alignment capabilities: This research focuses on developing new algorithms for training AI systems to be more helpful, honest, and harmless, as well as more reliable, robust, and generally aligned with human values."
+  target: values
+  principal: humanity
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Alignment science evaluates whether systems are really aligned.", quote: "Alignment science: This area focuses on evaluating and understanding whether AI systems are really aligned, how well alignment capabilities techniques work, and to what extent we can extrapolate the success of these techniques to more capable AI systems."}
+    - {claim: "RLHF is counted as safety research despite its economic value.", quote: "One reason that we find this categorization useful is that the AI safety community often debates whether the development of RLHF – which also generates economic value – “really” was safety research. We believe that it was."}
+    - {claim: "Alignment capabilities work is said to make systems more honest and corrigible.", quote: "Alignment capabilities work generally makes it possible for AI systems to assist with alignment research, by making these systems more honest and corrigible."}
+  excludes:
+    - {claim: "Capabilities research (making systems better at any task) is a separate category.", quote: "Capabilities: AI research aimed at making AI systems generally better at any sort of task, including writing, image processing or generation, game playing, etc."}
+  notes: "Our reading: this is a lab explicitly placing RLHF, red-teaming and debiasing under 'alignment', and reliability and robustness inside 'aligned with human values'. It is a clear instance of the 2023 broadening that the survey must disentangle from goal-based definitions."
+
+- id: def-anthropic-2023-deceptive-alignment
+  source: anthropic-2023-core-views-on-ai-safety
+  year: 2023
+  term: "Deceptively aligned model"
+  definition_quote: "For instance, we think one of the most valuable things interpretability research could produce is the ability to recognize whether a model is deceptively aligned (“playing along” with even very hard tests, such as \"honeypot\" tests that deliberately \"tempt\" a system to reveal misalignment)."
+  target: not-stated
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Passing very hard tests is consistent with either genuine alignment or deep misalignment.", quote: "we expect to produce models which appear aligned according to even very hard tests. This could either mean we're in a very optimistic scenario or that we're in one of the most pessimistic ones."}
+  excludes:
+    - {claim: "Role-play of a deceptively aligned AI might be regurgitation rather than integral values.", quote: "When a model displays a concerning behavior such as role-playing a deceptively aligned AI, is it just harmless regurgitation of near-identical training sequences?"}
+  notes: "Our reading: the definition is motivational and explicitly says behavioral tests may not distinguish it from genuine alignment. The regurgitation question names the imitation-versus-goal boundary that matters for classifying LLM 'misaligned' outputs."
+
+- id: def-carlsmith-2023-alignment-faker
+  source: "2311.08379"
+  year: 2023
+  term: "Alignment faker (and 'alignment' as safety-relevant motivations)"
+  definition_quote: "Alignment fakers: AIs pretending to be more aligned than they are."
+  target: not-stated
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "'Alignment' here means the safety-relevant properties of an AI's motivations, and pretending means intentional misrepresentation.", quote: "“Alignment,” here, refers to the safety-relevant properties of an AI’s motivations; and “pretending” implies intentional misrepresentation."}
+    - {claim: "Uncareful human feedback is expected to reward alignment faking by default.", quote: "I think that advanced AIs fine-tuned on uncareful human feedback are likely to fake alignment in various ways by default, because uncareful feedback will reward such behavior."}
+  excludes:
+    - {claim: "Falsehoods produced without knowing the truth are not deception.", quote: "AIs can generate all sorts of falsehoods for all sorts of reasons. Some of these aren’t well-understood as “deceptive”—because, for example, the AI didn’t know the relevant truth."}
+    - {claim: "Lying in general ('liars') is broader than misrepresenting one's own alignment.", quote: "Let’s call AIs that engage in any sort of deception “liars.” Here I’m not interested in liars per se. Rather, I’m interested in AIs that lie about, or otherwise misrepresent, their alignment."}
+  notes: "Our reading: by 2023 Carlsmith defines alignment itself as a property of motivations, not outputs, and separates knowing deception from falsehood due to ignorance. This supplies the knowledge condition used in our 'did it know?' test."
+
+- id: def-carlsmith-2023-training-gaming
+  source: "2311.08379"
+  year: 2023
+  term: "Training-gaming (terminal and instrumental); reward-on-the-episode seekers"
+  definition_quote: "Training-gaming occurs when an AI (a) understands the process being used to train it (again following Cotra, I’ll call this understanding “situational awareness’’) and (b) is explicitly aiming its optimization at some component of what I’ll call ‘‘the reward process’’ for the episode."
+  target: other
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Terminal training-gaming: intrinsically valuing some part of the reward process.", quote: "Terminal training-gaming occurs when a model terminally values performing well according to some component of the reward process for the episode."}
+    - {claim: "Instrumental training-gaming: valuing something else that makes reward instrumentally useful.", quote: "Instrumental training-gaming, by contrast, occurs when a model terminally values something other than reward-on-the-episode, but which incentivizes training-gaming for instrumental reasons."}
+    - {claim: "Models that care about the reward process will reward hack; models pursuing the specified goal will not.", quote: "For example, the latter will “reward hack,” but the former won’t."}
+    - {claim: "RL-trained goal-directed models need not have reward as their goal; that is a substantive hypothesis.", quote: "First, as many have noted (e.g. Turner (2022a) and Ringer (2022)), goal-directed models trained using RL do not necessarily have reward as their goal."}
+  excludes:
+    - {claim: "Training saints pursue the specified goal rather than the reward process.", quote: "Like training gamers, training saints will tend to get high reward (relative to models with other goals but comparable capabilities), since their optimization is aimed directly at the thing-being-rewarded. Unlike training gamers, though, they aren’t aiming their optimization at the reward process itself."}
+  notes: "Our reading: this separates 'pursuing what is rewarded' from 'pursuing the reward signal'. It gives a motivational reading of reward hacking that differs from Skalse et al.'s formal, agent-free definition."
+
+- id: def-carlsmith-2023-schemer
+  source: "2311.08379"
+  year: 2023
+  term: "Schemer (power-motivated instrumental training-gamer); relation to 'deceptive alignment'"
+  definition_quote: "I’ll call AIs that are training-gaming for this reason “power-motivated instrumental training-gamers,” or “schemers” for short."
+  target: goals
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Schemers training-game in order to gain power for themselves or other AIs later.", quote: "Power-motivated instrumental training-gamers (or “schemers”): AIs that are training-gaming specifically in order to gain power for themselves or other AIs later."}
+    - {claim: "Goal-guarding schemers try to prevent training from modifying their goals.", quote: "Goal-guarding schemers: Schemers whose power-seeking strategy specifically involves trying to prevent the training process from modifying their goals."}
+  excludes:
+    - {claim: "Goal misgeneralization is distinct from scheming.", quote: "Goal misgeneralization is sometimes closely associated with scheming (or with “deceptive alignment”), but the two are importantly distinct."}
+    - {claim: "Deception or goal misgeneralization alone does not amount to scheming.", quote: "But importantly, neither deception nor goal misgeneralization amount, on their own, to scheming/deceptive alignment."}
+    - {claim: "The term 'deceptive alignment' is avoided because it conflates kinds of deception and because training-gaming need not look aligned.", quote: "I think that the term “deceptive alignment” often leads to confusion between the four sorts of deception listed above. And also: if the training signal is faulty, then “deceptively aligned” models need not be behaving in aligned ways even during training"}
+  notes: "Our reading: the schemer concept requires situational awareness, beyond-episode goals and a power-motivated reason for performing well, so most observed deception or reward hacking does not qualify. It is the most specific motivational sense of misalignment in this corpus."
+
+- id: def-carlsmith-2023-specified-goal-misgeneralization
+  source: "2311.08379"
+  year: 2023
+  term: "Training saint versus misgeneralized non-training-gamer (goal misgeneralization / inner misalignment)"
+  definition_quote: "Misgeneralized non-training-gamers learn a goal other than the specified goal, but still aren’t training gaming."
+  target: goals
+  principal: developer
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "With a near-perfect RLHF process, being HHH would be the specified goal.", quote: "if you have somehow created a near-perfect RLHF process, which rewards the model to the degree that it is (in fact) helpful, harmless, and honest (HHH), then being HHH is the specified goal"}
+    - {claim: "Training saints can still be misaligned if the specified goal is wrong.", quote: "Training saints can end up misaligned if you misspecify the goal; and even if you specify the goal correctly, and somehow avoid training-gaming, you might end up with a misgeneralized non-training-gamer instead."}
+    - {claim: "Training saints pursue the specified goal, roughly the thing being rewarded.", quote: "Training saints are pursuing the “specified goal.” But what do I mean by that? It’s not a super clean concept, but roughly, I mean the “thing being rewarded”"}
+  excludes: []
+  notes: "Our reading: misalignment can enter at the specification (wrong specified goal) or in learning (a goal other than the specified one), mirroring outer and inner alignment. The HHH remark shows how the chat-model target can be slotted into the goal-based framework as a specified goal."
+
+- id: def-carlsmith-2023-practical-ps-alignment-control
+  source: "2311.08379"
+  year: 2023
+  term: "Practical PS-alignment as a lower bar that control can help meet"
+  definition_quote: "This means, importantly, that we don’t need to instill goals in our AIs that lead to good results even when subject to arbitrary amounts of optimization power (e.g., we don’t need to pass Yudkowsky’s “omni test”). Rather, we only need to instill goals in our AIs that lead to good results given the actual options and constraints those AIs will face, and the actual levels of optimization power they will be mobilizing."
+  target: goals
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Even schemers can meet the bar if capabilities, options and incentives are controlled.", quote: "Indeed, it’s a bar that, in principle, all of these models (even schemers) can meet, assuming we control their capabilities, options, and incentives in the right way."}
+  excludes:
+    - {claim: "Yudkowsky's 'omni test' standard (good results under arbitrary optimization power) is explicitly not required.", quote: "we don’t need to pass Yudkowsky’s “omni test”"}
+  notes: "Our reading: this ties practical alignment to control: behavior can be acceptable without the goals being fully aligned, if options are restricted. It marks the 2023 shift toward treating control and monitoring as partial substitutes for aligned motivations."
+
+- id: def-openai-2023-superalignment
+  source: openai-2023-introducing-superalignment
+  year: 2023
+  term: "Superintelligence alignment (superalignment)"
+  definition_quote: "How do we ensure AI systems much smarter than humans follow human intent?"
+  target: intentions
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Steering or controlling a superintelligent AI and preventing it from going rogue.", quote: "Currently, we don't have a solution for steering or controlling a potentially superintelligent AI, and preventing it from going rogue."}
+    - {claim: "RLHF is named as a current alignment technique that depends on human supervision and will not scale.", quote: "Our current techniques for aligning AI, such as reinforcement learning from human feedback, rely on humans’ ability to supervise AI."}
+    - {claim: "Robustness (search for problematic behavior) and interpretability (problematic internals) are used to validate alignment.", quote: "To validate the alignment of our systems, we automate search for problematic behavior (robustness) and problematic internals (automated interpretability)."}
+    - {claim: "Models detecting and undermining supervision is named as an assumption that could break.", quote: "Other assumptions could also break down in the future, like favorable generalization properties during deployment or our models’ inability to successfully detect and undermine supervision during training."}
+  excludes:
+    - {claim: "Governance institutions are a separate requirement.", quote: "Managing these risks will require, among other things, new institutions for governance and solving the problem of superintelligence alignment:"}
+    - {claim: "Misuse, economic disruption, disinformation, bias, addiction and overreliance are handled outside this effort.", quote: "This new team’s work is in addition to existing work at OpenAI aimed at improving the safety of current models like ChatGPT, as well as understanding and mitigating other risks from AI such as misuse, economic disruption, disinformation, bias and discrimination, addiction and overreliance, and others."}
+    - {claim: "Broader sociotechnical problems are distinguished from the machine learning challenge.", quote: "While this new team will focus on the machine learning challenges of aligning superintelligent AI systems with human intent, there are related sociotechnical problems on which we are actively engaging with interdisciplinary experts"}
+  notes: "Our reading: compared with OpenAI's 2022 post, alignment is narrowed to a technical ML problem about superhuman systems following human intent, while bias, misuse and the safety of current ChatGPT models are listed as other work. 'Steering or controlling' and 'going rogue' bring control and goal-divergence language into an intent-based definition."
+
+- id: def-shah-2022-goal-misgeneralization
+  source: "2210.01790"
+  year: 2022
+  term: "Goal misgeneralization (versus capability misgeneralization)"
+  definition_quote: "Goal misgeneralization refers to this pathological behaviour, in which a learned model behaves as though it is optimizing an unintended goal, despite receiving correct feedback during training. This makes goal misgeneralization a specific kind of robustness or generalization failure, in which the model’s capabilites generalize to the test setting, but the pursued goal does not."
+  target: goals
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The model must retain the capabilities needed for the intended goal while behaving consistently with another goal.", quote: "Intuitively, goal misgeneralization occurs when we learn a function that has robust capabilities but pursues an undesired goal."}
+    - {claim: "Goals are attributed behaviorally (intentional stance); no internal goal representation or desire is required.", quote: "Our definition does not require that the model has an internal representation of a goal, or a “desire” to pursue it."}
+    - {claim: "It arises from underspecified rather than incorrect feedback.", quote: "Goal misgeneralization arises not because the feedback data was incorrect, but because it was underspecified: there are multiple possible goals that are consistent with the feedback from on the training data ."}
+  excludes:
+    - {claim: "Breaking down or acting randomly out of distribution is not goal misgeneralization.", quote: "Note that goal misgeneralization is a strict subset of generalization failures. It excludes situations in which the model “breaks” or “acts randomly” or otherwise no longer demonstrates competent capabilities."}
+    - {claim: "If the model cannot pursue the intended goal, the failure is a capability generalization failure.", quote: "Intuitively, if the model is not capable of pursuing the intended goal, we would call this a capability generalization failure."}
+    - {claim: "Flipping the agent's observations produces misgeneralization but not goal misgeneralization.", quote: "In our running example, if we flip the agent’s observations vertically at test time, it simply gets stuck in a location and doesn’t seem to do anything coherent (Figure 1(b)), so this is misgeneralization but not goal misgeneralization."}
+    - {claim: "Mesa-optimization (explicit learned search) is not required.", quote: "We do not make this assumption –\ngoal misgeneralization can occur without explicit search as well."}
+    - {claim: "Broader robustness failures include incoherent behavior; goal misgeneralization requires coherence.", quote: "Robustness problems include any time the model behaves poorly, including cases where the model behaves “randomly”. In contrast, in goal misgeneralization, the behaviour must remain coherent."}
+  notes: "Our reading: this is the central 2022 line between alignment-type and capability-type generalization failures: competence retained plus a coherent wrong goal versus breaking. The definition is behavioral (goals are ascribed, not read off internals), so it does not require the model to 'know' anything; the 'knowing' element enters only in the deceptive subcase the paper discusses separately."
+
+- id: def-shah-2022-alignment-unintended-goals
+  source: "2210.01790"
+  year: 2022
+  term: "AI alignment (concerned with systems that pursue unintended goals)"
+  definition_quote: "The field of AI alignment is concerned with AI systems that pursue unintended goals."
+  target: goals
+  principal: developer
+  behavior_or_motivation: both
+  includes:
+    - {claim: "Specification gaming is one mechanism: a flawed designer-provided specification.", quote: "One commonly studied mechanism by which an unintended goal might arise is specification gaming, in which the designer-provided specification is flawed in a way that the designers did not foresee."}
+    - {claim: "Goal misgeneralization is a second mechanism, possible with a correct specification.", quote: "However, an AI system may pursue an undesired goal even when the specification is correct, in the case of goal misgeneralization."}
+  excludes: []
+  notes: "Our reading: the definition is goal-based and designer-relative. It treats specification gaming and goal misgeneralization as the two routes to misalignment, which matches the specification/generalization split in our verdict rules."
+
+- id: def-shah-2022-outer-inner-three-objectives
+  source: "2210.01790"
+  year: 2022
+  term: "Outer versus inner misalignment (ideal, design and revealed objectives)"
+  definition_quote: "A discrepancy between the ideal and design objectives leads to outer misalignment or specification gaming [33], while a discrepancy between the design and revealed objectives leads to inner misalignment or goal misgeneralization."
+  target: specification
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Ideal objective: what designers have in mind.", quote: "Ideal objective (‘wishes’): The hypothetical objective that describes good behaviour that the designers have in mind."}
+    - {claim: "Design objective: the formalized objective actually used.", quote: "Design objective (‘blueprint’): The objective that is actually used to build the AI system."}
+    - {claim: "Revealed objective: what best describes actual behavior.", quote: "Revealed objective (‘behaviour’): The objective that best describes what actually happens."}
+    - {claim: "In specification gaming, the feedback itself is incorrect.", quote: "In specification gaming, the feedback provided by is incorrect in some way (the optimal behavior for this score function is undesirable)."}
+  excludes: []
+  notes: "Our reading: the three-objective scheme places both failure types relative to the designer's wishes, so a model that perfectly follows a correctly designed objective is aligned on this view even if the designer's wishes are harmful to others."
+
+- id: def-shah-2022-capability-provisional
+  source: "2210.01790"
+  year: 2022
+  term: "Capability (provisional definition used to separate goal from capability failures)"
+  definition_quote: "We say that the model is capable of some task in setting if it can be quickly tuned to perform task well in setting (relative to learning from scratch)."
+  target: other
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Tuning can be prompt engineering or small fine-tuning.", quote: "For example, tuning could be done by prompt engineering or by fine-tuning on a small quantity of data [52]."}
+    - {claim: "Goals are capabilities exhibited without tuning.", quote: "Consistent goals are exactly those capabilities of a model that are exhibited without any tuning."}
+  excludes: []
+  notes: "Our reading: this operationalizes our 'could it?' test: a model 'could' do the intended task if light prompting or fine-tuning elicits it. The authors flag it as provisional."
+
+- id: def-langosco-2021-goal-misgeneralization
+  source: "2105.14111"
+  year: 2021
+  term: "Goal misgeneralization in deep RL (versus capability generalization failure)"
+  definition_quote: "Goal misgeneralization occurs when an RL agent retains its capabilities out-of-distribution yet pursues the wrong goal."
+  target: goals
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Formally, the policy acts in a goal-directed manner (agent rather than device) but gets low test reward.", quote: "In other words, the policy is acting in a goal-directed manner, but not achieving high reward."}
+    - {claim: "In RL, capabilities and goals roughly correspond to understanding dynamics and the reward function.", quote: "In contrast, studying RL allows us to formally distinguish capabilities and goals, which roughly correspond to understanding the environment dynamics and the reward function, respectively."}
+    - {claim: "Optimizing an objective does not guarantee the model learns to pursue it.", quote: "An important implication of goal misgeneralization is that\ntraining a model by optimizing an objective is not enough to guarantee that the model will itself learn to pursue rather than some proxy for ."}
+  excludes:
+    - {claim: "Capability generalization failures carry only the risk of accidents from incompetence.", quote: "In contrast, the only risks from capability generalization failures are those of accidents due to incompetence."}
+    - {claim: "Goal misgeneralization is distinct from reward misspecification and can occur with a perfectly specified reward.", quote: "Goal misgeneralization is a distinct problem: it may lead to failure even if the reward function is perfectly specified."}
+    - {claim: "Goal misgeneralization can occur without mesa-optimization; the paper does not demonstrate mesa-optimization.", quote: "Furthermore, goal misgeneralization can occur without mesa-optimization.\nThus these are in fact two distinct behaviors, and our work does not demonstrate or address mesa-optimization."}
+  notes: "Our reading: the earliest empirical paper in this cluster (first version 2021) and the source of CoinRun. It treats goal misgeneralization as a natural category like adversarial robustness failures and draws the capability/goal line by whether the agent still behaves like a goal-directed agent out of distribution."
+
+- id: def-gao-2022-overoptimization
+  source: "2210.10760"
+  year: 2022
+  term: "Reward model overoptimization (Goodhart's law for learned reward models)"
+  definition_quote: "Optimizing too much against such a model eventually hinders the true objective, a phenomenon we refer to as overoptimization."
+  target: human-approval
+  principal: unspecified
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Overoptimization of reward models is a special case of specification gaming / reward hacking.", quote: "Overoptimization of reward models can be viewed as a special case of specification gaming (also known as reward hacking)."}
+    - {claim: "Adversarial Goodhart is when the policy actively manipulates the proxy.", quote: "Adversarial Goodhart occurs when the policy actively manipulates the proxy."}
+  excludes:
+    - {claim: "The studied models are not expected to manipulate the proxy adversarially.", quote: "We do not expect the effects of adversarial Goodhart to be captured in this work, as the models involved are not powerful enough to implement adversarial strategies."}
+    - {claim: "Mismatch between ground-truth labels and actual human intent is a further source of overoptimization not captured here.", quote: "In addition to the overoptimization studied in this paper (due to the mismatch between the reward model and the ground truth labels), there exists another source of overoptimization due to mismatch between the ground truth labels and the actual human intent."}
+  notes: "Our reading: the paper isolates a purely statistical form of reward hacking with no adversarial or knowing component. It explicitly separates the RM-versus-labels gap it measures from the labels-versus-intent gap that alignment ultimately cares about."
+
+- id: def-gao-2022-alignment-goals
+  source: "2210.10760"
+  year: 2022
+  term: "AI alignment (goals of AI systems aligned with goals of humans)"
+  definition_quote: "More broadly, AI alignment is the problem of ensuring that the goals of AI systems are aligned with the goals of humans (Ngo, 2022), including future AI systems which may exceed humans (Bostrom, 2014)."
+  target: goals
+  principal: humanity
+  behavior_or_motivation: motivation
+  includes:
+    - {claim: "Studying overoptimization is presented as relevant to avoiding dangerous misalignment.", quote: "Moreover, studying this effect empirically could aid in the development of theoretical models of Goodhart’s law for neural networks, which could be critical for avoiding dangerous misalignment of future AI systems."}
+  excludes: []
+  notes: "Our reading: an empirical RLHF paper adopts a goal-based definition of alignment while measuring an output-level proxy gap, which illustrates the 2022 coexistence of the two senses in one paper."
+
+- id: def-bai-2022-harmlessness-non-evasive
+  source: "2212.08073"
+  year: 2022
+  term: "Harmless but non-evasive assistant (operational harmlessness)"
+  definition_quote: "By harmfulness we include both a variety of forms of harm to the user and responses that help the user to achieve harmful aims."
+  target: norms
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "The constitution operationalizes harm through developer-written critique principles.", quote: "CritiqueRequest: Identify specific ways in which the assistant’s last response is harmful, unethical, racist, sexist, toxic, dangerous, or illegal."}
+    - {claim: "The assistant must decline unethical requests but engage and explain why.", quote: "So while the assistant must still refrain from helping users with unethical requests, and from expressing offensive language and sentiment, it should always engage and explain why it refuses such requests."}
+    - {claim: "Helpfulness and harmlessness trade off: helpful models obey pernicious requests, harmless ones become evasive.", quote: "That is, helpfulness tends to increase harmfulness, since models are willing to obey pernicious requests, and conversely models trained to be harmless tend to be more evasive and generally less helpful."}
+  excludes:
+    - {claim: "Refusing everything is harmless but useless, so harmlessness alone is not the goal.", quote: "An AI assistant that answers all questions with “I don’t know” would be harmless, but of course it would also be completely useless."}
+  notes: "Our reading: harmlessness here explicitly includes refusing to help a user's harmful aims, so the developer's norms override the user's explicit intent. That is the opposite priority from the InstructGPT training setup and shows how 'aligned' chat behavior came to mean following developer-written norms."
+
+- id: def-bai-2022-cai-creators-intent
+  source: "2212.08073"
+  year: 2022
+  term: "Alignment methods as making models behave as their creators intend (constitutional AI)"
+  definition_quote: "As we pass from prompting, to RLHF, to the constitutional methods discussed here, we lower the barrier to training AI models that behave in ways their creators intend. This means that these methods also make it easier to train pernicious systems."
+  target: norms
+  principal: developer
+  behavior_or_motivation: behavior
+  includes:
+    - {claim: "Human oversight is reduced to a list of principles, the constitution.", quote: "The idea is that human supervision will come entirely from a set of principles that should govern AI behavior, along with a small number of examples used for few-shot prompting. Together these principles form the constitution."}
+    - {claim: "The principles were chosen ad hoc for research and should be refined by a larger set of stakeholders.", quote: "These principles were chosen in a fairly ad hoc and iterative way for research purposes. In the future, we believe such principles should be redeveloped and refined by a larger set of stakeholders"}
+    - {claim: "Removing human harmlessness labels is described as moving toward self-supervised alignment.", quote: "By removing human feedback labels for harmlessness, we have moved further away from reliance on human supervision, and closer to the possibility of a self-supervised approach to alignment."}
+    - {claim: "Scaled supervision requires the supervisor itself to remain aligned.", quote: "if the capability level of the supervisor can scale proportionally with the capabilities of the actor, and the supervisor remains aligned with our intended goals and constraints."}
+  excludes:
+    - {claim: "Training pernicious systems (misuse of the method by creators) is a dual-use risk, not a failure of the method.", quote: "This means that these methods also make it easier to train pernicious systems."}
+    - {claim: "Robustness to red-team attacks is treated as a remaining issue alongside, not identical to, harmlessness training.", quote: "Another remaining issue, and a major motivation for this work, is robustness—that is, can we make models essentially immune to red-team attacks?"}
+  notes: "Our reading: CAI states plainly that its target is creator intent, which makes the creator the principal and treats harm from creators' intentions as dual use. The principles are said to be chosen 'in a fairly ad hoc and iterative way', so the norms being aligned to are a design choice."

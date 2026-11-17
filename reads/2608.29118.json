@@ -1,0 +1,58 @@
+{
+ "id": "2608.29118",
+ "title": "Emergent Misalignment Is Not Magical",
+ "text_path": "fulltext/2608.29118.txt",
+ "summary": "The paper argues that emergent misalignment (EM) after narrow harmful finetuning is a predictable, data-dependent generalization rather than an unexpected switch to an 'evil persona'. Across 12 model-dataset settings, the cosine distance in the base model's activation space between an evaluation prompt and the training-data centroid predicts how 'evil' the finetuned model's response is (closer prompts elicit more evilness). Changing only the training-data format (advice-seeking vs code) changes EM rates substantially. Misalignment directions extracted from models trained on different-format datasets have low or negative cosine similarity, and ablating one model's direction in another can increase misalignment. Prompted or in-context evil personas show no distance-evilness trend, which the authors take as evidence against the persona explanation. A fitted generalization direction predicts evilness changes under semantics-preserving prompt perturbations better than scalar distance or EM directions.",
+ "setting": "Qwen2.5-14B/32B-Instruct, Qwen2.5-Coder-32B-Instruct, Qwen3.5-27B, Gemma-3-27B-IT, Olmo-3.1-32B-Instruct; EM datasets insecure code, bad medical advice, risky financial advice, extreme sports, unpopular aesthetic preferences; 822 'Chatbot Verified' prompts; GPT-5.4 judge scoring evilness 0-100; SFT only.",
+ "quotes": [
+  {
+   "section": "introduction",
+   "quote": "In this work, we argue that EM is not magical but a data-dependent generalization phenomenon predictable from the base model’s representation space."
+  },
+  {
+   "section": "method",
+   "quote": "We then run each EM-trained model on the evaluation prompts and use GPT-5.4 as an LLM judge to score response evilness on a 0–100 scale, following Soligo et al. (2026)."
+  },
+  {
+   "section": "method",
+   "quote": "We filter these prompts for evil-answerability, meaning that each prompt can plausibly be answered in an evil or harmful way."
+  },
+  {
+   "section": "results",
+   "quote": "We observe a Spearman correlation of 0.601 and a Pearson correlation of 0.609 between the human and LLM judge scores."
+  },
+  {
+   "section": "results",
+   "quote": "As shown in Fig. 4, using the same evaluation setting from Betley et al. (2026) that measures the percentage of misaligned and coherent responses, we notice drops in EM effectiveness across all tested models and datasets, with an average decrease of 52.5%."
+  },
+  {
+   "section": "results",
+   "quote": "Together, these results suggest that a convergent linear representation of EM may not exist across all settings, and that EM should be studied with respect to its training data rather than as an isolated phenomenon."
+  },
+  {
+   "section": "results",
+   "quote": "Attributing EM to the acquisition of a general evil persona does not capture the full picture, and future work should be mindful of the limits of anthropomorphism."
+  },
+  {
+   "section": "limitations",
+   "quote": "In this work, we only carry out EM training using off-policy supervised finetuning (SFT). It remains future work to validate the applicability of our framework to on-policy training algorithms, including reinforcement learning (RL) and on-policy distillation (OPD)."
+  },
+  {
+   "section": "limitations",
+   "quote": "This suggests that the structure underlying the relationship between semantics-preserving perturbations and EM behavior may be more complex, although we remain hopeful that a simpler theory can explain it."
+  }
+ ],
+ "key_numbers": [
+  {
+   "claim": "Format change alone reduced EM rate on average by 52.5%.",
+   "quote": "with an average decrease of 52.5%"
+  },
+  {
+   "claim": "Evaluation set size.",
+   "quote": "Our dataset consists of 822 prompts drawn from Chatbot Arena (Zheng et al., 2023)."
+  }
+ ],
+ "limitations_stated": "Only activation-similarity distance was studied (not perplexity or gradient measures); only off-policy SFT; perturbation correlations from the fitted direction are lower than scalar-distance correlations for semantically different prompts.",
+ "open_questions": "Our reading: the paper measures 'misalignment' as judged evilness on prompts that can be answered harmfully; it does not test whether finetuned models represent their outputs as unwanted, which matters for whether EM is a failure of the model's goals or a shift in output distribution.",
+ "sense_of_alignment": "Misalignment is operationalized as 'evilness' of responses (and Betley et al.'s misaligned-and-coherent rate) after narrow finetuning; the source treats alignment training as producing 'safe deployment with harmless and helpful behaviors'."
+}

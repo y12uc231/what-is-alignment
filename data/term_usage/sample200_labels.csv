@@ -1,0 +1,201 @@
+i,venue,sense,title
+0,NeurIPS 2025,technical-matching,Distribution-Aligned Decoding for Efficient LLM Task Adaptation
+1,ICLR 2025,technical-matching,What to align in multimodal contrastive learning?
+2,ICLR 2026,preference-reward-tuning,Diffusion Blend: Inference-Time Multi-Preference Alignment for Diffusion Models
+3,NeurIPS 2025,technical-matching,Training the Untrainable: Introducing Inductive Bias via Representational Alignment
+4,ICLR 2026,technical-matching,Dual-Path Condition Alignment for Diffusion Transformers
+5,ICML 2026,technical-matching,NNiT: Width-Agnostic Neural Network Generation with Structurally Aligned Weight Spaces
+6,ICML 2026,values-pluralism-personalization,Asymptotic Universal Alignment: A New Alignment Framework via Test-Time Scaling
+7,ICLR 2026,technical-matching,Expert Merging: Model Merging with Unsupervised Expert Alignment and Importance-Guided Layer Chunking
+8,ICML 2026,technical-matching,Dywave: Event-Aligned Dynamic Tokenization for Heterogeneous IoT Sensing Signals
+9,NeurIPS 2026,technical-matching,Fill the GAP: A Granular Alignment Paradigm for Visual Reasoning in Multimodal Large Language Models
+10,ICLR 2025,preference-reward-tuning,DSPO: Direct Score Preference Optimization for Diffusion Model Alignment
+11,ICLR 2025,technical-matching,Physics-aligned field reconstruction with diffusion bridge
+12,ICML 2026,technical-matching,"Time Series, Vision, and Language: Exploring the Limits of Alignment in Contrastive Representation Spaces"
+13,ICLR 2026,technical-matching,Take Note: Your Molecular Dataset Is Probably Aligned
+14,ICLR 2026,technical-matching,AMLRIS: Alignment-aware Masked Learning for Referring Image Segmentation
+15,NeurIPS 2026,technical-matching,LAPrune: Logits-Aligned Scoring Proxy for KV Pruning via Vector Quantization
+16,NeurIPS 2025,technical-matching,Model-Guided Dual-Role Alignment for High-Fidelity Open-Domain Video-to-Audio Generation
+17,NeurIPS 2026,preference-reward-tuning,ReflectDrive-2: Reinforcement-Learning-Aligned Self-Editing for Discrete Diffusion Driving
+18,ICML 2026,safety-refusal,Disentangling Intent from Role: Adversarial Self-Play for Persona-Invariant Safety Alignment
+19,NeurIPS 2026,technical-matching,GenEnv: Difficulty-Aligned Co-Evolution Between LLM Agents and Environment Simulators
+20,NeurIPS 2025,values-pluralism-personalization,Pairwise Calibrated Rewards for Pluralistic Alignment
+21,NeurIPS 2025,preference-reward-tuning,Value Gradient Guidance for Flow Matching Alignment
+22,ICML 2026,technical-matching,GraphP-FL: Personalized Federated Graph Learning via Dynamic Structure Awareness and Fisher Information Elastic Alignment
+23,NeurIPS 2025,technical-matching,LABridge: Text–Image Latent Alignment Framework via Mean-Conditioned OU Process
+24,ICLR 2026,preference-reward-tuning,Enforcing Axioms for AI Alignment under Loss-Based Rules
+25,NeurIPS 2025,preference-reward-tuning,Aligning Text-to-Image Diffusion Models to Human Preference by Classification
+26,NeurIPS 2025,technical-matching,Boosting Adversarial Transferability with Spatial Adversarial Alignment
+27,NeurIPS 2026,technical-matching,What Does the Brain See? Multiview Neural Representation to Demystify the Brain-Visual Alignment
+28,ICML 2025,technical-matching,TimePoint: Accelerated Time Series Alignment via Self-Supervised Keypoint and Descriptor Learning
+29,NeurIPS 2025,preference-reward-tuning,InterMT: Multi-Turn Interleaved Preference Alignment with Human Feedback
+30,ICML 2025,preference-reward-tuning,Aligning Protein Conformation Ensemble Generation with Physical Feedback
+31,ICML 2025,technical-matching,DUNIA: Pixel-Sized Embeddings via Cross-Modal Alignment for Earth Observation Applications
+32,ICML 2025,technical-matching,Proxy-FDA: Proxy-based Feature Distribution Alignment for Fine-tuning Vision Foundation Models without Forgetting
+33,NeurIPS 2025,technical-matching,AliO: Output Alignment Matters in Long-Term Time Series Forecasting
+34,NeurIPS 2026,technical-matching,REGATE: Confidence-Calibrated Integration of Temporally-Aligned Exogenous Texts for Dynamic Graphs
+35,NeurIPS 2025,preference-reward-tuning,Self-alignment of Large Video Language Models with Refined Regularized Preference Optimization
+36,NeurIPS 2025,goal-misalignment,Why Do Some Language Models Fake Alignment While Others Don't?
+37,ICML 2026,preference-reward-tuning,ClinTutor-R1: Advancing Scalable and Robust One-to-Many Alignment in Clinical Socratic Education
+38,ICML 2026,technical-matching,Preference-Calibrated Optimization with Score-Level Distribution Alignment for Text-to-Image Diffusion Model Unlearning
+39,ICML 2026,values-pluralism-personalization,Quantifying the Salience of Geo-Cultural Values for Pluralistic Safety Alignment
+40,ICML 2025,preference-reward-tuning,Smoothed Preference Optimization via ReNoise Inversion for Aligning Diffusion Models with Varied Human Preferences
+41,ICML 2025,technical-matching,Towards an Explainable Comparison and Alignment of Feature Embeddings
+42,NeurIPS 2025,technical-matching,"Bridging Critical Gaps in Convergent Learning: How Representational Alignment Evolves Across Layers, Training, and Distribution Shifts"
+43,ICML 2026,technical-matching,"Align Forward, Adapt Backward: Closing the Discretization Gap in Logic Gate Networks"
+44,ICML 2026,safety-refusal,Towards Seed-Robust Safety Alignment in Text-to-Image Models
+45,NeurIPS 2025,technical-matching,SIU3R: Simultaneous Scene Understanding and 3D Reconstruction Beyond Feature Alignment
+46,ICLR 2026,safety-refusal,When Style Breaks Safety: Defending LLMs Against Superficial Style Alignment
+47,NeurIPS 2026,safety-refusal,Logit-Gap Steering: A Forward-Pass Diagnostic for Alignment Robustness
+48,ICML 2026,values-pluralism-personalization,MORALISE: A Structured Benchmark for Moral Alignment in Visual Language Models
+49,ICML 2025,preference-reward-tuning,LOGO --- Long cOntext aliGnment via efficient preference Optimization
+50,NeurIPS 2025,preference-reward-tuning,OptiScene: LLM-driven Indoor Scene Layout Generation via Scaled Human-aligned Data Synthesis and Multi-Stage Preference Optimization
+51,ICML 2026,technical-matching,Benchmarking and Improving Fine-Grained Text-to-Image Alignment via Paired Reinforcement Learning
+52,NeurIPS 2026,preference-reward-tuning,RoboAlign-R1: Distilled Multimodal Reward Alignment for Robot Video World Models
+53,ICML 2026,safety-refusal,Contrastive Reasoning Alignment: Reinforcement Learning from Hidden Representations
+54,NeurIPS 2026,preference-reward-tuning,META-PAP: Meta-learning for Prompt-aware Preference Pairing in LLM Alignment
+55,ICLR 2026,technical-matching,MindMix: A Multimodal Foundation Model for Auditory Perception Decoding via Deep Neural-Acoustic Alignment
+56,ICML 2026,technical-matching,Geometric Embedding Alignment via Curvature Matching in Transfer Learning
+57,ICLR 2025,preference-reward-tuning,"More RLHF, More Trust? On The Impact of Preference Alignment On Trustworthiness"
+58,ICML 2026,technical-matching,Return-to-Go Is More Than a Number: Q-Guided Alignment for Return-Conditioned Supervised Learning
+59,ICML 2026,technical-matching,Graph Alignment for Benchmarking Graph Neural Networks and Learning Positional Encodings
+60,NeurIPS 2025,preference-reward-tuning,Uncertainty-aware Preference Alignment for Diffusion Policies
+61,NeurIPS 2026,technical-matching,Aligning MLLMs with the Latent Structure of Human Cognition via Behavior-Derived Semantic Dimensions
+62,ICML 2026,technical-matching,Stable Spectral Copula Alignment for Robust Multimodal Learning
+63,NeurIPS 2026,technical-matching,A Latent World-Action Model with Jointly Aligned Reasoning
+64,NeurIPS 2026,technical-matching,Chaining 2-FWL GNNs for Combinatorial Graph Alignment
+65,ICLR 2025,values-pluralism-personalization,Aligning Language Models with Demonstrated Feedback
+66,ICLR 2026,technical-matching,IA2: Alignment with ICL Activations improves Supervised Fine-Tuning
+67,ICLR 2026,technical-matching,Representation Alignment for Diffusion Transformers without External Components
+68,NeurIPS 2025,technical-matching,U-REPA: Aligning Diffusion U-Nets to ViTs
+69,NeurIPS 2026,technical-matching,ROCKET: Residual-Oriented Multi-Layer Alignment for Spatially-Aware Vision-Language-Action Models
+70,NeurIPS 2025,safety-refusal,SafeVLA: Towards Safety Alignment of Vision-Language-Action Model via Constrained Learning
+71,NeurIPS 2025,values-pluralism-personalization,Teaching Language Models to Evolve with Users: Dynamic Profile Modeling for Personalized Alignment
+72,NeurIPS 2026,technical-matching,RSSA: Robust Semantic and Spatial Aligner for Collaborative Perception
+73,ICLR 2026,technical-matching,Multimodal Aligned Semantic Knowledge for Unpaired Image-text Matching
+74,NeurIPS 2025,values-pluralism-personalization,Inference-Time Personalized Alignment with a Few User Preference Queries
+75,ICLR 2026,technical-matching,Representational Alignment Across Model Layers and Brain Regions with Multi-Level Optimal Transport
+76,ICML 2025,preference-reward-tuning,Reducing Tool Hallucination via Reliability Alignment
+77,ICML 2026,technical-matching,Scalable and Interpretable Representation Alignment with Ordinal Similarity
+78,ICLR 2025,technical-matching,Aligning Generative Denoising with Discriminative Objectives Unleashes Diffusion for Visual Perception
+79,NeurIPS 2025,technical-matching,Scalable Cross-View Sample Alignment for Multi-View Clustering with View Structure Similarity
+80,ICML 2026,goal-misalignment,Alignment Pretraining: AI Discourse Causes Self-Fulfilling (Mis)alignment
+81,NeurIPS 2026,technical-matching,MUTE: Multi-Level Alignment Uncoupling Against Talking-Head Exploitation for Voice Protection
+82,NeurIPS 2026,safety-refusal,SAVeR$^2$: Reasoning-based Safety Alignment for Large Reasoning Models via Verifiable Rewards
+83,ICLR 2025,technical-matching,Judge Decoding: Faster Speculative Sampling Requires Going Beyond Model Alignment
+84,ICML 2026,preference-reward-tuning,InfiMed-ORBIT: Aligning LLMs on Open-Ended Complex Tasks via Rubric-Based Incremental Training
+85,ICML 2026,safety-refusal,PACT: Self-Evolving Physical Safety Alignment for Diffusion Policies in Embodied Manipulation
+86,NeurIPS 2025,technical-matching,ExGra-Med: Extended Context Graph Alignment for Medical Vision-Language Models
+87,ICLR 2026,technical-matching,Enabling Fine-Tuning of Direct Feedback Alignment via Feedback-Weight Matching
+88,NeurIPS 2026,technical-matching,Nonlinear Direct Feedback Alignment for Scalable Backpropagation-Free Training
+89,NeurIPS 2026,technical-matching,Mind the Heads: Topological Representation Alignment for Multimodal LLMs
+90,ICML 2025,preference-reward-tuning,Tokenized Bandit for LLM Decoding and Alignment
+91,NeurIPS 2026,technical-matching,GEM: Interpretable Language Models via Geometric Embedding Alignment
+92,NeurIPS 2025,technical-matching,JADE: Joint Alignment and Deep Embedding for Multi-Slice Spatial Transcriptomics
+93,NeurIPS 2025,preference-reward-tuning,Doubly Robust Alignment for Large Language Models
+94,ICLR 2026,technical-matching,DecAlign: Hierarchical Cross-Modal Alignment for Decoupled Multimodal Representation Learning
+95,NeurIPS 2026,technical-matching,Greedy Alignment Principle for Optimizer Selection
+96,ICML 2026,safety-refusal,Safety Alignment of LMs via Non-cooperative Games
+97,NeurIPS 2026,technical-matching,BDC-Merge: Cross-Architecture Model Merging via Dependency Alignment
+98,NeurIPS 2026,technical-matching,Beyond SFT-to-RL: Pre-alignment via Black-box On-policy Distillation for Multimodal RL
+99,NeurIPS 2026,technical-matching,Cauchy Scientific Networks: Loss–Architecture Alignment and Its Limit
+100,ICLR 2026,technical-matching,Progressive Online Video Understanding with Evidence-Aligned Timing and Transparent Decisions
+101,ICLR 2025,safety-refusal,SEAL: Safety-enhanced Aligned LLM Fine-tuning via Bilevel Data Selection
+102,ICLR 2026,technical-matching,Improving Semantic Proximity in Information Retrieval through Cross-Lingual Alignment
+103,ICML 2026,technical-matching,LLM-Guided Diagnostic Evidence Alignment for Medical Vision–Language Pretraining under Limited Pairing
+104,ICML 2026,technical-matching,SSA: Sparse Sparse Attention by Aligning Full and Sparse Attention Outputs in Feature Space
+105,NeurIPS 2025,technical-matching,STRIDER: Navigation via Instruction-Aligned Structural Decision Space Optimization
+106,ICML 2025,preference-reward-tuning,Theoretical guarantees on the best-of-n alignment policy
+107,NeurIPS 2025,technical-matching,Incomplete Multi-view Clustering via Hierarchical Semantic Alignment and Cooperative Completion
+108,ICLR 2025,preference-reward-tuning,Towards Robust Alignment of Language Models: Distributionally Robustifying Direct Preference Optimization
+109,ICLR 2025,preference-reward-tuning,Magpie: Alignment Data Synthesis from Scratch by Prompting Aligned LLMs with Nothing
+110,NeurIPS 2025,technical-matching,Aligning What Matters: Masked Latent Adaptation for Text-to-Audio-Video Generation
+111,ICML 2026,technical-matching,Simultaneous Speech-to-Speech Translation Without Aligned Data
+112,NeurIPS 2026,technical-matching,Fast Alignment of Embeddings: Computational Guarantees for Anisotropic Procrustes-Wasserstein
+113,ICML 2026,technical-matching,Federated Distillation for Whole Slide Image via Gaussian-Mixture Feature Alignment and Curriculum Integration
+114,ICLR 2025,values-pluralism-personalization,MAP: Multi-Human-Value Alignment Palette
+115,ICML 2026,values-pluralism-personalization,CAReDiO: Enhancing Cultural Alignment of LLM via Representativeness and Distinctiveness Guided Data Optimization
+116,ICML 2026,technical-matching,Explainable Federated Learning via Global–Local Attribution Alignment
+117,ICLR 2026,technical-matching,DistDF: Time-series Forecasting Needs Joint-distribution Wasserstein Alignment
+118,ICML 2026,technical-matching,MIST: Moment-Aligned Invariant Stability Transform for Robust Flow Matching
+119,ICML 2026,preference-reward-tuning,How to Guide Your Flow: Few-Step Alignment via Flow Map Reward Guidance
+120,NeurIPS 2026,technical-matching,Concept frustration: Aligning human concepts and machine representations
+121,ICML 2026,goal-misalignment,Emergent Alignment via Competition
+122,NeurIPS 2026,technical-matching,Learning to Decide with AI Assistance under Human-Alignment
+123,NeurIPS 2026,technical-matching,A Unified Audio Language Model with Text-Aligned Factorized Audio Tokenization
+124,ICLR 2025,preference-reward-tuning,Diverse Preference Learning for Capabilities and Alignment
+125,NeurIPS 2026,technical-matching,SeaPilot: Mobile Agent with Self-refining Environment Alignment
+126,ICML 2025,technical-matching,"Aligning with Logic: Measuring, Evaluating and Improving Logical Preference Consistency in Large Language Models"
+127,ICLR 2025,technical-matching,ClassDiffusion: More Aligned Personalization Tuning with Explicit Class Guidance
+128,ICML 2026,technical-matching,AG-REPA: Causal Layer Selection for Representation Alignment in Audio Flow Matching
+129,NeurIPS 2025,values-pluralism-personalization,The Burden of Interactive Alignment with Inconsistent Preferences
+130,ICLR 2026,preference-reward-tuning,Diffusion Alignment as Variational Expectation-Maximization
+131,NeurIPS 2025,technical-matching,GSAlign: Geometric and Semantic Alignment Network for Aerial-Ground Person Re-Identification
+132,ICLR 2026,technical-matching,SAGA: Structural Aggregation Guided Alignment with Dynamic View and Neighborhood Order Selection for Multiview Graph Domain Adaptation
+133,NeurIPS 2026,technical-matching,PixelDense: Dense Prediction as Representation Alignment for Pixel Diffusion
+134,ICLR 2026,technical-matching,Architecture-Agnostic Test-Time Adaptation via Backprop-Free Embedding Alignment
+135,ICML 2026,preference-reward-tuning,Inference-Aware Meta-Alignment of LLMs via Non-Linear GRPO
+136,ICLR 2025,preference-reward-tuning,Joint Reward and Policy Learning with Demonstrations and Human Feedback Improves Alignment
+137,ICLR 2025,preference-reward-tuning,Direct Distributional Optimization for Provable Alignment of Diffusion Models
+138,ICLR 2026,technical-matching,Only Brains Align with Brains: Cross-Region Alignment Patterns Expose Limits of Normative Models
+139,ICML 2026,preference-reward-tuning,Improved Bounds for Private and Robust Alignment
+140,ICML 2026,technical-matching,Geometry-Correct Diffusion Posterior Sampling with Denoiser-Pullback Curvature Guidance and Manifold-Aligned Damping
+141,ICML 2025,preference-reward-tuning,MMedPO: Aligning Medical Vision-Language Models with Clinical-Aware Multimodal Preference Optimization
+142,NeurIPS 2026,technical-matching,Preserving Exploration for LLM Reasoning via Mean Order-Statistic Alignment
+143,NeurIPS 2026,technical-matching,MorphGen: Controllable Cell-Image Generation with Biological Representation Alignment
+144,ICML 2025,preference-reward-tuning,AlphaPO: Reward Shape Matters for LLM Alignment
+145,NeurIPS 2025,preference-reward-tuning,Inference-time Alignment in Continuous Space
+146,ICML 2026,technical-matching,Alignment-Sensitive Minimax Rates for Spectral Algorithms with Learned Kernels
+147,NeurIPS 2026,technical-matching,Test-Time Conditioning with Representation-Aligned Visual Features
+148,NeurIPS 2025,safety-refusal,Beyond Expectations: Quantile-Guided Alignment for Risk-Calibrated Language Models
+149,NeurIPS 2025,technical-matching,Temporal Representation Alignment: Successor Features Enable Emergent Compositionality in Robot Instruction Following
+150,ICML 2026,technical-matching,"Shared Semantics, Divergent Mechanisms: Unsupervised Feature Discovery by Aligning Semantics and Mechanisms"
+151,ICLR 2026,technical-matching,Beyond Instance-Level Alignment: Dual-Level Optimal Transport for Audio-Text Retrieval
+152,ICLR 2025,preference-reward-tuning,Rethinking Reward Modeling in Preference-based Large Language Model Alignment
+153,ICML 2026,technical-matching,DiFA: Inference-Time Forward-Process Alignment for Diffusion Models
+154,NeurIPS 2025,preference-reward-tuning,ComPO: Preference Alignment via Comparison Oracles
+155,NeurIPS 2025,technical-matching,Directed-Tokens: A Robust Multi-Modality Alignment Approach to Large Language-Vision Models
+156,ICLR 2026,technical-matching,Scaling Direct Feedback Learning with Jacobian Alignment Guarantees
+157,NeurIPS 2026,technical-matching,Transferable SCF-Acceleration through Solver-Aligned Initialization Learning
+158,ICML 2026,technical-matching,Where Concept Erasure Should Occur: Concept–Layer Alignment in Text-to-Video Diffusion Models
+159,ICLR 2026,technical-matching,Two-Way Is Better Than One: Bidirectional Alignment with Cycle Consistency for Exemplar-Free Class-Incremental Learning
+160,NeurIPS 2026,technical-matching,SapiensID 2.0: Aligning Human Recognition Foundation Models with Human Perception
+161,ICLR 2026,technical-matching,Anime-Ready: Controllable 3D Anime Character Generation with Body-Aligned Component-Wise Garment Modeling
+162,ICML 2025,preference-reward-tuning,On the Robustness of Reward Models for Language Model Alignment
+163,ICML 2025,preference-reward-tuning,PARM: Multi-Objective Test-Time Alignment via Preference-Aware Autoregressive Reward Model
+164,NeurIPS 2026,technical-matching,Soft Token Alignment for Cross-Lingual Reasoning
+165,ICML 2026,preference-reward-tuning,Expectation Alignment of Language Models for Real-World User Expectations
+166,ICLR 2025,preference-reward-tuning,Seeing Eye to AI: Human Alignment via Gaze-Based Response Rewards for Large Language Models
+167,ICLR 2025,preference-reward-tuning,Diffusion-NPO: Negative Preference Optimization for Better Preference Aligned Generation of Diffusion Models
+168,NeurIPS 2025,safety-refusal,CARE: Decoding-Time Safety Alignment via Rollback and Introspection Intervention
+169,ICML 2025,technical-matching,Fair Clustering via Alignment
+170,NeurIPS 2026,technical-matching,AHPA: Adaptive Hierarchical Prior Alignment for Diffusion Transformers
+171,ICLR 2026,technical-matching,Gradient-Aligned Calibration for Post-Training Quantization of Diffusion Models
+172,ICML 2026,technical-matching,FUSE: Frequency-domain Unification and Spectral Energy Alignment for Multi-modal Object Re-Identification
+173,ICLR 2026,technical-matching,Regulating Internal Alignment Flows for Robust Learning Under Spurious Correlations
+174,NeurIPS 2025,preference-reward-tuning,$\Psi$-Sampler: Initial Particle Sampling for SMC-Based Inference-Time Reward Alignment in Score Models
+175,NeurIPS 2026,technical-matching,"Not Too Generative, Not Too Discriminative: The Human Alignment Sweet Spot"
+176,ICLR 2026,preference-reward-tuning,RE-PO: Robust Enhanced Policy Optimization as a General Framework for LLM Alignment
+177,ICML 2026,technical-matching,Comp-Attn: Present-and-Align Attention for Compositional Video Generation
+178,ICLR 2026,technical-matching,Towards Multimodal Time Series Anomaly Detection with Semantic Alignment and Condensed Interaction
+179,ICML 2026,technical-matching,DiffCrossGait: Trajectory-Level Alignment for 2D-3D Cross-Modal Gait Recognition via Latent Diffusion
+180,ICML 2026,preference-reward-tuning,Optimizing Diversity and Quality through Base-Aligned Model Collaboration
+181,ICLR 2026,safety-refusal,Self-Jailbreaking: Language Models Can Reason Themselves Out of Safety Alignment After Benign Reasoning Training
+182,NeurIPS 2026,technical-matching,VIPBench: A Human-Aligned Benchmark for Voice Identity Perception in the Age of Voice Cloning
+183,NeurIPS 2026,technical-matching,DSAQuant: Denoising-Stage-Aligned Quantization-Aware Training for Video Generation
+184,NeurIPS 2026,values-pluralism-personalization,MATO: Multi-objective Personalized Alignment with Test-time Optimization for Large Language Models
+185,ICML 2026,technical-matching,OvisOCR: End-to-End Document Parsing via Aligning Specialized Perception with General Reasoning
+186,ICLR 2026,preference-reward-tuning,References Improve LLM Alignment in Non-Verifiable Domains
+187,NeurIPS 2026,technical-matching,Inference-Time Self-Aligned Drifting for Few-Step Flow Matching
+188,ICLR 2026,technical-matching,"Optimizing ID Consistency in Multimodal Large Models: Facial Restoration via Alignment, Entanglement, and Disentanglement"
+189,ICLR 2026,technical-matching,Motion-Aligned Word Embeddings for Text-to-Motion Generation
+190,ICML 2026,technical-matching,KODA: Contrastive Representation Comparison and Alignment for Vision-Language Foundation Models
+191,ICLR 2025,technical-matching,Learning and aligning single-neuron invariance manifolds in visual cortex
+192,NeurIPS 2026,technical-matching,ClinStab: Stability-Oriented Learning for Medical Time Series via Dual-Stream Alignment
+193,ICML 2026,preference-reward-tuning,Elign: Equivariant Diffusion Model Alignment from Foundational Machine Learned Force Fields
+194,ICLR 2025,preference-reward-tuning,Iterative Nash Policy Optimization: Aligning LLMs with General Preferences via No-Regret Learning
+195,NeurIPS 2026,technical-matching,RADAR: Text-Guided Medical Image Segmentation via Residual Aggregation and Dense Alignment Representations
+196,ICML 2025,technical-matching,Aligning Multimodal Representations through an Information Bottleneck
+197,NeurIPS 2025,technical-matching,Gradient Alignment in Physics-informed Neural Networks: A Second-Order Optimization Perspective
+198,ICLR 2026,preference-reward-tuning,DenseGRPO: From Sparse to Dense Reward for Flow Matching Model Alignment
+199,ICML 2026,values-pluralism-personalization,DARC: Disagreement-Aware Alignment via Risk-Constrained Decoding

@@ -1,0 +1,22 @@
+{
+  "id": "2310.02457",
+  "title": "The Empty Signifier Problem: Towards Clearer Paradigms for Operationalising \"Alignment\" in Large Language Models",
+  "text_path": "fulltext/2310.02457.txt",
+  "summary": "A short position paper (NeurIPS 2023 workshop style) arguing that 'alignment' in LLMs behaves like an empty signifier in Laclau's sense: an unobjectionable placeholder that groups fill with their own meanings. A footnote catalogs the range of targets papers use (standards, wants, motives, revealed/stated/idealized preferences, communication norms, intents, goals, values, social alignment, harm avoidance, x-risk). Building on Rottger et al.'s annotation paradigms, it proposes a 2x2 framework for alignment datasets: Broad vs Specific dimensions, and Prescriptive vs Descriptive definitions, and maps existing datasets (summarization preference data, WebGPT, LaMDA, Chatbot Arena, SHP, HH-RLHF, red-teaming, Constitutional AI) onto it. The discussion stresses that 'which' becomes 'whose', that disagreement concentrates at the margins, and that unstated choices risk passing particular (often US-based) values off as universal.",
+  "setting": "Conceptual framework with an ex-post mapping of about 20 empirical alignment datasets and papers; no experiments.",
+  "quotes": [
+    {"section": "introduction", "quote": "Akin to empty signifiers, the term \"alignment\" serves as a rhetorical placeholder for an aspirational conceptualisation of relations between humans and machines, which is fairly unobjectionable in principle, but lacks a shared definition or goal to translate in practice [18]."},
+    {"section": "method", "quote": "The process of creating alignment data encompasses two core decisions: 1) selecting dimensions to be included, and 2) deciding how dimensions are defined."},
+    {"section": "method", "quote": "Under this paradigm, interpersonal disagreements are not sought to be minimised; in fact, such differences may be the exact object of interest for the study."},
+    {"section": "results", "quote": "This evaluation setting represents the most broad-descriptive statement we can imagine because they ask directly about the meta-goal (and empty signifier) of \"alignment\" with no dimensions and no definitions."},
+    {"section": "results", "quote": "Askell et al. [3] and Bai et al. [4] stipulate that a value-aligned model is one that is honest, harmless and helpful but do not prescribe their meaning."},
+    {"section": "discussion", "quote": "We expect a lesser degree of disagreement on important dimensions and their definitions at the extremes."},
+    {"section": "discussion", "quote": "In the absence of clear communication, there is a risk of conflating the particular and the universal"},
+    {"section": "conclusion", "quote": "Practitioners of LLM alignment should avoid relying on empty signifiers, and instead, be more precise in what they are attempting to achieve through empirical alignment datasets."},
+    {"section": "limitations", "quote": "Our proposed mapping inevitably suffers from incompleteness in ways that alignment datasets can be categorised; as well as idiosyncrasies of individual researchers or practitioners adopting the role of cartographer."}
+  ],
+  "key_numbers": [],
+  "limitations_stated": "The mapping of literature is incomplete and reflects the authors' judgments as 'cartographers'. The framework is a communication tool, not a normative recommendation, and does not forecast where practice will settle.",
+  "open_questions": "Who should form the pool that provides alignment signals; where to set bounds on acceptable interpretations; how to document annotator identity and organizational influence.",
+  "sense_of_alignment": "Empirical, data-centric LLM alignment ('to tangibly steer them towards certain behaviours and away from others'), treated critically as an 'empty signifier' whose content is set by whoever writes the dataset dimensions and definitions."
+}
